@@ -10,6 +10,7 @@
 		1911954F1DD8400D00EEBBB4 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1911954E1DD8400D00EEBBB4 /* URL+Extension.swift */; };
 		191195511DD8785300EEBBB4 /* ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191195501DD8785300EEBBB4 /* ApplicationModel.swift */; };
 		191195531DD87FB700EEBBB4 /* NSMenu+TySimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191195521DD87FB700EEBBB4 /* NSMenu+TySimulator.swift */; };
+		191195561DD8ACF500EEBBB4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191195551DD8ACF500EEBBB4 /* main.swift */; };
 		19460C921DD78EA900894FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460C911DD78EA900894FBA /* AppDelegate.swift */; };
 		19460C941DD78EA900894FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19460C931DD78EA900894FBA /* Assets.xcassets */; };
 		19460C971DD78EA900894FBA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19460C951DD78EA900894FBA /* MainMenu.xib */; };
@@ -37,6 +38,7 @@
 		1911954E1DD8400D00EEBBB4 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		191195501DD8785300EEBBB4 /* ApplicationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationModel.swift; sourceTree = "<group>"; };
 		191195521DD87FB700EEBBB4 /* NSMenu+TySimulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenu+TySimulator.swift"; sourceTree = "<group>"; };
+		191195551DD8ACF500EEBBB4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		19460C8E1DD78EA900894FBA /* TySimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TySimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19460C911DD78EA900894FBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19460C931DD78EA900894FBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
 				19460C951DD78EA900894FBA /* MainMenu.xib */,
 				19460C981DD78EA900894FBA /* Info.plist */,
+				191195551DD8ACF500EEBBB4 /* main.swift */,
 			);
 			path = TySimulator;
 			sourceTree = "<group>";
@@ -266,7 +269,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		74D1CBCBA0F824689F398234 /* [CP] Copy Pods Resources */ = {
@@ -326,7 +329,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E6FC7550169C4C1A9582F65F /* [CP] Copy Pods Resources */ = {
@@ -353,6 +356,7 @@
 			files = (
 				191195511DD8785300EEBBB4 /* ApplicationModel.swift in Sources */,
 				19460C921DD78EA900894FBA /* AppDelegate.swift in Sources */,
+				191195561DD8ACF500EEBBB4 /* main.swift in Sources */,
 				19460CAD1DD78FC000894FBA /* MainMenuController.swift in Sources */,
 				1911954F1DD8400D00EEBBB4 /* URL+Extension.swift in Sources */,
 				191195531DD87FB700EEBBB4 /* NSMenu+TySimulator.swift in Sources */,
@@ -409,6 +413,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -458,6 +463,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

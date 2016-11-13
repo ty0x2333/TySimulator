@@ -25,6 +25,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         menu.autoenablesItems = false
         
         self.devices = DeviceModel.devices()
+        log.info("load devices: \(self.devices.count)")
         
         self.devices.forEach { (device) in
             menu.addItem(NSMenuItem.deviceMenuItem(device))
