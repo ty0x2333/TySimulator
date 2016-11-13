@@ -1,0 +1,6 @@
+framework module Pods_TySimulator {
+  umbrella header "Pods-TySimulator-umbrella.h"
+
+  export *
+  module * { export * }
+}
