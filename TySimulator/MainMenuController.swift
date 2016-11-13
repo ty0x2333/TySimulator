@@ -10,8 +10,10 @@ import Cocoa
 
 class MainMenuController: NSObject, NSMenuDelegate {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
-    
     var devices: [DeviceModel] = []
+    
+    lazy var quitMenuItem: NSMenuItem = self.makeQuitItem()
+    var tagMap: Dictionary<String, Int> = [:]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,12 +29,17 @@ class MainMenuController: NSObject, NSMenuDelegate {
         self.devices = DeviceModel.devices()
         log.info("load devices: \(self.devices.count)")
         
-        NSMenuItem.deviceMenuItems(self.devices).forEach { (item) in
+        self.tagMap.removeAll()
+        for i in 0 ..< self.devices.count {
+            self.tagMap[devices[i].udid] = i
+        }
+        
+        NSMenuItem.deviceMenuItems(self.devices, tagMap).forEach { (item) in
             menu.addItem(item)
         }
         
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(makeQuitItem())
+        menu.addItem(self.quitMenuItem)
         return menu
     }
     
@@ -50,5 +57,22 @@ class MainMenuController: NSObject, NSMenuDelegate {
     
     func quit(_ sender: NSMenuItem) {
         NSApplication.shared().terminate(self)
+    }
+    
+    // MARK: - NSMenuDelegate
+    func menuWillOpen(_ menu: NSMenu) {
+        let bootedDevices = DeviceModel.bootedDevices()
+        let bootedDeviceUDIDs = bootedDevices.map { (device) -> String in
+            return device.udid
+        }
+        log.verbose("booted device udid: \(bootedDeviceUDIDs)")
+        
+        let bootedItemTags = bootedDeviceUDIDs.map { (udid) -> Int in
+            return self.tagMap[udid]!
+        }
+        statusItem.menu?.items.forEach({ (item) in
+            item.state = bootedItemTags.contains(item.tag) ? 1 : 0
+        })
+        
     }
 }

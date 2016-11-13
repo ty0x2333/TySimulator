@@ -9,7 +9,7 @@
 import Cocoa
 
 extension NSMenuItem {
-    static func deviceMenuItems(_ devices: [DeviceModel]) -> [NSMenuItem] {
+    static func deviceMenuItems(_ devices: [DeviceModel], _ tagMap: Dictionary<String, Int>) -> [NSMenuItem] {
         var items: [NSMenuItem] = []
         
         var osInfo: String = ""
@@ -22,7 +22,9 @@ extension NSMenuItem {
                 }
                 items.append(header($0.osInfo))
             }
-            items.append(deviceMenuItem($0))
+            let item = deviceMenuItem($0)
+            item.tag = tagMap[$0.udid]!
+            items.append(item)
         }
         
         return items
