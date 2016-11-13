@@ -33,8 +33,8 @@ extension NSMenuItem {
         item.title = device.name
         item.isEnabled = device.isAvailable
         item.state = device.isOpen ? 1 : 0
-        item.onStateImage = NSImage(named: "on")
-        item.offStateImage = NSImage(named: "off")
+        item.onStateImage = NSImage(named: "icon-on")
+        item.offStateImage = NSImage(named: "icon-off")
         
         let menu = NSMenu()
         menu.autoenablesItems = false
