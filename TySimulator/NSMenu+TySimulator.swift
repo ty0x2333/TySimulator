@@ -48,6 +48,15 @@ extension NSMenuItem {
             }
         }
         
+        let medias = mediaMenuItems(device.medias)
+        if !medias.isEmpty {
+            menu.addItem(NSMenuItem.separator())
+            menu.addItem(NSMenuItem.header("Media"))
+            medias.forEach {
+                menu.addItem($0)
+            }
+        }
+        
         item.submenu = menu
         return item
     }
@@ -59,6 +68,18 @@ extension NSMenuItem {
             item.isEnabled = true
             item.target = $0
             item.action = #selector(ApplicationModel.handleMenuItem(_:))
+            return item
+        }
+    }
+    
+    private static func mediaMenuItems(_ media: [MediaModel]) -> [NSMenuItem] {
+        return media.map {
+            let item = NSMenuItem()
+            item.title = $0.name
+            item.isEnabled = true
+            item.target = $0
+            item.action = #selector(MediaModel.handleMenuItem(_:))
+            
             return item
         }
     }
