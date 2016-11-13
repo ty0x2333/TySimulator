@@ -27,8 +27,8 @@ class MainMenuController: NSObject, NSMenuDelegate {
         self.devices = DeviceModel.devices()
         log.info("load devices: \(self.devices.count)")
         
-        self.devices.forEach { (device) in
-            menu.addItem(NSMenuItem.deviceMenuItem(device))
+        NSMenuItem.deviceMenuItems(self.devices).forEach { (item) in
+            menu.addItem(item)
         }
         
         menu.addItem(NSMenuItem.separator())
