@@ -12,6 +12,7 @@
 		191195531DD87FB700EEBBB4 /* NSMenu+TySimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191195521DD87FB700EEBBB4 /* NSMenu+TySimulator.swift */; };
 		191195561DD8ACF500EEBBB4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191195551DD8ACF500EEBBB4 /* main.swift */; };
 		191195581DD8C0A700EEBBB4 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191195571DD8C0A700EEBBB4 /* FileManager+Extension.swift */; };
+		1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191195591DD8C14700EEBBB4 /* MediaModel.swift */; };
 		19460C921DD78EA900894FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460C911DD78EA900894FBA /* AppDelegate.swift */; };
 		19460C941DD78EA900894FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19460C931DD78EA900894FBA /* Assets.xcassets */; };
 		19460C971DD78EA900894FBA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19460C951DD78EA900894FBA /* MainMenu.xib */; };
@@ -41,6 +42,7 @@
 		191195521DD87FB700EEBBB4 /* NSMenu+TySimulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenu+TySimulator.swift"; sourceTree = "<group>"; };
 		191195551DD8ACF500EEBBB4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		191195571DD8C0A700EEBBB4 /* FileManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		191195591DD8C14700EEBBB4 /* MediaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaModel.swift; sourceTree = "<group>"; };
 		19460C8E1DD78EA900894FBA /* TySimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TySimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19460C911DD78EA900894FBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19460C931DD78EA900894FBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				19460CB31DD83C1E00894FBA /* DeviceModel.swift */,
 				191195501DD8785300EEBBB4 /* ApplicationModel.swift */,
+				191195591DD8C14700EEBBB4 /* MediaModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				191195531DD87FB700EEBBB4 /* NSMenu+TySimulator.swift in Sources */,
 				19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */,
 				19460CB61DD83E5500894FBA /* Process+Extension.swift in Sources */,
+				1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */,
 				191195581DD8C0A700EEBBB4 /* FileManager+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
