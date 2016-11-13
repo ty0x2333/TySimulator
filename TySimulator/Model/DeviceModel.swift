@@ -93,6 +93,38 @@ class DeviceModel {
         }
     }
     
+    static func bootedDevices() -> [DeviceModel] {
+        let string = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"],
+                                    directoryPath: self.devicesDirectory)
+        
+        guard let data = string.data(using: String.Encoding.utf8),
+            let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary,
+            let json = jsonObject
+            else { return [] }
+        
+        var devices: [DeviceModel] = []
+        
+        let deviceObjects = json["devices"] as? NSDictionary
+        
+        deviceObjects?.forEach({ (key, value) in
+            let simulators = value as? NSArray
+            simulators?.forEach({ (simulatorJSON) in
+                let osInfo = (key as! String).replacingOccurrences(of: "com.apple.CoreSimulator.SimRuntime.", with: "")
+                let json = simulatorJSON as! NSDictionary
+                let booted = (json["state"] as! String).contains("Booted")
+                if booted {
+                    devices.append(DeviceModel(osInfo: osInfo, json: json))
+                }
+            })
+        })
+        
+        return devices.filter {
+            return $0.hasContent && $0.isAvailable && $0.os != .unknown
+            }.sorted {
+                return $0.osInfo.compare($1.osInfo) == .orderedAscending
+        }
+    }
+    
     static var devicesDirectory: URL {
         let path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first ?? ""
         return URL(fileURLWithPath: path).appendingPathComponent("Developer/CoreSimulator/Devices")
