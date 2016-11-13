@@ -19,7 +19,7 @@ class ApplicationModel: NSObject {
     
     static func load(path: URL) -> [ApplicationModel] {
         let directory = path.appendingPathComponent("data/Containers/Bundle/Application")
-        return self.directories(directory).map {
+        return FileManager.directories(directory).map {
             let application = ApplicationModel(path: path, bundleLocation: directory.appendingPathComponent($0))
             return application
         }
@@ -32,7 +32,7 @@ class ApplicationModel: NSObject {
     }
     
     func loadInfo(_ bundleLocation: URL) {
-        guard let app = ApplicationModel.directories(bundleLocation).first,
+        guard let app = FileManager.directories(bundleLocation).first,
             let json = NSDictionary(contentsOf: bundleLocation.appendingPathComponent("\(app)/Info.plist"))
             else { return }
         
@@ -45,7 +45,7 @@ class ApplicationModel: NSObject {
         let directory = path.appendingPathComponent("data/Containers/Data/Application")
         
         let plist = ".com.apple.mobile_container_manager.metadata.plist"
-        for udid in ApplicationModel.directories(directory) {
+        for udid in FileManager.directories(directory) {
             let dataPath = directory.appendingPathComponent(udid)
             let plistPath = dataPath.appendingPathComponent(plist)
             guard let json = NSDictionary(contentsOf: plistPath)
@@ -64,19 +64,4 @@ class ApplicationModel: NSObject {
         NSWorkspace.shared().open(location)
     }
     
-    // MARK: Helper
-    static func directories(_ path: URL) -> [String] {
-        let results = try? FileManager.default.contentsOfDirectory(atPath: path.path).filter {
-            return isDirectory(path.appendingPathComponent("\($0)").path, name: $0)
-        }
-        
-        return results ?? []
-    }
-    
-    static func isDirectory(_ path: String, name: String) -> Bool {
-        var flag = ObjCBool(false)
-        FileManager.default.fileExists(atPath: path, isDirectory: &flag)
-        
-        return flag.boolValue && !name.hasPrefix(".")
-    }
 }
