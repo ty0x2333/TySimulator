@@ -45,7 +45,7 @@ class DeviceModel {
         self.isOpen = (json["state"] as! String).contains("Booted")
         self.osInfo = osInfo
         
-        self.applications = ApplicationModel.load(path: location)
+        self.applications = ApplicationModel.applications(path: location)
     }
     
     var hasContent: Bool {

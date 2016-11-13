@@ -17,7 +17,7 @@ class ApplicationModel: NSObject {
     
     lazy var location: URL? = self.loadDataLocation()
     
-    static func load(path: URL) -> [ApplicationModel] {
+    static func applications(path: URL) -> [ApplicationModel] {
         let directory = path.appendingPathComponent("data/Containers/Bundle/Application")
         return FileManager.directories(directory).map {
             let application = ApplicationModel(path: path, bundleLocation: directory.appendingPathComponent($0))
