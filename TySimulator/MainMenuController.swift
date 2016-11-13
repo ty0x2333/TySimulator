@@ -41,6 +41,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         item.isEnabled = true
         item.target = self
         item.action = #selector(quit(_:))
+        item.keyEquivalent = "q"
         return item;
     }
     
