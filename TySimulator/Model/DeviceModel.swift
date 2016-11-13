@@ -38,6 +38,7 @@ class DeviceModel {
     
     var applications: [ApplicationModel] = []
     var medias: [MediaModel] = []
+    var appGroups: [AppGroupModel] = []
     
     init(osInfo: String, json: NSDictionary) {
         self.name = json["name"] as! String
@@ -47,6 +48,7 @@ class DeviceModel {
         self.osInfo = osInfo
         
         self.applications = ApplicationModel.applications(path: location)
+        self.appGroups = AppGroupModel.groups(location)
         self.medias = MediaModel.medias(location)
     }
     
