@@ -42,8 +42,17 @@ extension NSMenuItem {
         let applications = applicationMenuItems(device.applications)
         if !applications.isEmpty {
             menu.addItem(NSMenuItem.separator())
-            menu.addItem(header("Applications"))
+            menu.addItem(NSMenuItem.header("Applications"))
             applications.forEach {
+                menu.addItem($0)
+            }
+        }
+        
+        let appGroups = appGroupMenuItems(device.appGroups)
+        if !appGroups.isEmpty {
+            menu.addItem(NSMenuItem.separator())
+            menu.addItem(NSMenuItem.header("App Groups"))
+            appGroups.forEach {
                 menu.addItem($0)
             }
         }
@@ -68,6 +77,18 @@ extension NSMenuItem {
             item.isEnabled = true
             item.target = $0
             item.action = #selector(ApplicationModel.handleMenuItem(_:))
+            return item
+        }
+    }
+    
+    private static func appGroupMenuItems(_ appGroups: [AppGroupModel]) -> [NSMenuItem] {
+        return appGroups.map {
+            let item = NSMenuItem()
+            item.title = $0.bundleIdentifier
+            item.isEnabled = true
+            item.target = $0
+            item.action = #selector(AppGroupModel.handleMenuItem(_:))
+            
             return item
         }
     }
