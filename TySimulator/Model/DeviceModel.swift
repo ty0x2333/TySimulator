@@ -37,6 +37,7 @@ class DeviceModel {
     let isAvailable: Bool
     
     var applications: [ApplicationModel] = []
+    var medias: [MediaModel] = []
     
     init(osInfo: String, json: NSDictionary) {
         self.name = json["name"] as! String
@@ -46,6 +47,7 @@ class DeviceModel {
         self.osInfo = osInfo
         
         self.applications = ApplicationModel.applications(path: location)
+        self.medias = MediaModel.medias(location)
     }
     
     var hasContent: Bool {
