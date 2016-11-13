@@ -11,6 +11,8 @@ import Cocoa
 class MainMenuController: NSObject, NSMenuDelegate {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     
+    var devices: [DeviceModel] = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         statusItem.image = NSImage(named: "MenuIcon")
@@ -22,6 +24,13 @@ class MainMenuController: NSObject, NSMenuDelegate {
         menu.delegate = self
         menu.autoenablesItems = false
         
+        self.devices = DeviceModel.devices()
+        
+        self.devices.forEach { (device) in
+            menu.addItem(NSMenuItem.deviceMenuItem(device))
+        }
+        
+        menu.addItem(NSMenuItem.separator())
         menu.addItem(makeQuitItem())
         return menu
     }
