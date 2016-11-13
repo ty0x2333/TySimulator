@@ -30,8 +30,14 @@ class MainMenuController: NSObject, NSMenuDelegate {
         let item = NSMenuItem()
         item.title = "Quit TySimulator"
         item.isEnabled = true
-//        item.target = self
-//        item.action = #Selector(qu)
+        item.target = self
+        item.action = #selector(quit(_:))
         return item;
+    }
+    
+    // MARK: - Actions
+    
+    func quit(_ sender: NSMenuItem) {
+        NSApplication.shared().terminate(self)
     }
 }
