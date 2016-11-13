@@ -13,6 +13,7 @@
 		19460C971DD78EA900894FBA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19460C951DD78EA900894FBA /* MainMenu.xib */; };
 		19460CA21DD78EA900894FBA /* TySimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CA11DD78EA900894FBA /* TySimulatorTests.swift */; };
 		19460CAD1DD78FC000894FBA /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CAC1DD78FC000894FBA /* MainMenuController.swift */; };
+		19460CB61DD83E5500894FBA /* Process+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CB51DD83E5500894FBA /* Process+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		19460CA11DD78EA900894FBA /* TySimulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TySimulatorTests.swift; sourceTree = "<group>"; };
 		19460CA31DD78EA900894FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19460CAC1DD78FC000894FBA /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
+		19460CB51DD83E5500894FBA /* Process+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Process+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				1911954E1DD8400D00EEBBB4 /* URL+Extension.swift */,
+				19460CB51DD83E5500894FBA /* Process+Extension.swift */,
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
@@ -203,6 +206,7 @@
 				19460C921DD78EA900894FBA /* AppDelegate.swift in Sources */,
 				19460CAD1DD78FC000894FBA /* MainMenuController.swift in Sources */,
 				1911954F1DD8400D00EEBBB4 /* URL+Extension.swift in Sources */,
+				19460CB61DD83E5500894FBA /* Process+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
