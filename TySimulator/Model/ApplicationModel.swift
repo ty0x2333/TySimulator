@@ -15,8 +15,6 @@ class ApplicationModel: NSObject {
     var udid: String = ""
     var path: URL?
     
-    lazy var location: URL? = self.loadDataLocation()
-    
     static func applications(path: URL) -> [ApplicationModel] {
         let directory = path.appendingPathComponent("data/Containers/Bundle/Application")
         return FileManager.directories(directory).map {
@@ -66,7 +64,7 @@ class ApplicationModel: NSObject {
     }
     
     func handleMenuItem(_ item: NSMenuItem) {
-        guard let location = location else {
+        guard let location = loadDataLocation() else {
             log.warning("can not open application data location, it is empty.")
             return
         }
