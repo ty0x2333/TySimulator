@@ -41,18 +41,24 @@ class ApplicationModel: NSObject {
     }
     
     func loadDataLocation() -> URL? {
-        guard let path = path else { return nil }
+        guard let path = path else {
+            log.warning("can not load application data location, application path is empty.")
+            return nil
+        }
         let directory = path.appendingPathComponent("data/Containers/Data/Application")
         
         let plist = ".com.apple.mobile_container_manager.metadata.plist"
         for udid in FileManager.directories(directory) {
             let dataPath = directory.appendingPathComponent(udid)
             let plistPath = dataPath.appendingPathComponent(plist)
-            guard let json = NSDictionary(contentsOf: plistPath)
-                else { continue }
+            guard let json = NSDictionary(contentsOf: plistPath) else {
+                continue
+            }
             
             let metaDataIdentifier = json["MCMMetadataIdentifier"] as! String
-            guard metaDataIdentifier == bundleIdentifier else { continue }
+            guard metaDataIdentifier == bundleIdentifier else {
+                continue
+            }
             
             return dataPath
         }
@@ -60,7 +66,10 @@ class ApplicationModel: NSObject {
     }
     
     func handleMenuItem(_ item: NSMenuItem) {
-        guard let location = location else { return }
+        guard let location = location else {
+            log.warning("can not open application data location, it is empty.")
+            return
+        }
         NSWorkspace.shared().open(location)
     }
     
