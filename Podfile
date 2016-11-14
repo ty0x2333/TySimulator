@@ -7,6 +7,7 @@ target 'TySimulator' do
 
   # Pods for TySimulator
   pod 'SwiftyBeaver'
+  pod 'HockeySDK-Mac'
 
   target 'TySimulatorTests' do
     inherit! :search_paths
