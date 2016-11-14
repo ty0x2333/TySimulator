@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         BITHockeyManager.shared().configure(withIdentifier: "4809e9695f5749449758cf7ec79710f5")
+        BITHockeyManager.shared().crashManager.isAutoSubmitCrashReport = true
         BITHockeyManager.shared().start()
     }
 
