@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
@@ -15,5 +14,78 @@
         <customObject id="9pw-3P-vyL" customClass="MainMenuController" customModule="TySimulator" customModuleProvider="target"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="TySimulator" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <menu title="Main Menu" systemMenu="main" id="dnC-oG-t11">
+            <items>
+                <menuItem title="TySimulator" id="diW-2O-yJ5">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="TySimulator" systemMenu="apple" id="c4h-mq-m0e">
+                        <items>
+                            <menuItem title="About TySimulator" id="0rq-hv-6m5">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-1" id="ePP-He-u0w"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="Ifh-4l-QBC"/>
+                            <menuItem title="Preferences…" keyEquivalent="," id="OA4-XC-dFl"/>
+                            <menuItem isSeparatorItem="YES" id="XuZ-cH-Ty5"/>
+                            <menuItem title="Services" id="Bc3-Wl-WJT">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Services" systemMenu="services" id="ooy-hU-sc7"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="cL9-B4-VqU"/>
+                            <menuItem title="Hide TySimulator" keyEquivalent="h" id="7tD-x1-O8S">
+                                <connections>
+                                    <action selector="hide:" target="-1" id="WZ7-aa-tmB"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Others" keyEquivalent="h" id="mXP-we-ySy">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-1" id="ilj-Kh-RpX"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show All" id="Oo6-g7-XNs">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-1" id="dHG-SF-7OI"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="qjz-ir-boH"/>
+                            <menuItem title="Quit TySimulator" keyEquivalent="q" id="my9-u5-JZu">
+                                <connections>
+                                    <action selector="terminate:" target="-1" id="ZRk-XW-u3r"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="oEv-gU-zuE">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Window" systemMenu="window" id="T1X-ho-XyQ">
+                        <items>
+                            <menuItem title="Close" keyEquivalent="w" id="VVN-qE-BAR">
+                                <connections>
+                                    <action selector="performClose:" target="-1" id="a8b-XT-yk3"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Help" id="0Xs-ta-4LG">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Help" systemMenu="help" id="nG0-X0-XEp">
+                        <items>
+                            <menuItem title="TySimulator Help" keyEquivalent="?" id="Kn2-dJ-jZQ">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="FLT-qj-XDG"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="6" y="46"/>
+        </menu>
     </objects>
 </document>
