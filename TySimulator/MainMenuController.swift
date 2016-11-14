@@ -49,8 +49,8 @@ class MainMenuController: NSObject, NSMenuDelegate {
         let item = NSMenuItem()
         item.title = "Quit TySimulator"
         item.isEnabled = true
-        item.target = self
-        item.action = #selector(quit(_:))
+        item.target = NSApp
+        item.action = #selector(NSApplication.terminate(_:))
         item.keyEquivalent = "q"
         return item;
     }
@@ -62,12 +62,6 @@ class MainMenuController: NSObject, NSMenuDelegate {
         item.target = NSApp
         item.action = #selector(NSApplication.orderFrontStandardAboutPanel(_:))
         return item;
-    }
-    
-    // MARK: - Actions
-    
-    func quit(_ sender: NSMenuItem) {
-        NSApplication.shared().terminate(self)
     }
     
     // MARK: - NSMenuDelegate
