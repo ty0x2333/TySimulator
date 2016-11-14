@@ -39,6 +39,8 @@ class MainMenuController: NSObject, NSMenuDelegate {
         }
         
         menu.addItem(NSMenuItem.separator())
+        menu.addItem(self.makeAboutItem())
+        menu.addItem(NSMenuItem.separator())
         menu.addItem(self.quitMenuItem)
         return menu
     }
@@ -50,6 +52,15 @@ class MainMenuController: NSObject, NSMenuDelegate {
         item.target = self
         item.action = #selector(quit(_:))
         item.keyEquivalent = "q"
+        return item;
+    }
+    
+    func makeAboutItem() -> NSMenuItem {
+        let item = NSMenuItem()
+        item.title = "About TySimulator"
+        item.isEnabled = true
+        item.target = NSApp
+        item.action = #selector(NSApplication.orderFrontStandardAboutPanel(_:))
         return item;
     }
     
