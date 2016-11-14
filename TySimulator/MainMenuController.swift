@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import HockeySDK
 
 class MainMenuController: NSObject, NSMenuDelegate {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
@@ -40,6 +41,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         
         menu.addItem(NSMenuItem.separator())
         menu.addItem(self.makeAboutItem())
+        menu.addItem(self.makeFeedbackItem())
         menu.addItem(NSMenuItem.separator())
         menu.addItem(self.quitMenuItem)
         return menu
@@ -61,6 +63,15 @@ class MainMenuController: NSObject, NSMenuDelegate {
         item.isEnabled = true
         item.target = NSApp
         item.action = #selector(NSApplication.orderFrontStandardAboutPanel(_:))
+        return item;
+    }
+    
+    func makeFeedbackItem() -> NSMenuItem {
+        let item = NSMenuItem()
+        item.title = "Feedback"
+        item.isEnabled = true
+        item.target = NSApp
+        item.action = #selector(NSApplication.showFeedbackWindow)
         return item;
     }
     
