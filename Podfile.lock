@@ -1,18 +1,21 @@
 PODS:
   - HockeySDK-Mac (4.1.1)
+  - MASPreferences (1.1.4)
   - MASShortcut (2.3.6)
   - SwiftyBeaver (1.1.1)
 
 DEPENDENCIES:
   - HockeySDK-Mac
+  - MASPreferences
   - MASShortcut
   - SwiftyBeaver
 
 SPEC CHECKSUMS:
   HockeySDK-Mac: c19aec63894d716ad48fba9f121921e5f4f2ca39
+  MASPreferences: 7bdcfe891d7840453cf48f95fa866c3e152ace7a
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
   SwiftyBeaver: 2b68694df862381235e32bcfc4ec991e26bf131d
 
-PODFILE CHECKSUM: 516138645beae3814582cc4f574d657c0d55fc6f
+PODFILE CHECKSUM: ae6dc329742c106579148b9c032f95592464f60e
 
 COCOAPODS: 1.1.1
