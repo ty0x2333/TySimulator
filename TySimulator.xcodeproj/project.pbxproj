@@ -47,7 +47,6 @@
 		191195591DD8C14700EEBBB4 /* MediaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaModel.swift; sourceTree = "<group>"; };
 		1911955B1DD8C2B500EEBBB4 /* AppGroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupModel.swift; sourceTree = "<group>"; };
 		191C3B4A1DDA2BB60096A6D0 /* NSApplication+TySimulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSApplication+TySimulator.swift"; sourceTree = "<group>"; };
-		191C3B4E1DDA49D30096A6D0 /* TySimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TySimulator.entitlements; sourceTree = "<group>"; };
 		19460C8E1DD78EA900894FBA /* TySimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TySimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19460C911DD78EA900894FBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19460C931DD78EA900894FBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,7 +107,6 @@
 		19460C901DD78EA900894FBA /* TySimulator */ = {
 			isa = PBXGroup;
 			children = (
-				191C3B4E1DDA49D30096A6D0 /* TySimulator.entitlements */,
 				1911954E1DD8400D00EEBBB4 /* URL+Extension.swift */,
 				19460CB51DD83E5500894FBA /* Process+Extension.swift */,
 				191195521DD87FB700EEBBB4 /* NSMenu+TySimulator.swift */,
@@ -225,7 +223,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -515,7 +513,6 @@
 			baseConfigurationReference = A7A86A69885BB6E8D9E1121E /* Pods-TySimulator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TySimulator/TySimulator.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9KYD7S7AZY;
@@ -533,7 +530,6 @@
 			baseConfigurationReference = 2A72AF1F735CF9F4FEE5CE1E /* Pods-TySimulator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TySimulator/TySimulator.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9KYD7S7AZY;
