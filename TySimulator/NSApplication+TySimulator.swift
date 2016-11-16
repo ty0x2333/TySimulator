@@ -12,10 +12,12 @@ import HockeySDK
 extension NSApplication {
     func showFeedbackWindow() {
         BITHockeyManager.shared().feedbackManager.showFeedbackWindow()
+        NSApplication.shared().activate(ignoringOtherApps: true)
     }
     
     func showPreferencesWindow() {
         // MARK: TODO
         Preferences.sharedWindowController().showWindow(nil)
+        NSApplication.shared().activate(ignoringOtherApps: true)
     }
 }
