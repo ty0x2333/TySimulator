@@ -40,6 +40,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         }
         
         menu.addItem(NSMenuItem.separator())
+        menu.addItem(self.makePreferencesItem())
         menu.addItem(self.makeAboutItem())
         menu.addItem(self.makeFeedbackItem())
         menu.addItem(NSMenuItem.separator())
@@ -68,10 +69,19 @@ class MainMenuController: NSObject, NSMenuDelegate {
     
     func makeFeedbackItem() -> NSMenuItem {
         let item = NSMenuItem()
-        item.title = "Feedback"
+        item.title = "Feedback..."
         item.isEnabled = true
         item.target = NSApp
         item.action = #selector(NSApplication.showFeedbackWindow)
+        return item;
+    }
+    
+    func makePreferencesItem() -> NSMenuItem {
+        let item = NSMenuItem()
+        item.title = "Preferences..."
+        item.isEnabled = true
+        item.target = NSApp
+        item.action = #selector(NSApplication.showPreferencesWindow)
         return item;
     }
     
