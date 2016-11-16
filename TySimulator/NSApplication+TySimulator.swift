@@ -13,4 +13,9 @@ extension NSApplication {
     func showFeedbackWindow() {
         BITHockeyManager.shared().feedbackManager.showFeedbackWindow()
     }
+    
+    func showPreferencesWindow() {
+        // MARK: TODO
+        Preferences.sharedWindowController().showWindow(nil)
+    }
 }

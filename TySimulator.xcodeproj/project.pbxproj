@@ -24,6 +24,7 @@
 		19460CB61DD83E5500894FBA /* Process+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CB51DD83E5500894FBA /* Process+Extension.swift */; };
 		19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */; };
 		19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */; };
+		19F94A1F1DDCBF7C00AECF3B /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1E1DDCBF7C00AECF3B /* Preferences.swift */; };
 		5FDF5C40919F112EA90BE658 /* Pods_TySimulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */; };
 		D665686CF28115CB02D3FB7B /* Pods_TySimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DB23622D95C6C7E47AFD0C /* Pods_TySimulatorTests.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		19460CB51DD83E5500894FBA /* Process+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Process+Extension.swift"; sourceTree = "<group>"; };
 		19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
 		19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
+		19F94A1E1DDCBF7C00AECF3B /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		2A72AF1F735CF9F4FEE5CE1E /* Pods-TySimulator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulator.release.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator.release.xcconfig"; sourceTree = "<group>"; };
 		5E591A2065959AFD68965ADF /* Pods-TySimulatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulatorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulatorTests/Pods-TySimulatorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7A86A69885BB6E8D9E1121E /* Pods-TySimulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		19F94A171DDCBA4200AECF3B /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				19F94A1E1DDCBF7C00AECF3B /* Preferences.swift */,
 				19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */,
 				19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */,
 			);
@@ -394,6 +397,7 @@
 				19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */,
 				1911954F1DD8400D00EEBBB4 /* URL+Extension.swift in Sources */,
 				191195531DD87FB700EEBBB4 /* NSMenu+TySimulator.swift in Sources */,
+				19F94A1F1DDCBF7C00AECF3B /* Preferences.swift in Sources */,
 				19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */,
 				19460CB61DD83E5500894FBA /* Process+Extension.swift in Sources */,
 				1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */,
