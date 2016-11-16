@@ -80,6 +80,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         let item = NSMenuItem()
         item.title = "Preferences..."
         item.isEnabled = true
+        item.keyEquivalent = ","
         item.target = NSApp
         item.action = #selector(NSApplication.showPreferencesWindow)
         return item;
