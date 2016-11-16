@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesViewController">
@@ -14,6 +15,36 @@
         <customView id="c22-O7-iKe">
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box title="Device" translatesAutoresizingMaskIntoConstraints="NO" id="XDN-j8-uTi">
+                    <rect key="frame" x="128" y="106" width="225" height="57"/>
+                    <view key="contentView" id="Km0-yc-poH">
+                        <rect key="frame" x="2" y="2" width="221" height="40"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="aIj-dS-k4u">
+                                <rect key="frame" x="15" y="14" width="191" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show only available devices" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="F6J-Ty-bZM">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="aIj-dS-k4u" secondAttribute="bottom" constant="16" id="16D-w3-535"/>
+                        </constraints>
+                    </view>
+                    <constraints>
+                        <constraint firstItem="aIj-dS-k4u" firstAttribute="leading" secondItem="XDN-j8-uTi" secondAttribute="leading" constant="16" id="2xV-n0-UkS"/>
+                        <constraint firstItem="aIj-dS-k4u" firstAttribute="top" secondItem="XDN-j8-uTi" secondAttribute="top" constant="25" id="Nds-J1-DSG"/>
+                        <constraint firstAttribute="trailing" secondItem="aIj-dS-k4u" secondAttribute="trailing" constant="16" id="U7D-XF-EKn"/>
+                    </constraints>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstItem="XDN-j8-uTi" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="nyE-jX-fQt"/>
+                <constraint firstItem="XDN-j8-uTi" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="yAa-vc-QM3"/>
+            </constraints>
         </customView>
     </objects>
 </document>
