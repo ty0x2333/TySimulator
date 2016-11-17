@@ -27,6 +27,7 @@
 		19F94A1F1DDCBF7C00AECF3B /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1E1DDCBF7C00AECF3B /* Preferences.swift */; };
 		5FDF5C40919F112EA90BE658 /* Pods_TySimulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */; };
 		D665686CF28115CB02D3FB7B /* Pods_TySimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DB23622D95C6C7E47AFD0C /* Pods_TySimulatorTests.framework */; };
+		F58132D01DDD7E84006C5A1A /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58132CF1DDD7E84006C5A1A /* Device.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		5E591A2065959AFD68965ADF /* Pods-TySimulatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulatorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulatorTests/Pods-TySimulatorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7A86A69885BB6E8D9E1121E /* Pods-TySimulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator.debug.xcconfig"; sourceTree = "<group>"; };
 		C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TySimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F58132CF1DDD7E84006C5A1A /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Model/Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				19F94A171DDCBA4200AECF3B /* Preferences */,
 				19460CB01DD83BF200894FBA /* Model */,
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
+				F58132CF1DDD7E84006C5A1A /* Device.swift */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
 				19460C951DD78EA900894FBA /* MainMenu.xib */,
@@ -391,6 +394,7 @@
 			files = (
 				191195511DD8785300EEBBB4 /* ApplicationModel.swift in Sources */,
 				1911955C1DD8C2B500EEBBB4 /* AppGroupModel.swift in Sources */,
+				F58132D01DDD7E84006C5A1A /* Device.swift in Sources */,
 				19460C921DD78EA900894FBA /* AppDelegate.swift in Sources */,
 				191195561DD8ACF500EEBBB4 /* main.swift in Sources */,
 				19460CAD1DD78FC000894FBA /* MainMenuController.swift in Sources */,
