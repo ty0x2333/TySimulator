@@ -27,6 +27,8 @@
 		19F94A1F1DDCBF7C00AECF3B /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1E1DDCBF7C00AECF3B /* Preferences.swift */; };
 		5FDF5C40919F112EA90BE658 /* Pods_TySimulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */; };
 		D665686CF28115CB02D3FB7B /* Pods_TySimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DB23622D95C6C7E47AFD0C /* Pods_TySimulatorTests.framework */; };
+		F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */; };
+		F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50D76561DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib */; };
 		F58132D01DDD7E84006C5A1A /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58132CF1DDD7E84006C5A1A /* Device.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		5E591A2065959AFD68965ADF /* Pods-TySimulatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulatorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulatorTests/Pods-TySimulatorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7A86A69885BB6E8D9E1121E /* Pods-TySimulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator.debug.xcconfig"; sourceTree = "<group>"; };
 		C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TySimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyBindingsPreferencesViewController.swift; sourceTree = "<group>"; };
+		F50D76561DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyBindingsPreferencesViewController.xib; sourceTree = "<group>"; };
 		F58132CF1DDD7E84006C5A1A /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Model/Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +163,8 @@
 				19F94A1E1DDCBF7C00AECF3B /* Preferences.swift */,
 				19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */,
 				19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */,
+				F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */,
+				F50D76561DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19460C941DD78EA900894FBA /* Assets.xcassets in Resources */,
+				F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */,
 				19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */,
 				19460C971DD78EA900894FBA /* MainMenu.xib in Resources */,
 			);
@@ -405,6 +412,7 @@
 				19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */,
 				19460CB61DD83E5500894FBA /* Process+Extension.swift in Sources */,
 				1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */,
+				F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */,
 				191195581DD8C0A700EEBBB4 /* FileManager+Extension.swift in Sources */,
 				191C3B4B1DDA2BB60096A6D0 /* NSApplication+TySimulator.swift in Sources */,
 			);
