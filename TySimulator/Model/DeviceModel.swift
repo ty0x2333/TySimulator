@@ -91,7 +91,11 @@ class DeviceModel {
         })
         
         return devices.filter {
-            return $0.hasContent && $0.isAvailable && $0.os != .unknown
+            var result = $0.hasContent && $0.os != .unknown
+            if Preferences.onlyAvailableDevices {
+                result = result && $0.isAvailable
+            }
+            return result
             }.sorted {
                 return $0.osInfo.compare($1.osInfo) == .orderedAscending
         }
