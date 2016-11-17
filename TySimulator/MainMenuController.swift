@@ -63,7 +63,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         item.title = "About TySimulator"
         item.isEnabled = true
         item.target = NSApp
-        item.action = #selector(NSApplication.orderFrontStandardAboutPanel(_:))
+        item.action = #selector(NSApplication.showAboutWindow)
         return item;
     }
     
