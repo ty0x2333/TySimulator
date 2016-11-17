@@ -27,7 +27,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         menu.delegate = self
         menu.autoenablesItems = false
         
-        self.devices = DeviceModel.devices()
+        self.devices = Device.shared().devices
         log.info("load devices: \(self.devices.count)")
         
         self.tagMap.removeAll()
@@ -88,7 +88,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
     
     // MARK: - NSMenuDelegate
     func menuWillOpen(_ menu: NSMenu) {
-        let bootedDevices = DeviceModel.bootedDevices()
+        let bootedDevices = Device.bootedDevices()
         let bootedDeviceUDIDs = bootedDevices.map { (device) -> String in
             return device.udid
         }
