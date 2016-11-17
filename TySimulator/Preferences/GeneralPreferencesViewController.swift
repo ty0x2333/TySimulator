@@ -11,11 +11,13 @@ import MASPreferences
 
 class GeneralPreferencesViewController: NSViewController, MASPreferencesViewController {
     
+    @IBOutlet weak var isOnlyHasContentDevices: NSButton!
     @IBOutlet weak var isOnlyAvailableDevices: NSButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.isOnlyAvailableDevices.state = Preferences.onlyAvailableDevices ? NSOnState : NSOffState
+        self.isOnlyHasContentDevices.state = Preferences.onlyHasContentDevices ? NSOnState : NSOffState
     }
     
     // MARK: MASPreferencesViewController
@@ -26,6 +28,10 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
     
     @IBAction func onOnlyAvailableDevicesButtonClicked(_ sender: NSButton) {
         Preferences.onlyAvailableDevices = sender.state == NSOnState
+    }
+    
+    @IBAction func onOnlyHasContentDevicesButtonClicked(_ sender: NSButton) {
+        Preferences.onlyHasContentDevices = sender.state == NSOnState
     }
     
     var toolbarItemImage: NSImage! = NSImage(named: NSImageNamePreferencesGeneral)

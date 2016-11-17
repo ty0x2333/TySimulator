@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesViewController">
             <connections>
                 <outlet property="isOnlyAvailableDevices" destination="aIj-dS-k4u" id="ZW2-m1-7KL"/>
+                <outlet property="isOnlyHasContentDevices" destination="u74-RB-hld" id="Lqh-WM-nsh"/>
                 <outlet property="view" destination="c22-O7-iKe" id="I3g-Og-gJN"/>
             </connections>
         </customObject>
@@ -19,13 +20,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box title="Device" translatesAutoresizingMaskIntoConstraints="NO" id="XDN-j8-uTi">
-                    <rect key="frame" x="128" y="106" width="225" height="57"/>
+                    <rect key="frame" x="83" y="91" width="314" height="87"/>
                     <view key="contentView" id="Km0-yc-poH">
-                        <rect key="frame" x="2" y="2" width="221" height="40"/>
+                        <rect key="frame" x="2" y="2" width="310" height="70"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="aIj-dS-k4u">
-                                <rect key="frame" x="15" y="14" width="191" height="18"/>
+                                <rect key="frame" x="15" y="44" width="280" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show only available devices" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="F6J-Ty-bZM">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -34,9 +35,22 @@
                                     <action selector="onOnlyAvailableDevicesButtonClicked:" target="-2" id="1zu-I9-5nD"/>
                                 </connections>
                             </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="u74-RB-hld">
+                                <rect key="frame" x="15" y="14" width="280" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show only the devices with the application" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Sk2-IW-aLu">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onOnlyHasContentDevicesButtonClicked:" target="-2" id="VhM-Dk-8it"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="aIj-dS-k4u" secondAttribute="bottom" constant="16" id="16D-w3-535"/>
+                            <constraint firstItem="u74-RB-hld" firstAttribute="trailing" secondItem="aIj-dS-k4u" secondAttribute="trailing" id="9MN-F4-VUb"/>
+                            <constraint firstAttribute="bottom" secondItem="u74-RB-hld" secondAttribute="bottom" constant="16" id="9RU-FC-9jL"/>
+                            <constraint firstItem="u74-RB-hld" firstAttribute="leading" secondItem="aIj-dS-k4u" secondAttribute="leading" id="cEZ-sx-ie2"/>
+                            <constraint firstItem="u74-RB-hld" firstAttribute="top" secondItem="aIj-dS-k4u" secondAttribute="bottom" constant="16" id="fty-Pf-2J4"/>
                         </constraints>
                     </view>
                     <constraints>
