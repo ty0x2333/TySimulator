@@ -67,7 +67,8 @@ class Preferences {
     
     private class func preferencesWindowController() -> MASPreferencesWindowController {
         let generalViewController = GeneralPreferencesViewController()
-        let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController], title: "Preferences")
+        let keyBindingViewController = KeyBindingsPreferencesViewController()
+        let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController, keyBindingViewController], title: "Preferences")
         return preferencesWindow!
     }
 }
