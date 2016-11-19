@@ -8,12 +8,13 @@
 
 import Cocoa
 import MASPreferences
+import MASShortcut
 
 class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesViewController, NSTableViewDelegate, NSTableViewDataSource {
     
     @IBOutlet weak var tableView: NSTableView!
     
-    var commands: [CommandModel] = []
+    var commands: [CommandModel]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,13 +41,31 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     // MARK: NSTableViewDataSource
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return self.commands.count
+        return self.commands?.count ?? 0
     }
     
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        let identifier = tableColumn?.identifier
-        let command = self.commands[row]
-        return identifier == "name" ? command.name : command.key
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let command = self.commands?[row] else {
+            log.warning("no command found at row: \(row)")
+            return nil
+        }
+        
+        if tableColumn == tableView.tableColumns[0] {
+            if let cell = tableView.make(withIdentifier: "NameTableCellViewIdentifier", owner: nil) as? NSTableCellView {
+                cell.textField?.stringValue = command.name
+                cell.textField?.isEditable = true
+                return cell
+            }
+        } else if tableColumn == tableView.tableColumns[1] {
+            if let cell = tableView.make(withIdentifier: "ShortcutTableCellViewIdentifier", owner: nil) as? ShortcutTableCellView {
+                cell.shortcutView?.shortcutValueChange = {(sender: MASShortcutView?) in
+                    log.info("shortcut changed: \(sender?.shortcutValue)")
+                }
+                return cell
+            }
+        }
+        
+        return nil
     }
 
     // MARK: MASPreferencesViewController
