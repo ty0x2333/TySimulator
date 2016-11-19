@@ -19,6 +19,21 @@ class Preferences {
         return sharedPreferencesWindowController
     }
     
+    private class func preferencesWindowController() -> MASPreferencesWindowController {
+        let generalViewController = GeneralPreferencesViewController()
+        let keyBindingViewController = KeyBindingsPreferencesViewController()
+        let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController, keyBindingViewController], title: "Preferences")
+        preferencesWindow?.window?.level = Int(CGWindowLevelForKey(CGWindowLevelKey.popUpMenuWindow))
+        let userDefaults = UserDefaults.standard
+        userDefaults.register(defaults: [
+            kUserDefaultsKeyPreferences: [
+                kUserDefaultsKeyOnlyAvailableDevices: true,
+                kUserDefaultsKeyOnlyHasContentDevices: false
+            ]
+        ])
+        return preferencesWindow!
+    }
+    
     static var onlyAvailableDevices: Bool {
         get {
             let preferences: Dictionary<String, Any> = Preferences.preferences()
@@ -65,11 +80,4 @@ class Preferences {
         }
     }
     
-    private class func preferencesWindowController() -> MASPreferencesWindowController {
-        let generalViewController = GeneralPreferencesViewController()
-        let keyBindingViewController = KeyBindingsPreferencesViewController()
-        let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController, keyBindingViewController], title: "Preferences")
-        preferencesWindow?.window?.level = Int(CGWindowLevelForKey(CGWindowLevelKey.popUpMenuWindow))
-        return preferencesWindow!
-    }
 }
