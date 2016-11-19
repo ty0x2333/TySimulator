@@ -23,6 +23,7 @@
 		19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CB31DD83C1E00894FBA /* DeviceModel.swift */; };
 		19460CB61DD83E5500894FBA /* Process+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CB51DD83E5500894FBA /* Process+Extension.swift */; };
 		199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D0B101DDE0F0800207D53 /* CommandModel.swift */; };
+		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
 		19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */; };
 		19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */; };
 		19F94A1F1DDCBF7C00AECF3B /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1E1DDCBF7C00AECF3B /* Preferences.swift */; };
@@ -66,6 +67,7 @@
 		19460CB31DD83C1E00894FBA /* DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		19460CB51DD83E5500894FBA /* Process+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Process+Extension.swift"; sourceTree = "<group>"; };
 		199D0B101DDE0F0800207D53 /* CommandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandModel.swift; sourceTree = "<group>"; };
+		19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutTableCellView.swift; sourceTree = "<group>"; };
 		19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
 		19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
 		19F94A1E1DDCBF7C00AECF3B /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */,
 				F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */,
 				F50D76561DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib */,
+				19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */,
 				191195581DD8C0A700EEBBB4 /* FileManager+Extension.swift in Sources */,
 				191C3B4B1DDA2BB60096A6D0 /* NSApplication+TySimulator.swift in Sources */,
+				19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
