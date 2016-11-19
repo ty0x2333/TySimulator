@@ -17,6 +17,18 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         super.awakeFromNib()
     }
     
+    @IBAction func onAddCommandButtonClicked(_ sender: NSButton) {
+        // TODO: add command
+    }
+    
+    @IBAction func onRemoveButtonClicked(_ sender: NSButton) {
+        if (tableView.numberOfSelectedRows < 1) {
+            log.warning("no row selected")
+            return
+        }
+        // TODO: remove command
+    }
+    
     // MARK: NSTableViewDataSource
     
     func numberOfRows(in tableView: NSTableView) -> Int {
