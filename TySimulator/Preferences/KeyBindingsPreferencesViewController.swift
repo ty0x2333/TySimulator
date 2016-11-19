@@ -9,20 +9,30 @@
 import Cocoa
 import MASPreferences
 
-class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesViewController {
+class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesViewController, NSTableViewDelegate, NSTableViewDataSource {
     
+    @IBOutlet weak var tableView: NSTableView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    // MARK: NSTableViewDataSource
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        let identifier = tableColumn?.identifier
+
+        return identifier == "command" ? "Command \(row)" : "Key \(row)"
+    }
+
     // MARK: MASPreferencesViewController
     override var identifier: String? {
         get { return "KeyBindingsPreferences" }
         set { super.identifier = newValue }
-    }
-    
-    @IBAction func onOnlyAvailableDevicesButtonClicked(_ sender: NSButton) {
-        Preferences.onlyAvailableDevices = sender.state == NSOnState
-    }
-    
-    @IBAction func onOnlyHasContentDevicesButtonClicked(_ sender: NSButton) {
-        Preferences.onlyHasContentDevices = sender.state == NSOnState
     }
     
     var toolbarItemImage: NSImage! = NSImage(named: NSImageNamePreferencesGeneral)
