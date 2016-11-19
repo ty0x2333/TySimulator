@@ -13,8 +13,16 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     
     @IBOutlet weak var tableView: NSTableView!
     
+    var commands: [CommandModel] = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        // TEST
+        let command = CommandModel()
+        command.name = "test"
+        command.script = "script"
+        command.key = "k"
+        self.commands = [command]
     }
     
     @IBAction func onAddCommandButtonClicked(_ sender: NSButton) {
@@ -32,13 +40,13 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     // MARK: NSTableViewDataSource
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return 10
+        return self.commands.count
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         let identifier = tableColumn?.identifier
-
-        return identifier == "command" ? "Command \(row)" : "Key \(row)"
+        let command = self.commands[row]
+        return identifier == "name" ? command.name : command.key
     }
 
     // MARK: MASPreferencesViewController

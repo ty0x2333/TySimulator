@@ -69,6 +69,7 @@ class Preferences {
         let generalViewController = GeneralPreferencesViewController()
         let keyBindingViewController = KeyBindingsPreferencesViewController()
         let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController, keyBindingViewController], title: "Preferences")
+        preferencesWindow?.window?.level = Int(CGWindowLevelForKey(CGWindowLevelKey.popUpMenuWindow))
         return preferencesWindow!
     }
 }
