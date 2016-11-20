@@ -56,6 +56,9 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="-2" id="Bn7-bJ-LP6"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <connections>
@@ -108,7 +111,7 @@
                         <rect key="frame" x="1" y="215" width="320" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="bDD-xT-ZDP">
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="bDD-xT-ZDP">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>

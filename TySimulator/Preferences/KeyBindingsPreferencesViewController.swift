@@ -10,11 +10,12 @@ import Cocoa
 import MASPreferences
 import MASShortcut
 
-class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesViewController, NSTableViewDelegate, NSTableViewDataSource {
+class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesViewController, NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate {
     
     @IBOutlet weak var tableView: NSTableView!
     
     var commands: [CommandModel]?
+    var commandController: NSArrayController = NSArrayController()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,7 +28,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     }
     
     @IBAction func onAddCommandButtonClicked(_ sender: NSButton) {
-        // TODO: add command
+        self.presentViewControllerAsModalWindow(CommandViewController())
     }
     
     @IBAction func onRemoveButtonClicked(_ sender: NSButton) {
@@ -36,6 +37,8 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
             return
         }
         // TODO: remove command
+        self.commands?.remove(at: self.tableView.selectedRow)
+        self.tableView.reloadData()
     }
     
     // MARK: NSTableViewDataSource
@@ -54,6 +57,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
             if let cell = tableView.make(withIdentifier: "NameTableCellViewIdentifier", owner: nil) as? NSTableCellView {
                 cell.textField?.stringValue = command.name
                 cell.textField?.isEditable = true
+                cell.textField?.delegate = self
                 return cell
             }
         } else if tableColumn == tableView.tableColumns[1] {
@@ -66,6 +70,11 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         }
         
         return nil
+    }
+    
+    // MARK: NSTextFieldDelegate
+    override func controlTextDidChange(_ obj: Notification) {
+        log.verbose("text did change \(obj)")
     }
 
     // MARK: MASPreferencesViewController

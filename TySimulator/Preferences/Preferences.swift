@@ -13,6 +13,7 @@ class Preferences {
     static let kUserDefaultsKeyPreferences = "com.tianyiyan.preferences"
     static let kUserDefaultsKeyOnlyAvailableDevices = "onlyAvailableDevices"
     static let kUserDefaultsKeyOnlyHasContentDevices = "onlyHasContentDevices"
+    static let kUserDefaultsKeyCommands = "commands"
     private static let sharedPreferencesWindowController: MASPreferencesWindowController = preferencesWindowController()
     
     static func sharedWindowController() -> MASPreferencesWindowController {
@@ -23,15 +24,33 @@ class Preferences {
         let generalViewController = GeneralPreferencesViewController()
         let keyBindingViewController = KeyBindingsPreferencesViewController()
         let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController, keyBindingViewController], title: "Preferences")
-        preferencesWindow?.window?.level = Int(CGWindowLevelForKey(CGWindowLevelKey.popUpMenuWindow))
+        preferencesWindow?.window?.level = Int(CGWindowLevelForKey(CGWindowLevelKey.floatingWindow))
         let userDefaults = UserDefaults.standard
         userDefaults.register(defaults: [
             kUserDefaultsKeyPreferences: [
                 kUserDefaultsKeyOnlyAvailableDevices: true,
-                kUserDefaultsKeyOnlyHasContentDevices: false
+                kUserDefaultsKeyOnlyHasContentDevices: false,
+                kUserDefaultsKeyCommands: []
             ]
         ])
         return preferencesWindow!
+    }
+    
+    static var commands: [CommandModel] {
+        get {
+            let preferences: Dictionary<String, Any> = Preferences.preferences()
+            if let datas = preferences[kUserDefaultsKeyCommands] as? Array<Dictionary<String, String>> {
+                var result = [CommandModel]()
+                for data in datas {
+                    let commamnd = CommandModel()
+                    commamnd.name = data["name"]!
+                    result.append(commamnd)
+                }
+                return result
+            } else {
+                return []
+            }
+        }
     }
     
     static var onlyAvailableDevices: Bool {
