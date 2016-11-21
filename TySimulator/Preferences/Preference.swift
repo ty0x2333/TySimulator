@@ -60,7 +60,7 @@ class Preference: NSObject {
     }
     
     func addCommands(_ commands: [CommandModel]) {
-        self.commands? += commands
+        self.commands?.append(contentsOf: commands)
         self.synchronize()
     }
     
