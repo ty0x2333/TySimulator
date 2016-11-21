@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CommandModel {
+class CommandModel: NSObject {
     var name: String = ""
     var script: String = ""
     var key: String = ""

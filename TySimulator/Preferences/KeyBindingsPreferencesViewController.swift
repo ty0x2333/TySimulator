@@ -28,7 +28,13 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     }
     
     @IBAction func onAddCommandButtonClicked(_ sender: NSButton) {
-        self.presentViewControllerAsModalWindow(CommandViewController())
+        let commandViewController = CommandViewController()
+        commandViewController.save = { (command) in
+            log.verbose("save command: \(command.name)")
+            self.commands?.append(command)
+            self.tableView.reloadData()
+        }
+        self.presentViewControllerAsModalWindow(commandViewController)
     }
     
     @IBAction func onRemoveButtonClicked(_ sender: NSButton) {
