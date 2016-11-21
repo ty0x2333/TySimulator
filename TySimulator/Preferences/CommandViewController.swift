@@ -7,14 +7,22 @@
 //
 
 import Cocoa
+import MASShortcut
 
 class CommandViewController: NSViewController {
+    @IBOutlet var command: CommandModel!
+    @IBOutlet weak var nameTextField: NSTextField!
+    @IBOutlet weak var shortcutView: MASShortcutView!
+    @IBOutlet var scriptTextView: NSTextView!
+    var save: ((CommandModel) -> ())?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Command Editor"
+        self.nameTextField.bind("value", to: self.command, withKeyPath: "name", options: [NSContinuouslyUpdatesValueBindingOption: true])
     }
     @IBAction func onSaveButtonClicked(_ sender: NSButton) {
-        // TODO: save, log
+        // TODO: log
+        self.save?(self.command)
         self.dismiss(self)
     }
     
