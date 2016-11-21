@@ -7,9 +7,16 @@
 //
 
 import Foundation
+import MASShortcut
 
 class CommandModel: NSObject {
     var name: String = ""
     var script: String = ""
-    var key: String = ""
+    var key: MASShortcut?
+    
+    override var description: String {
+        get {
+            return "<\(self.name): \(self.key)>"
+        }
+    }
 }
