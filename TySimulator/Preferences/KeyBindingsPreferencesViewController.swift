@@ -19,7 +19,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.commands = Preferences.commands
+        self.commands = Preference.commands
         self.tableView.doubleAction = #selector(onTableViewDoubleClicked(_:))
     }
     
@@ -38,7 +38,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
                 Process.execute(command.script)
             })
             self.commands?.append(command)
-            Preferences.commands = self.commands!
+            Preference.commands = self.commands!
             self.tableView.reloadData()
         }
         self.presentViewControllerAsModalWindow(commandViewController)
@@ -55,7 +55,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
             MASShortcutMonitor.shared().unregisterShortcut(shortcut)
         }
         self.commands?.remove(at: self.tableView.selectedRow)
-        Preferences.commands = self.commands!
+        Preference.commands = self.commands!
         self.tableView.reloadData()
     }
     

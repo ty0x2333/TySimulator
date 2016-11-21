@@ -1,5 +1,5 @@
 //
-//  Preferences.swift
+//  Preference.swift
 //  TySimulator
 //
 //  Created by luckytianyiyan on 2016/11/17.
@@ -10,15 +10,30 @@ import Cocoa
 import MASPreferences
 import MASShortcut
 
-class Preferences {
+class Preference: NSObject {
     static let kUserDefaultsKeyPreferences = "com.tianyiyan.preferences"
     static let kUserDefaultsKeyOnlyAvailableDevices = "onlyAvailableDevices"
     static let kUserDefaultsKeyOnlyHasContentDevices = "onlyHasContentDevices"
     static let kUserDefaultsKeyCommands = "commands"
     private static let sharedPreferencesWindowController: MASPreferencesWindowController = preferencesWindowController()
+    private static let sharedPreferences: Preference = preference()
+    private var preferences: Dictionary<String, Any>?
+    
+    static func shared() -> Preference {
+        return sharedPreferences
+    }
     
     static func sharedWindowController() -> MASPreferencesWindowController {
         return sharedPreferencesWindowController
+    }
+    
+    override init() {
+        super.init()
+        self.preferences = UserDefaults.standard.dictionary(forKey: Preference.kUserDefaultsKeyPreferences)
+    }
+    
+    private class func preference() -> Preference {
+        return Preference()
     }
     
     private class func preferencesWindowController() -> MASPreferencesWindowController {
@@ -39,7 +54,7 @@ class Preferences {
     
     static var commands: [CommandModel] {
         get {
-            let preferences: Dictionary<String, Any> = Preferences.preferences()
+            let preferences: Dictionary<String, Any> = Preference.shared().preferences!
             if let datas = preferences[kUserDefaultsKeyCommands] as? Array<Dictionary<String, Any>> {
                 var result = [CommandModel]()
                 let transformer = MASDictionaryTransformer()
@@ -59,7 +74,7 @@ class Preferences {
         }
         
         set {
-            var preferences: Dictionary<String, Any> = Preferences.preferences()
+            var preferences: Dictionary<String, Any> = Preference.shared().preferences!
             let transformer = MASDictionaryTransformer()
             let commands = newValue.map { (model) -> Dictionary<String, Any> in
                 let shortcut = transformer.reverseTransformedValue(model.key)!
@@ -73,7 +88,7 @@ class Preferences {
     
     static var onlyAvailableDevices: Bool {
         get {
-            let preferences: Dictionary<String, Any> = Preferences.preferences()
+            let preferences: Dictionary<String, Any> = Preference.shared().preferences!
             if let onlyAvailableDevices = preferences[kUserDefaultsKeyOnlyAvailableDevices] {
                 return onlyAvailableDevices as! Bool
             } else {
@@ -82,7 +97,7 @@ class Preferences {
         }
         
         set {
-            var preferences: Dictionary<String, Any> = Preferences.preferences()
+            var preferences: Dictionary<String, Any> = Preference.shared().preferences!
             preferences[kUserDefaultsKeyOnlyAvailableDevices] = newValue
             UserDefaults.standard.set(preferences, forKey: kUserDefaultsKeyPreferences)
             UserDefaults.standard.synchronize()
@@ -92,7 +107,7 @@ class Preferences {
     
     static var onlyHasContentDevices: Bool {
         get {
-            let preferences: Dictionary<String, Any> = Preferences.preferences()
+            let preferences: Dictionary<String, Any> = Preference.shared().preferences!
             if let onlyAvailableDevices = preferences[kUserDefaultsKeyOnlyHasContentDevices] {
                 return onlyAvailableDevices as! Bool
             } else {
@@ -101,19 +116,11 @@ class Preferences {
         }
         
         set {
-            var preferences: Dictionary<String, Any> = Preferences.preferences()
+            var preferences: Dictionary<String, Any> = Preference.shared().preferences!
             preferences[kUserDefaultsKeyOnlyHasContentDevices] = newValue
             UserDefaults.standard.set(preferences, forKey: kUserDefaultsKeyPreferences)
             UserDefaults.standard.synchronize()
             log.verbose("update preferences: \(preferences)")
-        }
-    }
-    
-    static func preferences() -> Dictionary<String, Any> {
-        if let preferences = UserDefaults.standard.dictionary(forKey: kUserDefaultsKeyPreferences) {
-            return preferences
-        } else {
-            return Dictionary()
         }
     }
     
