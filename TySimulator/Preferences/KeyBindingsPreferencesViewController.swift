@@ -20,12 +20,23 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     override func awakeFromNib() {
         super.awakeFromNib()
         self.commands = []
+        self.tableView.doubleAction = #selector(onTableViewDoubleClicked(_:))
+    }
+    
+    // MARK: Actions
+    func onTableViewDoubleClicked(_ sender: NSTableView) {
+        log.verbose("click row: \(sender.clickedRow)")
     }
     
     @IBAction func onAddCommandButtonClicked(_ sender: NSButton) {
         let commandViewController = CommandViewController()
         commandViewController.save = { (command) in
             log.verbose("save command: \(command)")
+            MASShortcutMonitor.shared().register(command.key, withAction: { 
+                NSSound(named: "Ping")?.play()
+                log.debug("script: \(command.script)")
+                Process.execute(command.script)
+            })
             self.commands?.append(command)
             self.tableView.reloadData()
         }
@@ -38,12 +49,15 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
             return
         }
         // TODO: remove command
+        let command = self.commands?[self.tableView.selectedRow]
+        if let shortcut = command?.key {
+            MASShortcutMonitor.shared().unregisterShortcut(shortcut)
+        }
         self.commands?.remove(at: self.tableView.selectedRow)
         self.tableView.reloadData()
     }
     
     // MARK: NSTableViewDataSource
-    
     func numberOfRows(in tableView: NSTableView) -> Int {
         return self.commands?.count ?? 0
     }
@@ -57,8 +71,6 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         if tableColumn == tableView.tableColumns[0] {
             if let cell = tableView.make(withIdentifier: "NameTableCellViewIdentifier", owner: nil) as? NSTableCellView {
                 cell.textField?.stringValue = command.name
-                cell.textField?.isEditable = true
-                cell.textField?.delegate = self
                 return cell
             }
         } else if tableColumn == tableView.tableColumns[1] {
@@ -74,11 +86,6 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         return nil
     }
     
-    // MARK: NSTextFieldDelegate
-    override func controlTextDidChange(_ obj: Notification) {
-        log.verbose("text did change \(obj)")
-    }
-
     // MARK: MASPreferencesViewController
     override var identifier: String? {
         get { return "KeyBindingsPreferences" }
