@@ -47,10 +47,10 @@ class Device {
         
         self.devices = devices.filter {
             var result = $0.os != .unknown
-            if Preferences.onlyAvailableDevices {
+            if Preference.onlyAvailableDevices {
                 result = result && $0.isAvailable
             }
-            if Preferences.onlyHasContentDevices {
+            if Preference.onlyHasContentDevices {
                 result = result && $0.hasContent
             }
             return result
