@@ -18,6 +18,7 @@ class Preference: NSObject {
     private static let sharedPreferencesWindowController: MASPreferencesWindowController = preferencesWindowController()
     private static let sharedPreferences: Preference = preference()
     private var preferences: Dictionary<String, Any>?
+    private(set) var commands: [CommandModel]?
     
     static func shared() -> Preference {
         return sharedPreferences
@@ -29,7 +30,54 @@ class Preference: NSObject {
     
     override init() {
         super.init()
+        let userDefaults = UserDefaults.standard
+        userDefaults.register(defaults: [
+            Preference.kUserDefaultsKeyPreferences: [
+                Preference.kUserDefaultsKeyOnlyAvailableDevices: true,
+                Preference.kUserDefaultsKeyOnlyHasContentDevices: false,
+                Preference.kUserDefaultsKeyCommands: []
+            ]
+        ])
+
         self.preferences = UserDefaults.standard.dictionary(forKey: Preference.kUserDefaultsKeyPreferences)
+        self.commands = []
+        if let datas = self.preferences?[Preference.kUserDefaultsKeyCommands] as? Array<Dictionary<String, Any>> {
+            let transformer = MASDictionaryTransformer()
+            for data in datas {
+                let command = CommandModel()
+                command.name = data["name"]  as! String
+                if let shortcut = data["shortcut"] as? Dictionary<String, Any> {
+                    command.key = transformer.transformedValue(shortcut) as! MASShortcut?
+                }
+                command.script = data["script"] as! String
+                self.commands?.append(command)
+            }
+        }
+    }
+    
+    func addCommand(_ command: CommandModel) {
+        self.addCommands([command])
+    }
+    
+    func addCommands(_ commands: [CommandModel]) {
+        self.commands? += commands
+        self.synchronize()
+    }
+    
+    func removeCommand(at: Int) {
+        self.commands?.remove(at: at)
+        self.synchronize()
+    }
+    
+    func synchronize() {
+        let transformer = MASDictionaryTransformer()
+        let commandDatas = self.commands?.map { (model) -> Dictionary<String, Any> in
+            let shortcut = transformer.reverseTransformedValue(model.key)!
+            return ["name": model.name, "script": model.script, "shortcut": shortcut]
+        }
+        self.preferences?[Preference.kUserDefaultsKeyCommands] = commandDatas
+        UserDefaults.standard.set(self.preferences, forKey: Preference.kUserDefaultsKeyPreferences)
+        UserDefaults.standard.synchronize()
     }
     
     private class func preference() -> Preference {
@@ -41,49 +89,7 @@ class Preference: NSObject {
         let keyBindingViewController = KeyBindingsPreferencesViewController()
         let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController, keyBindingViewController], title: "Preferences")
         preferencesWindow?.window?.level = Int(CGWindowLevelForKey(CGWindowLevelKey.floatingWindow))
-        let userDefaults = UserDefaults.standard
-        userDefaults.register(defaults: [
-            kUserDefaultsKeyPreferences: [
-                kUserDefaultsKeyOnlyAvailableDevices: true,
-                kUserDefaultsKeyOnlyHasContentDevices: false,
-                kUserDefaultsKeyCommands: []
-            ]
-        ])
         return preferencesWindow!
-    }
-    
-    static var commands: [CommandModel] {
-        get {
-            let preferences: Dictionary<String, Any> = Preference.shared().preferences!
-            if let datas = preferences[kUserDefaultsKeyCommands] as? Array<Dictionary<String, Any>> {
-                var result = [CommandModel]()
-                let transformer = MASDictionaryTransformer()
-                for data in datas {
-                    let command = CommandModel()
-                    command.name = data["name"]  as! String
-                    if let shortcut = data["shortcut"] as? Dictionary<String, Any> {
-                        command.key = transformer.transformedValue(shortcut) as! MASShortcut?
-                    }
-                    command.script = data["script"] as! String
-                    result.append(command)
-                }
-                return result
-            } else {
-                return []
-            }
-        }
-        
-        set {
-            var preferences: Dictionary<String, Any> = Preference.shared().preferences!
-            let transformer = MASDictionaryTransformer()
-            let commands = newValue.map { (model) -> Dictionary<String, Any> in
-                let shortcut = transformer.reverseTransformedValue(model.key)!
-                return ["name": model.name, "script": model.script, "shortcut": shortcut]
-            }
-            preferences[kUserDefaultsKeyCommands] = commands
-            UserDefaults.standard.set(preferences, forKey: kUserDefaultsKeyPreferences)
-            UserDefaults.standard.synchronize()
-        }
     }
     
     static var onlyAvailableDevices: Bool {
