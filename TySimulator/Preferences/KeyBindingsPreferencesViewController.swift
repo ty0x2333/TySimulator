@@ -19,18 +19,13 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // TEST
-        let command = CommandModel()
-        command.name = "test"
-        command.script = "script"
-        command.key = "k"
-        self.commands = [command]
+        self.commands = []
     }
     
     @IBAction func onAddCommandButtonClicked(_ sender: NSButton) {
         let commandViewController = CommandViewController()
         commandViewController.save = { (command) in
-            log.verbose("save command: \(command.name)")
+            log.verbose("save command: \(command)")
             self.commands?.append(command)
             self.tableView.reloadData()
         }
@@ -68,6 +63,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
             }
         } else if tableColumn == tableView.tableColumns[1] {
             if let cell = tableView.make(withIdentifier: "ShortcutTableCellViewIdentifier", owner: nil) as? ShortcutTableCellView {
+                cell.shortcutView?.shortcutValue = command.key
                 cell.shortcutView?.shortcutValueChange = {(sender: MASShortcutView?) in
                     log.info("shortcut changed: \(sender?.shortcutValue)")
                 }

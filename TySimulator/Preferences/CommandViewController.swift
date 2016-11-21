@@ -19,7 +19,10 @@ class CommandViewController: NSViewController {
         super.viewDidLoad()
         self.title = "Command Editor"
         self.nameTextField.bind("value", to: self.command, withKeyPath: "name", options: [NSContinuouslyUpdatesValueBindingOption: true])
+        self.shortcutView.bind("shortcutValue", to: self.command, withKeyPath: "key", options: [NSContinuouslyUpdatesValueBindingOption: true])
+        self.scriptTextView.bind("value", to: self.command, withKeyPath: "script", options: [NSContinuouslyUpdatesValueBindingOption: true])
     }
+    
     @IBAction func onSaveButtonClicked(_ sender: NSButton) {
         // TODO: log
         self.save?(self.command)
