@@ -8,6 +8,7 @@
 
 import Cocoa
 import MASPreferences
+import MASShortcut
 
 class Preferences {
     static let kUserDefaultsKeyPreferences = "com.tianyiyan.preferences"
@@ -39,17 +40,34 @@ class Preferences {
     static var commands: [CommandModel] {
         get {
             let preferences: Dictionary<String, Any> = Preferences.preferences()
-            if let datas = preferences[kUserDefaultsKeyCommands] as? Array<Dictionary<String, String>> {
+            if let datas = preferences[kUserDefaultsKeyCommands] as? Array<Dictionary<String, Any>> {
                 var result = [CommandModel]()
+                let transformer = MASDictionaryTransformer()
                 for data in datas {
-                    let commamnd = CommandModel()
-                    commamnd.name = data["name"]!
-                    result.append(commamnd)
+                    let command = CommandModel()
+                    command.name = data["name"]  as! String
+                    if let shortcut = data["shortcut"] as? Dictionary<String, Any> {
+                        command.key = transformer.transformedValue(shortcut) as! MASShortcut?
+                    }
+                    command.script = data["script"] as! String
+                    result.append(command)
                 }
                 return result
             } else {
                 return []
             }
+        }
+        
+        set {
+            var preferences: Dictionary<String, Any> = Preferences.preferences()
+            let transformer = MASDictionaryTransformer()
+            let commands = newValue.map { (model) -> Dictionary<String, Any> in
+                let shortcut = transformer.reverseTransformedValue(model.key)!
+                return ["name": model.name, "script": model.script, "shortcut": shortcut]
+            }
+            preferences[kUserDefaultsKeyCommands] = commands
+            UserDefaults.standard.set(preferences, forKey: kUserDefaultsKeyPreferences)
+            UserDefaults.standard.synchronize()
         }
     }
     
