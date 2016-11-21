@@ -37,4 +37,8 @@ extension Process {
         
         return result
     }
+    
+    static func execute(_ script: String) -> String {
+        return self.output(launchPath: "/bin/sh", arguments: ["-c", script])
+    }
 }
