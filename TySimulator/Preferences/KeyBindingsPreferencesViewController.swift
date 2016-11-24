@@ -32,11 +32,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         let commandViewController = CommandViewController()
         commandViewController.save = { (command) in
             log.verbose("save command: \(command)")
-            MASShortcutMonitor.shared().register(command.key, withAction: { 
-                NSSound(named: "Ping")?.play()
-                log.debug("script: \(command.script)")
-                Process.execute(command.script)
-            })
+            MASShortcutMonitor.shared().register(command: command)
             self.commands?.append(command)
             Preference.shared().addCommand(command)
             self.tableView.reloadData()
@@ -51,9 +47,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         }
         // TODO: remove command
         let command = self.commands?[self.tableView.selectedRow]
-        if let shortcut = command?.key {
-            MASShortcutMonitor.shared().unregisterShortcut(shortcut)
-        }
+        MASShortcutMonitor.shared().unregister(command: command!)
         self.commands?.remove(at: self.tableView.selectedRow)
         Preference.shared().removeCommand(at: self.tableView.selectedRow)
         self.tableView.reloadData()
