@@ -65,6 +65,7 @@ class Preference: NSObject {
                 if let shortcut = data["shortcut"] as? Dictionary<String, Any> {
                     command.key = transformer.transformedValue(shortcut) as! MASShortcut?
                 }
+                MASShortcutMonitor.shared().register(command: command)
                 command.script = data["script"] as! String
                 self.commands?.append(command)
             }
