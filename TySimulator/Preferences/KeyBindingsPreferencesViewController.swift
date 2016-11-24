@@ -73,7 +73,11 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
             if let cell = tableView.make(withIdentifier: "ShortcutTableCellViewIdentifier", owner: nil) as? ShortcutTableCellView {
                 cell.shortcutView?.shortcutValue = command.key
                 cell.shortcutView?.shortcutValueChange = {(sender: MASShortcutView?) in
-                    log.info("shortcut changed: \(sender?.shortcutValue)")
+                    MASShortcutMonitor.shared().unregister(command: command)
+                    command.key = sender?.shortcutValue
+                    Preference.shared().setCommand(id: command.id, command: command)
+                    MASShortcutMonitor.shared().register(command: command)
+                    log.info("row: \(row), shortcut changed: \(sender?.shortcutValue)")
                 }
                 return cell
             }
