@@ -88,7 +88,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         set { super.identifier = newValue }
     }
     
-    var toolbarItemImage: NSImage! = NSImage(named: NSImageNamePreferencesGeneral)
+    var toolbarItemImage: NSImage! = NSImage(named: NSImageNameAdvanced)
     
     var toolbarItemLabel: String! = "Key Bindings"
 }
