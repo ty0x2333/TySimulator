@@ -19,6 +19,14 @@ class Preference: NSObject {
     private static let sharedPreferences: Preference = preference()
     private var preferences: Dictionary<String, Any>?
     private(set) var commands: [CommandModel]?
+    var onlyAvailableDevices: Bool {
+        didSet {
+            self.preferences?[Preference.kUserDefaultsKeyOnlyAvailableDevices] = onlyAvailableDevices
+            UserDefaults.standard.set(preferences, forKey: Preference.kUserDefaultsKeyPreferences)
+            UserDefaults.standard.synchronize()
+            log.verbose("update preferences: \(preferences)")
+        }
+    }
     
     static func shared() -> Preference {
         return sharedPreferences
@@ -29,7 +37,6 @@ class Preference: NSObject {
     }
     
     override init() {
-        super.init()
         let userDefaults = UserDefaults.standard
         userDefaults.register(defaults: [
             Preference.kUserDefaultsKeyPreferences: [
@@ -40,6 +47,7 @@ class Preference: NSObject {
         ])
 
         self.preferences = UserDefaults.standard.dictionary(forKey: Preference.kUserDefaultsKeyPreferences)
+        // init commands
         self.commands = []
         if let datas = self.preferences?[Preference.kUserDefaultsKeyCommands] as? Array<Dictionary<String, Any>> {
             let transformer = MASDictionaryTransformer()
@@ -53,6 +61,9 @@ class Preference: NSObject {
                 self.commands?.append(command)
             }
         }
+        // init onlyAvailableDevices
+        self.onlyAvailableDevices = self.preferences?[Preference.kUserDefaultsKeyOnlyAvailableDevices] as! Bool
+        super.init()
     }
     
     func addCommand(_ command: CommandModel) {
@@ -90,25 +101,6 @@ class Preference: NSObject {
         let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController, keyBindingViewController], title: "Preferences")
         preferencesWindow?.window?.level = Int(CGWindowLevelForKey(CGWindowLevelKey.floatingWindow))
         return preferencesWindow!
-    }
-    
-    static var onlyAvailableDevices: Bool {
-        get {
-            let preferences: Dictionary<String, Any> = Preference.shared().preferences!
-            if let onlyAvailableDevices = preferences[kUserDefaultsKeyOnlyAvailableDevices] {
-                return onlyAvailableDevices as! Bool
-            } else {
-                return true
-            }
-        }
-        
-        set {
-            var preferences: Dictionary<String, Any> = Preference.shared().preferences!
-            preferences[kUserDefaultsKeyOnlyAvailableDevices] = newValue
-            UserDefaults.standard.set(preferences, forKey: kUserDefaultsKeyPreferences)
-            UserDefaults.standard.synchronize()
-            log.verbose("update preferences: \(preferences)")
-        }
     }
     
     static var onlyHasContentDevices: Bool {
