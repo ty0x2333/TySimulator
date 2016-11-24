@@ -47,7 +47,7 @@ class Device {
         
         self.devices = devices.filter {
             var result = $0.os != .unknown
-            if Preference.onlyAvailableDevices {
+            if Preference.shared().onlyAvailableDevices {
                 result = result && $0.isAvailable
             }
             if Preference.onlyHasContentDevices {
