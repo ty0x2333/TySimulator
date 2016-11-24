@@ -14,12 +14,10 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     
     @IBOutlet weak var tableView: NSTableView!
     
-    var commands: [CommandModel]?
     var commandController: NSArrayController = NSArrayController()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.commands = Preference.shared().commands
         self.tableView.doubleAction = #selector(onTableViewDoubleClicked(_:))
     }
     
@@ -33,7 +31,6 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         commandViewController.save = { (command) in
             log.verbose("save command: \(command)")
             MASShortcutMonitor.shared().register(command: command)
-            self.commands?.append(command)
             Preference.shared().addCommand(command)
             self.tableView.reloadData()
         }
@@ -45,21 +42,20 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
             log.warning("no row selected")
             return
         }
-        // TODO: remove command
-        let command = self.commands?[self.tableView.selectedRow]
+        let preference = Preference.shared()
+        let command = preference.commands?[self.tableView.selectedRow]
         MASShortcutMonitor.shared().unregister(command: command!)
-        self.commands?.remove(at: self.tableView.selectedRow)
         Preference.shared().removeCommand(at: self.tableView.selectedRow)
         self.tableView.reloadData()
     }
     
     // MARK: NSTableViewDataSource
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return self.commands?.count ?? 0
+        return Preference.shared().commands!.count
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let command = self.commands?[row] else {
+        guard let command = Preference.shared().commands?[row] else {
             log.warning("no command found at row: \(row)")
             return nil
         }
