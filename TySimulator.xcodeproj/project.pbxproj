@@ -26,6 +26,7 @@
 		19460CB61DD83E5500894FBA /* Process+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CB51DD83E5500894FBA /* Process+Extension.swift */; };
 		199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D0B101DDE0F0800207D53 /* CommandModel.swift */; };
 		19B6981F1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B6981E1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift */; };
+		19B698211DE7276E00AD3876 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698201DE7276E00AD3876 /* String+MD5.swift */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
 		19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */; };
 		19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */; };
@@ -73,6 +74,8 @@
 		19460CB51DD83E5500894FBA /* Process+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Process+Extension.swift"; sourceTree = "<group>"; };
 		199D0B101DDE0F0800207D53 /* CommandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandModel.swift; sourceTree = "<group>"; };
 		19B6981E1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MASShortcutMonitor+Command.swift"; sourceTree = "<group>"; };
+		19B698201DE7276E00AD3876 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
+		19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TySimulator-Bridging-Header.h"; sourceTree = "<group>"; };
 		19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutTableCellView.swift; sourceTree = "<group>"; };
 		19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
 		19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 				191195571DD8C0A700EEBBB4 /* FileManager+Extension.swift */,
 				191C3B4A1DDA2BB60096A6D0 /* NSApplication+TySimulator.swift */,
 				19B6981E1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift */,
+				19B698201DE7276E00AD3876 /* String+MD5.swift */,
 				19F94A171DDCBA4200AECF3B /* Preferences */,
 				19460CB01DD83BF200894FBA /* Model */,
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
@@ -144,6 +148,7 @@
 				19460C951DD78EA900894FBA /* MainMenu.xib */,
 				19460C981DD78EA900894FBA /* Info.plist */,
 				191195551DD8ACF500EEBBB4 /* main.swift */,
+				19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */,
 			);
 			path = TySimulator;
 			sourceTree = "<group>";
@@ -424,6 +429,7 @@
 				191195561DD8ACF500EEBBB4 /* main.swift in Sources */,
 				19460CAD1DD78FC000894FBA /* MainMenuController.swift in Sources */,
 				19B6981F1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift in Sources */,
+				19B698211DE7276E00AD3876 /* String+MD5.swift in Sources */,
 				19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */,
 				1911954F1DD8400D00EEBBB4 /* URL+Extension.swift in Sources */,
 				191195531DD87FB700EEBBB4 /* NSMenu+TySimulator.swift in Sources */,
@@ -573,6 +579,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TySimulator/TySimulator-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -590,6 +597,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TySimulator/TySimulator-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
