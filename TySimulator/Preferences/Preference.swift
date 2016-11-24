@@ -58,16 +58,12 @@ class Preference: NSObject {
         // init commands
         self.commands = []
         if let datas = self.preferences?[Preference.kUserDefaultsKeyCommands] as? Array<Dictionary<String, Any>> {
-            let transformer = MASDictionaryTransformer()
+            let transformer = CommandTransformer()
             for data in datas {
-                let command = CommandModel()
-                command.name = data["name"]  as! String
-                if let shortcut = data["shortcut"] as? Dictionary<String, Any> {
-                    command.key = transformer.transformedValue(shortcut) as! MASShortcut?
+                if let command = transformer.transformedValue(data) as? CommandModel {
+                    MASShortcutMonitor.shared().register(command: command)
+                    self.commands?.append(command)
                 }
-                MASShortcutMonitor.shared().register(command: command)
-                command.script = data["script"] as! String
-                self.commands?.append(command)
             }
         }
         // init onlyAvailableDevices
@@ -91,10 +87,9 @@ class Preference: NSObject {
     }
     
     func synchronize() {
-        let transformer = MASDictionaryTransformer()
+        let transformer = CommandTransformer()
         let commandDatas = self.commands?.map { (model) -> Dictionary<String, Any> in
-            let shortcut = transformer.reverseTransformedValue(model.key)!
-            return ["name": model.name, "script": model.script, "shortcut": shortcut]
+            return transformer.reverseTransformedValue(model) as! Dictionary<String, Any>
         }
         self.preferences?[Preference.kUserDefaultsKeyCommands] = commandDatas
         UserDefaults.standard.set(self.preferences, forKey: Preference.kUserDefaultsKeyPreferences)

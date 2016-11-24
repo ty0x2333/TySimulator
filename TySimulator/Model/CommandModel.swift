@@ -10,9 +10,20 @@ import Foundation
 import MASShortcut
 
 class CommandModel: NSObject {
+    private(set) var id: String
     var name: String = ""
     var script: String = ""
     var key: MASShortcut?
+    
+    convenience override init() {
+        let timeStamp = NSDate().timeIntervalSince1970
+        self.init(id: String(timeStamp).md5())
+    }
+    
+    init(id: String) {
+        self.id = id
+        super.init()
+    }
     
     override var description: String {
         get {
