@@ -10,6 +10,10 @@ import MASShortcut
 
 extension MASShortcutMonitor {
     func register(command: CommandModel) {
+        guard command.key != nil else {
+            log.warning("register faild, command shortcut is nil")
+            return
+        }
         self.register(command.key, withAction: {
             NSSound(named: "Ping")?.play()
             log.debug("script: \(command.script)")
@@ -18,6 +22,10 @@ extension MASShortcutMonitor {
     }
     
     func unregister(command: CommandModel) {
+        guard command.key != nil else {
+            log.warning("unregister faild, command shortcut is nil")
+            return
+        }
         self.unregisterShortcut(command.key)
     }
 }
