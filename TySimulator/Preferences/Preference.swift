@@ -86,6 +86,15 @@ class Preference: NSObject {
         self.synchronize()
     }
     
+    func setCommand(id: String, command: CommandModel) {
+        for i in 0..<self.commands!.count {
+            if self.commands?[i].id == id {
+                self.commands?[i] = command
+                return
+            }
+        }
+    }
+    
     func synchronize() {
         let transformer = CommandTransformer()
         let commandDatas = self.commands?.map { (model) -> Dictionary<String, Any> in
