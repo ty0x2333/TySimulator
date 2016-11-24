@@ -27,6 +27,7 @@
 		199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D0B101DDE0F0800207D53 /* CommandModel.swift */; };
 		19B6981F1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B6981E1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift */; };
 		19B698211DE7276E00AD3876 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698201DE7276E00AD3876 /* String+MD5.swift */; };
+		19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698231DE72AAE00AD3876 /* CommandTransformer.swift */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
 		19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */; };
 		19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */; };
@@ -76,6 +77,7 @@
 		19B6981E1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MASShortcutMonitor+Command.swift"; sourceTree = "<group>"; };
 		19B698201DE7276E00AD3876 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TySimulator-Bridging-Header.h"; sourceTree = "<group>"; };
+		19B698231DE72AAE00AD3876 /* CommandTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTransformer.swift; sourceTree = "<group>"; };
 		19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutTableCellView.swift; sourceTree = "<group>"; };
 		19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
 		19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
 				F58132CF1DDD7E84006C5A1A /* Device.swift */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
+				19B698231DE72AAE00AD3876 /* CommandTransformer.swift */,
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
 				19460C951DD78EA900894FBA /* MainMenu.xib */,
 				19460C981DD78EA900894FBA /* Info.plist */,
@@ -423,6 +426,7 @@
 				191195511DD8785300EEBBB4 /* ApplicationModel.swift in Sources */,
 				1911955C1DD8C2B500EEBBB4 /* AppGroupModel.swift in Sources */,
 				1931AA991DE214DA00B78D40 /* CommandViewController.swift in Sources */,
+				19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */,
 				F58132D01DDD7E84006C5A1A /* Device.swift in Sources */,
 				199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */,
 				19460C921DD78EA900894FBA /* AppDelegate.swift in Sources */,
