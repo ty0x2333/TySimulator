@@ -47,10 +47,11 @@ class Device {
         
         self.devices = devices.filter {
             var result = $0.os != .unknown
-            if Preference.shared().onlyAvailableDevices {
+            let preference = Preference.shared()
+            if preference.onlyAvailableDevices {
                 result = result && $0.isAvailable
             }
-            if Preference.onlyHasContentDevices {
+            if preference.onlyHasContentDevices {
                 result = result && $0.hasContent
             }
             return result

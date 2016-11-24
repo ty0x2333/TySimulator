@@ -16,8 +16,9 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.isOnlyAvailableDevices.state = Preference.shared().onlyAvailableDevices ? NSOnState : NSOffState
-        self.isOnlyHasContentDevices.state = Preference.onlyHasContentDevices ? NSOnState : NSOffState
+        let preference = Preference.shared()
+        self.isOnlyAvailableDevices.state = preference.onlyAvailableDevices ? NSOnState : NSOffState
+        self.isOnlyHasContentDevices.state = preference.onlyHasContentDevices ? NSOnState : NSOffState
     }
     
     @IBAction func onOnlyAvailableDevicesButtonClicked(_ sender: NSButton) {
@@ -25,7 +26,7 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
     }
     
     @IBAction func onOnlyHasContentDevicesButtonClicked(_ sender: NSButton) {
-        Preference.onlyHasContentDevices = sender.state == NSOnState
+        Preference.shared().onlyHasContentDevices = sender.state == NSOnState
     }
     
     // MARK: MASPreferencesViewController

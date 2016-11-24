@@ -27,6 +27,14 @@ class Preference: NSObject {
             log.verbose("update preferences: \(preferences)")
         }
     }
+    var onlyHasContentDevices: Bool {
+        didSet {
+            self.preferences?[Preference.kUserDefaultsKeyOnlyHasContentDevices] = onlyHasContentDevices
+            UserDefaults.standard.set(preferences, forKey: Preference.kUserDefaultsKeyPreferences)
+            UserDefaults.standard.synchronize()
+            log.verbose("update preferences: \(preferences)")
+        }
+    }
     
     static func shared() -> Preference {
         return sharedPreferences
@@ -63,6 +71,7 @@ class Preference: NSObject {
         }
         // init onlyAvailableDevices
         self.onlyAvailableDevices = self.preferences?[Preference.kUserDefaultsKeyOnlyAvailableDevices] as! Bool
+        self.onlyHasContentDevices = self.preferences?[Preference.kUserDefaultsKeyOnlyHasContentDevices] as! Bool
         super.init()
     }
     
@@ -101,25 +110,6 @@ class Preference: NSObject {
         let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController, keyBindingViewController], title: "Preferences")
         preferencesWindow?.window?.level = Int(CGWindowLevelForKey(CGWindowLevelKey.floatingWindow))
         return preferencesWindow!
-    }
-    
-    static var onlyHasContentDevices: Bool {
-        get {
-            let preferences: Dictionary<String, Any> = Preference.shared().preferences!
-            if let onlyAvailableDevices = preferences[kUserDefaultsKeyOnlyHasContentDevices] {
-                return onlyAvailableDevices as! Bool
-            } else {
-                return true
-            }
-        }
-        
-        set {
-            var preferences: Dictionary<String, Any> = Preference.shared().preferences!
-            preferences[kUserDefaultsKeyOnlyHasContentDevices] = newValue
-            UserDefaults.standard.set(preferences, forKey: kUserDefaultsKeyPreferences)
-            UserDefaults.standard.synchronize()
-            log.verbose("update preferences: \(preferences)")
-        }
     }
     
 }
