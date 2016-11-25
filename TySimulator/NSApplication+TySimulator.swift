@@ -11,8 +11,7 @@ import HockeySDK
 
 extension NSApplication {
     func showFeedbackWindow() {
-        BITHockeyManager.shared().feedbackManager.showFeedbackWindow()
-        NSApp.activate(ignoringOtherApps: true)
+        DevMateKit.showFeedbackDialog(nil, in: .modalMode)
     }
     
     func showPreferencesWindow() {
