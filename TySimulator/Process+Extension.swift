@@ -82,10 +82,7 @@ extension Process {
     }
     
     static func execute(_ script: String) -> String {
-        var scriptCLI = script
-        if let device = Device.bootedDevices().first {
-            scriptCLI = script.replacingOccurrences(of: "$(BOOTED_DEVICE_LOCATION)", with:device.location.absoluteString)
-        }
+        let scriptCLI = self.transformedScript(script)
         log.info("run script: \(scriptCLI)")
         return self.output(launchPath: "/bin/sh", arguments: ["-c", scriptCLI])
     }
