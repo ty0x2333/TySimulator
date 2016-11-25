@@ -20,6 +20,15 @@ class Device {
         return sharedInstance
     }
     
+    func device(udid: String) -> DeviceModel? {
+        for device in devices {
+            if device.udid == udid {
+                return device
+            }
+        }
+        return nil
+    }
+    
     func updateDeivces() {
         let string = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"],
                                     directoryPath: Device.devicesDirectory)
