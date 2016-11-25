@@ -18,8 +18,8 @@ class MainMenuController: NSObject, NSMenuDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        statusItem.image = NSImage(named: "MenuIcon")
-        statusItem.menu = makeMenu()
+        self.statusItem.image = NSImage(named: "MenuIcon")
+        self.statusItem.menu = makeMenu()
     }
     
     func makeMenu() -> NSMenu {
@@ -97,7 +97,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         let bootedItemTags = bootedDeviceUDIDs.map { (udid) -> Int in
             return self.tagMap[udid]!
         }
-        statusItem.menu?.items.forEach({ (item) in
+        self.statusItem.menu?.items.forEach({ (item) in
             item.state = bootedItemTags.contains(item.tag) ? 1 : 0
         })
         
