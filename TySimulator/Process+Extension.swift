@@ -90,7 +90,4 @@ extension Process {
         return self.output(launchPath: "/bin/sh", arguments: ["-c", scriptCLI])
     }
     
-    class func environmentKeyDescriptions() -> Dictionary<String, String> {
-        return ["BOOTED_DEVICE_LOCATION": "Booted Device Folder"]
-    }
 }
