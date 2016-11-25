@@ -10,6 +10,7 @@ target 'TySimulator' do
   pod 'HockeySDK-Mac'
   pod 'MASShortcut'
   pod 'MASPreferences'
+  pod 'DevMateKit'
 
   target 'TySimulatorTests' do
     inherit! :search_paths
