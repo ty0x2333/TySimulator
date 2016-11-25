@@ -20,6 +20,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         super.awakeFromNib()
         self.statusItem.image = NSImage(named: "MenuIcon")
         self.statusItem.menu = makeMenu()
+        NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Notification.Name(Device.DevicesChangedNotification), object: nil)
     }
     
     func makeMenu() -> NSMenu {
@@ -101,5 +102,10 @@ class MainMenuController: NSObject, NSMenuDelegate {
             item.state = bootedItemTags.contains(item.tag) ? 1 : 0
         })
         
+    }
+    
+    // MARK: Notification
+    func devicesChangedNotification() {
+        // TODO
     }
 }

@@ -9,6 +9,8 @@
 import Cocoa
 
 class Device {
+    public static let DevicesChangedNotification = "DevicesChangedNotification"
+    
     private static let sharedInstance = Device()
     var devices: [DeviceModel] = []
     
