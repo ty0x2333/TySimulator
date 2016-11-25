@@ -15,6 +15,7 @@
 		1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191195591DD8C14700EEBBB4 /* MediaModel.swift */; };
 		1911955C1DD8C2B500EEBBB4 /* AppGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1911955B1DD8C2B500EEBBB4 /* AppGroupModel.swift */; };
 		191C3B4B1DDA2BB60096A6D0 /* NSApplication+TySimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191C3B4A1DDA2BB60096A6D0 /* NSApplication+TySimulator.swift */; };
+		192880361DE8959200A5A13A /* ScriptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192880351DE8959200A5A13A /* ScriptTests.swift */; };
 		1931AA971DE214D300B78D40 /* CommandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1931AA961DE214D300B78D40 /* CommandViewController.xib */; };
 		1931AA991DE214DA00B78D40 /* CommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1931AA981DE214DA00B78D40 /* CommandViewController.swift */; };
 		19460C921DD78EA900894FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460C911DD78EA900894FBA /* AppDelegate.swift */; };
@@ -60,6 +61,7 @@
 		191195591DD8C14700EEBBB4 /* MediaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaModel.swift; sourceTree = "<group>"; };
 		1911955B1DD8C2B500EEBBB4 /* AppGroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupModel.swift; sourceTree = "<group>"; };
 		191C3B4A1DDA2BB60096A6D0 /* NSApplication+TySimulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSApplication+TySimulator.swift"; sourceTree = "<group>"; };
+		192880351DE8959200A5A13A /* ScriptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptTests.swift; sourceTree = "<group>"; };
 		1931AA961DE214D300B78D40 /* CommandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandViewController.xib; sourceTree = "<group>"; };
 		1931AA981DE214DA00B78D40 /* CommandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandViewController.swift; sourceTree = "<group>"; };
 		19460C8E1DD78EA900894FBA /* TySimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TySimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +161,7 @@
 		19460CA01DD78EA900894FBA /* TySimulatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				192880351DE8959200A5A13A /* ScriptTests.swift */,
 				19460CA11DD78EA900894FBA /* TySimulatorTests.swift */,
 				19460CA31DD78EA900894FBA /* Info.plist */,
 			);
@@ -268,7 +271,7 @@
 				TargetAttributes = {
 					19460C8D1DD78EA900894FBA = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 9KYD7S7AZY;
+						DevelopmentTeam = E67MQJRFZ7;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -452,6 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				192880361DE8959200A5A13A /* ScriptTests.swift in Sources */,
 				19460CA21DD78EA900894FBA /* TySimulatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,12 +581,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9KYD7S7AZY;
+				DEVELOPMENT_TEAM = E67MQJRFZ7;
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TySimulator/TySimulator-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -595,12 +601,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9KYD7S7AZY;
+				DEVELOPMENT_TEAM = E67MQJRFZ7;
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TySimulator/TySimulator-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
