@@ -21,7 +21,6 @@
 		19460C921DD78EA900894FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460C911DD78EA900894FBA /* AppDelegate.swift */; };
 		19460C941DD78EA900894FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19460C931DD78EA900894FBA /* Assets.xcassets */; };
 		19460C971DD78EA900894FBA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19460C951DD78EA900894FBA /* MainMenu.xib */; };
-		19460CA21DD78EA900894FBA /* TySimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CA11DD78EA900894FBA /* TySimulatorTests.swift */; };
 		19460CAD1DD78FC000894FBA /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CAC1DD78FC000894FBA /* MainMenuController.swift */; };
 		19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CB31DD83C1E00894FBA /* DeviceModel.swift */; };
 		19460CB61DD83E5500894FBA /* Process+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CB51DD83E5500894FBA /* Process+Extension.swift */; };
@@ -70,7 +69,6 @@
 		19460C961DD78EA900894FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		19460C981DD78EA900894FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19460C9D1DD78EA900894FBA /* TySimulatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TySimulatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		19460CA11DD78EA900894FBA /* TySimulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TySimulatorTests.swift; sourceTree = "<group>"; };
 		19460CA31DD78EA900894FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19460CAC1DD78FC000894FBA /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		19460CB31DD83C1E00894FBA /* DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				192880351DE8959200A5A13A /* ScriptTests.swift */,
-				19460CA11DD78EA900894FBA /* TySimulatorTests.swift */,
 				19460CA31DD78EA900894FBA /* Info.plist */,
 			);
 			path = TySimulatorTests;
@@ -456,7 +453,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				192880361DE8959200A5A13A /* ScriptTests.swift in Sources */,
-				19460CA21DD78EA900894FBA /* TySimulatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
