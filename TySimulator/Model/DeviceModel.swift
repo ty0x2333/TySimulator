@@ -67,4 +67,13 @@ class DeviceModel {
     var version: String {
         return osInfo.components(separatedBy: " ").last ?? ""
     }
+    
+    func application(bundleIdentifier: String) -> ApplicationModel? {
+        for it in self.applications {
+            if it.bundleIdentifier == bundleIdentifier {
+                return it
+            }
+        }
+        return nil
+    }
 }
