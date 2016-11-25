@@ -39,6 +39,15 @@ extension Process {
     }
     
     static func execute(_ script: String) -> String {
-        return self.output(launchPath: "/bin/sh", arguments: ["-c", script])
+        var scriptCLI = script
+        if let device = Device.bootedDevices().first {
+            scriptCLI = script.replacingOccurrences(of: "$(BOOTED_DEVICE_LOCATION)", with:device.location.absoluteString)
+        }
+        log.info("run script: \(scriptCLI)")
+        return self.output(launchPath: "/bin/sh", arguments: ["-c", scriptCLI])
+    }
+    
+    class func environmentKeyDescriptions() -> Dictionary<String, String> {
+        return ["BOOTED_DEVICE_LOCATION": "Booted Device Folder"]
     }
 }
