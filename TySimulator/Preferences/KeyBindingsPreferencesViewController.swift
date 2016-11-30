@@ -24,6 +24,18 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     // MARK: Actions
     func onTableViewDoubleClicked(_ sender: NSTableView) {
         log.verbose("click row: \(sender.clickedRow)")
+        if let command = Preference.shared().commands?[sender.clickedRow] {
+            let commandViewController = CommandViewController(command)
+            let oldKey = command.key
+            commandViewController.save = { (command) in
+                log.verbose("save command: \(command)")
+                MASShortcutMonitor.shared().unregisterShortcut(oldKey)
+                Preference.shared().setCommand(id: command.id, command: command)
+                MASShortcutMonitor.shared().register(command: command)
+                self.tableView.reloadData()
+            }
+            self.presentViewControllerAsModalWindow(commandViewController)
+        }
     }
     
     @IBAction func onAddCommandButtonClicked(_ sender: NSButton) {

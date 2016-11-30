@@ -7,7 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CommandViewController" customModule="TySimulator" customModuleProvider="target">
             <connections>
-                <outlet property="command" destination="ffv-dn-7Fd" id="hTX-jn-DcI"/>
                 <outlet property="nameTextField" destination="9RD-ov-hAE" id="18l-gc-iL7"/>
                 <outlet property="scriptTextView" destination="k10-g1-vln" id="gZs-rK-eqe"/>
                 <outlet property="shortcutView" destination="I3O-v3-h64" id="qai-4L-KqG"/>
@@ -134,11 +133,5 @@ Gw
             </constraints>
             <point key="canvasLocation" x="174" y="187"/>
         </customView>
-        <customObject id="ffv-dn-7Fd" customClass="CommandModel" customModule="TySimulator" customModuleProvider="target"/>
-        <objectController objectClassName="CommandModel" id="Tpz-vz-t8j">
-            <connections>
-                <outlet property="content" destination="ffv-dn-7Fd" id="1VH-Tq-Wfb"/>
-            </connections>
-        </objectController>
     </objects>
 </document>

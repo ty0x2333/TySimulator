@@ -10,11 +10,26 @@ import Cocoa
 import MASShortcut
 
 class CommandViewController: NSViewController {
-    @IBOutlet var command: CommandModel!
+    var command: CommandModel!
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var shortcutView: MASShortcutView!
     @IBOutlet var scriptTextView: NSTextView!
     var save: ((CommandModel) -> ())?
+    
+    init(_ command: CommandModel) {
+        super.init(nibName: nil, bundle: nil)!
+        self.command = command
+    }
+    
+    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.command = CommandModel()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Command Editor"
