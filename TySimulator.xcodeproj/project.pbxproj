@@ -28,6 +28,7 @@
 		19B6981F1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B6981E1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift */; };
 		19B698211DE7276E00AD3876 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698201DE7276E00AD3876 /* String+MD5.swift */; };
 		19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698231DE72AAE00AD3876 /* CommandTransformer.swift */; };
+		19CA15A81DEF2C300078AA91 /* NSTextView+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA15A71DEF2C300078AA91 /* NSTextView+Placeholder.swift */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
 		19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */; };
 		19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */; };
@@ -78,6 +79,7 @@
 		19B698201DE7276E00AD3876 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TySimulator-Bridging-Header.h"; sourceTree = "<group>"; };
 		19B698231DE72AAE00AD3876 /* CommandTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTransformer.swift; sourceTree = "<group>"; };
+		19CA15A71DEF2C300078AA91 /* NSTextView+Placeholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Placeholder.swift"; sourceTree = "<group>"; };
 		19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutTableCellView.swift; sourceTree = "<group>"; };
 		19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
 		19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				191195571DD8C0A700EEBBB4 /* FileManager+Extension.swift */,
 				191C3B4A1DDA2BB60096A6D0 /* NSApplication+TySimulator.swift */,
 				19B6981E1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift */,
+				19CA15A71DEF2C300078AA91 /* NSTextView+Placeholder.swift */,
 				19B698201DE7276E00AD3876 /* String+MD5.swift */,
 				19F94A171DDCBA4200AECF3B /* Preferences */,
 				19460CB01DD83BF200894FBA /* Model */,
@@ -444,6 +447,7 @@
 				F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */,
 				191195581DD8C0A700EEBBB4 /* FileManager+Extension.swift in Sources */,
 				191C3B4B1DDA2BB60096A6D0 /* NSApplication+TySimulator.swift in Sources */,
+				19CA15A81DEF2C300078AA91 /* NSTextView+Placeholder.swift in Sources */,
 				19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
