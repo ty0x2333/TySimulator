@@ -63,6 +63,7 @@ extension Process {
                             device = Device.bootedDevices().first
                         }
                         guard device != nil else {
+                            log.warning("no device: \(deviceId)")
                             continue
                         }
                         if let bundleIdentifier = command["application"] {
