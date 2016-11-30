@@ -90,6 +90,7 @@ class Preference: NSObject {
         for i in 0..<self.commands!.count {
             if self.commands?[i].id == id {
                 self.commands?[i] = command
+                self.synchronize()
                 return
             }
         }
