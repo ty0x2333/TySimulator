@@ -79,6 +79,8 @@ class Device: NSObject {
             }.sorted {
                 return $0.osInfo.compare($1.osInfo) == .orderedAscending
         }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Device.DevicesChangedNotification), object: nil)
     }
     
     static func bootedDevices() -> [DeviceModel] {

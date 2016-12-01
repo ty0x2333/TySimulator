@@ -12,6 +12,7 @@ import HockeySDK
 class MainMenuController: NSObject, NSMenuDelegate {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     var devices: [DeviceModel] = []
+    var deviceItems: [NSMenuItem] = []
     
     lazy var quitMenuItem: NSMenuItem = {
         return NSMenuItem(title: "Quit TySimulator", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
@@ -31,14 +32,27 @@ class MainMenuController: NSObject, NSMenuDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.statusItem.image = NSImage(named: "MenuIcon")
-        self.statusItem.menu = makeMenu()
-        NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Notification.Name(Device.DevicesChangedNotification), object: nil)
-    }
-    
-    func makeMenu() -> NSMenu {
+        
         let menu = NSMenu()
         menu.delegate = self
         menu.autoenablesItems = false
+        
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(self.preferenceItem)
+        menu.addItem(self.aboutItem)
+        menu.addItem(self.feedbackItem)
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(self.quitMenuItem)
+        self.statusItem.menu = menu
+        self.updateDeviceMenus()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Notification.Name(Device.DevicesChangedNotification), object: nil)
+    }
+    
+    func updateDeviceMenus() {
+        for it in self.deviceItems {
+            self.statusItem.menu?.removeItem(it)
+        }
         
         self.devices = Device.shared().devices
         log.info("load devices: \(self.devices.count)")
@@ -48,16 +62,11 @@ class MainMenuController: NSObject, NSMenuDelegate {
             self.tagMap[devices[i].udid] = i
         }
         
-        NSMenuItem.deviceMenuItems(self.devices, tagMap).forEach { (item) in
-            menu.addItem(item)
+        self.deviceItems = NSMenuItem.deviceMenuItems(self.devices, tagMap)
+        
+        self.deviceItems.reversed().forEach { (item) in
+            self.statusItem.menu?.insertItem(item, at: 0)
         }
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(self.preferenceItem)
-        menu.addItem(self.aboutItem)
-        menu.addItem(self.feedbackItem)
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(self.quitMenuItem)
-        return menu
     }
     
     // MARK: - NSMenuDelegate
@@ -79,6 +88,6 @@ class MainMenuController: NSObject, NSMenuDelegate {
     
     // MARK: Notification
     func devicesChangedNotification() {
-        // TODO
+        self.updateDeviceMenus()
     }
 }
