@@ -26,6 +26,9 @@ class MainMenuController: NSObject, NSMenuDelegate {
     lazy var preferenceItem: NSMenuItem = {
         return NSMenuItem(title: "Preferences...", action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
     }()
+    lazy var checkForUpdatesItem: NSMenuItem = {
+        return NSMenuItem(title: "Check For Updates...", action: #selector(NSApplication.checkForUpdates), keyEquivalent: "")
+    }()
     
     var tagMap: Dictionary<String, Int> = [:]
     
@@ -41,6 +44,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         menu.addItem(self.preferenceItem)
         menu.addItem(self.aboutItem)
         menu.addItem(self.feedbackItem)
+        menu.addItem(self.checkForUpdatesItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(self.quitMenuItem)
         self.statusItem.menu = menu
