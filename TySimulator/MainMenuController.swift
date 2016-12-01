@@ -22,6 +22,9 @@ class MainMenuController: NSObject, NSMenuDelegate {
     lazy var aboutItem: NSMenuItem = {
         return NSMenuItem(title: "About TySimulator", action: #selector(NSApplication.showAboutWindow), keyEquivalent: "")
     }()
+    lazy var preferenceItem: NSMenuItem = {
+        return NSMenuItem(title: "Preferences...", action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
+    }()
     
     var tagMap: Dictionary<String, Int> = [:]
     
@@ -49,22 +52,12 @@ class MainMenuController: NSObject, NSMenuDelegate {
             menu.addItem(item)
         }
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(self.makePreferencesItem())
+        menu.addItem(self.preferenceItem)
         menu.addItem(self.aboutItem)
         menu.addItem(self.feedbackItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(self.quitMenuItem)
         return menu
-    }
-    
-    func makePreferencesItem() -> NSMenuItem {
-        let item = NSMenuItem()
-        item.title = "Preferences..."
-        item.isEnabled = true
-        item.keyEquivalent = ","
-        item.target = NSApp
-        item.action = #selector(NSApplication.showPreferencesWindow)
-        return item;
     }
     
     // MARK: - NSMenuDelegate
