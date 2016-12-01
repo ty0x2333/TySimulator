@@ -13,7 +13,10 @@ class MainMenuController: NSObject, NSMenuDelegate {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     var devices: [DeviceModel] = []
     
-    lazy var quitMenuItem: NSMenuItem = self.makeQuitItem()
+    lazy var quitMenuItem: NSMenuItem = {
+        return NSMenuItem(title: "Quit TySimulator", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+    }()
+    
     var tagMap: Dictionary<String, Int> = [:]
     
     override func awakeFromNib() {
@@ -47,16 +50,6 @@ class MainMenuController: NSObject, NSMenuDelegate {
         menu.addItem(NSMenuItem.separator())
         menu.addItem(self.quitMenuItem)
         return menu
-    }
-    
-    func makeQuitItem() -> NSMenuItem {
-        let item = NSMenuItem()
-        item.title = "Quit TySimulator"
-        item.isEnabled = true
-        item.target = NSApp
-        item.action = #selector(NSApplication.terminate(_:))
-        item.keyEquivalent = "q"
-        return item;
     }
     
     func makeAboutItem() -> NSMenuItem {
