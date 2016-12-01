@@ -9,7 +9,7 @@
 import Cocoa
 import HockeySDK
 
-extension NSApplication {
+extension NSApplication: DM_SUUpdaterDelegate_DevMateInteraction {
     func showFeedbackWindow() {
         DevMateKit.showFeedbackDialog(nil, in: .modalMode)
     }
@@ -23,5 +23,27 @@ extension NSApplication {
     func showAboutWindow() {
         NSApp.orderFrontStandardAboutPanel(nil)
         NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    func checkForUpdates() {
+        DM_SUUpdater.shared().delegate = self
+        DM_SUUpdater.shared().checkForUpdates(NSApp)
+    }
+    
+    // MARK: SUUpdaterDelegate_DevMateInteraction
+    public func updaterShouldCheck(forBetaUpdates updater: DM_SUUpdater!) -> Bool {
+#if DEBUG
+        return true
+#else
+        return false
+#endif
+    }
+    
+    public func isUpdater(inTestMode updater: DM_SUUpdater!) -> Bool {
+#if DEBUG
+        return true
+#else
+        return false
+#endif
     }
 }
