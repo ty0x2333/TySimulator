@@ -16,6 +16,9 @@ class MainMenuController: NSObject, NSMenuDelegate {
     lazy var quitMenuItem: NSMenuItem = {
         return NSMenuItem(title: "Quit TySimulator", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
     }()
+    lazy var feedbackItem: NSMenuItem = {
+        return NSMenuItem(title: "Feedback...", action: #selector(NSApplication.showFeedbackWindow), keyEquivalent: "")
+    }()
     
     var tagMap: Dictionary<String, Int> = [:]
     
@@ -42,11 +45,10 @@ class MainMenuController: NSObject, NSMenuDelegate {
         NSMenuItem.deviceMenuItems(self.devices, tagMap).forEach { (item) in
             menu.addItem(item)
         }
-        
         menu.addItem(NSMenuItem.separator())
         menu.addItem(self.makePreferencesItem())
         menu.addItem(self.makeAboutItem())
-        menu.addItem(self.makeFeedbackItem())
+        menu.addItem(self.feedbackItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(self.quitMenuItem)
         return menu
@@ -58,15 +60,6 @@ class MainMenuController: NSObject, NSMenuDelegate {
         item.isEnabled = true
         item.target = NSApp
         item.action = #selector(NSApplication.showAboutWindow)
-        return item;
-    }
-    
-    func makeFeedbackItem() -> NSMenuItem {
-        let item = NSMenuItem()
-        item.title = "Feedback..."
-        item.isEnabled = true
-        item.target = NSApp
-        item.action = #selector(NSApplication.showFeedbackWindow)
         return item;
     }
     
