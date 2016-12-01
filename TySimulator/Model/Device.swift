@@ -8,14 +8,24 @@
 
 import Cocoa
 
-class Device {
+class Device: NSObject {
+    private var deviceObservingContext = 0
+    
     public static let DevicesChangedNotification = "DevicesChangedNotification"
     
     private static let sharedInstance = Device()
     var devices: [DeviceModel] = []
     
-    init() {
+    override init() {
+        super.init()
         self.updateDeivces()
+        Preference.shared().addObserver(self, forKeyPath: "onlyAvailableDevices", options: [.new], context: &deviceObservingContext)
+        Preference.shared().addObserver(self, forKeyPath: "onlyHasContentDevices", options: [.new], context: &deviceObservingContext)
+    }
+    
+    deinit {
+        Preference.shared().removeObserver(self, forKeyPath: "onlyAvailableDevices", context: &deviceObservingContext)
+        Preference.shared().removeObserver(self, forKeyPath: "onlyHasContentDevices", context: &deviceObservingContext)
     }
     
     static func shared() -> Device {
@@ -106,6 +116,17 @@ class Device {
     static var devicesDirectory: URL {
         let path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first ?? ""
         return URL(fileURLWithPath: path).appendingPathComponent("Developer/CoreSimulator/Devices")
+    }
+    
+    // MARK: Observer
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if context == &deviceObservingContext {
+            if (change?[NSKeyValueChangeKey.newKey]) != nil {
+                self.updateDeivces()
+            }
+        } else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
 
 }

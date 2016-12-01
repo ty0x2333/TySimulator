@@ -19,7 +19,7 @@ class Preference: NSObject {
     private static let sharedPreferences: Preference = preference()
     private var preferences: Dictionary<String, Any>?
     private(set) var commands: [CommandModel]?
-    var onlyAvailableDevices: Bool {
+    dynamic var onlyAvailableDevices: Bool {
         didSet {
             self.preferences?[Preference.kUserDefaultsKeyOnlyAvailableDevices] = onlyAvailableDevices
             UserDefaults.standard.set(preferences, forKey: Preference.kUserDefaultsKeyPreferences)
@@ -27,7 +27,7 @@ class Preference: NSObject {
             log.verbose("update preferences: \(preferences)")
         }
     }
-    var onlyHasContentDevices: Bool {
+    dynamic var onlyHasContentDevices: Bool {
         didSet {
             self.preferences?[Preference.kUserDefaultsKeyOnlyHasContentDevices] = onlyHasContentDevices
             UserDefaults.standard.set(preferences, forKey: Preference.kUserDefaultsKeyPreferences)
