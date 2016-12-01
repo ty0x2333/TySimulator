@@ -13,12 +13,17 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
     
     @IBOutlet weak var isOnlyHasContentDevices: NSButton!
     @IBOutlet weak var isOnlyAvailableDevices: NSButton!
+    @IBOutlet weak var isLaunchAtStartup: NSButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         let preference = Preference.shared()
+        self.isLaunchAtStartup.state = NSApplication.isLaunchAtStartup ? NSOnState : NSOffState
         self.isOnlyAvailableDevices.state = preference.onlyAvailableDevices ? NSOnState : NSOffState
         self.isOnlyHasContentDevices.state = preference.onlyHasContentDevices ? NSOnState : NSOffState
+    }
+    @IBAction func onLaunchAtStartupButtonClicked(_ sender: NSButton) {
+        NSApplication.isLaunchAtStartup = sender.state == NSOnState
     }
     
     @IBAction func onOnlyAvailableDevicesButtonClicked(_ sender: NSButton) {

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesViewController">
             <connections>
+                <outlet property="isLaunchAtStartup" destination="6ZJ-Sf-ZNy" id="8nX-y9-GT1"/>
                 <outlet property="isOnlyAvailableDevices" destination="aIj-dS-k4u" id="ZW2-m1-7KL"/>
                 <outlet property="isOnlyHasContentDevices" destination="u74-RB-hld" id="Lqh-WM-nsh"/>
                 <outlet property="view" destination="c22-O7-iKe" id="I3g-Og-gJN"/>
@@ -19,10 +20,10 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box title="Device" translatesAutoresizingMaskIntoConstraints="NO" id="XDN-j8-uTi">
-                    <rect key="frame" x="83" y="91" width="314" height="87"/>
+                <box title="Menu" translatesAutoresizingMaskIntoConstraints="NO" id="XDN-j8-uTi">
+                    <rect key="frame" x="83" y="50" width="314" height="93"/>
                     <view key="contentView" id="Km0-yc-poH">
-                        <rect key="frame" x="2" y="2" width="310" height="70"/>
+                        <rect key="frame" x="2" y="2" width="310" height="76"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="aIj-dS-k4u">
@@ -47,6 +48,7 @@
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="aIj-dS-k4u" firstAttribute="top" secondItem="Km0-yc-poH" secondAttribute="top" constant="16" id="6Vk-1o-S6f"/>
                             <constraint firstItem="u74-RB-hld" firstAttribute="trailing" secondItem="aIj-dS-k4u" secondAttribute="trailing" id="9MN-F4-VUb"/>
                             <constraint firstAttribute="bottom" secondItem="u74-RB-hld" secondAttribute="bottom" constant="16" id="9RU-FC-9jL"/>
                             <constraint firstItem="u74-RB-hld" firstAttribute="leading" secondItem="aIj-dS-k4u" secondAttribute="leading" id="cEZ-sx-ie2"/>
@@ -55,14 +57,40 @@
                     </view>
                     <constraints>
                         <constraint firstItem="aIj-dS-k4u" firstAttribute="leading" secondItem="XDN-j8-uTi" secondAttribute="leading" constant="16" id="2xV-n0-UkS"/>
-                        <constraint firstItem="aIj-dS-k4u" firstAttribute="top" secondItem="XDN-j8-uTi" secondAttribute="top" constant="25" id="Nds-J1-DSG"/>
                         <constraint firstAttribute="trailing" secondItem="aIj-dS-k4u" secondAttribute="trailing" constant="16" id="U7D-XF-EKn"/>
                     </constraints>
                 </box>
+                <box title="Application" translatesAutoresizingMaskIntoConstraints="NO" id="yXA-we-c8w">
+                    <rect key="frame" x="82" y="172" width="316" height="63"/>
+                    <view key="contentView" id="CcJ-Er-omt">
+                        <rect key="frame" x="2" y="2" width="312" height="46"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="6ZJ-Sf-ZNy">
+                                <rect key="frame" x="14" y="14" width="129" height="18"/>
+                                <buttonCell key="cell" type="check" title="Launch at startup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="pMw-fM-NC1">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onLaunchAtStartupButtonClicked:" target="-2" id="uuy-oL-VDO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="6ZJ-Sf-ZNy" firstAttribute="top" secondItem="CcJ-Er-omt" secondAttribute="top" constant="16" id="dsa-du-UOR"/>
+                            <constraint firstAttribute="bottom" secondItem="6ZJ-Sf-ZNy" secondAttribute="bottom" constant="16" id="eOi-9S-O7Z"/>
+                            <constraint firstItem="6ZJ-Sf-ZNy" firstAttribute="leading" secondItem="CcJ-Er-omt" secondAttribute="leading" constant="16" id="kP6-aZ-nj0"/>
+                        </constraints>
+                    </view>
+                </box>
             </subviews>
             <constraints>
+                <constraint firstItem="yXA-we-c8w" firstAttribute="width" secondItem="Km0-yc-poH" secondAttribute="width" id="aWs-rs-7NO"/>
+                <constraint firstItem="yXA-we-c8w" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="bCi-yv-wcZ"/>
+                <constraint firstItem="yXA-we-c8w" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="37" id="lTK-CC-cMJ"/>
                 <constraint firstItem="XDN-j8-uTi" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="nyE-jX-fQt"/>
-                <constraint firstItem="XDN-j8-uTi" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="yAa-vc-QM3"/>
+                <constraint firstItem="XDN-j8-uTi" firstAttribute="top" secondItem="CcJ-Er-omt" secondAttribute="bottom" constant="31" id="v3E-xq-LX6"/>
             </constraints>
         </customView>
     </objects>
