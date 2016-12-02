@@ -18,11 +18,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="485" height="337"/>
+            <rect key="frame" x="0.0" y="0.0" width="485" height="343"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box title="Menu" translatesAutoresizingMaskIntoConstraints="NO" id="XDN-j8-uTi">
-                    <rect key="frame" x="86" y="96" width="314" height="93"/>
+                    <rect key="frame" x="86" y="102" width="314" height="93"/>
                     <view key="contentView" id="Km0-yc-poH">
                         <rect key="frame" x="2" y="2" width="310" height="76"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +62,7 @@
                     </constraints>
                 </box>
                 <box title="Application" translatesAutoresizingMaskIntoConstraints="NO" id="yXA-we-c8w">
-                    <rect key="frame" x="85" y="207" width="316" height="93"/>
+                    <rect key="frame" x="85" y="213" width="316" height="93"/>
                     <view key="contentView" id="CcJ-Er-omt">
                         <rect key="frame" x="2" y="2" width="312" height="76"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,7 +98,7 @@
                     </view>
                 </box>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tpV-55-wBC">
-                    <rect key="frame" x="82" y="50" width="168" height="32"/>
+                    <rect key="frame" x="82" y="56" width="168" height="32"/>
                     <buttonCell key="cell" type="push" title="Check For Updates..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uBM-gQ-IcS">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -107,17 +107,29 @@
                         <action selector="onCheckForUpdatesButtonClicked:" target="-2" id="KFl-On-rYK"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wUz-Mi-VUr">
+                    <rect key="frame" x="82" y="19" width="111" height="32"/>
+                    <buttonCell key="cell" type="push" title="Feedback..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XPW-Ba-XTo">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onFeedbackButtonClicked:" target="-2" id="2Cw-pt-7bg"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstItem="wUz-Mi-VUr" firstAttribute="top" secondItem="tpV-55-wBC" secondAttribute="bottom" constant="16" id="KsH-oH-nHQ"/>
                 <constraint firstItem="tpV-55-wBC" firstAttribute="leading" secondItem="Km0-yc-poH" secondAttribute="leading" id="SwX-Ru-xxC"/>
                 <constraint firstItem="yXA-we-c8w" firstAttribute="width" secondItem="Km0-yc-poH" secondAttribute="width" id="aWs-rs-7NO"/>
                 <constraint firstItem="yXA-we-c8w" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="bCi-yv-wcZ"/>
+                <constraint firstItem="wUz-Mi-VUr" firstAttribute="leading" secondItem="tpV-55-wBC" secondAttribute="leading" id="fGo-DD-OQ2"/>
                 <constraint firstItem="yXA-we-c8w" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="37" id="lTK-CC-cMJ"/>
                 <constraint firstItem="XDN-j8-uTi" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="nyE-jX-fQt"/>
                 <constraint firstItem="tpV-55-wBC" firstAttribute="top" secondItem="Km0-yc-poH" secondAttribute="bottom" constant="20" id="pM7-cE-vub"/>
                 <constraint firstItem="XDN-j8-uTi" firstAttribute="top" secondItem="CcJ-Er-omt" secondAttribute="bottom" constant="20" id="v3E-xq-LX6"/>
             </constraints>
-            <point key="canvasLocation" x="141.5" y="201.5"/>
+            <point key="canvasLocation" x="141.5" y="204.5"/>
         </customView>
     </objects>
 </document>

@@ -44,6 +44,10 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
         NSApp.checkForUpdates()
     }
     
+    @IBAction func onFeedbackButtonClicked(_ sender: NSButton) {
+        NSApp.showFeedbackWindow()
+    }
+    
     // MARK: MASPreferencesViewController
     override var identifier: String? {
         get { return "GeneralPreferences" }
