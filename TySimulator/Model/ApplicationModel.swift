@@ -35,6 +35,14 @@ class ApplicationModel: NSObject {
             else { return }
         
         name = json["CFBundleName"] as! String
+        if let bundleIcons = json["CFBundleIcons"] as? Dictionary<String, Any>,
+            let primaryIcon = (bundleIcons["CFBundlePrimaryIcon"] as? Dictionary<String, Any>),
+            let iconFiles = primaryIcon["CFBundleIconFiles"] as? Array<String>,
+            let iconFile = iconFiles.last {
+            
+            self.icon = NSImage(contentsOf: bundleLocation.appendingPathComponent("\(app)/\(iconFile)@3x.png"))
+        }
+        
         bundleIdentifier = json["CFBundleIdentifier"] as! String
     }
     
