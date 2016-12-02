@@ -17,9 +17,6 @@ class MainMenuController: NSObject, NSMenuDelegate {
     lazy var quitMenuItem: NSMenuItem = {
         return NSMenuItem(title: "Quit TySimulator", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
     }()
-    lazy var feedbackItem: NSMenuItem = {
-        return NSMenuItem(title: "Feedback...", action: #selector(NSApplication.showFeedbackWindow), keyEquivalent: "")
-    }()
     lazy var aboutItem: NSMenuItem = {
         return NSMenuItem(title: "About TySimulator", action: #selector(NSApplication.showAboutWindow), keyEquivalent: "")
     }()
@@ -40,7 +37,6 @@ class MainMenuController: NSObject, NSMenuDelegate {
         menu.addItem(NSMenuItem.separator())
         menu.addItem(self.preferenceItem)
         menu.addItem(self.aboutItem)
-        menu.addItem(self.feedbackItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(self.quitMenuItem)
         self.statusItem.menu = menu
