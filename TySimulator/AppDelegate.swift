@@ -9,11 +9,12 @@
 import Cocoa
 import HockeySDK
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, DM_SUUpdaterDelegate_DevMateInteraction {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         DevMateKit.sendTrackingReport(nil, delegate: nil)
         DevMateKit.setupIssuesController(nil, reportingUnhandledIssues: true)
+        DM_SUUpdater.shared().delegate = self
         
         BITHockeyManager.shared().configure(withIdentifier: "4809e9695f5749449758cf7ec79710f5")
         BITHockeyManager.shared().crashManager.isAutoSubmitCrashReport = true
@@ -24,5 +25,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
+    // MARK: SUUpdaterDelegate_DevMateInteraction
+    
+    public func updaterDidNotFindUpdate(_ updater: DM_SUUpdater!) {
+        log.warning("not found update: \(updater)")
+    }
+    
+    public func updaterShouldCheck(forBetaUpdates updater: DM_SUUpdater!) -> Bool {
+        #if DEBUG
+            return true
+        #else
+            return false
+        #endif
+    }
+    
+    public func isUpdater(inTestMode updater: DM_SUUpdater!) -> Bool {
+        #if DEBUG
+            return true
+        #else
+            return false
+        #endif
+    }
 }
 
