@@ -31,6 +31,11 @@ extension NSApplication: DM_SUUpdaterDelegate_DevMateInteraction {
     }
     
     // MARK: SUUpdaterDelegate_DevMateInteraction
+    
+    public func updaterDidNotFindUpdate(_ updater: DM_SUUpdater!) {
+        log.warning("not found update: \(updater)")
+    }
+    
     public func updaterShouldCheck(forBetaUpdates updater: DM_SUUpdater!) -> Bool {
 #if DEBUG
         return true
