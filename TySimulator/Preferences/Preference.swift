@@ -66,9 +66,9 @@ class Preference: NSObject {
                 }
             }
         }
-        // init onlyAvailableDevices
-        self.onlyAvailableDevices = self.preferences?[Preference.kUserDefaultsKeyOnlyAvailableDevices] as! Bool
-        self.onlyHasContentDevices = self.preferences?[Preference.kUserDefaultsKeyOnlyHasContentDevices] as! Bool
+        // init switchs
+        self.onlyAvailableDevices = (self.preferences?[Preference.kUserDefaultsKeyOnlyAvailableDevices] as? Bool) ?? false
+        self.onlyHasContentDevices = (self.preferences?[Preference.kUserDefaultsKeyOnlyHasContentDevices] as? Bool) ?? false
         super.init()
     }
     
