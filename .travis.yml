@@ -1,0 +1,4 @@
+# language: swift
+osx_image: xcode8.1
+script:
+  - set -o pipefail && xcodebuild test -workspace TySimulator.xcworkspace -scheme TySimulator | xcpretty
