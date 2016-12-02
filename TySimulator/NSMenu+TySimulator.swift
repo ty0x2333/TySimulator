@@ -76,6 +76,8 @@ extension NSMenuItem {
         return applications.map {
             let item = NSMenuItem()
             item.title = $0.name
+            item.image = $0.icon
+            item.image?.size = NSSize(width: 24, height: 24)
             item.isEnabled = true
             item.target = $0
             item.action = #selector(ApplicationModel.handleMenuItem(_:))
