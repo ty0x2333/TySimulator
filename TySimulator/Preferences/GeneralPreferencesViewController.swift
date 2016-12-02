@@ -40,6 +40,10 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
         DM_SUUpdater.shared().automaticallyChecksForUpdates = sender.state == NSOnState
     }
     
+    @IBAction func onCheckForUpdatesButtonClicked(_ sender: NSButton) {
+        NSApp.checkForUpdates()
+    }
+    
     // MARK: MASPreferencesViewController
     override var identifier: String? {
         get { return "GeneralPreferences" }
