@@ -9,7 +9,7 @@
 import Cocoa
 import HockeySDK
 
-class AppDelegate: NSObject, NSApplicationDelegate, DM_SUUpdaterDelegate_DevMateInteraction {
+class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         DevMateKit.sendTrackingReport(nil, delegate: nil)
@@ -19,6 +19,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, DM_SUUpdaterDelegate_DevMate
         BITHockeyManager.shared().configure(withIdentifier: "4809e9695f5749449758cf7ec79710f5")
         BITHockeyManager.shared().crashManager.isAutoSubmitCrashReport = true
         BITHockeyManager.shared().start()
+        
+        // Setup trial
+        #if DEBUG
+            DMKitDebugAddTrialMenu()
+            DMKitDebugAddActivationMenu()
+        #endif
+        
+        var error: Int = DMKevlarError.testError.rawValue
+        if !_my_secret_activation_check!(&error).boolValue || DMKevlarError.noError != DMKevlarError(rawValue: error) {
+            DevMateKit.setupTimeTrial(self, withTimeInterval: kDMTrialWeek)
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -31,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DM_SUUpdaterDelegate_DevMate
         log.warning("not found update: \(updater)")
     }
     
-    public func updaterShouldCheck(forBetaUpdates updater: DM_SUUpdater!) -> Bool {
+    @nonobjc public func updaterShouldCheck(forBetaUpdates updater: DM_SUUpdater!) -> Bool {
         #if DEBUG
             return true
         #else
