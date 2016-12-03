@@ -12,12 +12,21 @@ import Nimble
 
 class ScriptTests: QuickSpec {
     override func spec() {
-        let command = "${\"device\": \"booted\", \"application\": \"com.tianyiyan.TYTumblr\"}"
-        let script = "open \(command)"
         describe("parsing script", closure: {
-            it("should be parsed", closure: {
-                let result = Process.transformedScript(script)
-                expect(result.range(of: command)).to(beNil())
+            context("input valid command", {
+                let command = "${\"device\": \"booted\", \"application\": \"com.tianyiyan.TYTumblr\"}"
+                let script = "open \(command)"
+                it("should be parsed", closure: {
+                    expect { try Process.transformedScript(script) }.toNot(throwError())
+                })
+            })
+            
+            context("input not valid command", {
+                let command = "${xxxx}"
+                let script = "open \(command)"
+                it("should be parsed", closure: {
+                    expect { try Process.transformedScript(script) }.to(throwError())
+                })
             })
         })
     }
