@@ -31,6 +31,9 @@
 		19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698231DE72AAE00AD3876 /* CommandTransformer.swift */; };
 		19C680BD1DF2EAB0008CC5FE /* TySimulatorKevlar.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */; };
 		19C680C11DF31AA4008CC5FE /* NSViewController+TySimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C680C01DF31AA4008CC5FE /* NSViewController+TySimulator.swift */; };
+		19C680C31DF32F0C008CC5FE /* LicenseInfoStepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C680C21DF32F0C008CC5FE /* LicenseInfoStepController.swift */; };
+		19C680C51DF33DA6008CC5FE /* LicenseInfoStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */; };
+		19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */; };
 		19CA15A81DEF2C300078AA91 /* NSTextView+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA15A71DEF2C300078AA91 /* NSTextView+Placeholder.swift */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
 		19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */; };
@@ -86,6 +89,9 @@
 		19C680BB1DF2EAB0008CC5FE /* TySimulatorKevlar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TySimulatorKevlar.h; sourceTree = "<group>"; };
 		19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TySimulatorKevlar.m; sourceTree = "<group>"; };
 		19C680C01DF31AA4008CC5FE /* NSViewController+TySimulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSViewController+TySimulator.swift"; sourceTree = "<group>"; };
+		19C680C21DF32F0C008CC5FE /* LicenseInfoStepController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseInfoStepController.swift; sourceTree = "<group>"; };
+		19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseInfoStepView.xib; sourceTree = "<group>"; };
+		19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationWindow.xib; sourceTree = "<group>"; };
 		19CA15A71DEF2C300078AA91 /* NSTextView+Placeholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Placeholder.swift"; sourceTree = "<group>"; };
 		19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutTableCellView.swift; sourceTree = "<group>"; };
 		19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +164,9 @@
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
 				F58132CF1DDD7E84006C5A1A /* Device.swift */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
+				19C680C21DF32F0C008CC5FE /* LicenseInfoStepController.swift */,
+				19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */,
+				19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */,
 				19B698231DE72AAE00AD3876 /* CommandTransformer.swift */,
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
 				19460C951DD78EA900894FBA /* MainMenu.xib */,
@@ -323,6 +332,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				19460C941DD78EA900894FBA /* Assets.xcassets in Resources */,
+				19C680C51DF33DA6008CC5FE /* LicenseInfoStepView.xib in Resources */,
+				19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */,
 				1931AA971DE214D300B78D40 /* CommandViewController.xib in Resources */,
 				F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */,
 				19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */,
@@ -457,6 +468,7 @@
 				19460CB61DD83E5500894FBA /* Process+Extension.swift in Sources */,
 				19C680C11DF31AA4008CC5FE /* NSViewController+TySimulator.swift in Sources */,
 				1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */,
+				19C680C31DF32F0C008CC5FE /* LicenseInfoStepController.swift in Sources */,
 				F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */,
 				191195581DD8C0A700EEBBB4 /* FileManager+Extension.swift in Sources */,
 				191C3B4B1DDA2BB60096A6D0 /* NSApplication+TySimulator.swift in Sources */,
