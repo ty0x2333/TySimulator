@@ -10,6 +10,8 @@ import Cocoa
 import HockeySDK
 
 class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
+    
+    var activationController: DMActivationController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -28,16 +30,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
             DMKitDebugAddActivationMenu()
         #endif
         
+        activationController = DMActivationController.timeTrialController(for: DMTrialArea.forAllUsers, timeInterval: kDMTrialWeek, customWindowNib: "ActivationWindow")
+        activationController?.delegate = self
+        let successStepController = LicenseInfoStepController(nibName: "LicenseInfoStepView", bundle: Bundle.main)
+        activationController?.registerStep(successStepController, forActivationStep: DMActivationStandardStep.stepSuccess.rawValue)
         var error: Int = DMKevlarError.testError.rawValue
         if !_my_secret_activation_check!(&error).boolValue || DMKevlarError.noError != DMKevlarError(rawValue: error) {
-            DevMateKit.setupTimeTrial(self, withTimeInterval: kDMTrialWeek)
+            activationController?.startTrial()
         }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
+    
     // MARK: SUUpdaterDelegate_DevMateInteraction
     
     public func updaterDidNotFindUpdate(_ updater: DM_SUUpdater!) {
@@ -58,6 +64,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
         #else
             return false
         #endif
+    }
+    
+    // MARK: DMActivationControllerDelegate
+    
+    public func activationController(_ controller: DMActivationController!, activationStepForProposedStep proposedStep: DMActivationStep) -> DMActivationStep {
+        var error: Int = DMKevlarError.testError.rawValue
+        if proposedStep == DMActivationStandardStep.stepWelcome.rawValue && (_my_secret_activation_check!(&error).boolValue && DMKevlarError.noError == DMKevlarError(rawValue: error)) {
+            return DMActivationStandardStep.stepSuccess.rawValue
+        }
+        return proposedStep
     }
 }
 

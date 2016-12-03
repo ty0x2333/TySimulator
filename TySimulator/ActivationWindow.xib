@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DMActivationController">
+            <connections>
+                <outlet property="containerView" destination="bu5-AN-K6r" id="T3r-kn-zz5"/>
+                <outlet property="window" destination="c50-oL-zDa" id="hTy-7A-KCB"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="c50-oL-zDa">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <rect key="contentRect" x="196" y="240" width="445" height="200"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <view key="contentView" id="1EI-P2-t6V">
+                <rect key="frame" x="0.0" y="0.0" width="445" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="bu5-AN-K6r">
+                        <rect key="frame" x="0.0" y="0.0" width="445" height="200"/>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="bu5-AN-K6r" secondAttribute="bottom" id="LgZ-Jc-RcK"/>
+                    <constraint firstItem="bu5-AN-K6r" firstAttribute="top" secondItem="1EI-P2-t6V" secondAttribute="top" id="nok-R6-dUk"/>
+                    <constraint firstItem="bu5-AN-K6r" firstAttribute="leading" secondItem="1EI-P2-t6V" secondAttribute="leading" id="nxs-V1-iBL"/>
+                    <constraint firstAttribute="trailing" secondItem="bu5-AN-K6r" secondAttribute="trailing" id="ydr-Se-gWF"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="446.5" y="432"/>
+        </window>
+    </objects>
+</document>
