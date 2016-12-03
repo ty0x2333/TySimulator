@@ -10,8 +10,8 @@
 #define TySimulator_Bridging_Header_h
 
 #import <CommonCrypto/CommonCrypto.h> // required for MD5
-#import <DevMateKit/DevMateKit.h>
-#import <TySimulator-Kevlar/DMKevlarApplication.h>
+#import <TySimulator-Kevlar/DMKevlarApplication.h> // must before DevMateKit
 #import "TySimulatorKevlar.h"
+#import <DevMateKit/DevMateKit.h>
 
 #endif /* TySimulator_Bridging_Header_h */
