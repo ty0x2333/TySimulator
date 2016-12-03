@@ -11,5 +11,7 @@
 
 #import <CommonCrypto/CommonCrypto.h> // required for MD5
 #import <DevMateKit/DevMateKit.h>
+#import "DMKevlarApplication.h"
+#import "TySimulatorKevlar.h"
 
 #endif /* TySimulator_Bridging_Header_h */
