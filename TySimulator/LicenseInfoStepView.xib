@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,11 +19,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="ra5-PK-jL8">
-            <rect key="frame" x="0.0" y="0.0" width="591" height="281"/>
+            <rect key="frame" x="0.0" y="0.0" width="519" height="281"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="1000" verticalHuggingPriority="1000" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EzP-fK-cha">
-                    <rect key="frame" x="238" y="223" width="335" height="38"/>
+                    <rect key="frame" x="166" y="223" width="335" height="38"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="331" id="80D-YC-cjA"/>
                     </constraints>
@@ -35,7 +34,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bsc-wa-HTE">
-                    <rect key="frame" x="506" y="13" width="72" height="32"/>
+                    <rect key="frame" x="434" y="13" width="72" height="32"/>
                     <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vTc-mZ-fvo">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -45,14 +44,11 @@
                     </connections>
                 </button>
                 <imageView translatesAutoresizingMaskIntoConstraints="NO" id="bAG-0r-vPY">
-                    <rect key="frame" x="20" y="61" width="200" height="200"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="bAG-0r-vPY" secondAttribute="height" multiplier="1:1" id="zDt-M2-Cnk"/>
-                    </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="lCc-cC-zjh"/>
+                    <rect key="frame" x="20" y="77" width="128" height="128"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="lCc-cC-zjh"/>
                 </imageView>
                 <box horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="jCZ-3U-GwP">
-                    <rect key="frame" x="237" y="57" width="337" height="148"/>
+                    <rect key="frame" x="165" y="57" width="337" height="148"/>
                     <view key="contentView" id="kRP-c4-tY0">
                         <rect key="frame" x="2" y="2" width="333" height="131"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,11 +124,9 @@
                 </box>
             </subviews>
             <constraints>
-                <constraint firstItem="bAG-0r-vPY" firstAttribute="top" secondItem="EzP-fK-cha" secondAttribute="top" id="0iI-4B-5Ad"/>
                 <constraint firstItem="Bsc-wa-HTE" firstAttribute="trailing" secondItem="kRP-c4-tY0" secondAttribute="trailing" id="88m-NM-qrV"/>
                 <constraint firstItem="EzP-fK-cha" firstAttribute="leading" secondItem="bAG-0r-vPY" secondAttribute="trailing" constant="20" id="Cap-wO-YEP"/>
                 <constraint firstAttribute="bottom" secondItem="Bsc-wa-HTE" secondAttribute="bottom" constant="20" id="GMe-nl-cNT"/>
-                <constraint firstItem="bAG-0r-vPY" firstAttribute="bottom" secondItem="jCZ-3U-GwP" secondAttribute="bottom" id="GTh-Q7-zoh"/>
                 <constraint firstItem="jCZ-3U-GwP" firstAttribute="top" secondItem="EzP-fK-cha" secondAttribute="bottom" constant="18" id="J68-uj-owX"/>
                 <constraint firstItem="Bsc-wa-HTE" firstAttribute="top" secondItem="jCZ-3U-GwP" secondAttribute="bottom" constant="20" id="TOe-yf-YoT"/>
                 <constraint firstItem="jCZ-3U-GwP" firstAttribute="trailing" secondItem="EzP-fK-cha" secondAttribute="trailing" id="VvL-hp-3py"/>
@@ -140,8 +134,12 @@
                 <constraint firstItem="bAG-0r-vPY" firstAttribute="leading" secondItem="ra5-PK-jL8" secondAttribute="leading" constant="20" id="ZEi-EV-Buh"/>
                 <constraint firstItem="EzP-fK-cha" firstAttribute="top" secondItem="ra5-PK-jL8" secondAttribute="top" constant="20" id="cgH-p0-fXS"/>
                 <constraint firstAttribute="trailing" secondItem="EzP-fK-cha" secondAttribute="trailing" constant="20" id="iSG-cp-Fof"/>
+                <constraint firstItem="bAG-0r-vPY" firstAttribute="centerY" secondItem="ra5-PK-jL8" secondAttribute="centerY" id="mha-W1-Y3z"/>
             </constraints>
-            <point key="canvasLocation" x="502" y="686.5"/>
+            <point key="canvasLocation" x="555.5" y="686.5"/>
         </customView>
     </objects>
+    <resources>
+        <image name="NSApplicationIcon" width="128" height="128"/>
+    </resources>
 </document>
