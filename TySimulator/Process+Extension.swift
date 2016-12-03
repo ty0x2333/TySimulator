@@ -38,7 +38,7 @@ extension Process {
         return result
     }
     
-    public class func transformedScript(_ script: String) -> String {
+    public class func transformedScript(_ script: String) throws -> String {
         var result = script
         var res: [NSTextCheckingResult] = []
         do {
@@ -53,37 +53,38 @@ extension Process {
         for checkingRes in res {
             var commandValue = (script as NSString).substring(with:checkingRes.range)
             commandValue = (commandValue as NSString).substring(from: 1)
-            do {
-                if let command = try JSONSerialization.jsonObject(with: commandValue.data(using: .utf8)!, options: []) as? Dictionary<String, String> {
-                    if let deviceId = command["device"] {
-                        var device: DeviceModel?
-                        if deviceId != "booted" {
-                            device = Device.shared().device(udid: deviceId)
-                        } else {
-                            device = Device.bootedDevices().first
-                        }
-                        guard device != nil else {
-                            log.warning("no device: \(deviceId)")
-                            continue
-                        }
-                        if let bundleIdentifier = command["application"] {
-                            if let application = device?.application(bundleIdentifier: bundleIdentifier) {
-                                if let location = application.loadDataLocation()?.removeTrailingSlash.absoluteString {
-                                    result = (result as NSString).replacingCharacters(in: checkingRes.range, with: location)
-                                }
+            if let command = try JSONSerialization.jsonObject(with: commandValue.data(using: .utf8)!, options: []) as? Dictionary<String, String> {
+                if let deviceId = command["device"] {
+                    var device: DeviceModel?
+                    if deviceId != "booted" {
+                        device = Device.shared().device(udid: deviceId)
+                    } else {
+                        device = Device.bootedDevices().first
+                    }
+                    guard device != nil else {
+                        log.warning("no device: \(deviceId)")
+                        continue
+                    }
+                    if let bundleIdentifier = command["application"] {
+                        if let application = device?.application(bundleIdentifier: bundleIdentifier) {
+                            if let location = application.loadDataLocation()?.removeTrailingSlash.absoluteString {
+                                result = (result as NSString).replacingCharacters(in: checkingRes.range, with: location)
                             }
                         }
                     }
                 }
-            } catch {
-                log.error(error)
             }
         }
         return result
     }
     
     static func execute(_ script: String) -> String {
-        let scriptCLI = self.transformedScript(script)
+        var scriptCLI = script
+        do {
+            scriptCLI = try self.transformedScript(scriptCLI)
+        } catch {
+            log.error(error)
+        }
         log.info("run script: \(scriptCLI)")
         return self.output(launchPath: "/bin/sh", arguments: ["-c", scriptCLI])
     }
