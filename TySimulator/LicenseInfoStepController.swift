@@ -16,6 +16,7 @@ class LicenseInfoStepController: DMSuccessStepController {
     
     override func restoreState(_ saveContainer: [AnyHashable : Any]!) {
         
+        self.applicationIconView.image = NSApp.applicationIconImage
         var error: Int = DMKevlarError.testError.rawValue
         if _my_secret_activation_check!(&error).boolValue || DMKevlarError.noError == DMKevlarError(rawValue: error) {
             let userLicense = _my_secret_license_info_getter!()?.takeUnretainedValue() as? Dictionary<String, Any>
