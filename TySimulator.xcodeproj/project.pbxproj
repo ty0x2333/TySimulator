@@ -83,8 +83,6 @@
 		19B698201DE7276E00AD3876 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TySimulator-Bridging-Header.h"; sourceTree = "<group>"; };
 		19B698231DE72AAE00AD3876 /* CommandTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTransformer.swift; sourceTree = "<group>"; };
-		19C680B91DF2E957008CC5FE /* DMKevlarApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMKevlarApplication.h; sourceTree = "<group>"; };
-		19C680BA1DF2E957008CC5FE /* libkevlar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libkevlar.a; sourceTree = "<group>"; };
 		19C680BB1DF2EAB0008CC5FE /* TySimulatorKevlar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TySimulatorKevlar.h; sourceTree = "<group>"; };
 		19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TySimulatorKevlar.m; sourceTree = "<group>"; };
 		19C680C01DF31AA4008CC5FE /* NSViewController+TySimulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSViewController+TySimulator.swift"; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 		19460C851DD78EA900894FBA = {
 			isa = PBXGroup;
 			children = (
-				19C680B81DF2E957008CC5FE /* Kevlar */,
 				19460C901DD78EA900894FBA /* TySimulator */,
 				19460CA01DD78EA900894FBA /* TySimulatorTests */,
 				19460C8F1DD78EA900894FBA /* Products */,
@@ -192,15 +189,6 @@
 				1911955B1DD8C2B500EEBBB4 /* AppGroupModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		19C680B81DF2E957008CC5FE /* Kevlar */ = {
-			isa = PBXGroup;
-			children = (
-				19C680B91DF2E957008CC5FE /* DMKevlarApplication.h */,
-				19C680BA1DF2E957008CC5FE /* libkevlar.a */,
-			);
-			path = Kevlar;
 			sourceTree = "<group>";
 		};
 		19F94A171DDCBA4200AECF3B /* Preferences */ = {
@@ -611,26 +599,6 @@
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					"\"DevMateKit\"",
-					"-framework",
-					"\"HockeySDK\"",
-					"-framework",
-					"\"MASPreferences\"",
-					"-framework",
-					"\"MASShortcut\"",
-					"-framework",
-					"\"SwiftyBeaver\"",
-					"-ObjC",
-					"\"$(PROJECT_DIR)/Kevlar/libkevlar.a\"",
-					"-lc++",
-					"-framework",
-					Security,
-					"-framework",
-					IOKit,
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -651,26 +619,6 @@
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					"\"DevMateKit\"",
-					"-framework",
-					"\"HockeySDK\"",
-					"-framework",
-					"\"MASPreferences\"",
-					"-framework",
-					"\"MASShortcut\"",
-					"-framework",
-					"\"SwiftyBeaver\"",
-					"-ObjC",
-					"\"$(PROJECT_DIR)/Kevlar/libkevlar.a\"",
-					"-lc++",
-					"-framework",
-					Security,
-					"-framework",
-					IOKit,
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

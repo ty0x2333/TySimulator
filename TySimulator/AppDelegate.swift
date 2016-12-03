@@ -12,6 +12,8 @@ import HockeySDK
 class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        _ = NSApplication.toggleDockIcon(showIcon: false)
         DevMateKit.sendTrackingReport(nil, delegate: nil)
         DevMateKit.setupIssuesController(nil, reportingUnhandledIssues: true)
         DM_SUUpdater.shared().delegate = self

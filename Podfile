@@ -11,6 +11,8 @@ target 'TySimulator' do
   pod 'MASShortcut'
   pod 'MASPreferences'
   pod 'DevMateKit'
+  
+  pod 'TySimulator-Kevlar', :path => 'Kevlar'
 
   target 'TySimulatorTests' do
     inherit! :search_paths

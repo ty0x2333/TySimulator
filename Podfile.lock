@@ -6,6 +6,7 @@ PODS:
   - Nimble (5.1.1)
   - Quick (1.0.0)
   - SwiftyBeaver (1.1.1)
+  - TySimulator-Kevlar (1.0)
 
 DEPENDENCIES:
   - DevMateKit
@@ -15,6 +16,11 @@ DEPENDENCIES:
   - Nimble
   - Quick
   - SwiftyBeaver
+  - TySimulator-Kevlar (from `Kevlar`)
+
+EXTERNAL SOURCES:
+  TySimulator-Kevlar:
+    :path: Kevlar
 
 SPEC CHECKSUMS:
   DevMateKit: 3ba77083f5faa40266e0d2d70776de2a82c71dd0
@@ -24,7 +30,8 @@ SPEC CHECKSUMS:
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
   SwiftyBeaver: 2b68694df862381235e32bcfc4ec991e26bf131d
+  TySimulator-Kevlar: 9a2a5c7d6962c3977b6a2881688e23cfd0e1c983
 
-PODFILE CHECKSUM: 4ba8852bd4c7b0d21d4013d9ba59ff24bf1f0729
+PODFILE CHECKSUM: ddcf76467d33a43b86be93f5b1e7083b9a9efd4d
 
 COCOAPODS: 1.2.0.beta.1
