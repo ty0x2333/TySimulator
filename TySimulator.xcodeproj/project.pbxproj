@@ -30,6 +30,7 @@
 		19B698211DE7276E00AD3876 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698201DE7276E00AD3876 /* String+MD5.swift */; };
 		19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698231DE72AAE00AD3876 /* CommandTransformer.swift */; };
 		19C680BD1DF2EAB0008CC5FE /* TySimulatorKevlar.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */; };
+		19C680C11DF31AA4008CC5FE /* NSViewController+TySimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C680C01DF31AA4008CC5FE /* NSViewController+TySimulator.swift */; };
 		19CA15A81DEF2C300078AA91 /* NSTextView+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA15A71DEF2C300078AA91 /* NSTextView+Placeholder.swift */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
 		19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */; };
@@ -86,6 +87,7 @@
 		19C680BA1DF2E957008CC5FE /* libkevlar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libkevlar.a; sourceTree = "<group>"; };
 		19C680BB1DF2EAB0008CC5FE /* TySimulatorKevlar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TySimulatorKevlar.h; sourceTree = "<group>"; };
 		19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TySimulatorKevlar.m; sourceTree = "<group>"; };
+		19C680C01DF31AA4008CC5FE /* NSViewController+TySimulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSViewController+TySimulator.swift"; sourceTree = "<group>"; };
 		19CA15A71DEF2C300078AA91 /* NSTextView+Placeholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Placeholder.swift"; sourceTree = "<group>"; };
 		19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutTableCellView.swift; sourceTree = "<group>"; };
 		19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				191195521DD87FB700EEBBB4 /* NSMenu+TySimulator.swift */,
 				191195571DD8C0A700EEBBB4 /* FileManager+Extension.swift */,
 				191C3B4A1DDA2BB60096A6D0 /* NSApplication+TySimulator.swift */,
+				19C680C01DF31AA4008CC5FE /* NSViewController+TySimulator.swift */,
 				19B6981E1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift */,
 				192B88EE1DF07189002B10C9 /* NSApplication+Launch.swift */,
 				19CA15A71DEF2C300078AA91 /* NSTextView+Placeholder.swift */,
@@ -464,6 +467,7 @@
 				19F94A1F1DDCBF7C00AECF3B /* Preference.swift in Sources */,
 				19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */,
 				19460CB61DD83E5500894FBA /* Process+Extension.swift in Sources */,
+				19C680C11DF31AA4008CC5FE /* NSViewController+TySimulator.swift in Sources */,
 				1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */,
 				F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */,
 				191195581DD8C0A700EEBBB4 /* FileManager+Extension.swift in Sources */,
