@@ -18,6 +18,7 @@ extension NSApplication {
         let windowController = Preference.sharedWindowController()
         windowController.select(at: 0)
         windowController.showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     func showAboutWindow() {
@@ -37,6 +38,11 @@ extension NSApplication {
             result = NSApp.setActivationPolicy(NSApplicationActivationPolicy.accessory)
         }
         return result
+    }
+    
+    public class func activate() -> Bool {
+        var error: Int = DMKevlarError.testError.rawValue
+        return _my_secret_activation_check!(&error).boolValue || DMKevlarError.noError == DMKevlarError(rawValue: error)
     }
     
 }

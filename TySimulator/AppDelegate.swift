@@ -34,8 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
         activationController?.delegate = self
         let successStepController = LicenseInfoStepController(nibName: "LicenseInfoStepView", bundle: Bundle.main)
         activationController?.registerStep(successStepController, forActivationStep: DMActivationStandardStep.stepSuccess.rawValue)
-        var error: Int = DMKevlarError.testError.rawValue
-        if !_my_secret_activation_check!(&error).boolValue || DMKevlarError.noError != DMKevlarError(rawValue: error) {
+        if !NSApplication.activate() {
             activationController?.startTrial()
         }
     }
@@ -69,8 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
     // MARK: DMActivationControllerDelegate
     
     public func activationController(_ controller: DMActivationController!, activationStepForProposedStep proposedStep: DMActivationStep) -> DMActivationStep {
-        var error: Int = DMKevlarError.testError.rawValue
-        if proposedStep == DMActivationStandardStep.stepWelcome.rawValue && (_my_secret_activation_check!(&error).boolValue && DMKevlarError.noError == DMKevlarError(rawValue: error)) {
+        if proposedStep == DMActivationStandardStep.stepWelcome.rawValue && NSApplication.activate() {
             return DMActivationStandardStep.stepSuccess.rawValue
         }
         return proposedStep
