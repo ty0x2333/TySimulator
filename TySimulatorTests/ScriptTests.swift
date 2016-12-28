@@ -14,18 +14,18 @@ class ScriptTests: QuickSpec {
     override func spec() {
         describe("parsing script", closure: {
             context("input valid command", {
-                let command = "${\"device\": \"booted\", \"application\": \"com.tianyiyan.TYTumblr\"}"
+                let command = "${{\"device\": \"booted\", \"application\": \"com.tianyiyan.TYTumblr\"}}"
                 let script = "open \(command)"
                 it("should be parsed", closure: {
-                    expect { try Process.transformedScript(script) }.toNot(throwError())
+                    expect { try Script.transformedScript(script) }.toNot(throwError())
                 })
             })
             
             context("input not valid command", {
-                let command = "${xxxx}"
+                let command = "${{xxxx}}"
                 let script = "open \(command)"
                 it("should be parsed", closure: {
-                    expect { try Process.transformedScript(script) }.to(throwError())
+                    expect { try Script.transformedScript(script) }.to(throwError())
                 })
             })
         })
