@@ -13,7 +13,7 @@ public class Script {
         var result = script
         var res: [NSTextCheckingResult] = []
         do {
-            let regex = try NSRegularExpression(pattern:"\\$\\{{.*\\}}", options:NSRegularExpression.Options.caseInsensitive)
+            let regex = try NSRegularExpression(pattern:"\\$\\{\\{.*\\}\\}", options:NSRegularExpression.Options.caseInsensitive)
             res = regex.matches(in:script, options:NSRegularExpression.MatchingOptions(rawValue: 0), range:NSMakeRange(0, script.characters.count))
         } catch {
             log.error(error)
@@ -23,7 +23,7 @@ public class Script {
         }
         for checkingRes in res {
             var commandValue = (script as NSString).substring(with:checkingRes.range)
-            commandValue = (commandValue as NSString).substring(from: 1)
+            commandValue = (commandValue as NSString).substring(with: NSMakeRange(2, commandValue.characters.count - 3))
             if let command = try JSONSerialization.jsonObject(with: commandValue.data(using: .utf8)!, options: []) as? Dictionary<String, String> {
                 if let deviceId = command["device"] {
                     var device: DeviceModel?
