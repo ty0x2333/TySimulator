@@ -9,7 +9,7 @@
 import Cocoa
 import MASShortcut
 
-class CommandViewController: NSViewController {
+class CommandViewController: NSViewController, NSTextViewDelegate {
     var command: CommandModel!
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var shortcutView: MASShortcutView!
@@ -40,6 +40,7 @@ class CommandViewController: NSViewController {
         let (deviceIdentifier, applicationIdentifier) = self.placeholderDevice()
         
         self.scriptTextView.placeHolderString = "open ${\"device\": \"\(deviceIdentifier)\", \"application\": \"\(applicationIdentifier)\"}"
+        self.scriptTextView.delegate = self;
     }
     
     func placeholderDevice() -> (String, String) {
@@ -71,5 +72,20 @@ class CommandViewController: NSViewController {
     @IBAction func onCancelButtonClicked(_ sender: NSButton) {
         // TODO: log
         self.dismiss(self)
+    }
+    
+    // MARK: NSTextViewDelegate
+    
+    func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        var retval = false
+        
+        if commandSelector == #selector(insertTab(_:)) {
+            if (textView.string?.isEmpty)!, let placeHolderString = textView.placeHolderString {
+                textView.insertText(placeHolderString)
+                retval = true
+            }
+        }
+        
+        return retval
     }
 }
