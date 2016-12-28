@@ -43,6 +43,7 @@
 		D665686CF28115CB02D3FB7B /* Pods_TySimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DB23622D95C6C7E47AFD0C /* Pods_TySimulatorTests.framework */; };
 		F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */; };
 		F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50D76561DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib */; };
+		F521AA3A1E14510300353DA1 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521AA391E14510300353DA1 /* Script.swift */; };
 		F58132D01DDD7E84006C5A1A /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58132CF1DDD7E84006C5A1A /* Device.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TySimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyBindingsPreferencesViewController.swift; sourceTree = "<group>"; };
 		F50D76561DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyBindingsPreferencesViewController.xib; sourceTree = "<group>"; };
+		F521AA391E14510300353DA1 /* Script.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
 		F58132CF1DDD7E84006C5A1A /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Model/Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +170,7 @@
 				19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */,
 				19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */,
 				19B698231DE72AAE00AD3876 /* CommandTransformer.swift */,
+				F521AA391E14510300353DA1 /* Script.swift */,
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
 				19460C951DD78EA900894FBA /* MainMenu.xib */,
 				19460C981DD78EA900894FBA /* Info.plist */,
@@ -461,6 +464,7 @@
 				19B6981F1DE71F3900AD3876 /* MASShortcutMonitor+Command.swift in Sources */,
 				19B698211DE7276E00AD3876 /* String+MD5.swift in Sources */,
 				19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */,
+				F521AA3A1E14510300353DA1 /* Script.swift in Sources */,
 				1911954F1DD8400D00EEBBB4 /* URL+Extension.swift in Sources */,
 				191195531DD87FB700EEBBB4 /* NSMenu+TySimulator.swift in Sources */,
 				19F94A1F1DDCBF7C00AECF3B /* Preference.swift in Sources */,

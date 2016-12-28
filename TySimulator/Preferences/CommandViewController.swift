@@ -39,7 +39,7 @@ class CommandViewController: NSViewController, NSTextViewDelegate {
         
         let (deviceIdentifier, applicationIdentifier) = self.placeholderDevice()
         
-        self.scriptTextView.placeHolderString = "open ${\"device\": \"\(deviceIdentifier)\", \"application\": \"\(applicationIdentifier)\"}"
+        self.scriptTextView.placeHolderString = "open " + Script.transformedValue(deviceIdentifier: deviceIdentifier, applicationIdentifier: applicationIdentifier)
         self.scriptTextView.delegate = self;
     }
     
