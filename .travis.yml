@@ -2,6 +2,6 @@ language: objective-c
 osx_image: xcode8.1
 script:
   # - set -o pipefail && xcodebuild test -workspace TySimulator.xcworkspace -scheme TySimulator ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty
-  - xcodebuild test -workspace TySimulator.xcworkspace -scheme TySimulator ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -enableCodeCoverage YES
+  - xcodebuild -workspace TySimulator.xcworkspace -scheme TySimulator -sdk macosx -configuration Release -enableCodeCoverage YES test
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t CODECOV_TOKEN
+  - bash <(curl -s https://codecov.io/bash) -cF osx -t CODECOV_TOKEN
