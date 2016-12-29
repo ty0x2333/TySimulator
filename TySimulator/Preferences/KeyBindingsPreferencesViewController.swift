@@ -34,7 +34,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
                 MASShortcutMonitor.shared().register(command: command)
                 self.tableView.reloadData()
             }
-            self.presentViewControllerAsModalWindow(commandViewController)
+            self.presentViewControllerAsSheet(commandViewController)
         }
     }
     
@@ -46,7 +46,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
             Preference.shared().addCommand(command)
             self.tableView.reloadData()
         }
-        self.presentViewControllerAsModalWindow(commandViewController)
+        self.presentViewControllerAsSheet(commandViewController)
     }
     
     @IBAction func onRemoveButtonClicked(_ sender: NSButton) {
