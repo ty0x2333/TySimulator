@@ -38,6 +38,7 @@ extension Process {
         return result
     }
     
+    @discardableResult
     static func execute(_ script: String) -> String {
         var scriptCLI = script
         do {
