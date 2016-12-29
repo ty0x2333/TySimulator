@@ -8,12 +8,13 @@
 
 import Cocoa
 import MASShortcut
+import ACEViewSwift
 
-class CommandViewController: NSViewController, NSTextViewDelegate {
+class CommandViewController: NSViewController {
     var command: CommandModel!
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var shortcutView: MASShortcutView!
-    @IBOutlet var scriptTextView: NSTextView!
+    @IBOutlet weak var aceView: ACEView!
     var save: ((CommandModel) -> ())?
     
     init(_ command: CommandModel) {
@@ -35,12 +36,25 @@ class CommandViewController: NSViewController, NSTextViewDelegate {
         self.title = "Command Editor"
         self.nameTextField.bind("value", to: self.command, withKeyPath: #keyPath(CommandModel.name), options: [NSContinuouslyUpdatesValueBindingOption: true])
         self.shortcutView.bind("shortcutValue", to: self.command, withKeyPath: #keyPath(CommandModel.key), options: [NSContinuouslyUpdatesValueBindingOption: true])
-        self.scriptTextView.bind("value", to: self.command, withKeyPath: #keyPath(CommandModel.script), options: [NSContinuouslyUpdatesValueBindingOption: true])
         
-        let (deviceIdentifier, applicationIdentifier) = self.placeholderDevice()
-        
-        self.scriptTextView.placeHolderString = "open " + Script.transformedValue(deviceIdentifier: deviceIdentifier, applicationIdentifier: applicationIdentifier)
-        self.scriptTextView.delegate = self;
+        aceView.onReady = { [unowned self] in
+            self.aceView.bind("string", to: self.command, withKeyPath: #keyPath(CommandModel.script), options: [NSContinuouslyUpdatesValueBindingOption: true])
+            if self.command.script.isEmpty {
+                let (deviceIdentifier, applicationIdentifier) = self.placeholderDevice()
+                self.aceView.string = "open " + Script.transformedValue(deviceIdentifier: deviceIdentifier, applicationIdentifier: applicationIdentifier)
+            } else {
+                self.aceView.string = self.command.script
+            }
+            self.aceView.mode = .sh
+            self.aceView.theme = .xcode
+            self.aceView.keyboardHandler = .ace
+            self.aceView.showPrintMargin = false
+            self.aceView.showInvisibles = true
+            self.aceView.basicAutoCompletion = true
+            self.aceView.liveAutocompletion = true
+            self.aceView.snippets = true
+            self.aceView.emmet = true
+        }
     }
     
     func placeholderDevice() -> (String, String) {
@@ -72,20 +86,5 @@ class CommandViewController: NSViewController, NSTextViewDelegate {
     @IBAction func onCancelButtonClicked(_ sender: NSButton) {
         // TODO: log
         self.dismiss(self)
-    }
-    
-    // MARK: NSTextViewDelegate
-    
-    func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-        var retval = false
-        
-        if commandSelector == #selector(insertTab(_:)) {
-            if (textView.string?.isEmpty)!, let placeHolderString = textView.placeHolderString {
-                textView.insertText(placeHolderString)
-                retval = true
-            }
-        }
-        
-        return retval
     }
 }
