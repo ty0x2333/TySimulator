@@ -289,7 +289,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = luckytianyiyan;
 				TargetAttributes = {
 					19460C8D1DD78EA900894FBA = {
@@ -608,6 +608,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A7A86A69885BB6E8D9E1121E /* Pods-TySimulator.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -628,6 +629,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2A72AF1F735CF9F4FEE5CE1E /* Pods-TySimulator.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
