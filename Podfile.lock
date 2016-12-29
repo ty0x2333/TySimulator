@@ -1,4 +1,5 @@
 PODS:
+  - ACEViewSwift (2.0.0)
   - DevMateKit (1.7.1)
   - HockeySDK-Mac (4.1.1)
   - MASPreferences (1.1.4)
@@ -9,6 +10,7 @@ PODS:
   - TySimulator-Kevlar (1.0)
 
 DEPENDENCIES:
+  - ACEViewSwift
   - DevMateKit
   - HockeySDK-Mac
   - MASPreferences
@@ -23,6 +25,7 @@ EXTERNAL SOURCES:
     :path: Kevlar
 
 SPEC CHECKSUMS:
+  ACEViewSwift: 9623a5e703caf4718af1a5c0a3a73cb2b2f24eae
   DevMateKit: 3ba77083f5faa40266e0d2d70776de2a82c71dd0
   HockeySDK-Mac: c19aec63894d716ad48fba9f121921e5f4f2ca39
   MASPreferences: 7bdcfe891d7840453cf48f95fa866c3e152ace7a
@@ -32,6 +35,6 @@ SPEC CHECKSUMS:
   SwiftyBeaver: 2b68694df862381235e32bcfc4ec991e26bf131d
   TySimulator-Kevlar: 9a2a5c7d6962c3977b6a2881688e23cfd0e1c983
 
-PODFILE CHECKSUM: ddcf76467d33a43b86be93f5b1e7083b9a9efd4d
+PODFILE CHECKSUM: e483b1e3ade0ae11de517f811658b90a8522e2b4
 
 COCOAPODS: 1.1.1

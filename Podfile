@@ -11,7 +11,8 @@ target 'TySimulator' do
   pod 'MASShortcut'
   pod 'MASPreferences'
   pod 'DevMateKit'
-  
+  pod 'ACEViewSwift'
+
   pod 'TySimulator-Kevlar', :path => 'Kevlar'
 
   target 'TySimulatorTests' do
