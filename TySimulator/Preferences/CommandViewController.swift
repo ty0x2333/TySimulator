@@ -10,7 +10,7 @@ import Cocoa
 import MASShortcut
 import ACEViewSwift
 
-class CommandViewController: NSViewController {
+class CommandViewController: NSViewController, ACEViewDelegate {
     var command: CommandModel!
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var shortcutView: MASShortcutView!
@@ -39,6 +39,7 @@ class CommandViewController: NSViewController {
         
         aceView.onReady = { [unowned self] in
             self.aceView.bind("string", to: self.command, withKeyPath: #keyPath(CommandModel.script), options: [NSContinuouslyUpdatesValueBindingOption: true])
+            self.aceView.delegate = self
             if self.command.script.isEmpty {
                 let (deviceIdentifier, applicationIdentifier) = self.placeholderDevice()
                 self.aceView.string = "open " + Script.transformedValue(deviceIdentifier: deviceIdentifier, applicationIdentifier: applicationIdentifier)
@@ -86,5 +87,10 @@ class CommandViewController: NSViewController {
     @IBAction func onCancelButtonClicked(_ sender: NSButton) {
         // TODO: log
         self.dismiss(self)
+    }
+    
+    // MARK: ACEViewDelegate
+    func textDidChange(_ notification: Notification) {
+        self.command.script = self.aceView.string
     }
 }
