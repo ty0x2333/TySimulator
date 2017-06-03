@@ -19,10 +19,10 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
     override func awakeFromNib() {
         super.awakeFromNib()
         let preference = Preference.shared
-        self.isLaunchAtStartup.state = NSApplication.isLaunchAtStartup ? NSOnState : NSOffState
-        self.isOnlyAvailableDevices.state = preference.onlyAvailableDevices ? NSOnState : NSOffState
-        self.isOnlyHasContentDevices.state = preference.onlyHasContentDevices ? NSOnState : NSOffState
-        self.isAutomaticallyChecksForUpdates.state = DM_SUUpdater.shared().automaticallyChecksForUpdates ? NSOnState : NSOffState
+        isLaunchAtStartup.state = NSApplication.isLaunchAtStartup ? NSOnState : NSOffState
+        isOnlyAvailableDevices.state = preference.onlyAvailableDevices ? NSOnState : NSOffState
+        isOnlyHasContentDevices.state = preference.onlyHasContentDevices ? NSOnState : NSOffState
+        isAutomaticallyChecksForUpdates.state = DM_SUUpdater.shared().automaticallyChecksForUpdates ? NSOnState : NSOffState
     }
     @IBAction func onLaunchAtStartupButtonClicked(_ sender: NSButton) {
         NSApplication.isLaunchAtStartup = sender.state == NSOnState
