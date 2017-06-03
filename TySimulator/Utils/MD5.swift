@@ -1,5 +1,5 @@
 //
-//  String+MD5.swift
+//  MD5.swift
 //  TySimulator
 //
 //  Created by luckytianyiyan on 2016/11/24.

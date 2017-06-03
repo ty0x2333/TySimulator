@@ -1,5 +1,5 @@
 //
-//  NSMenu+TySimulator.swift
+//  Menu.swift
 //  TySimulator
 //
 //  Created by luckytianyiyan on 2016/11/13.

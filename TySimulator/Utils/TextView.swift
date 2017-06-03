@@ -1,5 +1,5 @@
 //
-//  NSTextView+Placeholder.swift
+//  TextView.swift
 //  TySimulator
 //
 //  Created by luckytianyiyan on 2016/11/30.

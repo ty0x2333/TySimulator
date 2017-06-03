@@ -1,5 +1,5 @@
 //
-//  NSViewController+TySimulator.swift
+//  ViewController.swift
 //  TySimulator
 //
 //  Created by luckytianyiyan on 2016/12/3.

@@ -1,5 +1,5 @@
 //
-//  MASShortcutMonitor+Command.swift
+//  ShortcutMonitor.swift
 //  TySimulator
 //
 //  Created by luckytianyiyan on 2016/11/24.
