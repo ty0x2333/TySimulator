@@ -18,7 +18,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.tableView.doubleAction = #selector(onTableViewDoubleClicked(_:))
+        tableView.doubleAction = #selector(onTableViewDoubleClicked(_:))
     }
     
     // MARK: Actions
@@ -27,37 +27,37 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         let command = Preference.shared.commands[sender.clickedRow]
         let commandViewController = CommandViewController(command)
         let oldKey = command.key
-        commandViewController.save = { (command) in
+        commandViewController.save = { [weak self] (command) in
             log.verbose("save command: \(command)")
             MASShortcutMonitor.shared().unregisterShortcut(oldKey)
             Preference.shared.setCommand(id: command.id, command: command)
             MASShortcutMonitor.shared().register(command: command)
-            self.tableView.reloadData()
+            self?.tableView.reloadData()
         }
-        self.presentViewControllerAsSheet(commandViewController)
+        presentViewControllerAsSheet(commandViewController)
     }
     
     @IBAction func onAddCommandButtonClicked(_ sender: NSButton) {
         let commandViewController = CommandViewController()
-        commandViewController.save = { (command) in
+        commandViewController.save = { [weak self] (command) in
             log.verbose("save command: \(command)")
             MASShortcutMonitor.shared().register(command: command)
             Preference.shared.append(command)
-            self.tableView.reloadData()
+            self?.tableView.reloadData()
         }
-        self.presentViewControllerAsSheet(commandViewController)
+        presentViewControllerAsSheet(commandViewController)
     }
     
     @IBAction func onRemoveButtonClicked(_ sender: NSButton) {
-        if (tableView.numberOfSelectedRows < 1) {
+        if tableView.numberOfSelectedRows < 1 {
             log.warning("no row selected")
             return
         }
         let preference = Preference.shared
-        let command = preference.commands[self.tableView.selectedRow]
+        let command = preference.commands[tableView.selectedRow]
         MASShortcutMonitor.shared().unregister(command: command)
-        Preference.shared.remove(commandAt: self.tableView.selectedRow)
-        self.tableView.reloadData()
+        Preference.shared.remove(commandAt: tableView.selectedRow)
+        tableView.reloadData()
     }
     
     // MARK: NSTableViewDataSource
@@ -81,7 +81,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
                     command.key = sender?.shortcutValue
                     Preference.shared.setCommand(id: command.id, command: command)
                     MASShortcutMonitor.shared().register(command: command)
-                    log.info("row: \(row), shortcut changed: \(sender?.shortcutValue)")
+                    log.info("row: \(row), shortcut changed: \(String(describing: sender?.shortcutValue))")
                 }
                 return cell
             }
