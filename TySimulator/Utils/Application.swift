@@ -16,7 +16,7 @@ extension NSApplication {
     }
     
     func showPreferencesWindow() {
-        let windowController = Preference.sharedWindowController()
+        let windowController = Preference.sharedWindowController
         windowController.select(at: 0)
         windowController.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)

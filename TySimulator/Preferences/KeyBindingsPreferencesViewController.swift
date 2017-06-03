@@ -24,18 +24,17 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     // MARK: Actions
     func onTableViewDoubleClicked(_ sender: NSTableView) {
         log.verbose("click row: \(sender.clickedRow)")
-        if let command = Preference.shared().commands?[sender.clickedRow] {
-            let commandViewController = CommandViewController(command)
-            let oldKey = command.key
-            commandViewController.save = { (command) in
-                log.verbose("save command: \(command)")
-                MASShortcutMonitor.shared().unregisterShortcut(oldKey)
-                Preference.shared().setCommand(id: command.id, command: command)
-                MASShortcutMonitor.shared().register(command: command)
-                self.tableView.reloadData()
-            }
-            self.presentViewControllerAsSheet(commandViewController)
+        let command = Preference.shared.commands[sender.clickedRow]
+        let commandViewController = CommandViewController(command)
+        let oldKey = command.key
+        commandViewController.save = { (command) in
+            log.verbose("save command: \(command)")
+            MASShortcutMonitor.shared().unregisterShortcut(oldKey)
+            Preference.shared.setCommand(id: command.id, command: command)
+            MASShortcutMonitor.shared().register(command: command)
+            self.tableView.reloadData()
         }
+        self.presentViewControllerAsSheet(commandViewController)
     }
     
     @IBAction func onAddCommandButtonClicked(_ sender: NSButton) {
@@ -43,7 +42,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         commandViewController.save = { (command) in
             log.verbose("save command: \(command)")
             MASShortcutMonitor.shared().register(command: command)
-            Preference.shared().addCommand(command)
+            Preference.shared.append(command)
             self.tableView.reloadData()
         }
         self.presentViewControllerAsSheet(commandViewController)
@@ -54,23 +53,20 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
             log.warning("no row selected")
             return
         }
-        let preference = Preference.shared()
-        let command = preference.commands?[self.tableView.selectedRow]
-        MASShortcutMonitor.shared().unregister(command: command!)
-        Preference.shared().removeCommand(at: self.tableView.selectedRow)
+        let preference = Preference.shared
+        let command = preference.commands[self.tableView.selectedRow]
+        MASShortcutMonitor.shared().unregister(command: command)
+        Preference.shared.remove(commandAt: self.tableView.selectedRow)
         self.tableView.reloadData()
     }
     
     // MARK: NSTableViewDataSource
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return Preference.shared().commands!.count
+        return Preference.shared.commands.count
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let command = Preference.shared().commands?[row] else {
-            log.warning("no command found at row: \(row)")
-            return nil
-        }
+        let command = Preference.shared.commands[row]
         
         if tableColumn == tableView.tableColumns[0] {
             if let cell = tableView.make(withIdentifier: "NameTableCellViewIdentifier", owner: nil) as? NSTableCellView {
@@ -83,7 +79,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
                 cell.shortcutView?.shortcutValueChange = {(sender: MASShortcutView?) in
                     MASShortcutMonitor.shared().unregister(command: command)
                     command.key = sender?.shortcutValue
-                    Preference.shared().setCommand(id: command.id, command: command)
+                    Preference.shared.setCommand(id: command.id, command: command)
                     MASShortcutMonitor.shared().register(command: command)
                     log.info("row: \(row), shortcut changed: \(sender?.shortcutValue)")
                 }

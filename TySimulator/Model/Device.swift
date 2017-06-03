@@ -19,13 +19,13 @@ class Device: NSObject {
     override init() {
         super.init()
         self.updateDeivces()
-        Preference.shared().addObserver(self, forKeyPath: "onlyAvailableDevices", options: [.new], context: &deviceObservingContext)
-        Preference.shared().addObserver(self, forKeyPath: "onlyHasContentDevices", options: [.new], context: &deviceObservingContext)
+        Preference.shared.addObserver(self, forKeyPath: "onlyAvailableDevices", options: [.new], context: &deviceObservingContext)
+        Preference.shared.addObserver(self, forKeyPath: "onlyHasContentDevices", options: [.new], context: &deviceObservingContext)
     }
     
     deinit {
-        Preference.shared().removeObserver(self, forKeyPath: "onlyAvailableDevices", context: &deviceObservingContext)
-        Preference.shared().removeObserver(self, forKeyPath: "onlyHasContentDevices", context: &deviceObservingContext)
+        Preference.shared.removeObserver(self, forKeyPath: "onlyAvailableDevices", context: &deviceObservingContext)
+        Preference.shared.removeObserver(self, forKeyPath: "onlyHasContentDevices", context: &deviceObservingContext)
     }
     
     static func shared() -> Device {
@@ -68,7 +68,7 @@ class Device: NSObject {
         
         self.devices = devices.filter {
             var result = $0.os != .unknown
-            let preference = Preference.shared()
+            let preference = Preference.shared
             if preference.onlyAvailableDevices {
                 result = result && $0.isAvailable
             }

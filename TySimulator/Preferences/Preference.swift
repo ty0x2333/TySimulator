@@ -7,107 +7,83 @@
 //
 
 import Cocoa
+import SwiftyUserDefaults
 import MASPreferences
 import MASShortcut
 
+extension UserDefaults {
+    subscript(key: DefaultsKey<[[String: Any]]>) -> [[String: Any]] {
+        get { return unarchive(key) ?? [] }
+        set { archive(key, newValue) }
+    }
+}
+
+extension DefaultsKeys {
+    static let preferences = DefaultsKey<[String: Any]?>("com.tianyiyan.preferences")
+    static let onlyAvailableDevices = DefaultsKey<Bool?>("onlyAvailableDevices")
+    static let onlyHasContentDevices = DefaultsKey<Bool>("onlyHasContentDevices")
+    static let commands = DefaultsKey<[[String: Any]]>("commands")
+}
+
 class Preference: NSObject {
-    static let kUserDefaultsKeyPreferences = "com.tianyiyan.preferences"
-    static let kUserDefaultsKeyOnlyAvailableDevices = "onlyAvailableDevices"
-    static let kUserDefaultsKeyOnlyHasContentDevices = "onlyHasContentDevices"
-    static let kUserDefaultsKeyCommands = "commands"
-    private static let sharedPreferencesWindowController: MASPreferencesWindowController = preferencesWindowController()
-    private static let sharedPreferences: Preference = preference()
-    private var preferences: Dictionary<String, Any>?
-    private(set) var commands: [CommandModel]?
+    static let sharedWindowController: MASPreferencesWindowController = preferencesWindowController()
+    static let shared: Preference = Preference()
+    private(set) var commands: [CommandModel] = []
     dynamic var onlyAvailableDevices: Bool {
         didSet {
-            self.preferences?[Preference.kUserDefaultsKeyOnlyAvailableDevices] = onlyAvailableDevices
-            UserDefaults.standard.set(preferences, forKey: Preference.kUserDefaultsKeyPreferences)
-            UserDefaults.standard.synchronize()
-            log.verbose("update preferences: \(preferences)")
+            Defaults[.onlyAvailableDevices] = onlyAvailableDevices
         }
     }
     dynamic var onlyHasContentDevices: Bool {
         didSet {
-            self.preferences?[Preference.kUserDefaultsKeyOnlyHasContentDevices] = onlyHasContentDevices
-            UserDefaults.standard.set(preferences, forKey: Preference.kUserDefaultsKeyPreferences)
-            UserDefaults.standard.synchronize()
-            log.verbose("update preferences: \(preferences)")
+            Defaults[.onlyHasContentDevices] = onlyHasContentDevices
         }
-    }
-    
-    static func shared() -> Preference {
-        return sharedPreferences
-    }
-    
-    static func sharedWindowController() -> MASPreferencesWindowController {
-        return sharedPreferencesWindowController
     }
     
     override init() {
-        let userDefaults = UserDefaults.standard
-        userDefaults.register(defaults: [
-            Preference.kUserDefaultsKeyPreferences: [
-                Preference.kUserDefaultsKeyOnlyAvailableDevices: true,
-                Preference.kUserDefaultsKeyOnlyHasContentDevices: false,
-                Preference.kUserDefaultsKeyCommands: []
-            ]
-        ])
-
-        self.preferences = UserDefaults.standard.dictionary(forKey: Preference.kUserDefaultsKeyPreferences)
+        
         // init commands
-        self.commands = []
-        if let datas = self.preferences?[Preference.kUserDefaultsKeyCommands] as? Array<Dictionary<String, Any>> {
-            let transformer = CommandTransformer()
-            for data in datas {
-                if let command = transformer.transformedValue(data) as? CommandModel {
-                    MASShortcutMonitor.shared().register(command: command)
-                    self.commands?.append(command)
-                }
+        commands = []
+        let transformer = CommandTransformer()
+        for data in Defaults[.commands] {
+            if let command = transformer.transformedValue(data) as? CommandModel {
+                MASShortcutMonitor.shared().register(command: command)
+                commands.append(command)
             }
         }
+        
         // init switchs
-        self.onlyAvailableDevices = (self.preferences?[Preference.kUserDefaultsKeyOnlyAvailableDevices] as? Bool) ?? false
-        self.onlyHasContentDevices = (self.preferences?[Preference.kUserDefaultsKeyOnlyHasContentDevices] as? Bool) ?? false
+        onlyAvailableDevices = Defaults[.onlyAvailableDevices] ?? true
+        onlyHasContentDevices = Defaults[.onlyHasContentDevices]
+        
         super.init()
     }
     
-    func addCommand(_ command: CommandModel) {
-        self.addCommands([command])
+    func append(_ command: CommandModel) {
+        append(commands: [command])
     }
     
-    func addCommands(_ commands: [CommandModel]) {
-        self.commands?.append(contentsOf: commands)
-        self.synchronize()
+    func append(commands: [CommandModel]) {
+        self.commands.append(contentsOf: commands)
+        synchronize()
     }
     
-    func removeCommand(at: Int) {
-        self.commands?.remove(at: at)
-        self.synchronize()
+    func remove(commandAt at: Int) {
+        commands.remove(at: at)
+        synchronize()
     }
     
     func setCommand(id: String, command: CommandModel) {
-        for i in 0..<self.commands!.count {
-            if self.commands?[i].id == id {
-                self.commands?[i] = command
-                self.synchronize()
-                return
-            }
+        if let idx = commands.index(where: { $0.id == id }) {
+            commands[idx] = command
+            synchronize()
         }
     }
     
     func synchronize() {
         let transformer = CommandTransformer()
-        let commandDatas = self.commands?.map { (model) -> Dictionary<String, Any> in
-            return transformer.reverseTransformedValue(model) as! Dictionary<String, Any>
-        }
-        self.preferences?[Preference.kUserDefaultsKeyCommands] = commandDatas
-        UserDefaults.standard.set(self.preferences, forKey: Preference.kUserDefaultsKeyPreferences)
+        Defaults[.commands] = commands.map { transformer.reverseTransformedValue($0) as! [String: Any] }
         UserDefaults.standard.synchronize()
-    }
-    
-    private class func preference() -> Preference {
-        return Preference()
     }
     
     private class func preferencesWindowController() -> MASPreferencesWindowController {
