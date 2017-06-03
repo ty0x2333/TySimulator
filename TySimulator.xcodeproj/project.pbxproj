@@ -28,6 +28,7 @@
 		1996BFE61EE335B2009B6E83 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFDC1EE335B2009B6E83 /* Process.swift */; };
 		1996BFE71EE335B2009B6E83 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFDD1EE335B2009B6E83 /* MD5.swift */; };
 		1996BFE81EE335B2009B6E83 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFDE1EE335B2009B6E83 /* URL.swift */; };
+		1996BFEA1EE33835009B6E83 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1996BFE91EE33835009B6E83 /* SwiftyUserDefaults.framework */; };
 		199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D0B101DDE0F0800207D53 /* CommandModel.swift */; };
 		19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698231DE72AAE00AD3876 /* CommandTransformer.swift */; };
 		19C680BD1DF2EAB0008CC5FE /* TySimulatorKevlar.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */; };
@@ -85,6 +86,7 @@
 		1996BFDC1EE335B2009B6E83 /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		1996BFDD1EE335B2009B6E83 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		1996BFDE1EE335B2009B6E83 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		1996BFE91EE33835009B6E83 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = Carthage/Build/Mac/SwiftyUserDefaults.framework; sourceTree = "<group>"; };
 		199D0B101DDE0F0800207D53 /* CommandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandModel.swift; sourceTree = "<group>"; };
 		19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TySimulator-Bridging-Header.h"; sourceTree = "<group>"; };
 		19B698231DE72AAE00AD3876 /* CommandTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTransformer.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1996BFEA1EE33835009B6E83 /* SwiftyUserDefaults.framework in Frameworks */,
 				5FDF5C40919F112EA90BE658 /* Pods_TySimulator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,6 +232,7 @@
 		257DEF6B02A35E27D755AC71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1996BFE91EE33835009B6E83 /* SwiftyUserDefaults.framework */,
 				C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */,
 				03DB23622D95C6C7E47AFD0C /* Pods_TySimulatorTests.framework */,
 			);
@@ -267,6 +271,7 @@
 				19460C8C1DD78EA900894FBA /* Resources */,
 				C10F30D06EBA5B13B4EC080E /* [CP] Embed Pods Frameworks */,
 				E6FC7550169C4C1A9582F65F /* [CP] Copy Pods Resources */,
+				1996BFEC1EE33879009B6E83 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -371,6 +376,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1996BFEC1EE33879009B6E83 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/SwiftyUserDefaults.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		6FB74312638250B45FDA0DAF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -629,6 +649,10 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9KYD7S7AZY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -650,6 +674,10 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9KYD7S7AZY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
