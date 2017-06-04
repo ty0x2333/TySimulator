@@ -12,7 +12,7 @@ target 'TySimulator' do
   pod 'DevMateKit'
   pod 'ACEViewSwift'
 
-  pod 'TySimulator-Kevlar', :path => 'Kevlar'
+  # pod 'TySimulator-Kevlar', :path => 'Kevlar'
 
   target 'TySimulatorTests' do
     inherit! :search_paths

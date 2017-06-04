@@ -34,8 +34,7 @@ class Device: NSObject {
     }
     
     func updateDeivces() {
-        let output = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"],
-                                    directoryPath: Device.devicesDirectory)
+        let output = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"])
         
         let json = JSON(parseJSON: output)
         
@@ -67,8 +66,7 @@ class Device: NSObject {
     }
     
     static func bootedDevices() -> [DeviceModel] {
-        let output = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"],
-                                    directoryPath: devicesDirectory)
+        let output = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"])
         
         let json = JSON(parseJSON: output)
         

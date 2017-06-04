@@ -35,10 +35,10 @@ extension NSApplication {
         return NSApp.setActivationPolicy(state ? .regular : .accessory)
     }
     
-    public class func activate() -> Bool {
-        var error: Int = DMKevlarError.testError.rawValue
-        return _my_secret_activation_check!(&error).boolValue || DMKevlarError.noError == DMKevlarError(rawValue: error)
-    }
+//    public class func activate() -> Bool {
+//        var error: Int = DMKevlarError.testError.rawValue
+//        return _my_secret_activation_check!(&error).boolValue || DMKevlarError.noError == DMKevlarError(rawValue: error)
+//    }
     
 }
 

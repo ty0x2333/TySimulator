@@ -11,7 +11,7 @@ import HockeySDK
 
 class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
     
-    var activationController: DMActivationController?
+//    var activationController: DMActivationController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -25,18 +25,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
         BITHockeyManager.shared().start()
         
         // Setup trial
-        #if DEBUG
-            DMKitDebugAddTrialMenu()
-            DMKitDebugAddActivationMenu()
-        #endif
-        
-        activationController = DMActivationController.timeTrialController(for: DMTrialArea.forAllUsers, timeInterval: kDMTrialWeek, customWindowNib: "ActivationWindow")
-        activationController?.delegate = self
-        let successStepController = LicenseInfoStepController(nibName: "LicenseInfoStepView", bundle: Bundle.main)
-        activationController?.registerStep(successStepController, forActivationStep: DMActivationStandardStep.stepSuccess.rawValue)
-        if !NSApplication.activate() {
-            activationController?.startTrial()
-        }
+//        #if DEBUG
+//            DMKitDebugAddTrialMenu()
+//            DMKitDebugAddActivationMenu()
+//        #endif
+//        
+//        activationController = DMActivationController.timeTrialController(for: DMTrialArea.forAllUsers, timeInterval: kDMTrialWeek, customWindowNib: "ActivationWindow")
+//        activationController?.delegate = self
+//        let successStepController = LicenseInfoStepController(nibName: "LicenseInfoStepView", bundle: Bundle.main)
+//        activationController?.registerStep(successStepController, forActivationStep: DMActivationStandardStep.stepSuccess.rawValue)
+//        if !NSApplication.activate() {
+//            activationController?.startTrial()
+//        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -65,13 +65,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
         #endif
     }
     
-    // MARK: DMActivationControllerDelegate
-    
-    public func activationController(_ controller: DMActivationController!, activationStepForProposedStep proposedStep: DMActivationStep) -> DMActivationStep {
-        if proposedStep == DMActivationStandardStep.stepWelcome.rawValue && NSApplication.activate() {
-            return DMActivationStandardStep.stepSuccess.rawValue
-        }
-        return proposedStep
-    }
+//    // MARK: DMActivationControllerDelegate
+//    
+//    public func activationController(_ controller: DMActivationController!, activationStepForProposedStep proposedStep: DMActivationStep) -> DMActivationStep {
+//        if proposedStep == DMActivationStandardStep.stepWelcome.rawValue && NSApplication.activate() {
+//            return DMActivationStandardStep.stepSuccess.rawValue
+//        }
+//        return proposedStep
+//    }
 }
 
