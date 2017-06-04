@@ -4,8 +4,6 @@ PODS:
   - HockeySDK-Mac (4.1.1)
   - MASPreferences (1.1.4)
   - MASShortcut (2.3.6)
-  - Nimble (5.1.1)
-  - Quick (1.0.0)
 
 DEPENDENCIES:
   - ACEViewSwift
@@ -13,8 +11,6 @@ DEPENDENCIES:
   - HockeySDK-Mac
   - MASPreferences
   - MASShortcut
-  - Nimble
-  - Quick
 
 SPEC CHECKSUMS:
   ACEViewSwift: 9623a5e703caf4718af1a5c0a3a73cb2b2f24eae
@@ -22,9 +18,7 @@ SPEC CHECKSUMS:
   HockeySDK-Mac: c19aec63894d716ad48fba9f121921e5f4f2ca39
   MASPreferences: 7bdcfe891d7840453cf48f95fa866c3e152ace7a
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
-  Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
-  Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
 
-PODFILE CHECKSUM: d47fcf437ee454464420a0ff969fc0b1bdbb02f4
+PODFILE CHECKSUM: 1a8d291f7697eadd5284c8124783213875d55999
 
 COCOAPODS: 1.2.1
