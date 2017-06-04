@@ -1,1 +1,2 @@
 github "radex/SwiftyUserDefaults"
+github "SwiftyJSON/SwiftyJSON"
