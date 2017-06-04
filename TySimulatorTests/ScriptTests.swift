@@ -17,7 +17,8 @@ class ScriptTests: QuickSpec {
                 let command = "${{\"device\": \"booted\", \"application\": \"com.tianyiyan.TYTumblr\"}}"
                 let script = "open \(command)"
                 it("should be parsed", closure: {
-                    expect { try Script.transformedScript(script) }.toNot(throwError())
+                    let transformed = Script.transformedScript(script)
+                    expect(transformed).toNot(equal(script))
                 })
             })
             
@@ -25,7 +26,8 @@ class ScriptTests: QuickSpec {
                 let command = "${{xxxx}}"
                 let script = "open \(command)"
                 it("should be parsed", closure: {
-                    expect { try Script.transformedScript(script) }.to(throwError())
+                    let transformed = Script.transformedScript(script)
+                    expect(transformed).to(equal(script))
                 })
             })
         })

@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 public class Script {
-    public class func transformedScript(_ script: String) throws -> String {
+    public class func transformedScript(_ script: String) -> String {
         var result = script
         var res: [NSTextCheckingResult] = []
         do {

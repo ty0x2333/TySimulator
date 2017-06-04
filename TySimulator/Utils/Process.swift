@@ -40,12 +40,7 @@ extension Process {
     
     @discardableResult
     static func execute(_ script: String) -> String {
-        var scriptCLI = script
-        do {
-            scriptCLI = try Script.transformedScript(scriptCLI)
-        } catch {
-            log.error(error)
-        }
+        let scriptCLI = Script.transformedScript(script)
         log.info("run script: \(scriptCLI)")
         return self.output(launchPath: "/bin/sh", arguments: ["-c", scriptCLI])
     }
