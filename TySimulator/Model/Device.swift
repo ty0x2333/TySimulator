@@ -34,21 +34,8 @@ class Device: NSObject {
     }
     
     func updateDeivces() {
-        let output = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"])
         
-        let json = JSON(parseJSON: output)
-        
-        var devices: [DeviceModel] = []
-        
-        for (key, value) in json["devices"].dictionaryValue {
-            for simulatorJSON in value.arrayValue {
-                let osInfo = key.replacingOccurrences(of: "com.apple.CoreSimulator.SimRuntime.", with: "")
-                let device = DeviceModel(osInfo: osInfo, json: simulatorJSON.dictionaryObject!)
-                devices.append(device)
-            }
-        }
-        
-        self.devices = devices.filter {
+        self.devices = Device.listDevices().filter {
             var result = $0.os != .unknown
             let preference = Preference.shared
             if preference.onlyAvailableDevices {
@@ -65,7 +52,7 @@ class Device: NSObject {
         NotificationCenter.default.post(name: Device.DevicesChangedNotification, object: nil)
     }
     
-    static func bootedDevices() -> [DeviceModel] {
+    class func listDevices() -> [DeviceModel] {
         let output = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"])
         
         let json = JSON(parseJSON: output)
@@ -73,20 +60,16 @@ class Device: NSObject {
         var devices: [DeviceModel] = []
         
         for (key, value) in json["devices"].dictionaryValue {
-            for simulatorJSON in value.arrayValue {
-                let osInfo = key.replacingOccurrences(of: "com.apple.CoreSimulator.SimRuntime.", with: "")
-                let booted = simulatorJSON["state"].stringValue.contains("Booted")
-                if booted {
-                    devices.append(DeviceModel(osInfo: osInfo, json: simulatorJSON.dictionaryObject!))
-                }
-            }
+            let osInfo = key.replacingOccurrences(of: "com.apple.CoreSimulator.SimRuntime.", with: "")
+            devices.append(contentsOf: value.arrayValue.map { DeviceModel(osInfo: osInfo, json: $0.dictionaryObject!) })
         }
+        return devices
+    }
+    
+    class func bootedDevices() -> [DeviceModel] {
+        let devices: [DeviceModel] = listDevices().filter { return $0.hasContent && $0.isAvailable && $0.os != .unknown && $0.isOpen }
         
-        return devices.filter {
-            return $0.hasContent && $0.isAvailable && $0.os != .unknown
-            }.sorted {
-                return $0.osInfo.compare($1.osInfo) == .orderedAscending
-        }
+        return devices.sorted { return $0.osInfo.compare($1.osInfo) == .orderedAscending }
     }
     
     static var devicesDirectory: URL {
