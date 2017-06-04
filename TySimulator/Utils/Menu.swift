@@ -9,7 +9,7 @@
 import Cocoa
 
 extension NSMenuItem {
-    static func deviceMenuItems(_ devices: [DeviceModel], _ tagMap: Dictionary<String, Int>) -> [NSMenuItem] {
+    class func deviceMenuItems(_ devices: [DeviceModel], _ tagMap: Dictionary<String, Int>) -> [NSMenuItem] {
         var items: [NSMenuItem] = []
         
         var osInfo: String = ""
@@ -30,7 +30,7 @@ extension NSMenuItem {
         return items
     }
     
-    static func deviceMenuItem(_ device: DeviceModel) -> NSMenuItem {
+    class func deviceMenuItem(_ device: DeviceModel) -> NSMenuItem {
         let item = NSMenuItem()
         item.title = device.name
         item.isEnabled = device.isAvailable
@@ -72,7 +72,7 @@ extension NSMenuItem {
         return item
     }
 
-    private static func applicationMenuItems(_ applications: [ApplicationModel]) -> [NSMenuItem] {
+    private class func applicationMenuItems(_ applications: [ApplicationModel]) -> [NSMenuItem] {
         return applications.map {
             let item = NSMenuItem()
             item.title = $0.name
@@ -85,7 +85,7 @@ extension NSMenuItem {
         }
     }
     
-    private static func appGroupMenuItems(_ appGroups: [AppGroupModel]) -> [NSMenuItem] {
+    private class func appGroupMenuItems(_ appGroups: [AppGroupModel]) -> [NSMenuItem] {
         return appGroups.map {
             let item = NSMenuItem()
             item.title = $0.bundleIdentifier
@@ -97,7 +97,7 @@ extension NSMenuItem {
         }
     }
     
-    private static func mediaMenuItems(_ media: [MediaModel]) -> [NSMenuItem] {
+    private class func mediaMenuItems(_ media: [MediaModel]) -> [NSMenuItem] {
         return media.map {
             let item = NSMenuItem()
             item.title = $0.name
@@ -110,7 +110,7 @@ extension NSMenuItem {
     }
     
     // MARK: - Helper
-    private static func header(_ title: String) -> NSMenuItem {
+    private class func header(_ title: String) -> NSMenuItem {
         let item = NSMenuItem()
         item.title = title
         item.isEnabled = false

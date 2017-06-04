@@ -9,7 +9,7 @@
 import Foundation
 
 extension Process {
-    static func output(launchPath: String, arguments: [String], directoryPath: URL? = nil) -> String {
+    class func output(launchPath: String, arguments: [String], directoryPath: URL? = nil) -> String {
         let output = Pipe()
         
         let task = Process()
@@ -39,7 +39,7 @@ extension Process {
     }
     
     @discardableResult
-    static func execute(_ script: String) -> String {
+    class func execute(_ script: String) -> String {
         let scriptCLI = Script.transformedScript(script)
         log.info("run script: \(scriptCLI)")
         return self.output(launchPath: "/bin/sh", arguments: ["-c", scriptCLI])

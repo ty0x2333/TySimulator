@@ -15,7 +15,7 @@ class AppGroupModel: NSObject {
     
     // MARK: - Load
     
-    static func groups(_ path: URL) -> [AppGroupModel] {
+    class func groups(_ path: URL) -> [AppGroupModel] {
         let directory = path.appendingPathComponent("/data/Containers/Shared/AppGroup")
         return FileManager.directories(directory).map {
             let appGroup = AppGroupModel()

@@ -13,7 +13,7 @@ class MediaModel: NSObject {
     var name: String = ""
     var location: URL?
     
-    static func medias(_ path: URL) -> [MediaModel] {
+    class func medias(_ path: URL) -> [MediaModel] {
         let directory = path.appendingPathComponent("/data/Media/DCIM")
         
         return FileManager.directories(directory).map {

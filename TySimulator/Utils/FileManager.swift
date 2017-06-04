@@ -10,7 +10,7 @@ import Foundation
 
 extension FileManager {
     
-    static func directories(_ path: URL) -> [String] {
+    class func directories(_ path: URL) -> [String] {
         let results = try? FileManager.default.contentsOfDirectory(atPath: path.path).filter {
             return isDirectory(path.appendingPathComponent("\($0)").path, name: $0)
         }
@@ -18,7 +18,7 @@ extension FileManager {
         return results ?? []
     }
     
-    static func isDirectory(_ path: String, name: String) -> Bool {
+    class func isDirectory(_ path: String, name: String) -> Bool {
         var flag = ObjCBool(false)
         FileManager.default.fileExists(atPath: path, isDirectory: &flag)
         

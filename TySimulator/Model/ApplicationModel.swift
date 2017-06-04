@@ -15,7 +15,7 @@ class ApplicationModel: NSObject {
     var udid: String = ""
     var path: URL?
     
-    static func applications(path: URL) -> [ApplicationModel] {
+    class func applications(path: URL) -> [ApplicationModel] {
         let directory = path.appendingPathComponent("data/Containers/Bundle/Application")
         return FileManager.directories(directory).map {
             let application = ApplicationModel(path: path, bundleLocation: directory.appendingPathComponent($0))
