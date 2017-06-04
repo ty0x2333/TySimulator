@@ -40,7 +40,7 @@ class DeviceModel {
     var medias: [MediaModel] = []
     var appGroups: [AppGroupModel] = []
     
-    init(osInfo: String, json: NSDictionary) {
+    init(osInfo: String, json: [String: Any]) {
         self.name = json["name"] as! String
         self.udid = json["udid"] as! String
         self.isAvailable = (json["availability"] as! String).contains("(available)")

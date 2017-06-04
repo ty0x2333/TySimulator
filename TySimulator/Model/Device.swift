@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 class Device: NSObject {
     private var deviceObservingContext = 0
@@ -29,38 +30,24 @@ class Device: NSObject {
     }
     
     func device(udid: String) -> DeviceModel? {
-        for device in devices {
-            if device.udid == udid {
-                return device
-            }
-        }
-        return nil
+        return devices.first(where: { $0.udid == udid })
     }
     
     func updateDeivces() {
-        let string = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"],
+        let output = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"],
                                     directoryPath: Device.devicesDirectory)
         
-        guard let data = string.data(using: String.Encoding.utf8),
-            let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary,
-            let json = jsonObject
-            else {
-                self.devices = []
-                return
-        }
+        let json = JSON(parseJSON: output)
         
         var devices: [DeviceModel] = []
         
-        let deviceObjects = json["devices"] as? NSDictionary
-        
-        deviceObjects?.forEach({ (key, value) in
-            let simulators = value as? NSArray
-            simulators?.forEach({ (simulatorJSON) in
-                let osInfo = (key as! String).replacingOccurrences(of: "com.apple.CoreSimulator.SimRuntime.", with: "")
-                let device = DeviceModel(osInfo: osInfo, json: simulatorJSON as! NSDictionary)
+        for (key, value) in json["devices"].dictionaryValue {
+            for simulatorJSON in value.arrayValue {
+                let osInfo = key.replacingOccurrences(of: "com.apple.CoreSimulator.SimRuntime.", with: "")
+                let device = DeviceModel(osInfo: osInfo, json: simulatorJSON.dictionaryObject!)
                 devices.append(device)
-            })
-        })
+            }
+        }
         
         self.devices = devices.filter {
             var result = $0.os != .unknown
@@ -80,29 +67,22 @@ class Device: NSObject {
     }
     
     static func bootedDevices() -> [DeviceModel] {
-        let string = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"],
+        let output = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"],
                                     directoryPath: devicesDirectory)
         
-        guard let data = string.data(using: String.Encoding.utf8),
-            let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary,
-            let json = jsonObject
-            else { return [] }
+        let json = JSON(parseJSON: output)
         
         var devices: [DeviceModel] = []
         
-        let deviceObjects = json["devices"] as? NSDictionary
-        
-        deviceObjects?.forEach({ (key, value) in
-            let simulators = value as? NSArray
-            simulators?.forEach({ (simulatorJSON) in
-                let osInfo = (key as! String).replacingOccurrences(of: "com.apple.CoreSimulator.SimRuntime.", with: "")
-                let json = simulatorJSON as! NSDictionary
-                let booted = (json["state"] as! String).contains("Booted")
+        for (key, value) in json["devices"].dictionaryValue {
+            for simulatorJSON in value.arrayValue {
+                let osInfo = key.replacingOccurrences(of: "com.apple.CoreSimulator.SimRuntime.", with: "")
+                let booted = simulatorJSON["state"].stringValue.contains("Booted")
                 if booted {
-                    devices.append(DeviceModel(osInfo: osInfo, json: json))
+                    devices.append(DeviceModel(osInfo: osInfo, json: simulatorJSON.dictionaryObject!))
                 }
-            })
-        })
+            }
+        }
         
         return devices.filter {
             return $0.hasContent && $0.isAvailable && $0.os != .unknown
