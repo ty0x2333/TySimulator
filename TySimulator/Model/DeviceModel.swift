@@ -69,11 +69,6 @@ class DeviceModel {
     }
     
     func application(bundleIdentifier: String) -> ApplicationModel? {
-        for it in self.applications {
-            if it.bundleIdentifier == bundleIdentifier {
-                return it
-            }
-        }
-        return nil
+        return applications.first(where: { $0.bundleIdentifier == bundleIdentifier })
     }
 }
