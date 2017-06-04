@@ -2,7 +2,7 @@
 //  Devices.swift
 //  TySimulator
 //
-//  Created by yinhun on 16/11/17.
+//  Created by luckytianyiyan on 16/11/17.
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
@@ -11,14 +11,14 @@ import Cocoa
 class Device: NSObject {
     private var deviceObservingContext = 0
     
-    public static let DevicesChangedNotification = "DevicesChangedNotification"
+    public static let DevicesChangedNotification: NSNotification.Name = NSNotification.Name(rawValue: "DevicesChangedNotification")
     
-    private static let sharedInstance = Device()
+    static let shared = Device()
     var devices: [DeviceModel] = []
     
     override init() {
         super.init()
-        self.updateDeivces()
+        updateDeivces()
         Preference.shared.addObserver(self, forKeyPath: "onlyAvailableDevices", options: [.new], context: &deviceObservingContext)
         Preference.shared.addObserver(self, forKeyPath: "onlyHasContentDevices", options: [.new], context: &deviceObservingContext)
     }
@@ -26,10 +26,6 @@ class Device: NSObject {
     deinit {
         Preference.shared.removeObserver(self, forKeyPath: "onlyAvailableDevices", context: &deviceObservingContext)
         Preference.shared.removeObserver(self, forKeyPath: "onlyHasContentDevices", context: &deviceObservingContext)
-    }
-    
-    static func shared() -> Device {
-        return sharedInstance
     }
     
     func device(udid: String) -> DeviceModel? {
@@ -80,12 +76,12 @@ class Device: NSObject {
                 return $0.osInfo.compare($1.osInfo) == .orderedAscending
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Device.DevicesChangedNotification), object: nil)
+        NotificationCenter.default.post(name: Device.DevicesChangedNotification, object: nil)
     }
     
     static func bootedDevices() -> [DeviceModel] {
         let string = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"],
-                                    directoryPath: self.devicesDirectory)
+                                    directoryPath: devicesDirectory)
         
         guard let data = string.data(using: String.Encoding.utf8),
             let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary,
@@ -122,13 +118,10 @@ class Device: NSObject {
     
     // MARK: Observer
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if context == &deviceObservingContext {
-            if (change?[NSKeyValueChangeKey.newKey]) != nil {
-                self.updateDeivces()
-            }
-        } else {
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        if context == &deviceObservingContext, (change?[NSKeyValueChangeKey.newKey]) != nil {
+            updateDeivces()
         }
+        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
 
 }

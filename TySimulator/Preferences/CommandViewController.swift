@@ -69,7 +69,7 @@ class CommandViewController: NSViewController, ACEViewDelegate {
         }
         
         // try other device
-        for it in Device.shared().devices {
+        for it in Device.shared.devices {
             deviceIdentifier = it.udid
             if it.applications.count > 0 {
                 return (deviceIdentifier, (it.applications.first?.bundleIdentifier)!)

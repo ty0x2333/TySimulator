@@ -42,7 +42,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         self.statusItem.menu = menu
         self.updateDeviceMenus()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Notification.Name(Device.DevicesChangedNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Device.DevicesChangedNotification, object: nil)
     }
     
     func updateDeviceMenus() {
@@ -50,7 +50,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
             self.statusItem.menu?.removeItem(it)
         }
         
-        self.devices = Device.shared().devices
+        self.devices = Device.shared.devices
         log.info("load devices: \(self.devices.count)")
         
         self.tagMap.removeAll()

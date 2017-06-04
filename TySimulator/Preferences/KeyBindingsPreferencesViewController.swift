@@ -2,7 +2,7 @@
 //  KeyBindingsPreferencesViewController.swift
 //  TySimulator
 //
-//  Created by yinhun on 16/11/17.
+//  Created by luckytianyiyan on 16/11/17.
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 

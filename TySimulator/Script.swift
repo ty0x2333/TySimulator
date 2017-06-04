@@ -28,7 +28,7 @@ public class Script {
                 if let deviceId = command["device"] {
                     var device: DeviceModel?
                     if deviceId != "booted" {
-                        device = Device.shared().device(udid: deviceId)
+                        device = Device.shared.device(udid: deviceId)
                     } else {
                         device = Device.bootedDevices().first
                     }
