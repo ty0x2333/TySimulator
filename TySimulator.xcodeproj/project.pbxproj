@@ -20,6 +20,7 @@
 		19460CAD1DD78FC000894FBA /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CAC1DD78FC000894FBA /* MainMenuController.swift */; };
 		19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460CB31DD83C1E00894FBA /* DeviceModel.swift */; };
 		195C48901EE40EDA00234568 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 195C488F1EE40EDA00234568 /* SwiftyJSON.framework */; };
+		195C48921EE41F9500234568 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 195C48911EE41F9500234568 /* SwiftyBeaver.framework */; };
 		1996BFDF1EE335B2009B6E83 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD51EE335B2009B6E83 /* FileManager.swift */; };
 		1996BFE01EE335B2009B6E83 /* ShortcutMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD61EE335B2009B6E83 /* ShortcutMonitor.swift */; };
 		1996BFE11EE335B2009B6E83 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD71EE335B2009B6E83 /* Application.swift */; };
@@ -79,6 +80,7 @@
 		19460CAC1DD78FC000894FBA /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		19460CB31DD83C1E00894FBA /* DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		195C488F1EE40EDA00234568 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/Mac/SwiftyJSON.framework; sourceTree = "<group>"; };
+		195C48911EE41F9500234568 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/Mac/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		1996BFD51EE335B2009B6E83 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1996BFD61EE335B2009B6E83 /* ShortcutMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutMonitor.swift; sourceTree = "<group>"; };
 		1996BFD71EE335B2009B6E83 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				195C48921EE41F9500234568 /* SwiftyBeaver.framework in Frameworks */,
 				195C48901EE40EDA00234568 /* SwiftyJSON.framework in Frameworks */,
 				1996BFEA1EE33835009B6E83 /* SwiftyUserDefaults.framework in Frameworks */,
 				5FDF5C40919F112EA90BE658 /* Pods_TySimulator.framework in Frameworks */,
@@ -235,6 +238,7 @@
 		257DEF6B02A35E27D755AC71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				195C48911EE41F9500234568 /* SwiftyBeaver.framework */,
 				195C488F1EE40EDA00234568 /* SwiftyJSON.framework */,
 				1996BFE91EE33835009B6E83 /* SwiftyUserDefaults.framework */,
 				C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */,
@@ -388,6 +392,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/Mac/SwiftyUserDefaults.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/SwiftyBeaver.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -408,7 +413,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		74D1CBCBA0F824689F398234 /* [CP] Copy Pods Resources */ = {
@@ -468,7 +473,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E6FC7550169C4C1A9582F65F /* [CP] Copy Pods Resources */ = {
@@ -649,7 +654,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A7A86A69885BB6E8D9E1121E /* Pods-TySimulator.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -674,7 +678,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2A72AF1F735CF9F4FEE5CE1E /* Pods-TySimulator.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -699,7 +702,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E591A2065959AFD68965ADF /* Pods-TySimulatorTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -717,7 +719,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 071CD0DAFD71FF345511C670 /* Pods-TySimulatorTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
