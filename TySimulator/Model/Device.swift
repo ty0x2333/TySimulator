@@ -100,6 +100,7 @@ class Device: NSObject {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if context == &deviceObservingContext, (change?[NSKeyValueChangeKey.newKey]) != nil {
             updateDeivces()
+            return
         }
         super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
