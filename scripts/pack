@@ -1,0 +1,3 @@
+#!/bin/sh
+VERSION=$(/usr/libexec/PlistBuddy -c 'print :CFBundleShortVersionString' TySimulator/Info.plist)
+dmgcanvas packager/DMG\ Canvas.dmgCanvas build/TySimulator\ $VERSION.dmg -volumeName TySimulator\ $VERSION

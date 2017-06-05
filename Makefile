@@ -7,14 +7,14 @@ help: ## show this help message and exit
 	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | column -t -c 2 -s ':#'
 
 archive: ## archive TySimulator
-	@./scripts/packager
+	@./scripts/build
 	@open build
 
 clean: ## clean
 	@rm -rf build
 
 pack:
-	dmgcanvas finalize "packager/DMG Canvas.dmgCanvas" "TySimulator.dmg"
+	@./scripts/pack
 
 %:
 	@:
