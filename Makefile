@@ -13,5 +13,8 @@ archive: ## archive TySimulator
 clean: ## clean
 	@rm -rf build
 
+pack:
+	dmgcanvas finalize "packager/DMG Canvas.dmgCanvas" "TySimulator.dmg"
+
 %:
 	@:
