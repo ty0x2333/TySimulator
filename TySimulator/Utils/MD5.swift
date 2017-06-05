@@ -10,8 +10,8 @@ import Foundation
 
 extension String {
     func md5() -> String! {
-        let str = self.cString(using: String.Encoding.utf8)
-        let strLen = CUnsignedInt(self.lengthOfBytes(using: String.Encoding.utf8))
+        let str = cString(using: String.Encoding.utf8)
+        let strLen = CUnsignedInt(lengthOfBytes(using: String.Encoding.utf8))
         let digestLen = Int(CC_MD5_DIGEST_LENGTH)
         let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
 

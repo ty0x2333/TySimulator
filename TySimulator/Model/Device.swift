@@ -35,7 +35,7 @@ class Device: NSObject {
     
     func updateDeivces() {
         
-        self.devices = Device.listDevices().filter {
+        devices = Device.listDevices().filter {
             var result = $0.os != .unknown
             let preference = Preference.shared
             if preference.onlyAvailableDevices {

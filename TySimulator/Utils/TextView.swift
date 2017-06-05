@@ -23,13 +23,13 @@ extension NSTextView {
     var placeHolderString: String? {
         set {
             if let string = newValue {
-                self.placeHolder = NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName: NSColor.gray])
-                self.needsDisplay = true
+                placeHolder = NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName: NSColor.gray])
+                needsDisplay = true
             }
         }
         
         get {
-            return self.placeHolder?.string
+            return placeHolder?.string
         }
     }
     
@@ -48,17 +48,17 @@ extension NSTextView {
     }
     
     func swizzle_becomeFirstResponder() -> Bool {
-        self.needsDisplay = true
-        return self.swizzle_becomeFirstResponder()
+        needsDisplay = true
+        return swizzle_becomeFirstResponder()
     }
     
     func swizzle_draw(_ dirtyRect: NSRect) {
-        self.swizzle_draw(dirtyRect)
-        guard self.string!.isEmpty else {
+        swizzle_draw(dirtyRect)
+        guard string!.isEmpty else {
             return
         }
-        if let placeHolder = self.placeHolder {
-            placeHolder.draw(in: NSMakeRect(5, 0, self.bounds.size.width - 2 * 5, self.bounds.size.height))
+        if let placeHolder = placeHolder {
+            placeHolder.draw(in: NSMakeRect(5, 0, bounds.size.width - 2 * 5, bounds.size.height))
         }
     }
     

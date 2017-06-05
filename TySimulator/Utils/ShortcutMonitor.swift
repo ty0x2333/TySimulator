@@ -14,7 +14,7 @@ extension MASShortcutMonitor {
             log.warning("register faild, command shortcut is nil")
             return
         }
-        self.register(command.key, withAction: {
+        register(command.key, withAction: {
             NSSound(named: "Ping")?.play()
             log.debug("script: \(command.script)")
             Process.execute(command.script)
@@ -26,6 +26,6 @@ extension MASShortcutMonitor {
             log.warning("unregister faild, command shortcut is nil")
             return
         }
-        self.unregisterShortcut(command.key)
+        unregisterShortcut(command.key)
     }
 }

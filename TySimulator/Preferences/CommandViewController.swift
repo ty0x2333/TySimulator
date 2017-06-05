@@ -24,7 +24,7 @@ class CommandViewController: NSViewController, ACEViewDelegate {
     
     override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.command = CommandModel()
+        command = CommandModel()
     }
     
     required init?(coder: NSCoder) {
@@ -33,9 +33,9 @@ class CommandViewController: NSViewController, ACEViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Command Editor"
-        self.nameTextField.bind("value", to: self.command, withKeyPath: #keyPath(CommandModel.name), options: [NSContinuouslyUpdatesValueBindingOption: true])
-        self.shortcutView.bind("shortcutValue", to: self.command, withKeyPath: #keyPath(CommandModel.key), options: [NSContinuouslyUpdatesValueBindingOption: true])
+        title = "Command Editor"
+        nameTextField.bind("value", to: command, withKeyPath: #keyPath(CommandModel.name), options: [NSContinuouslyUpdatesValueBindingOption: true])
+        shortcutView.bind("shortcutValue", to: command, withKeyPath: #keyPath(CommandModel.key), options: [NSContinuouslyUpdatesValueBindingOption: true])
         
         aceView.onReady = { [unowned self] in
             self.aceView.bind("string", to: self.command, withKeyPath: #keyPath(CommandModel.script), options: [NSContinuouslyUpdatesValueBindingOption: true])
@@ -80,17 +80,17 @@ class CommandViewController: NSViewController, ACEViewDelegate {
     
     @IBAction func onSaveButtonClicked(_ sender: NSButton) {
         // TODO: log
-        self.save?(self.command)
-        self.dismiss(self)
+        save?(command)
+        dismiss(self)
     }
     
     @IBAction func onCancelButtonClicked(_ sender: NSButton) {
         // TODO: log
-        self.dismiss(self)
+        dismiss(self)
     }
     
     // MARK: ACEViewDelegate
     func textDidChange(_ notification: Notification) {
-        self.command.script = self.aceView.string
+        command.script = aceView.string
     }
 }

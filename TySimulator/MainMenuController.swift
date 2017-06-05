@@ -28,40 +28,40 @@ class MainMenuController: NSObject, NSMenuDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.statusItem.image = NSImage(named: "MenuIcon")
+        statusItem.image = NSImage(named: "MenuIcon")
         
         let menu = NSMenu()
         menu.delegate = self
         menu.autoenablesItems = false
         
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(self.preferenceItem)
-        menu.addItem(self.aboutItem)
+        menu.addItem(preferenceItem)
+        menu.addItem(aboutItem)
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(self.quitMenuItem)
-        self.statusItem.menu = menu
-        self.updateDeviceMenus()
+        menu.addItem(quitMenuItem)
+        statusItem.menu = menu
+        updateDeviceMenus()
         
         NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Device.DevicesChangedNotification, object: nil)
     }
     
     func updateDeviceMenus() {
-        for it in self.deviceItems {
-            self.statusItem.menu?.removeItem(it)
+        for it in deviceItems {
+            statusItem.menu?.removeItem(it)
         }
         
-        self.devices = Device.shared.devices
-        log.info("load devices: \(self.devices.count)")
+        devices = Device.shared.devices
+        log.info("load devices: \(devices.count)")
         
-        self.tagMap.removeAll()
-        for i in 0 ..< self.devices.count {
-            self.tagMap[devices[i].udid] = i
+        tagMap.removeAll()
+        for i in 0 ..< devices.count {
+            tagMap[devices[i].udid] = i
         }
         
-        self.deviceItems = NSMenuItem.deviceMenuItems(self.devices, tagMap)
+        deviceItems = NSMenuItem.deviceMenuItems(devices, tagMap)
         
-        self.deviceItems.reversed().forEach { (item) in
-            self.statusItem.menu?.insertItem(item, at: 0)
+        deviceItems.reversed().forEach { (item) in
+            statusItem.menu?.insertItem(item, at: 0)
         }
     }
     
@@ -74,9 +74,9 @@ class MainMenuController: NSObject, NSMenuDelegate {
         log.verbose("booted device udid: \(bootedDeviceUDIDs)")
         
         let bootedItemTags = bootedDeviceUDIDs.map { (udid) -> Int in
-            return self.tagMap[udid]!
+            return tagMap[udid]!
         }
-        self.statusItem.menu?.items.forEach({ (item) in
+        statusItem.menu?.items.forEach({ (item) in
             item.state = bootedItemTags.contains(item.tag) ? 1 : 0
         })
         
@@ -84,6 +84,6 @@ class MainMenuController: NSObject, NSMenuDelegate {
     
     // MARK: Notification
     func devicesChangedNotification() {
-        self.updateDeviceMenus()
+        updateDeviceMenus()
     }
 }

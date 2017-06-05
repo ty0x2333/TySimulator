@@ -41,15 +41,15 @@ class DeviceModel {
     var appGroups: [AppGroupModel] = []
     
     init(osInfo: String, json: [String: Any]) {
-        self.name = json["name"] as! String
-        self.udid = json["udid"] as! String
-        self.isAvailable = (json["availability"] as! String).contains("(available)")
-        self.isOpen = (json["state"] as! String).contains("Booted")
+        name = json["name"] as! String
+        udid = json["udid"] as! String
+        isAvailable = (json["availability"] as! String).contains("(available)")
+        isOpen = (json["state"] as! String).contains("Booted")
         self.osInfo = osInfo
         
-        self.applications = ApplicationModel.applications(path: location)
-        self.appGroups = AppGroupModel.groups(location)
-        self.medias = MediaModel.medias(location)
+        applications = ApplicationModel.applications(path: location)
+        appGroups = AppGroupModel.groups(location)
+        medias = MediaModel.medias(location)
     }
     
     var hasContent: Bool {
@@ -61,7 +61,7 @@ class DeviceModel {
     }
     
     var location: URL {
-        return Device.devicesDirectory.appendingPathComponent("\(self.udid)")
+        return Device.devicesDirectory.appendingPathComponent("\(udid)")
     }
     
     var version: String {

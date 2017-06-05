@@ -34,7 +34,7 @@ extension NSViewController {
     }
     
     func ty_viewDidAppear() {
-        self.ty_viewDidAppear()
+        ty_viewDidAppear()
         
         for window in NSApp.windows {
             if window.isVisible {
@@ -45,7 +45,7 @@ extension NSViewController {
     }
     
     func ty_viewDidDisappear() {
-        self.ty_viewDidDisappear()
+        ty_viewDidDisappear()
         for window in NSApp.windows {
             if window.isVisible && String(describing: type(of:window)) != "NSStatusBarWindow" {
                 return

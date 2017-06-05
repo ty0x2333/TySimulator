@@ -48,7 +48,7 @@ extension NSApplication {
     
     class var isLaunchAtStartup: Bool {
         set {
-            if newValue == self.isLaunchAtStartup {
+            if newValue == isLaunchAtStartup {
                 return
             }
             guard let loginItemsRef = LSSharedFileListCreate( nil, kLSSharedFileListSessionLoginItems.takeRetainedValue(), nil).takeRetainedValue() as LSSharedFileList? else {
@@ -64,7 +64,7 @@ extension NSApplication {
         }
         
         get {
-            return self.itemReferencesInLoginItems().existingReference != nil
+            return itemReferencesInLoginItems().existingReference != nil
         }
     }
     

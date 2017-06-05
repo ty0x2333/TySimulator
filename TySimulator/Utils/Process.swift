@@ -42,7 +42,7 @@ extension Process {
     class func execute(_ script: String) -> String {
         let scriptCLI = Script.transformedScript(script)
         log.info("run script: \(scriptCLI)")
-        return self.output(launchPath: "/bin/sh", arguments: ["-c", scriptCLI])
+        return output(launchPath: "/bin/sh", arguments: ["-c", scriptCLI])
     }
     
 }
