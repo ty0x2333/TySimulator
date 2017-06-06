@@ -11,6 +11,10 @@ import MASPreferences
 
 class GeneralPreferencesViewController: NSViewController, MASPreferencesViewController {
     
+    @IBOutlet weak var checkForUpdatesButton: NSButton!
+    @IBOutlet weak var feedbackButton: NSButton!
+    @IBOutlet weak var applicationBox: NSBox!
+    @IBOutlet weak var menuBox: NSBox!
     @IBOutlet weak var isOnlyHasContentDevices: NSButton!
     @IBOutlet weak var isOnlyAvailableDevices: NSButton!
     @IBOutlet weak var isLaunchAtStartup: NSButton!
@@ -19,9 +23,23 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
     override func awakeFromNib() {
         super.awakeFromNib()
         let preference = Preference.shared
+        
+        checkForUpdatesButton.title = NSLocalizedString("preference.general.check.update", comment: "preference")
+        feedbackButton.title = NSLocalizedString("preference.general.feedback", comment: "preference")
+        
+        applicationBox.title = NSLocalizedString("preference.general.application", comment: "preference")
+        menuBox.title = NSLocalizedString("preference.general.menu", comment: "preference")
+        
+        isLaunchAtStartup.title = NSLocalizedString("preference.general.launch.startup", comment: "preference")
         isLaunchAtStartup.state = NSApplication.isLaunchAtStartup ? NSOnState : NSOffState
+        
+        isOnlyAvailableDevices.title = NSLocalizedString("preference.general.only.available.device", comment: "preference")
         isOnlyAvailableDevices.state = preference.onlyAvailableDevices ? NSOnState : NSOffState
+        
+        isOnlyHasContentDevices.title = NSLocalizedString("preference.general.only.has.application", comment: "preference")
         isOnlyHasContentDevices.state = preference.onlyHasContentDevices ? NSOnState : NSOffState
+        
+        isAutomaticallyChecksForUpdates.title = NSLocalizedString("preference.general.auto.check.update", comment: "preference")
         isAutomaticallyChecksForUpdates.state = DM_SUUpdater.shared().automaticallyChecksForUpdates ? NSOnState : NSOffState
     }
     @IBAction func onLaunchAtStartupButtonClicked(_ sender: NSButton) {

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesViewController">
             <connections>
+                <outlet property="applicationBox" destination="yXA-we-c8w" id="tyP-Y0-ZdS"/>
+                <outlet property="checkForUpdatesButton" destination="tpV-55-wBC" id="uze-ch-iF8"/>
+                <outlet property="feedbackButton" destination="wUz-Mi-VUr" id="pfO-Rk-kmH"/>
                 <outlet property="isAutomaticallyChecksForUpdates" destination="7AQ-eo-XWQ" id="MYN-8n-GIz"/>
                 <outlet property="isLaunchAtStartup" destination="6ZJ-Sf-ZNy" id="8nX-y9-GT1"/>
                 <outlet property="isOnlyAvailableDevices" destination="aIj-dS-k4u" id="ZW2-m1-7KL"/>
                 <outlet property="isOnlyHasContentDevices" destination="u74-RB-hld" id="Lqh-WM-nsh"/>
+                <outlet property="menuBox" destination="XDN-j8-uTi" id="oXb-TQ-Uif"/>
                 <outlet property="view" destination="c22-O7-iKe" id="I3g-Og-gJN"/>
             </connections>
         </customObject>
@@ -22,13 +26,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box title="Menu" translatesAutoresizingMaskIntoConstraints="NO" id="XDN-j8-uTi">
-                    <rect key="frame" x="86" y="102" width="314" height="93"/>
+                    <rect key="frame" x="78" y="102" width="329" height="93"/>
                     <view key="contentView" id="Km0-yc-poH">
-                        <rect key="frame" x="2" y="2" width="310" height="76"/>
+                        <rect key="frame" x="2" y="2" width="325" height="76"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="aIj-dS-k4u">
-                                <rect key="frame" x="15" y="44" width="280" height="18"/>
+                                <rect key="frame" x="15" y="44" width="295" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show only available devices" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="F6J-Ty-bZM">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -38,7 +42,7 @@
                                 </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="u74-RB-hld">
-                                <rect key="frame" x="15" y="14" width="280" height="18"/>
+                                <rect key="frame" x="15" y="14" width="295" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show only the devices with the application" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Sk2-IW-aLu">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -62,9 +66,9 @@
                     </constraints>
                 </box>
                 <box title="Application" translatesAutoresizingMaskIntoConstraints="NO" id="yXA-we-c8w">
-                    <rect key="frame" x="85" y="213" width="316" height="93"/>
+                    <rect key="frame" x="77" y="213" width="331" height="93"/>
                     <view key="contentView" id="CcJ-Er-omt">
-                        <rect key="frame" x="2" y="2" width="312" height="76"/>
+                        <rect key="frame" x="2" y="2" width="327" height="76"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="7AQ-eo-XWQ">
@@ -98,7 +102,7 @@
                     </view>
                 </box>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tpV-55-wBC">
-                    <rect key="frame" x="82" y="56" width="168" height="32"/>
+                    <rect key="frame" x="74" y="56" width="168" height="32"/>
                     <buttonCell key="cell" type="push" title="Check For Updates..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uBM-gQ-IcS">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -108,7 +112,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wUz-Mi-VUr">
-                    <rect key="frame" x="82" y="19" width="111" height="32"/>
+                    <rect key="frame" x="74" y="19" width="111" height="32"/>
                     <buttonCell key="cell" type="push" title="Feedback..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XPW-Ba-XTo">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -119,8 +123,10 @@
                 </button>
             </subviews>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="yXA-we-c8w" secondAttribute="trailing" constant="80" id="HVC-MH-P8d"/>
                 <constraint firstItem="wUz-Mi-VUr" firstAttribute="top" secondItem="tpV-55-wBC" secondAttribute="bottom" constant="16" id="KsH-oH-nHQ"/>
                 <constraint firstItem="tpV-55-wBC" firstAttribute="leading" secondItem="Km0-yc-poH" secondAttribute="leading" id="SwX-Ru-xxC"/>
+                <constraint firstItem="yXA-we-c8w" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="80" id="Wjp-VG-hXm"/>
                 <constraint firstItem="yXA-we-c8w" firstAttribute="width" secondItem="Km0-yc-poH" secondAttribute="width" id="aWs-rs-7NO"/>
                 <constraint firstItem="yXA-we-c8w" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="bCi-yv-wcZ"/>
                 <constraint firstItem="wUz-Mi-VUr" firstAttribute="leading" secondItem="tpV-55-wBC" secondAttribute="leading" id="fGo-DD-OQ2"/>
