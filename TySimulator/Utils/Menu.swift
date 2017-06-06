@@ -9,7 +9,7 @@
 import Cocoa
 
 extension NSMenuItem {
-    class func deviceMenuItems(_ devices: [DeviceModel], _ tagMap: Dictionary<String, Int>) -> [NSMenuItem] {
+    class func deviceMenuItems(_ devices: [DeviceModel], _ tagMap: [String: Int]) -> [NSMenuItem] {
         var items: [NSMenuItem] = []
         
         var osInfo: String = ""

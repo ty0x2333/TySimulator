@@ -24,7 +24,7 @@ class MainMenuController: NSObject, NSMenuDelegate {
         return NSMenuItem(title: "Preferences...", action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
     }()
     
-    var tagMap: Dictionary<String, Int> = [:]
+    var tagMap: [String: Int] = [:]
     
     override func awakeFromNib() {
         super.awakeFromNib()
