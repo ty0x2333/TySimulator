@@ -11,6 +11,21 @@
 
 Website: [https://tysimulator.com](https://tysimulator.com)
 
+Building
+===
+Requirements
+---
+- macOS 10.10 or later
+- XCode 8.3.2 or later
+
+Instructions
+---
+```shell
+$ git clone https://github.com/luckytianyiyan/TySimulator.git
+$ cd TySimulator
+$ make build
+```
+
 License
 ===
 
