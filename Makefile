@@ -6,6 +6,10 @@ help: ## show this help message and exit
 	@echo "targets:"
 	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | column -t -c 2 -s ':#'
 
+bootstrap:
+	@pod install
+	@carthage bootstrap --platform osx
+
 archive: ## archive TySimulator
 	@./scripts/build
 	@open build
