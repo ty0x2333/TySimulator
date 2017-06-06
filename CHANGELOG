@@ -6,3 +6,4 @@
 ===
 #### Enhancement
 1. 添加 i18n, 支持 简繁英 三种语言
+2. 没有icon的App, 将显示默认的空logo
