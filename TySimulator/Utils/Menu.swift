@@ -40,10 +40,10 @@ extension NSMenuItem {
         
         let menu = NSMenu()
         menu.autoenablesItems = false
-        
-        menu.addSection(title: "Applications", items: applicationMenuItems(device.applications))
-        menu.addSection(title: "App Groups", items: appGroupMenuItems(device.appGroups))
-        menu.addSection(title: "Media", items: mediaMenuItems(device.medias))
+
+        menu.addSection(title: NSLocalizedString("menu.application", comment: "menu"), items: applicationMenuItems(device.applications))
+        menu.addSection(title: NSLocalizedString("menu.app.group", comment: "menu"), items: appGroupMenuItems(device.appGroups))
+        menu.addSection(title: NSLocalizedString("menu.media", comment: "menu"), items: mediaMenuItems(device.medias))
         
         item.submenu = menu
         return item

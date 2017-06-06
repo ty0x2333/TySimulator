@@ -15,13 +15,13 @@ class MainMenuController: NSObject, NSMenuDelegate {
     var deviceItems: [NSMenuItem] = []
     
     lazy var quitMenuItem: NSMenuItem = {
-        return NSMenuItem(title: "Quit TySimulator", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        return NSMenuItem(title: NSLocalizedString("menu.quit", comment: "menu"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
     }()
     lazy var aboutItem: NSMenuItem = {
-        return NSMenuItem(title: "About TySimulator", action: #selector(NSApplication.showAboutWindow), keyEquivalent: "")
+        return NSMenuItem(title: NSLocalizedString("menu.about", comment: "menu"), action: #selector(NSApplication.showAboutWindow), keyEquivalent: "")
     }()
     lazy var preferenceItem: NSMenuItem = {
-        return NSMenuItem(title: "Preferences...", action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
+        return NSMenuItem(title: NSLocalizedString("menu.preference", comment: "menu"), action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
     }()
     
     var tagMap: [String: Int] = [:]

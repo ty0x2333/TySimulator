@@ -98,5 +98,5 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     
     var toolbarItemImage: NSImage! = NSImage(named: NSImageNameAdvanced)
     
-    var toolbarItemLabel: String! = "Key Bindings"
+    var toolbarItemLabel: String! = NSLocalizedString("preference.key.binding", comment: "preference")
 }

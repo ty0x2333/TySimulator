@@ -89,7 +89,7 @@ class Preference: NSObject {
     private class func preferencesWindowController() -> MASPreferencesWindowController {
         let generalViewController = GeneralPreferencesViewController()
         let keyBindingViewController = KeyBindingsPreferencesViewController()
-        let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController, keyBindingViewController], title: "Preferences")
+        let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController, keyBindingViewController], title: NSLocalizedString("preference.title", comment: "preference"))
         preferencesWindow?.window?.level = Int(CGWindowLevelForKey(CGWindowLevelKey.floatingWindow))
         return preferencesWindow!
     }

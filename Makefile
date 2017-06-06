@@ -16,5 +16,8 @@ clean: ## clean
 pack:
 	@./scripts/pack
 
+i18n:
+	@./scripts/i18n
+
 %:
 	@:

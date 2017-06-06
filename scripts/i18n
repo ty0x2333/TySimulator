@@ -1,0 +1,20 @@
+#!/bin/sh
+required_ver="1.1.2"
+
+if [ ! $(command -v tystrings) ]; then
+  echo "❗️ tystrings command not found. https://github.com/luckytianyiyan/TyStrings"
+  echo "sudo pip install tystrings"
+  exit 1
+elif [ ! `python -c "import tystrings; from pkg_resources import parse_version; print 1 if parse_version(tystrings.__version__) >= parse_version(\"${required_ver}\") else 0;"` ]
+then
+  echo "❗️ require tystrings version $required_ver"
+  echo "sudo pip install tystrings --upgrade"
+  exit 1
+fi
+
+CUR_DIR=$(dirname $0)
+PROJ_DIR=$CUR_DIR/../TySimulator
+tystrings generate $(find $PROJ_DIR -name \*.m -o -name \*.swift) -o $PROJ_DIR/Base.lproj $PROJ_DIR/zh-Hans.lproj $PROJ_DIR/zh-Hant.lproj
+echo "Press any key to continue"
+read -n 1 -s -p " "
+tystrings translate $PROJ_DIR/zh-Hans.lproj/Localizable.strings $PROJ_DIR/zh-Hant.lproj/Localizable.strings --src-lang zh --dst-lang cht

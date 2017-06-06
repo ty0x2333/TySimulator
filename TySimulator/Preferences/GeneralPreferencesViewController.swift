@@ -56,5 +56,5 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
     
     var toolbarItemImage: NSImage! = NSImage(named: NSImageNamePreferencesGeneral)
 
-    var toolbarItemLabel: String! = "General"
+    var toolbarItemLabel: String! = NSLocalizedString("preference.general", comment: "preference")
 }

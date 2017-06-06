@@ -39,6 +39,7 @@
 		19C680C31DF32F0C008CC5FE /* LicenseInfoStepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C680C21DF32F0C008CC5FE /* LicenseInfoStepController.swift */; };
 		19C680C51DF33DA6008CC5FE /* LicenseInfoStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */; };
 		19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */; };
+		19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19DC15241EE6D70400C77DF0 /* Localizable.strings */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
 		19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */; };
 		19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */; };
@@ -75,7 +76,6 @@
 		19460C8E1DD78EA900894FBA /* TySimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TySimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19460C911DD78EA900894FBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19460C931DD78EA900894FBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		19460C961DD78EA900894FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		19460C981DD78EA900894FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19460C9D1DD78EA900894FBA /* TySimulatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TySimulatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19460CA31DD78EA900894FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,6 +103,10 @@
 		19C680C21DF32F0C008CC5FE /* LicenseInfoStepController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseInfoStepController.swift; sourceTree = "<group>"; };
 		19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseInfoStepView.xib; sourceTree = "<group>"; };
 		19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationWindow.xib; sourceTree = "<group>"; };
+		19DC151F1EE6D64500C77DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		19DC15251EE6D70400C77DF0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		19DC15271EE6D70D00C77DF0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		19DC15281EE6D71B00C77DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutTableCellView.swift; sourceTree = "<group>"; };
 		19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
 		19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
 				19460C951DD78EA900894FBA /* MainMenu.xib */,
 				19460C981DD78EA900894FBA /* Info.plist */,
+				19DC15241EE6D70400C77DF0 /* Localizable.strings */,
 				191195551DD8ACF500EEBBB4 /* main.swift */,
 				19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */,
 				19C680BB1DF2EAB0008CC5FE /* TySimulatorKevlar.h */,
@@ -353,6 +358,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 19460C851DD78EA900894FBA;
 			productRefGroup = 19460C8F1DD78EA900894FBA /* Products */;
@@ -374,6 +381,7 @@
 				F5BE83571E159AB8005E7AD8 /* dsa_pub.pem in Resources */,
 				19C680C51DF33DA6008CC5FE /* LicenseInfoStepView.xib in Resources */,
 				19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */,
+				19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */,
 				1931AA971DE214D300B78D40 /* CommandViewController.xib in Resources */,
 				F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */,
 				19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */,
@@ -566,9 +574,19 @@
 		19460C951DD78EA900894FBA /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				19460C961DD78EA900894FBA /* Base */,
+				19DC151F1EE6D64500C77DF0 /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		19DC15241EE6D70400C77DF0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19DC15251EE6D70400C77DF0 /* zh-Hans */,
+				19DC15271EE6D70D00C77DF0 /* zh-Hant */,
+				19DC15281EE6D71B00C77DF0 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -578,6 +596,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -628,6 +647,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
