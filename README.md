@@ -25,12 +25,15 @@ Requirements
 ---
 - macOS 10.10 or later
 - XCode 8.3.2 or later
+- CocoaPods 1.2.1 or later
+- Carthage 0.23.0 or later
 
 Instructions
 ---
 ```shell
 $ git clone https://github.com/luckytianyiyan/TySimulator.git
 $ cd TySimulator
+$ make bootstrap
 $ make build
 ```
 
