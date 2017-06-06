@@ -52,8 +52,8 @@ extension NSMenuItem {
     private class func applicationMenuItems(_ applications: [ApplicationModel]) -> [NSMenuItem] {
         return applications.map {
             let item = menuItem($0.name, target: $0, action: #selector(ApplicationModel.handleMenuItem(_:)))
-            item.image = $0.icon
-            item.image?.size = NSSize(width: 24, height: 24)
+            item.image = $0.icon ?? NSImage(named: "tmp-logo")
+            item.image?.size = NSSize(width: 29, height: 29)
             item.isEnabled = true
             return item
         }
