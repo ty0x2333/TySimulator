@@ -41,32 +41,9 @@ extension NSMenuItem {
         let menu = NSMenu()
         menu.autoenablesItems = false
         
-        let applications = applicationMenuItems(device.applications)
-        if !applications.isEmpty {
-            menu.addItem(NSMenuItem.separator())
-            menu.addItem(NSMenuItem.header("Applications"))
-            applications.forEach {
-                menu.addItem($0)
-            }
-        }
-        
-        let appGroups = appGroupMenuItems(device.appGroups)
-        if !appGroups.isEmpty {
-            menu.addItem(NSMenuItem.separator())
-            menu.addItem(NSMenuItem.header("App Groups"))
-            appGroups.forEach {
-                menu.addItem($0)
-            }
-        }
-        
-        let medias = mediaMenuItems(device.medias)
-        if !medias.isEmpty {
-            menu.addItem(NSMenuItem.separator())
-            menu.addItem(NSMenuItem.header("Media"))
-            medias.forEach {
-                menu.addItem($0)
-            }
-        }
+        menu.addSection(title: "Applications", items: applicationMenuItems(device.applications))
+        menu.addSection(title: "App Groups", items: appGroupMenuItems(device.appGroups))
+        menu.addSection(title: "Media", items: mediaMenuItems(device.medias))
         
         item.submenu = menu
         return item
@@ -74,47 +51,48 @@ extension NSMenuItem {
 
     private class func applicationMenuItems(_ applications: [ApplicationModel]) -> [NSMenuItem] {
         return applications.map {
-            let item = NSMenuItem()
-            item.title = $0.name
+            let item = menuItem($0.name, target: $0, action: #selector(ApplicationModel.handleMenuItem(_:)))
             item.image = $0.icon
             item.image?.size = NSSize(width: 24, height: 24)
             item.isEnabled = true
-            item.target = $0
-            item.action = #selector(ApplicationModel.handleMenuItem(_:))
             return item
         }
     }
     
     private class func appGroupMenuItems(_ appGroups: [AppGroupModel]) -> [NSMenuItem] {
-        return appGroups.map {
-            let item = NSMenuItem()
-            item.title = $0.bundleIdentifier
-            item.isEnabled = true
-            item.target = $0
-            item.action = #selector(AppGroupModel.handleMenuItem(_:))
-            
-            return item
-        }
+        return appGroups.map { menuItem($0.bundleIdentifier, target: $0, action: #selector(AppGroupModel.handleMenuItem(_:))) }
     }
     
     private class func mediaMenuItems(_ media: [MediaModel]) -> [NSMenuItem] {
-        return media.map {
-            let item = NSMenuItem()
-            item.title = $0.name
-            item.isEnabled = true
-            item.target = $0
-            item.action = #selector(MediaModel.handleMenuItem(_:))
-            
-            return item
-        }
+        return media.map { menuItem($0.name, target: $0, action: #selector(MediaModel.handleMenuItem(_:))) }
     }
     
     // MARK: - Helper
-    private class func header(_ title: String) -> NSMenuItem {
+    
+    fileprivate class func header(_ title: String) -> NSMenuItem {
         let item = NSMenuItem()
         item.title = title
         item.isEnabled = false
         
         return item
+    }
+    
+    private class func menuItem(_ title: String, target: AnyObject, action: Selector?) -> NSMenuItem {
+        let item = NSMenuItem()
+        item.title = title
+        item.isEnabled = true
+        item.target = target
+        item.action = action
+        return item
+    }
+}
+
+extension NSMenu {
+    fileprivate func addSection(title: String, items: [NSMenuItem]) {
+        addItem(NSMenuItem.separator())
+        addItem(NSMenuItem.header(title))
+        items.forEach {
+            addItem($0)
+        }
     }
 }
