@@ -8,12 +8,19 @@
 
 import Cocoa
 import HockeySDK
+import Fabric
+import Crashlytics
 
 class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
     
 //    var activationController: DMActivationController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        Fabric.with([Crashlytics.self])
+        #if DEBUG
+            Fabric.sharedSDK().debug = true
+        #endif
         
         _ = NSApplication.toggleDockIcon(showIcon: false)
         DevMateKit.sendTrackingReport(nil, delegate: nil)

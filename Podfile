@@ -11,6 +11,8 @@ target 'TySimulator' do
   pod 'MASPreferences'
   pod 'DevMateKit'
   pod 'ACEViewSwift'
+  pod 'Fabric'
+  pod 'Crashlytics'
 
   # pod 'TySimulator-Kevlar', :path => 'Kevlar'
 
