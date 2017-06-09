@@ -6,7 +6,6 @@ target 'TySimulator' do
   use_frameworks!
 
   # Pods for TySimulator
-  pod 'HockeySDK-Mac'
   pod 'MASShortcut'
   pod 'MASPreferences'
   pod 'DevMateKit'

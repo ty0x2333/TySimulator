@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import HockeySDK
 import Fabric
 import Crashlytics
 
@@ -26,10 +25,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
         DevMateKit.sendTrackingReport(nil, delegate: nil)
         DevMateKit.setupIssuesController(nil, reportingUnhandledIssues: true)
         DM_SUUpdater.shared().delegate = self
-        
-        BITHockeyManager.shared().configure(withIdentifier: "4809e9695f5749449758cf7ec79710f5")
-        BITHockeyManager.shared().crashManager.isAutoSubmitCrashReport = true
-        BITHockeyManager.shared().start()
         
         // Setup trial
 //        #if DEBUG

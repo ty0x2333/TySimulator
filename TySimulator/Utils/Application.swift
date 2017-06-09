@@ -8,8 +8,6 @@
 
 import Foundation
 
-import HockeySDK
-
 extension NSApplication {
     func showFeedbackWindow() {
         DevMateKit.showFeedbackDialog(nil, in: .modalMode)
