@@ -19,15 +19,23 @@ Features
 - Custom command
 - Global hotkey
 
+Prerequisites
+===
+- macOS 10.10 or later
+- XCode 7 or later
+
 Building
 ===
 
 Requirements
 ---
-- macOS 10.10 or later
 - XCode 8.3.2 or later
-- CocoaPods 1.2.1 or later
-- Carthage 0.23.0 or later
+- [CocoaPods](https://github.com/CocoaPods/CocoaPods) 1.2.1 or later
+- [Carthage](https://github.com/Carthage/Carthage) 0.23.0 or later
+
+Optionals
+---
+- [xpretty](https://github.com/supermarin/xcpretty) 0.2.6 or later
 
 Instructions
 ---

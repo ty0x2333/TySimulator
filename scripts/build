@@ -6,6 +6,7 @@ WORKSPACE_PATH=$CUR_DIR/../TySimulator.xcworkspace
 BUILD_PATH=$CUR_DIR/../build
 ARCHIVE_PATH=$BUILD_PATH/TySimulator.xcarchive
 DST_DSYMS_PATH=$BUILD_PATH/dSYMs
+XCODE_BUILD="xcodebuild archive ONLY_ACTIVE_ARCH=NO -workspace $WORKSPACE_PATH -scheme TySimulator -archivePath $ARCHIVE_PATH -configuration Release"
 
 if [ ! -d $BUILD_PATH ]; then
 	mkdir $BUILD_PATH
@@ -14,12 +15,11 @@ if [ ! -d $DST_DSYMS_PATH ]; then
 	mkdir $DST_DSYMS_PATH
 fi
 
-set -o pipefail && xcodebuild archive ONLY_ACTIVE_ARCH=NO \
-	-workspace $WORKSPACE_PATH \
-	-scheme TySimulator \
-	-archivePath $ARCHIVE_PATH \
-	-configuration Release \
-	| xcpretty -t
+if [ ! $(command -v xcpretty) ]; then
+    $XCODE_BUILD
+else
+    set -o pipefail && $XCODE_BUILD | xcpretty
+fi
 
 cp -r $BUILD_PATH/TySimulator.xcarchive/Products/Applications/TySimulator.app $BUILD_PATH
 
