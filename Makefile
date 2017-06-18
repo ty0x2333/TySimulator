@@ -9,6 +9,9 @@ help: ## show this help message and exit
 icon: ## generate app icons
 	@scripts/generate_app_icon resources/logo.png TySimulator/Assets.xcassets/AppIcon.appiconset
 
+menu-icon: ## generate menu icons
+	@scripts/generate_menu_icon resources/menu-icon.png TySimulator/Assets.xcassets/MenuIcon.imageset
+
 bootstrap:
 	@pod install
 	@carthage bootstrap --platform osx
