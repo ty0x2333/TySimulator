@@ -1,24 +1,28 @@
 PODS:
   - ACEViewSwift (2.0.0)
+  - Crashlytics (3.8.4):
+    - Fabric (~> 1.6.3)
   - DevMateKit (1.7.1)
-  - HockeySDK-Mac (4.1.1)
+  - Fabric (1.6.11)
   - MASPreferences (1.1.4)
   - MASShortcut (2.3.6)
 
 DEPENDENCIES:
   - ACEViewSwift
+  - Crashlytics
   - DevMateKit
-  - HockeySDK-Mac
+  - Fabric
   - MASPreferences
   - MASShortcut
 
 SPEC CHECKSUMS:
   ACEViewSwift: 9623a5e703caf4718af1a5c0a3a73cb2b2f24eae
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   DevMateKit: 3ba77083f5faa40266e0d2d70776de2a82c71dd0
-  HockeySDK-Mac: c19aec63894d716ad48fba9f121921e5f4f2ca39
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   MASPreferences: 7bdcfe891d7840453cf48f95fa866c3e152ace7a
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
 
-PODFILE CHECKSUM: 1a8d291f7697eadd5284c8124783213875d55999
+PODFILE CHECKSUM: 0e5ba1c2809ff739bda17fa138a0dfdc48a3c70b
 
 COCOAPODS: 1.2.1

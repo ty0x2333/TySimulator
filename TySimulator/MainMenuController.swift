@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import HockeySDK
 
 class MainMenuController: NSObject, NSMenuDelegate {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
