@@ -16,7 +16,7 @@ Features
 - Quick access to app's **Documents** directory
 - Quick access to simulator's **Media** directory
 - Manipulating current running or specified simulator
-- Custom command
+- Customized command
 - Global hotkey
 
 Prerequisites
