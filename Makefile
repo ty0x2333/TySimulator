@@ -6,6 +6,9 @@ help: ## show this help message and exit
 	@echo "targets:"
 	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | column -t -c 2 -s ':#'
 
+icon: ## generate app icons
+	@scripts/generate_app_icon resources/logo.png TySimulator/Assets.xcassets/AppIcon.appiconset
+
 bootstrap:
 	@pod install
 	@carthage bootstrap --platform osx
