@@ -1,11 +1,13 @@
 language: objective-c
 osx_image: xcode8.1
-cache: cocoapods
+cache: 
+  cocoapods: true
 before_install:
+  - gem install cocoapods
   - brew update
   - brew outdated carthage || brew upgrade carthage
 before_script:
-  - pod install --repo-update
+  # - pod install --repo-update
   - carthage bootstrap --platform osx
 script:
   - xcodebuild -workspace TySimulator.xcworkspace -scheme TySimulator -sdk macosx ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -enableCodeCoverage YES test
