@@ -1,4 +1,4 @@
-.PHONY: help
+.PHONY: help build
 
 help: ## show this help message and exit
 	@echo "usage: make [target]"
@@ -16,7 +16,7 @@ bootstrap:
 	@pod install
 	@carthage bootstrap --platform osx
 
-archive: ## archive TySimulator
+build: ## archive TySimulator
 	@./scripts/build
 	@open build
 
