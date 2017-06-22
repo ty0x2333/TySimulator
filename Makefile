@@ -16,7 +16,11 @@ bootstrap:
 	@pod install
 	@carthage bootstrap --platform osx
 
-build: ## archive TySimulator
+build: ## build TySimulator
+	@./scripts/build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+	@open build
+
+archive: ## archive TySimulator
 	@./scripts/build
 	@open build
 
