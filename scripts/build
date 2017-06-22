@@ -6,7 +6,7 @@ WORKSPACE_PATH=$CUR_DIR/../TySimulator.xcworkspace
 BUILD_PATH=$CUR_DIR/../build
 ARCHIVE_PATH=$BUILD_PATH/TySimulator.xcarchive
 DST_DSYMS_PATH=$BUILD_PATH/dSYMs
-XCODE_BUILD="xcodebuild archive ONLY_ACTIVE_ARCH=NO -workspace $WORKSPACE_PATH -scheme TySimulator -archivePath $ARCHIVE_PATH -configuration Release"
+XCODE_BUILD="xcodebuild archive ONLY_ACTIVE_ARCH=NO -workspace $WORKSPACE_PATH -scheme TySimulator -archivePath $ARCHIVE_PATH -configuration Release $*"
 
 if [ ! -d $BUILD_PATH ]; then
 	mkdir $BUILD_PATH
