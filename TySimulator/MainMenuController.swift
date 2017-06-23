@@ -27,7 +27,9 @@ class MainMenuController: NSObject, NSMenuDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        statusItem.image = NSImage(named: "MenuIcon")
+        let icon = NSImage(named: "MenuIcon")
+        icon?.isTemplate = true
+        statusItem.image = icon
         
         let menu = NSMenu()
         menu.delegate = self
