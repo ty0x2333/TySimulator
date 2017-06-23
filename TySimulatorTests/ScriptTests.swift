@@ -10,13 +10,17 @@ import Quick
 import Nimble
 @testable import TySimulator
 
+func content(of filename: String) -> String {
+    let path = Bundle(for: ScriptTests.self).path(forResource: filename, ofType: "txt")!
+    return try! String(contentsOfFile: path)
+}
+
 class ScriptTests: QuickSpec {
     override func spec() {
         describe("parsing script", closure: {
             
 //            context("input valid command", {
-//                let command = "${{\"device\": \"booted\", \"application\": \"com.tianyiyan.TYTumblr\"}}"
-//                let script = "open \(command)"
+//                let script = content(of: "script-format")
 //                it("should be parsed", closure: {
 //                    let transformed = Script.transformedScript(script)
 //                    expect(transformed).toNot(equal(script))
