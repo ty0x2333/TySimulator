@@ -13,3 +13,4 @@
 ===
 #### Fixed Bug
 1. [#1 在Mac上使用暗色菜单栏时, 看不到图标](https://github.com/luckytianyiyan/TySimulator/issues/1)
+2. 自定义脚本解析错误
