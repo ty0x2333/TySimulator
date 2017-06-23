@@ -1,0 +1,4 @@
+open ${{
+    "device": "booted", 
+    "application": "com.tianyiyan.note"
+}}

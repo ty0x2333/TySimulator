@@ -12,6 +12,7 @@
 		1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191195591DD8C14700EEBBB4 /* MediaModel.swift */; };
 		1911955C1DD8C2B500EEBBB4 /* AppGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1911955B1DD8C2B500EEBBB4 /* AppGroupModel.swift */; };
 		192880361DE8959200A5A13A /* ScriptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192880351DE8959200A5A13A /* ScriptTests.swift */; };
+		192AA1891EFD63DA000BFA33 /* script-format.txt in Resources */ = {isa = PBXBuildFile; fileRef = 192AA1861EFD6320000BFA33 /* script-format.txt */; };
 		1931AA971DE214D300B78D40 /* CommandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1931AA961DE214D300B78D40 /* CommandViewController.xib */; };
 		1931AA991DE214DA00B78D40 /* CommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1931AA981DE214DA00B78D40 /* CommandViewController.swift */; };
 		19460C921DD78EA900894FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19460C911DD78EA900894FBA /* AppDelegate.swift */; };
@@ -36,9 +37,6 @@
 		199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D0B101DDE0F0800207D53 /* CommandModel.swift */; };
 		19A0A80C1EE6EBF60087592B /* tmp-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A0A80B1EE6EBF60087592B /* tmp-logo.png */; };
 		19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698231DE72AAE00AD3876 /* CommandTransformer.swift */; };
-		19C680BD1DF2EAB0008CC5FE /* TySimulatorKevlar.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */; };
-		19C680C31DF32F0C008CC5FE /* LicenseInfoStepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C680C21DF32F0C008CC5FE /* LicenseInfoStepController.swift */; };
-		19C680C51DF33DA6008CC5FE /* LicenseInfoStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */; };
 		19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */; };
 		19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19DC15241EE6D70400C77DF0 /* Localizable.strings */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
@@ -72,6 +70,7 @@
 		191195591DD8C14700EEBBB4 /* MediaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaModel.swift; sourceTree = "<group>"; };
 		1911955B1DD8C2B500EEBBB4 /* AppGroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupModel.swift; sourceTree = "<group>"; };
 		192880351DE8959200A5A13A /* ScriptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptTests.swift; sourceTree = "<group>"; };
+		192AA1861EFD6320000BFA33 /* script-format.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "script-format.txt"; sourceTree = "<group>"; };
 		1931AA961DE214D300B78D40 /* CommandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandViewController.xib; sourceTree = "<group>"; };
 		1931AA981DE214DA00B78D40 /* CommandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandViewController.swift; sourceTree = "<group>"; };
 		19460C8E1DD78EA900894FBA /* TySimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TySimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,10 +99,6 @@
 		19A0A80B1EE6EBF60087592B /* tmp-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tmp-logo.png"; sourceTree = "<group>"; };
 		19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TySimulator-Bridging-Header.h"; sourceTree = "<group>"; };
 		19B698231DE72AAE00AD3876 /* CommandTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTransformer.swift; sourceTree = "<group>"; };
-		19C680BB1DF2EAB0008CC5FE /* TySimulatorKevlar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TySimulatorKevlar.h; sourceTree = "<group>"; };
-		19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TySimulatorKevlar.m; sourceTree = "<group>"; };
-		19C680C21DF32F0C008CC5FE /* LicenseInfoStepController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseInfoStepController.swift; sourceTree = "<group>"; };
-		19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseInfoStepView.xib; sourceTree = "<group>"; };
 		19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationWindow.xib; sourceTree = "<group>"; };
 		19DC151F1EE6D64500C77DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		19DC15251EE6D70400C77DF0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -149,6 +144,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		192AA1851EFD6320000BFA33 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				192AA1861EFD6320000BFA33 /* script-format.txt */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		19460C851DD78EA900894FBA = {
 			isa = PBXGroup;
 			children = (
@@ -178,9 +181,7 @@
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
 				F58132CF1DDD7E84006C5A1A /* Device.swift */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
-				19C680C21DF32F0C008CC5FE /* LicenseInfoStepController.swift */,
 				19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */,
-				19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */,
 				19B698231DE72AAE00AD3876 /* CommandTransformer.swift */,
 				F521AA391E14510300353DA1 /* Script.swift */,
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
@@ -189,8 +190,6 @@
 				19DC15241EE6D70400C77DF0 /* Localizable.strings */,
 				191195551DD8ACF500EEBBB4 /* main.swift */,
 				19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */,
-				19C680BB1DF2EAB0008CC5FE /* TySimulatorKevlar.h */,
-				19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */,
 				F5BE83551E159AB8005E7AD8 /* Resource */,
 			);
 			path = TySimulator;
@@ -199,6 +198,7 @@
 		19460CA01DD78EA900894FBA /* TySimulatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				192AA1851EFD6320000BFA33 /* Resource */,
 				192880351DE8959200A5A13A /* ScriptTests.swift */,
 				19460CA31DD78EA900894FBA /* Info.plist */,
 			);
@@ -314,6 +314,7 @@
 				19975C16AE7EADFBD24551F6 /* [CP] Check Pods Manifest.lock */,
 				19460C991DD78EA900894FBA /* Sources */,
 				19460C9A1DD78EA900894FBA /* Frameworks */,
+				192AA1881EFD63CD000BFA33 /* Resources */,
 				772CFD0DE7396E3DC13F36FA /* [CP] Embed Pods Frameworks */,
 				AEBB3C8ACE6B40328BCF2D83 /* [CP] Copy Pods Resources */,
 				195C489C1EE46B6D00234568 /* Carthage */,
@@ -377,6 +378,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		192AA1881EFD63CD000BFA33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				192AA1891EFD63DA000BFA33 /* script-format.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		19460C8C1DD78EA900894FBA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,7 +393,6 @@
 				19460C941DD78EA900894FBA /* Assets.xcassets in Resources */,
 				F5BE83571E159AB8005E7AD8 /* dsa_pub.pem in Resources */,
 				19A0A80C1EE6EBF60087592B /* tmp-logo.png in Resources */,
-				19C680C51DF33DA6008CC5FE /* LicenseInfoStepView.xib in Resources */,
 				19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */,
 				19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */,
 				1931AA971DE214D300B78D40 /* CommandViewController.xib in Resources */,
@@ -563,9 +571,7 @@
 				19F94A1F1DDCBF7C00AECF3B /* Preference.swift in Sources */,
 				19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */,
 				1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */,
-				19C680C31DF32F0C008CC5FE /* LicenseInfoStepController.swift in Sources */,
 				F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */,
-				19C680BD1DF2EAB0008CC5FE /* TySimulatorKevlar.m in Sources */,
 				1996BFE41EE335B2009B6E83 /* TextView.swift in Sources */,
 				19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */,
 			);

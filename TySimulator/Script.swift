@@ -14,7 +14,7 @@ public class Script {
         var result = script
         var res: [NSTextCheckingResult] = []
         do {
-            let regex = try NSRegularExpression(pattern:"\\$\\{\\{.*\\}\\}", options:NSRegularExpression.Options.caseInsensitive)
+            let regex = try NSRegularExpression(pattern:"\\$\\{\\{[\\s\\S]*?\\}\\}", options:NSRegularExpression.Options.caseInsensitive)
             res = regex.matches(in:script, options:NSRegularExpression.MatchingOptions(rawValue: 0), range:NSMakeRange(0, script.characters.count))
         } catch {
             log.error(error)
