@@ -46,6 +46,10 @@ $ make bootstrap
 $ make build
 ```
 
+Inspiration and UX Reference
+---
+TySimulator is inspired by [Simulator](https://github.com/hyperoslo/Simulator), [SimPholders](https://simpholders.com), [macdown](https://github.com/MacDownApp/macdown), but with an independent legal copyright. If you don't like the implementation, please consider [Simulator](https://github.com/hyperoslo/Simulator), [SimPholders](https://simpholders.com).
+
 License
 ===
 
