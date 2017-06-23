@@ -13,8 +13,6 @@ target 'TySimulator' do
   pod 'Fabric'
   pod 'Crashlytics'
 
-  # pod 'TySimulator-Kevlar', :path => 'Kevlar'
-
   target 'TySimulatorTests' do
     inherit! :search_paths
   end

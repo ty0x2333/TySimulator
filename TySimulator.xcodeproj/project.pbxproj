@@ -36,9 +36,6 @@
 		199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D0B101DDE0F0800207D53 /* CommandModel.swift */; };
 		19A0A80C1EE6EBF60087592B /* tmp-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A0A80B1EE6EBF60087592B /* tmp-logo.png */; };
 		19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698231DE72AAE00AD3876 /* CommandTransformer.swift */; };
-		19C680BD1DF2EAB0008CC5FE /* TySimulatorKevlar.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */; };
-		19C680C31DF32F0C008CC5FE /* LicenseInfoStepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C680C21DF32F0C008CC5FE /* LicenseInfoStepController.swift */; };
-		19C680C51DF33DA6008CC5FE /* LicenseInfoStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */; };
 		19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */; };
 		19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19DC15241EE6D70400C77DF0 /* Localizable.strings */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
@@ -100,10 +97,6 @@
 		19A0A80B1EE6EBF60087592B /* tmp-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tmp-logo.png"; sourceTree = "<group>"; };
 		19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TySimulator-Bridging-Header.h"; sourceTree = "<group>"; };
 		19B698231DE72AAE00AD3876 /* CommandTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTransformer.swift; sourceTree = "<group>"; };
-		19C680BB1DF2EAB0008CC5FE /* TySimulatorKevlar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TySimulatorKevlar.h; sourceTree = "<group>"; };
-		19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TySimulatorKevlar.m; sourceTree = "<group>"; };
-		19C680C21DF32F0C008CC5FE /* LicenseInfoStepController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseInfoStepController.swift; sourceTree = "<group>"; };
-		19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseInfoStepView.xib; sourceTree = "<group>"; };
 		19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationWindow.xib; sourceTree = "<group>"; };
 		19DC151F1EE6D64500C77DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		19DC15251EE6D70400C77DF0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -178,9 +171,7 @@
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
 				F58132CF1DDD7E84006C5A1A /* Device.swift */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
-				19C680C21DF32F0C008CC5FE /* LicenseInfoStepController.swift */,
 				19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */,
-				19C680C41DF33DA6008CC5FE /* LicenseInfoStepView.xib */,
 				19B698231DE72AAE00AD3876 /* CommandTransformer.swift */,
 				F521AA391E14510300353DA1 /* Script.swift */,
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
@@ -189,8 +180,6 @@
 				19DC15241EE6D70400C77DF0 /* Localizable.strings */,
 				191195551DD8ACF500EEBBB4 /* main.swift */,
 				19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */,
-				19C680BB1DF2EAB0008CC5FE /* TySimulatorKevlar.h */,
-				19C680BC1DF2EAB0008CC5FE /* TySimulatorKevlar.m */,
 				F5BE83551E159AB8005E7AD8 /* Resource */,
 			);
 			path = TySimulator;
@@ -384,7 +373,6 @@
 				19460C941DD78EA900894FBA /* Assets.xcassets in Resources */,
 				F5BE83571E159AB8005E7AD8 /* dsa_pub.pem in Resources */,
 				19A0A80C1EE6EBF60087592B /* tmp-logo.png in Resources */,
-				19C680C51DF33DA6008CC5FE /* LicenseInfoStepView.xib in Resources */,
 				19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */,
 				19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */,
 				1931AA971DE214D300B78D40 /* CommandViewController.xib in Resources */,
@@ -563,9 +551,7 @@
 				19F94A1F1DDCBF7C00AECF3B /* Preference.swift in Sources */,
 				19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */,
 				1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */,
-				19C680C31DF32F0C008CC5FE /* LicenseInfoStepController.swift in Sources */,
 				F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */,
-				19C680BD1DF2EAB0008CC5FE /* TySimulatorKevlar.m in Sources */,
 				1996BFE41EE335B2009B6E83 /* TextView.swift in Sources */,
 				19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */,
 			);
