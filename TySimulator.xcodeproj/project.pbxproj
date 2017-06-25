@@ -341,7 +341,7 @@
 				TargetAttributes = {
 					19460C8D1DD78EA900894FBA = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 9KYD7S7AZY;
+						DevelopmentTeam = 2322UT7HH9;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -718,7 +718,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9KYD7S7AZY;
+				DEVELOPMENT_TEAM = 2322UT7HH9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -742,7 +742,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9KYD7S7AZY;
+				DEVELOPMENT_TEAM = 2322UT7HH9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
