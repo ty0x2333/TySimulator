@@ -54,5 +54,25 @@ class RecentTests: QuickSpec {
             })
 
         })
+        
+        describe("LRU-K", closure: {
+            let datas: [Int] = Array(0..<10)
+            let capacity = 5
+            context("append datas", {
+                let lruk = LRUK<Int, Int>(capacity: capacity, bufferSize: 10)
+                for data in datas {
+                    lruk[data] = 0
+                }
+                it("should be empty", closure: {
+                    expect(lruk.count).to(equal(0))
+                })
+                
+                it("has cache", closure: {
+                    lruk[0] = 3
+                    expect(lruk.count).to(equal(1))
+                    expect(lruk[0]).to(equal(3))
+                })
+            })
+        })
     }
 }

@@ -14,13 +14,18 @@ class LRUK<K: Hashable, V> {
     private let history: LRU<K, (hits: Int, value: V)>
     private let threshold: Int
     private let semaphore: DispatchSemaphore = DispatchSemaphore(value: 1)
+    
+    public var count: Int {
+        return cache.count
+    }
+    
+    
     init(capacity: Int, bufferSize: Int, threshold: Int = 2) {
         cache = LRU<K, V>(capacity: capacity)
         history = LRU<K, (hits: Int, value: V)>(capacity: bufferSize)
         self.bufferSize = bufferSize
         self.threshold = threshold
     }
-    
     
     subscript (key: K) -> V? {
         get {
