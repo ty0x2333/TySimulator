@@ -1,0 +1,53 @@
+//
+//  RecentTests.swift
+//  TySimulator
+//
+//  Created by luckytianyiyan on 2017/7/1.
+//  Copyright © 2017年 luckytianyiyan. All rights reserved.
+//
+
+import Quick
+import Nimble
+@testable import TySimulator
+
+class RecentTests: QuickSpec {
+    override func spec() {
+        describe("LRU", closure: {
+            let datas: [Int] = Array(0..<10)
+            let capacity = 5
+            context("append datas", {
+                let lru = LRU<Int, Int>(capacity: capacity)
+                for data in datas {
+                    lru[data] = 0
+                }
+                it("count should be equal capacity", closure: {
+                    expect(lru.count).to(equal(capacity))
+                })
+            })
+            
+            context("get value", {
+                let lru = LRU<Int, Int>(capacity: capacity)
+                for data in datas {
+                    lru[data] = data
+                }
+                it("value should be equal seted", closure: {
+                    for data in 5..<10 {
+                        expect(lru[data]).to(equal(data))
+                    }
+                })
+            })
+            
+            context("change value", {
+                let lru = LRU<Int, Int>(capacity: capacity)
+                lru[10] = 10
+                lru[10] = 20
+                it("count", closure: {
+                    expect(lru.count).to(equal(1))
+                })
+                it("value should be changed", closure: {
+                    expect(lru[10]).to(equal(20))
+                })
+            })
+        })
+    }
+}
