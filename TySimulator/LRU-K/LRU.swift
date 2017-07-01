@@ -14,6 +14,10 @@ class LRU<K: Hashable, V> {
     private var hashtable: [K: V]
     private let semaphore: DispatchSemaphore = DispatchSemaphore(value: 1)
     
+    public var count: Int {
+        return list.count
+    }
+    
     init(capacity: Int) {
         self.capacity = capacity
         hashtable = [K: V](minimumCapacity: capacity)
@@ -23,6 +27,7 @@ class LRU<K: Hashable, V> {
         get {
             _ = semaphore.wait(timeout: .distantFuture)
             guard let elem = hashtable[key] else {
+                semaphore.signal()
                 return nil
             }
             list.remove(at: list.index(of: key)!)
@@ -46,7 +51,7 @@ class LRU<K: Hashable, V> {
                 
                 list.append(key)
                 
-                if list.count >= capacity {
+                if list.count > capacity {
                     let deletedKey = list.removeFirst()
                     hashtable.removeValue(forKey: deletedKey)
                 }
