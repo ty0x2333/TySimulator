@@ -10,12 +10,22 @@ import Foundation
 
 class LRU<K: Hashable, V> {
     private let capacity: Int
-    private var list = [K]()
-    private var hashtable: [K: V]
+    fileprivate var list = [K]()
+    fileprivate var hashtable: [K: V]
     private let semaphore: DispatchSemaphore = DispatchSemaphore(value: 1)
     
     public var count: Int {
         return list.count
+    }
+    
+    public var datas: [(key: K, value: V)] {
+        var results: [(key: K, value: V)] = []
+        for key in list.reversed() {
+            if let value = hashtable[key] {
+                results.append((key: key, value: value))
+            }
+        }
+        return results
     }
     
     init(capacity: Int) {

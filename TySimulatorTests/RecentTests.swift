@@ -23,6 +23,10 @@ class RecentTests: QuickSpec {
                 it("count should be equal capacity", closure: {
                     expect(lru.count).to(equal(capacity))
                 })
+                
+                it("data", closure: {
+                    expect(lru.datas.map{ $0.key }).to(equal(Array(5..<10).reversed()))
+                })
             })
             
             context("get value", {
@@ -48,6 +52,7 @@ class RecentTests: QuickSpec {
                     expect(lru[10]).to(equal(20))
                 })
             })
+
         })
     }
 }
