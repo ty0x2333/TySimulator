@@ -12,6 +12,7 @@ class MainMenuController: NSObject {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     var devices: [DeviceModel] = []
     var deviceItems: [NSMenuItem] = []
+    var recentItems: [NSMenuItem] = []
     
     lazy var quitMenuItem: NSMenuItem = {
         return NSMenuItem(title: NSLocalizedString("menu.quit", comment: "menu"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
@@ -41,9 +42,11 @@ class MainMenuController: NSObject {
         menu.addItem(NSMenuItem.separator())
         menu.addItem(quitMenuItem)
         statusItem.menu = menu
+        updateRecentAppMenus()
         updateDeviceMenus()
         
         NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Notification.Name.Device.DidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recentAppsDidRecordNotification), name: Notification.Name.LRUCache.DidRecord, object: nil)
     }
     
     func updateDeviceMenus() {
@@ -64,9 +67,31 @@ class MainMenuController: NSObject {
         }
     }
     
+    func updateRecentAppMenus() {
+        guard let menu = statusItem.menu else {
+            return
+        }
+        menu.removeItems(recentItems)
+        let datas = LRUCache.shared.datas
+        guard datas.count > 0 else {
+            return
+        }
+        let titleItem = NSMenuItem.sectionMenuItem(NSLocalizedString("menu.recent", comment: "menu"))
+        let appItems = NSMenuItem.applicationMenuItems(datas)
+        for menuItem in appItems.reversed() {
+            menu.insertItem(menuItem, at: 0)
+        }
+        menu.insertItem(titleItem, at: 0)
+        recentItems = [titleItem] + appItems
+    }
+    
     // MARK: Notification
     func devicesChangedNotification() {
         updateDeviceMenus()
+    }
+    
+    func recentAppsDidRecordNotification() {
+        updateRecentAppMenus()
     }
 }
 
