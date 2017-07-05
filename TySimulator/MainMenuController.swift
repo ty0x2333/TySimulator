@@ -43,7 +43,7 @@ class MainMenuController: NSObject {
         statusItem.menu = menu
         updateDeviceMenus()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Device.DevicesChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Notification.Name.Device.DidChange, object: nil)
     }
     
     func updateDeviceMenus() {
