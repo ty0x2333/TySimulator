@@ -19,6 +19,9 @@ class LRUK<K: Hashable, V> {
         return cache.count
     }
     
+    public var datas: [(key: K, value: V)] {
+        return cache.datas
+    }
     
     init(capacity: Int, bufferSize: Int, threshold: Int = 2) {
         cache = LRU<K, V>(capacity: capacity)
