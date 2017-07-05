@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class MainMenuController: NSObject, NSMenuDelegate {
+class MainMenuController: NSObject {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     var devices: [DeviceModel] = []
     var deviceItems: [NSMenuItem] = []
@@ -66,6 +66,13 @@ class MainMenuController: NSObject, NSMenuDelegate {
         }
     }
     
+    // MARK: Notification
+    func devicesChangedNotification() {
+        updateDeviceMenus()
+    }
+}
+
+extension MainMenuController: NSMenuDelegate {
     // MARK: - NSMenuDelegate
     func menuWillOpen(_ menu: NSMenu) {
         let bootedDevices = Device.bootedDevices()
@@ -81,10 +88,5 @@ class MainMenuController: NSObject, NSMenuDelegate {
             item.state = bootedItemTags.contains(item.tag) ? 1 : 0
         })
         
-    }
-    
-    // MARK: Notification
-    func devicesChangedNotification() {
-        updateDeviceMenus()
     }
 }
