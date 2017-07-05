@@ -47,9 +47,7 @@ class MainMenuController: NSObject {
     }
     
     func updateDeviceMenus() {
-        for it in deviceItems {
-            statusItem.menu?.removeItem(it)
-        }
+        statusItem.menu?.removeItems(deviceItems)
         
         devices = Device.shared.devices
         log.info("load devices: \(devices.count)")
