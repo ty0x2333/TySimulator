@@ -46,6 +46,7 @@ class MainMenuController: NSObject {
         updateDeviceMenus()
         
         NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Notification.Name.Device.DidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bootedChangedNotification), name: Notification.Name.Device.Booted.DidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recentAppsDidRecordNotification), name: Notification.Name.LRUCache.DidRecord, object: nil)
     }
     
@@ -77,7 +78,7 @@ class MainMenuController: NSObject {
             return
         }
         let titleItem = NSMenuItem.sectionMenuItem(NSLocalizedString("menu.recent", comment: "menu"))
-        let bootedDevices = Device.bootedDevices()
+        let bootedDevices = Device.shared.bootedDevices
         var apps: [ApplicationModel] = []
         for bundleID in datas {
             for device in bootedDevices {
@@ -96,21 +97,8 @@ class MainMenuController: NSObject {
         recentItems = [titleItem] + appItems
     }
     
-    // MARK: Notification
-    func devicesChangedNotification() {
-        updateDeviceMenus()
-        updateRecentAppMenus()
-    }
-    
-    func recentAppsDidRecordNotification() {
-        updateRecentAppMenus()
-    }
-}
-
-extension MainMenuController: NSMenuDelegate {
-    // MARK: - NSMenuDelegate
-    func menuWillOpen(_ menu: NSMenu) {
-        let bootedDevices = Device.bootedDevices()
+    func updateBootedDeviceMenus() {
+        let bootedDevices = Device.shared.bootedDevices
         let bootedDeviceUDIDs = bootedDevices.map { (device) -> String in
             return device.udid
         }
@@ -122,6 +110,26 @@ extension MainMenuController: NSMenuDelegate {
         statusItem.menu?.items.forEach({ (item) in
             item.state = bootedItemTags.contains(item.tag) ? 1 : 0
         })
+    }
+    
+    // MARK: Notification
+    func devicesChangedNotification() {
+        updateDeviceMenus()
+    }
+    
+    func bootedChangedNotification() {
+        updateBootedDeviceMenus()
         updateRecentAppMenus()
+    }
+    
+    func recentAppsDidRecordNotification() {
+        updateRecentAppMenus()
+    }
+}
+
+extension MainMenuController: NSMenuDelegate {
+    // MARK: - NSMenuDelegate
+    func menuWillOpen(_ menu: NSMenu) {
+        Device.shared.updateDeivces()
     }
 }

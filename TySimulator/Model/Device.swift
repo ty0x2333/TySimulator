@@ -12,6 +12,9 @@ import SwiftyJSON
 extension Notification.Name {
     public struct Device {
         public static let DidChange = Notification.Name(rawValue: "com.tianyiyan.notification.device.didChange")
+        public struct Booted {
+            public static let DidChange = Notification.Name(rawValue: "com.tianyiyan.notification.device.booted.didChange")
+        }
     }
 }
 
@@ -19,7 +22,8 @@ class Device: NSObject {
     private var deviceObservingContext = 0
     
     static let shared = Device()
-    var devices: [DeviceModel] = []
+    private(set) var devices: [DeviceModel] = []
+    private(set) var bootedDevices: [DeviceModel] = []
     
     override init() {
         super.init()
@@ -39,41 +43,38 @@ class Device: NSObject {
     
     func updateDeivces() {
         
-        devices = Device.listDevices().filter {
-            var result = $0.os != .unknown
-            let preference = Preference.shared
-            if preference.onlyAvailableDevices {
-                result = result && $0.isAvailable
-            }
-            if preference.onlyHasContentDevices {
-                result = result && $0.hasContent
-            }
-            return result
+        let allDevices = Device.listDevices()
+        devices = allDevices.filter {
+                var result = $0.os != .unknown
+                let preference = Preference.shared
+                if preference.onlyAvailableDevices {
+                    result = result && $0.isAvailable
+                }
+                if preference.onlyHasContentDevices {
+                    result = result && $0.hasContent
+                }
+                return result
             }.sorted {
-                return $0.osInfo.compare($1.osInfo) == .orderedAscending
+                $0.osInfo.compare($1.osInfo) == .orderedAscending
+        }
+        
+        let bootedDevices = allDevices.filter {
+                $0.hasContent && $0.isAvailable && $0.os != .unknown && $0.isOpen
+            }.sorted {
+                $0.osInfo.compare($1.osInfo) == .orderedAscending
         }
         
         NotificationCenter.default.post(name: Notification.Name.Device.DidChange, object: nil)
-    }
-    
-    class func listDevices() -> [DeviceModel] {
-        let output = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"])
         
-        let json = JSON(parseJSON: output)
-        
-        var devices: [DeviceModel] = []
-        
-        for (key, value) in json["devices"].dictionaryValue {
-            let osInfo = key.replacingOccurrences(of: "com.apple.CoreSimulator.SimRuntime.", with: "")
-            devices.append(contentsOf: value.arrayValue.map { DeviceModel(osInfo: osInfo, json: $0.dictionaryObject!) })
+        let areInIncreasingOrder: ((DeviceModel, DeviceModel) -> Bool) = { (lhs, rhs) -> Bool in
+            return lhs.udid > rhs.udid
         }
-        return devices
-    }
-    
-    class func bootedDevices() -> [DeviceModel] {
-        let devices: [DeviceModel] = listDevices().filter { return $0.hasContent && $0.isAvailable && $0.os != .unknown && $0.isOpen }
         
-        return devices.sorted { return $0.osInfo.compare($1.osInfo) == .orderedAscending }
+        let hasChanged = bootedDevices.sorted(by: areInIncreasingOrder) != self.bootedDevices.sorted(by: areInIncreasingOrder)
+        self.bootedDevices = bootedDevices
+        if hasChanged {
+            NotificationCenter.default.post(name: Notification.Name.Device.Booted.DidChange, object: nil)
+        }
     }
     
     static var devicesDirectory: URL {
@@ -90,4 +91,20 @@ class Device: NSObject {
         super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
 
+}
+
+extension Device {
+    fileprivate class func listDevices() -> [DeviceModel] {
+        let output = Process.output(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"])
+        
+        let json = JSON(parseJSON: output)
+        
+        var devices: [DeviceModel] = []
+        
+        for (key, value) in json["devices"].dictionaryValue {
+            let osInfo = key.replacingOccurrences(of: "com.apple.CoreSimulator.SimRuntime.", with: "")
+            devices.append(contentsOf: value.arrayValue.map { DeviceModel(osInfo: osInfo, json: $0.dictionaryObject!) })
+        }
+        return devices
+    }
 }

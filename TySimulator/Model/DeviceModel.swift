@@ -72,3 +72,9 @@ class DeviceModel {
         return applications.first(where: { $0.bundleIdentifier == bundleIdentifier })
     }
 }
+
+extension DeviceModel: Equatable {
+    public static func ==(lhs: DeviceModel, rhs: DeviceModel) -> Bool {
+        return lhs.udid == rhs.udid
+    }
+}
