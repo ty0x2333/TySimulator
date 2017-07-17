@@ -28,9 +28,16 @@ class LRU<K: Hashable, V> {
         return results
     }
     
-    init(capacity: Int) {
+    init(capacity: Int, datas: [(key: K, value: V)]? = nil) {
         self.capacity = capacity
         hashtable = [K: V](minimumCapacity: capacity)
+        
+        if let datas = datas {
+            for (key, value) in datas.reversed() {
+                list.append(key)
+                hashtable[key] = value
+            }
+        }
     }
     
     subscript (key: K) -> V? {

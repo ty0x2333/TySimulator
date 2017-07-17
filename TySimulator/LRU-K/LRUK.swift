@@ -11,7 +11,7 @@ import Foundation
 class LRUK<K: Hashable, V> {
     private let cache: LRU<K, V>
     private let bufferSize: Int
-    private let history: LRU<K, (hits: Int, value: V)>
+    let history: LRU<K, (hits: Int, value: V)>
     private let threshold: Int
     private let semaphore: DispatchSemaphore = DispatchSemaphore(value: 1)
     
@@ -23,9 +23,9 @@ class LRUK<K: Hashable, V> {
         return cache.datas
     }
     
-    init(capacity: Int, bufferSize: Int, threshold: Int = 2) {
-        cache = LRU<K, V>(capacity: capacity)
-        history = LRU<K, (hits: Int, value: V)>(capacity: bufferSize)
+    init(capacity: Int, bufferSize: Int, threshold: Int = 2, datas: [(key: K, value: V)]? = nil, history: [(key: K, value: (hits: Int, value: V))]? = nil) {
+        cache = LRU<K, V>(capacity: capacity, datas: datas)
+        self.history = LRU<K, (hits: Int, value: V)>(capacity: bufferSize, datas: history)
         self.bufferSize = bufferSize
         self.threshold = threshold
     }
