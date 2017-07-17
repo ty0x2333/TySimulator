@@ -10,19 +10,13 @@ import Cocoa
 
 class MainMenuController: NSObject {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let quitMenuItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.quit", comment: "menu"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+    let aboutItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.about", comment: "menu"), action: #selector(NSApplication.showAboutWindow), keyEquivalent: "")
+    let preferenceItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.preference", comment: "menu"), action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
+    
     var devices: [DeviceModel] = []
     var deviceItems: [NSMenuItem] = []
     var recentItems: [NSMenuItem] = []
-    
-    lazy var quitMenuItem: NSMenuItem = {
-        return NSMenuItem(title: NSLocalizedString("menu.quit", comment: "menu"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
-    }()
-    lazy var aboutItem: NSMenuItem = {
-        return NSMenuItem(title: NSLocalizedString("menu.about", comment: "menu"), action: #selector(NSApplication.showAboutWindow), keyEquivalent: "")
-    }()
-    lazy var preferenceItem: NSMenuItem = {
-        return NSMenuItem(title: NSLocalizedString("menu.preference", comment: "menu"), action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
-    }()
     
     var tagMap: [String: Int] = [:]
     
@@ -77,9 +71,8 @@ class MainMenuController: NSObject {
         guard datas.count > 0 else {
             return
         }
-        let titleItem = NSMenuItem.sectionMenuItem(NSLocalizedString("menu.recent", comment: "menu"))
-        let bootedDevices = Device.shared.bootedDevices
         var apps: [ApplicationModel] = []
+        let bootedDevices = Device.shared.bootedDevices
         for bundleID in datas {
             for device in bootedDevices {
                 if let app = device.application(bundleIdentifier: bundleID) {
@@ -89,6 +82,11 @@ class MainMenuController: NSObject {
             }
         }
         
+        guard apps.count > 0 else {
+            return
+        }
+        
+        let titleItem = NSMenuItem.sectionMenuItem(NSLocalizedString("menu.recent", comment: "menu"))
         let appItems = NSMenuItem.applicationMenuItems(apps)
         for menuItem in appItems.reversed() {
             menu.insertItem(menuItem, at: 0)
