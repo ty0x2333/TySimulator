@@ -76,7 +76,7 @@ class ApplicationModel: NSObject {
             log.warning("can not open application data location, it is empty.")
             return
         }
-        LRUCache.shared.record(app: self)
+        LRUCache.shared.record(app: self.bundleIdentifier)
         NSWorkspace.shared().open(location)
     }
     

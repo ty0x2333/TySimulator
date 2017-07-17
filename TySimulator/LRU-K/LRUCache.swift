@@ -15,8 +15,8 @@ extension Notification.Name {
 }
 
 class LRUCache {
-    private let lruk = LRUK<String, ApplicationModel>(capacity: 3, bufferSize: 10, threshold: 2)
-    var datas: [ApplicationModel] {
+    private let lruk = LRUK<String, String>(capacity: 3, bufferSize: 10, threshold: 2)
+    var datas: [String] {
         return lruk.datas.map { $0.value }
     }
     public static let shared = LRUCache()
@@ -25,8 +25,8 @@ class LRUCache {
         
     }
     
-    func record(app: ApplicationModel) {
-        lruk[app.bundleIdentifier] = app
+    func record(app bundleIdentifier: String) {
+        lruk[bundleIdentifier] = bundleIdentifier
         NotificationCenter.default.post(name: Notification.Name.LRUCache.DidRecord, object: nil)
     }
     

@@ -77,7 +77,18 @@ class MainMenuController: NSObject {
             return
         }
         let titleItem = NSMenuItem.sectionMenuItem(NSLocalizedString("menu.recent", comment: "menu"))
-        let appItems = NSMenuItem.applicationMenuItems(datas)
+        let bootedDevices = Device.bootedDevices()
+        var apps: [ApplicationModel] = []
+        for bundleID in datas {
+            for device in bootedDevices {
+                if let app = device.application(bundleIdentifier: bundleID) {
+                    apps.append(app)
+                    break
+                }
+            }
+        }
+        
+        let appItems = NSMenuItem.applicationMenuItems(apps)
         for menuItem in appItems.reversed() {
             menu.insertItem(menuItem, at: 0)
         }
@@ -88,6 +99,7 @@ class MainMenuController: NSObject {
     // MARK: Notification
     func devicesChangedNotification() {
         updateDeviceMenus()
+        updateRecentAppMenus()
     }
     
     func recentAppsDidRecordNotification() {
@@ -110,6 +122,6 @@ extension MainMenuController: NSMenuDelegate {
         statusItem.menu?.items.forEach({ (item) in
             item.state = bootedItemTags.contains(item.tag) ? 1 : 0
         })
-        
+        updateRecentAppMenus()
     }
 }
