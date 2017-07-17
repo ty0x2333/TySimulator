@@ -24,6 +24,10 @@
 		195C48921EE41F9500234568 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 195C48911EE41F9500234568 /* SwiftyBeaver.framework */; };
 		195C48981EE46A1600234568 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 195C48961EE46A1600234568 /* Nimble.framework */; };
 		195C48991EE46A1600234568 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 195C48971EE46A1600234568 /* Quick.framework */; };
+		1960D2C81F077B6500DF7AC0 /* LRU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960D2C71F077B6500DF7AC0 /* LRU.swift */; };
+		1960D2CA1F077F0400DF7AC0 /* LRUK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960D2C91F077F0400DF7AC0 /* LRUK.swift */; };
+		1960D2CC1F07A8D900DF7AC0 /* RecentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960D2CB1F07A8D900DF7AC0 /* RecentTests.swift */; };
+		1960D2DB1F08460700DF7AC0 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960D2DA1F08460700DF7AC0 /* LRUCache.swift */; };
 		1996BFDF1EE335B2009B6E83 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD51EE335B2009B6E83 /* FileManager.swift */; };
 		1996BFE01EE335B2009B6E83 /* ShortcutMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD61EE335B2009B6E83 /* ShortcutMonitor.swift */; };
 		1996BFE11EE335B2009B6E83 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD71EE335B2009B6E83 /* Application.swift */; };
@@ -85,6 +89,10 @@
 		195C48911EE41F9500234568 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/Mac/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		195C48961EE46A1600234568 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
 		195C48971EE46A1600234568 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = "<group>"; };
+		1960D2C71F077B6500DF7AC0 /* LRU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRU.swift; sourceTree = "<group>"; };
+		1960D2C91F077F0400DF7AC0 /* LRUK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRUK.swift; sourceTree = "<group>"; };
+		1960D2CB1F07A8D900DF7AC0 /* RecentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTests.swift; sourceTree = "<group>"; };
+		1960D2DA1F08460700DF7AC0 /* LRUCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRUCache.swift; sourceTree = "<group>"; };
 		1996BFD51EE335B2009B6E83 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1996BFD61EE335B2009B6E83 /* ShortcutMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutMonitor.swift; sourceTree = "<group>"; };
 		1996BFD71EE335B2009B6E83 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
@@ -178,6 +186,7 @@
 				1996BFD41EE335B2009B6E83 /* Utils */,
 				19F94A171DDCBA4200AECF3B /* Preferences */,
 				19460CB01DD83BF200894FBA /* Model */,
+				1960D2C61F077B6500DF7AC0 /* LRU-K */,
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
 				F58132CF1DDD7E84006C5A1A /* Device.swift */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
@@ -200,6 +209,7 @@
 			children = (
 				192AA1851EFD6320000BFA33 /* Resource */,
 				192880351DE8959200A5A13A /* ScriptTests.swift */,
+				1960D2CB1F07A8D900DF7AC0 /* RecentTests.swift */,
 				19460CA31DD78EA900894FBA /* Info.plist */,
 			);
 			path = TySimulatorTests;
@@ -215,6 +225,16 @@
 				1911955B1DD8C2B500EEBBB4 /* AppGroupModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1960D2C61F077B6500DF7AC0 /* LRU-K */ = {
+			isa = PBXGroup;
+			children = (
+				1960D2C71F077B6500DF7AC0 /* LRU.swift */,
+				1960D2C91F077F0400DF7AC0 /* LRUK.swift */,
+				1960D2DA1F08460700DF7AC0 /* LRUCache.swift */,
+			);
+			path = "LRU-K";
 			sourceTree = "<group>";
 		};
 		1996BFD41EE335B2009B6E83 /* Utils */ = {
@@ -551,7 +571,9 @@
 			files = (
 				191195511DD8785300EEBBB4 /* ApplicationModel.swift in Sources */,
 				1996BFE61EE335B2009B6E83 /* Process.swift in Sources */,
+				1960D2C81F077B6500DF7AC0 /* LRU.swift in Sources */,
 				1996BFE71EE335B2009B6E83 /* MD5.swift in Sources */,
+				1960D2DB1F08460700DF7AC0 /* LRUCache.swift in Sources */,
 				1996BFDF1EE335B2009B6E83 /* FileManager.swift in Sources */,
 				1996BFE81EE335B2009B6E83 /* URL.swift in Sources */,
 				1911955C1DD8C2B500EEBBB4 /* AppGroupModel.swift in Sources */,
@@ -563,6 +585,7 @@
 				1996BFE11EE335B2009B6E83 /* Application.swift in Sources */,
 				1996BFE01EE335B2009B6E83 /* ShortcutMonitor.swift in Sources */,
 				191195561DD8ACF500EEBBB4 /* main.swift in Sources */,
+				1960D2CA1F077F0400DF7AC0 /* LRUK.swift in Sources */,
 				19460CAD1DD78FC000894FBA /* MainMenuController.swift in Sources */,
 				19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */,
 				F521AA3A1E14510300353DA1 /* Script.swift in Sources */,
@@ -581,6 +604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1960D2CC1F07A8D900DF7AC0 /* RecentTests.swift in Sources */,
 				192880361DE8959200A5A13A /* ScriptTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

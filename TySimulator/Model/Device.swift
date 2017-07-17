@@ -9,10 +9,14 @@
 import Cocoa
 import SwiftyJSON
 
+extension Notification.Name {
+    public struct Device {
+        public static let DidChange = Notification.Name(rawValue: "com.tianyiyan.notification.device.didChange")
+    }
+}
+
 class Device: NSObject {
     private var deviceObservingContext = 0
-    
-    public static let DevicesChangedNotification: NSNotification.Name = NSNotification.Name(rawValue: "DevicesChangedNotification")
     
     static let shared = Device()
     var devices: [DeviceModel] = []
@@ -49,7 +53,7 @@ class Device: NSObject {
                 return $0.osInfo.compare($1.osInfo) == .orderedAscending
         }
         
-        NotificationCenter.default.post(name: Device.DevicesChangedNotification, object: nil)
+        NotificationCenter.default.post(name: Notification.Name.Device.DidChange, object: nil)
     }
     
     class func listDevices() -> [DeviceModel] {

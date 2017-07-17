@@ -42,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        LRUCache.shared.save()
     }
     
     // MARK: SUUpdaterDelegate_DevMateInteraction

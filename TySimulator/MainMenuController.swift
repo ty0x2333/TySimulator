@@ -8,10 +8,11 @@
 
 import Cocoa
 
-class MainMenuController: NSObject, NSMenuDelegate {
+class MainMenuController: NSObject {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     var devices: [DeviceModel] = []
     var deviceItems: [NSMenuItem] = []
+    var recentItems: [NSMenuItem] = []
     
     lazy var quitMenuItem: NSMenuItem = {
         return NSMenuItem(title: NSLocalizedString("menu.quit", comment: "menu"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
@@ -41,15 +42,15 @@ class MainMenuController: NSObject, NSMenuDelegate {
         menu.addItem(NSMenuItem.separator())
         menu.addItem(quitMenuItem)
         statusItem.menu = menu
+        updateRecentAppMenus()
         updateDeviceMenus()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Device.DevicesChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Notification.Name.Device.DidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recentAppsDidRecordNotification), name: Notification.Name.LRUCache.DidRecord, object: nil)
     }
     
     func updateDeviceMenus() {
-        for it in deviceItems {
-            statusItem.menu?.removeItem(it)
-        }
+        statusItem.menu?.removeItems(deviceItems)
         
         devices = Device.shared.devices
         log.info("load devices: \(devices.count)")
@@ -66,6 +67,47 @@ class MainMenuController: NSObject, NSMenuDelegate {
         }
     }
     
+    func updateRecentAppMenus() {
+        guard let menu = statusItem.menu else {
+            return
+        }
+        menu.removeItems(recentItems)
+        let datas = LRUCache.shared.datas
+        guard datas.count > 0 else {
+            return
+        }
+        let titleItem = NSMenuItem.sectionMenuItem(NSLocalizedString("menu.recent", comment: "menu"))
+        let bootedDevices = Device.bootedDevices()
+        var apps: [ApplicationModel] = []
+        for bundleID in datas {
+            for device in bootedDevices {
+                if let app = device.application(bundleIdentifier: bundleID) {
+                    apps.append(app)
+                    break
+                }
+            }
+        }
+        
+        let appItems = NSMenuItem.applicationMenuItems(apps)
+        for menuItem in appItems.reversed() {
+            menu.insertItem(menuItem, at: 0)
+        }
+        menu.insertItem(titleItem, at: 0)
+        recentItems = [titleItem] + appItems
+    }
+    
+    // MARK: Notification
+    func devicesChangedNotification() {
+        updateDeviceMenus()
+        updateRecentAppMenus()
+    }
+    
+    func recentAppsDidRecordNotification() {
+        updateRecentAppMenus()
+    }
+}
+
+extension MainMenuController: NSMenuDelegate {
     // MARK: - NSMenuDelegate
     func menuWillOpen(_ menu: NSMenu) {
         let bootedDevices = Device.bootedDevices()
@@ -80,11 +122,6 @@ class MainMenuController: NSObject, NSMenuDelegate {
         statusItem.menu?.items.forEach({ (item) in
             item.state = bootedItemTags.contains(item.tag) ? 1 : 0
         })
-        
-    }
-    
-    // MARK: Notification
-    func devicesChangedNotification() {
-        updateDeviceMenus()
+        updateRecentAppMenus()
     }
 }
