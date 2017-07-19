@@ -23,7 +23,7 @@ class LRUCache {
     public static let shared = LRUCache(file: LRUCache.filePath)
     
     fileprivate init() {
-        lruk = LRUK<String, String>(capacity: 3, bufferSize: 10, threshold: 2)
+        lruk = LRUK<String, String>(capacity: 5, bufferSize: 10, threshold: 2)
     }
     
     func record(app bundleIdentifier: String) {

@@ -91,8 +91,15 @@ class MainMenuController: NSObject {
         log.verbose("update recent apps")
         let titleItem = NSMenuItem.sectionMenuItem(NSLocalizedString("menu.recent", comment: "menu"))
         
+        var models: [ApplicationModel] = []
+        for (idx, app) in apps.enumerated() {
+            if idx > 2 {
+                break
+            }
+            models.append(app)
+        }
         
-        let appItems = apps.map { (model) -> NSMenuItem in
+        let appItems = models.map { (model) -> NSMenuItem in
             let view = AppMenuItemView.loadFromNib()
             view.icon = model.icon
             view.appName = model.name
