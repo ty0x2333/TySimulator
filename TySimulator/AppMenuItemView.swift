@@ -12,6 +12,9 @@ class AppMenuItemView: NSView {
     
     weak var iconImageView: NSImageView?
     weak var appNameLabel: NSTextField?
+    private var trackingArea: NSTrackingArea?
+    
+    var highlight: Bool = false
     
     var icon: NSImage? {
         set {
@@ -48,19 +51,42 @@ class AppMenuItemView: NSView {
     }
     
     override func draw(_ dirtyRect: NSRect) {
-        guard let menuItem = enclosingMenuItem, menuItem.isHighlighted else {
-            super.draw(dirtyRect)
-            return
+        super.draw(dirtyRect)
+        if highlight {
+            NSColor.selectedMenuItemColor.set()
+            NSRectFill(dirtyRect)
         }
-        NSColor.selectedMenuItemColor.set()
-        NSRectFill(dirtyRect)
+    }
+    
+    override func updateTrackingAreas() {
+        if let trackingArea = self.trackingArea {
+            removeTrackingArea(trackingArea)
+        }
+        
+        let options: NSTrackingAreaOptions = [.mouseEnteredAndExited, .activeAlways]
+        let trackingArea = NSTrackingArea(rect: bounds, options: options, owner: self, userInfo: nil)
+        addTrackingArea(trackingArea)
     }
     
     override func mouseUp(with event: NSEvent) {
-        guard let menuItem = enclosingMenuItem, let menu = menuItem.menu else {
-            return
+        if let menu = enclosingMenuItem?.menu {
+            menu.cancelTracking()
         }
-        menu.cancelTracking()
-        menu.performActionForItem(at: menu.index(of: menuItem))
+        highlight = false
+        needsDisplay = true
+    }
+    
+    override func mouseEntered(with event: NSEvent) {
+        highlight = true
+        needsDisplay = true
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        highlight = false
+        needsDisplay = true
+    }
+    
+    override var acceptsFirstResponder: Bool {
+        return true
     }
 }
