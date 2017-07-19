@@ -14,6 +14,7 @@ class MainMenuController: NSObject {
     let aboutItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.about", comment: "menu"), action: #selector(NSApplication.showAboutWindow), keyEquivalent: "")
     let preferenceItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.preference", comment: "menu"), action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
     
+    @IBOutlet weak var appMenuItemView: AppMenuItemView!
     var devices: [DeviceModel] = []
     var deviceItems: [NSMenuItem] = []
     var recentItems: [NSMenuItem] = []
@@ -45,6 +46,7 @@ class MainMenuController: NSObject {
     }
     
     func updateDeviceMenus() {
+        log.verbose("update devices")
         statusItem.menu?.removeItems(deviceItems)
         
         devices = Device.shared.devices
@@ -86,8 +88,23 @@ class MainMenuController: NSObject {
             return
         }
         
+        log.verbose("update recent apps")
         let titleItem = NSMenuItem.sectionMenuItem(NSLocalizedString("menu.recent", comment: "menu"))
-        let appItems = NSMenuItem.applicationMenuItems(apps)
+        
+        
+        let appItems = apps.map { (model) -> NSMenuItem in
+            let viewCopyData = NSArchiver.archivedData(withRootObject: appMenuItemView)
+            let viewCopy = NSUnarchiver.unarchiveObject(with: viewCopyData) as! AppMenuItemView
+            viewCopy.commonInit()
+            viewCopy.icon = model.icon
+            viewCopy.appName = model.name
+            let item = NSMenuItem()
+            item.target = model
+            item.view = viewCopy
+            item.action = #selector(ApplicationModel.handleMenuItem(_:))
+            item.isEnabled = true
+            return item
+        }
         for menuItem in appItems.reversed() {
             menu.insertItem(menuItem, at: 0)
         }
