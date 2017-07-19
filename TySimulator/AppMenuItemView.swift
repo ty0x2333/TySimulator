@@ -13,6 +13,7 @@ class AppMenuItemView: NSView {
     
     @IBOutlet weak var appNameLabel: NSTextField!
     @IBOutlet weak var iconImageView: NSImageView!
+    @IBOutlet weak var sizeLabel: NSTextField!
     
     private var trackingArea: NSTrackingArea?
     
@@ -40,7 +41,25 @@ class AppMenuItemView: NSView {
     }
     
     var bundleIdentifier: String = ""
-    var location: URL?
+    var location: URL? {
+        didSet {
+            var total: Int64 = 0
+            if let url = location?.appendingPathComponent("Documents", isDirectory: true), let numerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.fileSizeKey], options: [], errorHandler: nil) {
+                for object in numerator {
+                    var fileSizeResource: AnyObject?
+                    guard let fileURL = object as? NSURL else {
+                        continue
+                    }
+                    try? fileURL.getResourceValue(&fileSizeResource, forKey: .fileSizeKey)
+                    guard let fileSize = fileSizeResource as? NSNumber else {
+                        continue
+                    }
+                    total += fileSize.int64Value
+                }
+            }
+            sizeLabel.stringValue = ByteCountFormatter.string(fromByteCount: total, countStyle: .file)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
