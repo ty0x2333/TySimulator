@@ -37,6 +37,9 @@ class AppMenuItemView: NSView {
         }
     }
     
+    var bundleIdentifier: String = ""
+    var location: URL?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         commonInit()
@@ -68,12 +71,22 @@ class AppMenuItemView: NSView {
         addTrackingArea(trackingArea)
     }
     
+    // MARK: Event
+    
     override func mouseUp(with event: NSEvent) {
         if let menu = enclosingMenuItem?.menu {
             menu.cancelTracking()
         }
         highlight = false
         needsDisplay = true
+        
+        guard let location = self.location else {
+            return
+        }
+        if !bundleIdentifier.isEmpty {
+            LRUCache.shared.record(app: bundleIdentifier)
+        }
+        NSWorkspace.shared().open(location)
     }
     
     override func mouseEntered(with event: NSEvent) {
@@ -84,6 +97,10 @@ class AppMenuItemView: NSView {
     override func mouseExited(with event: NSEvent) {
         highlight = false
         needsDisplay = true
+    }
+    
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool {
+        return true
     }
     
     override var acceptsFirstResponder: Bool {

@@ -60,7 +60,7 @@ class MainMenuController: NSObject {
         deviceItems = NSMenuItem.deviceMenuItems(devices, tagMap)
         
         deviceItems.reversed().forEach { (item) in
-            statusItem.menu?.insertItem(item, at: 0)
+            statusItem.menu?.insertItem(item, at: recentItems.count)
         }
     }
     
@@ -69,6 +69,7 @@ class MainMenuController: NSObject {
             return
         }
         menu.removeItems(recentItems)
+        recentItems.removeAll()
         let datas = LRUCache.shared.datas
         guard datas.count > 0 else {
             return
@@ -98,10 +99,9 @@ class MainMenuController: NSObject {
             viewCopy.commonInit()
             viewCopy.icon = model.icon
             viewCopy.appName = model.name
+            viewCopy.location = model.loadDataLocation()
             let item = NSMenuItem()
-            item.target = model
             item.view = viewCopy
-            item.action = #selector(ApplicationModel.handleMenuItem(_:))
             item.isEnabled = true
             return item
         }
