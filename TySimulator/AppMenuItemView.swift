@@ -41,24 +41,36 @@ class AppMenuItemView: NSView {
     }
     
     var bundleIdentifier: String = ""
+    var directoryWatcher: DirectoryWatcher?
     var location: URL? {
         didSet {
-            var total: Int64 = 0
-            if let url = location?.appendingPathComponent("Documents", isDirectory: true), let numerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.fileSizeKey], options: [], errorHandler: nil) {
-                for object in numerator {
-                    var fileSizeResource: AnyObject?
-                    guard let fileURL = object as? NSURL else {
-                        continue
-                    }
-                    try? fileURL.getResourceValue(&fileSizeResource, forKey: .fileSizeKey)
-                    guard let fileSize = fileSizeResource as? NSNumber else {
-                        continue
-                    }
-                    total += fileSize.int64Value
-                }
+            directoryWatcher?.invalidate()
+            updateSize()
+            if let url = location?.appendingPathComponent("Documents", isDirectory: true) {
+                directoryWatcher = DirectoryWatcher.watchFolder(path: url.path, didChange: { [weak self] in
+                    log.verbose("\(url) did change")
+                    self?.updateSize()
+                })
             }
-            sizeLabel.stringValue = ByteCountFormatter.string(fromByteCount: total, countStyle: .file)
         }
+    }
+    
+    func updateSize() {
+        var total: Int64 = 0
+        if let url = location?.appendingPathComponent("Documents", isDirectory: true), let numerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.fileSizeKey], options: [], errorHandler: nil) {
+            for object in numerator {
+                var fileSizeResource: AnyObject?
+                guard let fileURL = object as? NSURL else {
+                    continue
+                }
+                try? fileURL.getResourceValue(&fileSizeResource, forKey: .fileSizeKey)
+                guard let fileSize = fileSizeResource as? NSNumber else {
+                    continue
+                }
+                total += fileSize.int64Value
+            }
+        }
+        sizeLabel.stringValue = ByteCountFormatter.string(fromByteCount: total, countStyle: .file)
     }
     
     override func awakeFromNib() {

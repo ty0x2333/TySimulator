@@ -43,6 +43,7 @@
 		19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698231DE72AAE00AD3876 /* CommandTransformer.swift */; };
 		19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */; };
 		19DB14D11F1FBC9F00AD332A /* AppMenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */; };
+		19DB14D31F1FCBBB00AD332A /* DirectoryWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB14D21F1FCBBB00AD332A /* DirectoryWatcher.swift */; };
 		19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19DC15241EE6D70400C77DF0 /* Localizable.strings */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
 		19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */; };
@@ -111,6 +112,7 @@
 		19B698231DE72AAE00AD3876 /* CommandTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTransformer.swift; sourceTree = "<group>"; };
 		19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationWindow.xib; sourceTree = "<group>"; };
 		19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppMenuItemView.xib; sourceTree = "<group>"; };
+		19DB14D21F1FCBBB00AD332A /* DirectoryWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryWatcher.swift; sourceTree = "<group>"; };
 		19DC15251EE6D70400C77DF0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		19DC15271EE6D70D00C77DF0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		19DC15281EE6D71B00C77DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */,
 				19B698231DE72AAE00AD3876 /* CommandTransformer.swift */,
 				F521AA391E14510300353DA1 /* Script.swift */,
+				19DB14D21F1FCBBB00AD332A /* DirectoryWatcher.swift */,
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
 				19711D311F1E6B9C008B1ECB /* MainMenu.storyboard */,
 				19460C981DD78EA900894FBA /* Info.plist */,
@@ -592,6 +595,7 @@
 				1960D2CA1F077F0400DF7AC0 /* LRUK.swift in Sources */,
 				19460CAD1DD78FC000894FBA /* MainMenuController.swift in Sources */,
 				19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */,
+				19DB14D31F1FCBBB00AD332A /* DirectoryWatcher.swift in Sources */,
 				F521AA3A1E14510300353DA1 /* Script.swift in Sources */,
 				1996BFE51EE335B2009B6E83 /* ViewController.swift in Sources */,
 				1996BFE31EE335B2009B6E83 /* Menu.swift in Sources */,
