@@ -14,7 +14,6 @@ class MainMenuController: NSObject {
     let aboutItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.about", comment: "menu"), action: #selector(NSApplication.showAboutWindow), keyEquivalent: "")
     let preferenceItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.preference", comment: "menu"), action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
     
-    @IBOutlet weak var appMenuItemView: AppMenuItemView!
     var devices: [DeviceModel] = []
     var deviceItems: [NSMenuItem] = []
     var recentItems: [NSMenuItem] = []
@@ -94,14 +93,12 @@ class MainMenuController: NSObject {
         
         
         let appItems = apps.map { (model) -> NSMenuItem in
-            let viewCopyData = NSArchiver.archivedData(withRootObject: appMenuItemView)
-            let viewCopy = NSUnarchiver.unarchiveObject(with: viewCopyData) as! AppMenuItemView
-            viewCopy.commonInit()
-            viewCopy.icon = model.icon
-            viewCopy.appName = model.name
-            viewCopy.location = model.loadDataLocation()
+            let view = AppMenuItemView.loadFromNib()
+            view.icon = model.icon
+            view.appName = model.name
+            view.location = model.loadDataLocation()
             let item = NSMenuItem()
-            item.view = viewCopy
+            item.view = view
             item.isEnabled = true
             return item
         }

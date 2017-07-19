@@ -42,6 +42,7 @@
 		199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D0B101DDE0F0800207D53 /* CommandModel.swift */; };
 		19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698231DE72AAE00AD3876 /* CommandTransformer.swift */; };
 		19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */; };
+		19DB14D11F1FBC9F00AD332A /* AppMenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */; };
 		19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19DC15241EE6D70400C77DF0 /* Localizable.strings */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
 		19F94A1B1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1A1DDCBAA100AECF3B /* GeneralPreferencesViewController.swift */; };
@@ -109,6 +110,7 @@
 		19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TySimulator-Bridging-Header.h"; sourceTree = "<group>"; };
 		19B698231DE72AAE00AD3876 /* CommandTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTransformer.swift; sourceTree = "<group>"; };
 		19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationWindow.xib; sourceTree = "<group>"; };
+		19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppMenuItemView.xib; sourceTree = "<group>"; };
 		19DC15251EE6D70400C77DF0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		19DC15271EE6D70D00C77DF0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		19DC15281EE6D71B00C77DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				1960D2C61F077B6500DF7AC0 /* LRU-K */,
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
 				19711D251F1E3D3C008B1ECB /* AppMenuItemView.swift */,
+				19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */,
 				F58132CF1DDD7E84006C5A1A /* Device.swift */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
 				19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */,
@@ -414,6 +417,7 @@
 				F5BE83571E159AB8005E7AD8 /* dsa_pub.pem in Resources */,
 				19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */,
 				19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */,
+				19DB14D11F1FBC9F00AD332A /* AppMenuItemView.xib in Resources */,
 				1931AA971DE214D300B78D40 /* CommandViewController.xib in Resources */,
 				F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */,
 				19711D321F1E6B9C008B1ECB /* MainMenu.storyboard in Resources */,

@@ -10,8 +10,10 @@ import Foundation
 
 class AppMenuItemView: NSView {
     
-    weak var iconImageView: NSImageView?
-    weak var appNameLabel: NSTextField?
+    
+    @IBOutlet weak var appNameLabel: NSTextField!
+    @IBOutlet weak var iconImageView: NSImageView!
+    
     private var trackingArea: NSTrackingArea?
     
     var highlight: Bool = false
@@ -45,9 +47,13 @@ class AppMenuItemView: NSView {
         commonInit()
     }
     
-    func commonInit() {
-        iconImageView = subviews.first(where: { $0 is NSImageView }) as? NSImageView
-        appNameLabel = subviews.first(where: { $0 is NSTextField }) as? NSTextField
+    class func loadFromNib() -> AppMenuItemView {
+        var objects: NSArray = []
+        Bundle.main.loadNibNamed("AppMenuItemView", owner: nil, topLevelObjects: &objects)
+        return objects.first(where: { $0 is AppMenuItemView }) as! AppMenuItemView
+    }
+    
+    private func commonInit() {
         iconImageView?.wantsLayer = true
         iconImageView?.layer?.cornerRadius = 4.0
         iconImageView?.layer?.masksToBounds = true
