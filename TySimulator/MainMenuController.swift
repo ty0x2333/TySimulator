@@ -99,16 +99,7 @@ class MainMenuController: NSObject {
             models.append(app)
         }
         
-        let appItems = models.map { (model) -> NSMenuItem in
-            let view = AppMenuItemView.loadFromNib()
-            view.icon = model.icon
-            view.appName = model.name
-            view.location = model.loadDataLocation()
-            let item = NSMenuItem()
-            item.view = view
-            item.isEnabled = true
-            return item
-        }
+        let appItems = NSMenuItem.applicationMenuItems(models, style: .detail)
         for menuItem in appItems.reversed() {
             menu.insertItem(menuItem, at: 0)
         }
