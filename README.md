@@ -18,6 +18,7 @@ Features
 - Manipulating current running or specified simulator
 - Customized command
 - Global hotkey
+- Recent apps
 
 Prerequisites
 ===
