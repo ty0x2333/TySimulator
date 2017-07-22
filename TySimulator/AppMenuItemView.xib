@@ -10,27 +10,27 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="JIG-OS-dhU" customClass="AppMenuItemView" customModule="TySimulator" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="38"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DEU-Mg-PUr">
-                    <rect key="frame" x="10" y="5" width="40" height="40"/>
+                    <rect key="frame" x="10" y="4" width="30" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="JvG-1l-iII"/>
+                        <constraint firstAttribute="height" constant="30" id="JvG-1l-iII"/>
                         <constraint firstAttribute="width" secondItem="DEU-Mg-PUr" secondAttribute="height" multiplier="1:1" id="lzd-8l-Qsp"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="tmp-logo" id="BMU-qk-8iE"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d83-kF-wlZ">
-                    <rect key="frame" x="58" y="28" width="184" height="17"/>
+                    <rect key="frame" x="48" y="10" width="194" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="App Name" id="GNE-bd-GKM">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-gm-AXH">
-                    <rect key="frame" x="58" y="5" width="82" height="13"/>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-gm-AXH">
+                    <rect key="frame" x="48" y="4" width="82" height="13"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Documents Size" id="gEi-km-VNm">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -43,11 +43,13 @@
                 <constraint firstItem="vCR-gm-AXH" firstAttribute="leading" secondItem="d83-kF-wlZ" secondAttribute="leading" id="LJZ-Gc-QbS"/>
                 <constraint firstAttribute="trailing" secondItem="d83-kF-wlZ" secondAttribute="trailing" constant="10" id="OHH-Sm-vVz"/>
                 <constraint firstItem="d83-kF-wlZ" firstAttribute="leading" secondItem="DEU-Mg-PUr" secondAttribute="trailing" constant="10" id="Ocf-Zm-KQb"/>
-                <constraint firstItem="d83-kF-wlZ" firstAttribute="top" secondItem="DEU-Mg-PUr" secondAttribute="top" id="QlL-Xa-gOK"/>
+                <constraint firstItem="d83-kF-wlZ" firstAttribute="top" secondItem="DEU-Mg-PUr" secondAttribute="top" priority="750" id="QlL-Xa-gOK"/>
+                <constraint firstItem="d83-kF-wlZ" firstAttribute="centerY" secondItem="JIG-OS-dhU" secondAttribute="centerY" id="SVO-5a-cAs"/>
                 <constraint firstItem="vCR-gm-AXH" firstAttribute="bottom" secondItem="DEU-Mg-PUr" secondAttribute="bottom" id="jvY-1b-v4d"/>
                 <constraint firstItem="DEU-Mg-PUr" firstAttribute="centerY" secondItem="JIG-OS-dhU" secondAttribute="centerY" id="y6B-QB-4Om"/>
             </constraints>
             <connections>
+                <outlet property="appNameCenterConstraint" destination="SVO-5a-cAs" id="EId-rx-QCT"/>
                 <outlet property="appNameLabel" destination="d83-kF-wlZ" id="qJZ-e0-qkN"/>
                 <outlet property="iconImageView" destination="DEU-Mg-PUr" id="dkf-ys-R7y"/>
                 <outlet property="sizeLabel" destination="vCR-gm-AXH" id="Tys-pX-NMi"/>

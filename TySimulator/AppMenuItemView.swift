@@ -10,14 +10,32 @@ import Foundation
 
 class AppMenuItemView: NSView {
     
+    enum Style: Int {
+        case `default`
+        case detail
+    }
     
     @IBOutlet weak var appNameLabel: NSTextField!
     @IBOutlet weak var iconImageView: NSImageView!
     @IBOutlet weak var sizeLabel: NSTextField!
     
+    @IBOutlet weak var appNameCenterConstraint: NSLayoutConstraint!
     private var trackingArea: NSTrackingArea?
     
     var highlight: Bool = false
+    var style: AppMenuItemView.Style = .`default` {
+        didSet {
+            if style == .`default` {
+                sizeLabel.isHidden = true
+                appNameCenterConstraint.isActive = true
+                directoryWatcher?.invalidate()
+            } else {
+                sizeLabel.isHidden = false
+                appNameCenterConstraint.isActive = false
+                updateWatcher()
+            }
+        }
+    }
     
     var icon: NSImage? {
         set {
@@ -44,14 +62,11 @@ class AppMenuItemView: NSView {
     var directoryWatcher: DirectoryWatcher?
     var location: URL? {
         didSet {
-            directoryWatcher?.invalidate()
-            updateSize()
-            if let url = location?.appendingPathComponent("Documents", isDirectory: true) {
-                directoryWatcher = DirectoryWatcher.watchFolder(path: url.path, didChange: { [weak self] in
-                    log.verbose("\(url) did change")
-                    self?.updateSize()
-                })
+            guard style == .detail else {
+                return
             }
+            updateSize()
+            updateWatcher()
         }
     }
     
@@ -88,6 +103,7 @@ class AppMenuItemView: NSView {
         iconImageView?.wantsLayer = true
         iconImageView?.layer?.cornerRadius = 4.0
         iconImageView?.layer?.masksToBounds = true
+        appNameCenterConstraint.isActive = true
     }
     
     override func draw(_ dirtyRect: NSRect) {
@@ -142,5 +158,18 @@ class AppMenuItemView: NSView {
     
     override var acceptsFirstResponder: Bool {
         return true
+    }
+    
+    // MARK: Helper
+    
+    func updateWatcher() {
+        guard let url = location?.appendingPathComponent("Documents", isDirectory: true) else {
+            return
+        }
+        directoryWatcher?.invalidate()
+        directoryWatcher = DirectoryWatcher.watchFolder(path: url.path, didChange: { [weak self] in
+            log.verbose("\(url) did change")
+            self?.updateSize()
+        })
     }
 }

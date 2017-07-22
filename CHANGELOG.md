@@ -19,3 +19,6 @@
 ===
 #### New Feature
 1. 新增"最近使用的App"
+
+#### Enhancement
+1. App菜单项的样式

@@ -49,11 +49,15 @@ extension NSMenuItem {
         return item
     }
 
-    class func applicationMenuItems(_ applications: [ApplicationModel]) -> [NSMenuItem] {
+    class func applicationMenuItems(_ applications: [ApplicationModel], style: AppMenuItemView.Style = .`default`) -> [NSMenuItem] {
         return applications.map {
-            let item = menuItem($0.name, target: $0, action: #selector(ApplicationModel.handleMenuItem(_:)))
-            item.image = $0.icon ?? NSImage(named: "tmp-logo")
-            item.image?.size = NSSize(width: 29, height: 29)
+            let view = AppMenuItemView.loadFromNib()
+            view.style = style
+            view.icon = $0.icon
+            view.appName = $0.name
+            view.location = $0.loadDataLocation()
+            let item = NSMenuItem()
+            item.view = view
             item.isEnabled = true
             return item
         }
