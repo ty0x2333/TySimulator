@@ -20,7 +20,7 @@ extension NSMenuItem {
                 if !items.isEmpty {
                     items.append(NSMenuItem.separator())
                 }
-                items.append(header($0.osInfo))
+                items.append(sectionMenuItem($0.osInfo))
             }
             let item = deviceMenuItem($0)
             item.tag = tagMap[$0.udid]!
@@ -49,11 +49,15 @@ extension NSMenuItem {
         return item
     }
 
-    private class func applicationMenuItems(_ applications: [ApplicationModel]) -> [NSMenuItem] {
+    class func applicationMenuItems(_ applications: [ApplicationModel], style: AppMenuItemView.Style = .`default`) -> [NSMenuItem] {
         return applications.map {
-            let item = menuItem($0.name, target: $0, action: #selector(ApplicationModel.handleMenuItem(_:)))
-            item.image = $0.icon ?? NSImage(named: "tmp-logo")
-            item.image?.size = NSSize(width: 29, height: 29)
+            let view = AppMenuItemView.loadFromNib()
+            view.style = style
+            view.icon = $0.icon
+            view.appName = $0.name
+            view.location = $0.loadDataLocation()
+            let item = NSMenuItem()
+            item.view = view
             item.isEnabled = true
             return item
         }
@@ -67,15 +71,15 @@ extension NSMenuItem {
         return media.map { menuItem($0.name, target: $0, action: #selector(MediaModel.handleMenuItem(_:))) }
     }
     
-    // MARK: - Helper
-    
-    fileprivate class func header(_ title: String) -> NSMenuItem {
+    class func sectionMenuItem(_ title: String) -> NSMenuItem {
         let item = NSMenuItem()
         item.title = title
         item.isEnabled = false
         
         return item
     }
+    
+    // MARK: - Helper
     
     private class func menuItem(_ title: String, target: AnyObject, action: Selector?) -> NSMenuItem {
         let item = NSMenuItem()
@@ -88,11 +92,23 @@ extension NSMenuItem {
 }
 
 extension NSMenu {
-    fileprivate func addSection(title: String, items: [NSMenuItem]) {
-        addItem(NSMenuItem.separator())
-        addItem(NSMenuItem.header(title))
-        items.forEach {
-            addItem($0)
+    @discardableResult
+    func addSection(title: String, items: [NSMenuItem]) -> [NSMenuItem] {
+        var added: [NSMenuItem] = [NSMenuItem.separator(), NSMenuItem.sectionMenuItem(title)]
+        added.append(contentsOf: items)
+        addItems(added)
+        return added
+    }
+    
+    func addItems(_ items: [NSMenuItem]) {
+        for item in items {
+            addItem(item)
+        }
+    }
+    
+    func removeItems(_ items: [NSMenuItem]) {
+        for item in items {
+            removeItem(item)
         }
     }
 }

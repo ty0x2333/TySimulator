@@ -1,5 +1,5 @@
 #!/bin/sh
-required_ver="1.1.2"
+required_ver="1.2.0"
 
 if [ ! $(command -v tystrings) ]; then
   echo "❗️ tystrings command not found. https://github.com/luckytianyiyan/TyStrings"
@@ -17,4 +17,4 @@ PROJ_DIR=$CUR_DIR/../TySimulator
 tystrings generate $(find $PROJ_DIR -name \*.m -o -name \*.swift) -o $PROJ_DIR/Base.lproj $PROJ_DIR/zh-Hans.lproj $PROJ_DIR/zh-Hant.lproj
 echo "Press any key to continue"
 read -n 1 -s -p " "
-tystrings translate $PROJ_DIR/zh-Hans.lproj/Localizable.strings $PROJ_DIR/zh-Hant.lproj/Localizable.strings --src-lang zh --dst-lang cht
+tystrings translate $PROJ_DIR/zh-Hans.lproj/Localizable.strings $PROJ_DIR/zh-Hant.lproj/Localizable.strings --src-lang zh --dst-lang cht --appid 20160709000024959 --secret ke4UYwwvvgV9iQEIVjrC

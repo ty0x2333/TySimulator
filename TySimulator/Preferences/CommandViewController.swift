@@ -62,7 +62,7 @@ class CommandViewController: NSViewController, ACEViewDelegate {
         var deviceIdentifier = "booted"
         
         // try booted device
-        if let device = Device.bootedDevices().first {
+        if let device = Device.shared.bootedDevices.first {
             if device.applications.count > 0 {
                 return (deviceIdentifier, (device.applications.first?.bundleIdentifier)!)
             }

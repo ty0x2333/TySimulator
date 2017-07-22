@@ -14,3 +14,11 @@
 #### Fixed Bug
 1. [#1 在Mac上使用暗色菜单栏时, 看不到图标](https://github.com/luckytianyiyan/TySimulator/issues/1)
 2. 自定义脚本解析错误
+
+0.8.0
+===
+#### New Feature
+1. 新增"最近使用的App"
+
+#### Enhancement
+1. App菜单项的样式

@@ -70,13 +70,4 @@ class ApplicationModel: NSObject {
         }
         return nil
     }
-    
-    func handleMenuItem(_ item: NSMenuItem) {
-        guard let location = loadDataLocation() else {
-            log.warning("can not open application data location, it is empty.")
-            return
-        }
-        NSWorkspace.shared().open(location)
-    }
-    
 }
