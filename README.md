@@ -25,6 +25,18 @@ Prerequisites
 - macOS 10.10 or later
 - XCode 7 or later
 
+Installation
+===
+Install TySimulator from Website
+[https://tysimulator.com](https://tysimulator.com)
+
+or via [homebrew cask](https://github.com/caskroom/homebrew-cask)
+
+```shell
+$ brew update
+$ brew cask install tysimulator
+```
+
 Building
 ===
 
