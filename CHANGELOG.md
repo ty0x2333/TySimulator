@@ -11,7 +11,7 @@
 
 0.7.1
 ===
-#### Fixed Bug
+#### Fix Bug
 1. [#1 在Mac上使用暗色菜单栏时, 看不到图标](https://github.com/luckytianyiyan/TySimulator/issues/1)
 2. 自定义脚本解析错误
 
@@ -22,3 +22,8 @@
 
 #### Enhancement
 1. App菜单项的样式
+
+0.8.1
+===
+#### Fix Bug
+1. Dock Icon 显示错误
