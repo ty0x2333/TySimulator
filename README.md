@@ -42,13 +42,13 @@ Building
 
 Requirements
 ---
-- XCode 8.3.2 or later
-- [CocoaPods](https://github.com/CocoaPods/CocoaPods) 1.2.1 or later
-- [Carthage](https://github.com/Carthage/Carthage) 0.23.0 or later
+- XCode 9.0 or later
+- [CocoaPods](https://github.com/CocoaPods/CocoaPods)
+- [Carthage](https://github.com/Carthage/Carthage)
 
 Optionals
 ---
-- [xpretty](https://github.com/supermarin/xcpretty) 0.2.6 or later
+- [xpretty](https://github.com/supermarin/xcpretty) 0.2.8 or later
 
 Instructions
 ---
