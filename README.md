@@ -6,6 +6,7 @@
 [![codecov](https://codecov.io/gh/luckytianyiyan/TySimulator/branch/master/graph/badge.svg?token=m2rZatAaPl)](https://codecov.io/gh/luckytianyiyan/TySimulator)
 [![codebeat badge](https://codebeat.co/badges/eada9239-a4b7-4477-8463-59568fc0765a)](https://codebeat.co/projects/github-com-luckytianyiyan-tysimulator-master)
 [![GitHub release](https://img.shields.io/github/release/luckytianyiyan/TySimulator.svg)]()
+[![Swift Version](https://img.shields.io/badge/swift-3.2-orange.svg)]()
 
 ---
 
