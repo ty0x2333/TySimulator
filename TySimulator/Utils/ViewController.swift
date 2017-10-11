@@ -36,21 +36,23 @@ extension NSViewController {
     func ty_viewDidAppear() {
         ty_viewDidAppear()
         
-        for window in NSApp.windows {
-            if window.isVisible {
-                _ = NSApplication.toggleDockIcon(showIcon: true)
-                return
-            }
+        guard className != "NSTouchBarViewController" else {
+            return
+        }
+        if NSApp.windows.contains(where: { $0.isVisible }) {
+            NSApplication.toggleDockIcon(showIcon: true)
         }
     }
     
     func ty_viewDidDisappear() {
         ty_viewDidDisappear()
-        for window in NSApp.windows {
-            if window.isVisible && String(describing: type(of:window)) != "NSStatusBarWindow" {
-                return
-            }
+        
+        guard className != "NSTouchBarViewController" else {
+            return
         }
-        _ = NSApplication.toggleDockIcon(showIcon: false)
+        if NSApp.windows.contains(where: { $0.isVisible && String(describing: type(of:$0)) != "NSStatusBarWindow" }) {
+            return
+        }
+        NSApplication.toggleDockIcon(showIcon: false)
     }
 }

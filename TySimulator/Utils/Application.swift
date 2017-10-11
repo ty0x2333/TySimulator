@@ -29,6 +29,7 @@ extension NSApplication {
         DM_SUUpdater.shared().checkForUpdates(NSApp)
     }
     
+    @discardableResult
     public class func toggleDockIcon(showIcon state: Bool) -> Bool {
         return NSApp.setActivationPolicy(state ? .regular : .accessory)
     }

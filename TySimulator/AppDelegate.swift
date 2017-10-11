@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
             Fabric.sharedSDK().debug = true
         #endif
         
-        _ = NSApplication.toggleDockIcon(showIcon: false)
+        NSApplication.toggleDockIcon(showIcon: false)
         DevMateKit.sendTrackingReport(nil, delegate: nil)
         DevMateKit.setupIssuesController(nil, reportingUnhandledIssues: true)
         DM_SUUpdater.shared().delegate = self
