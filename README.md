@@ -6,6 +6,7 @@
 [![codecov](https://codecov.io/gh/luckytianyiyan/TySimulator/branch/master/graph/badge.svg?token=m2rZatAaPl)](https://codecov.io/gh/luckytianyiyan/TySimulator)
 [![codebeat badge](https://codebeat.co/badges/eada9239-a4b7-4477-8463-59568fc0765a)](https://codebeat.co/projects/github-com-luckytianyiyan-tysimulator-master)
 [![GitHub release](https://img.shields.io/github/release/luckytianyiyan/TySimulator.svg)]()
+[![Swift Version](https://img.shields.io/badge/swift-3.2-orange.svg)]()
 
 ---
 
@@ -42,13 +43,13 @@ Building
 
 Requirements
 ---
-- XCode 8.3.2 or later
-- [CocoaPods](https://github.com/CocoaPods/CocoaPods) 1.2.1 or later
-- [Carthage](https://github.com/Carthage/Carthage) 0.23.0 or later
+- XCode 9.0 or later
+- [CocoaPods](https://github.com/CocoaPods/CocoaPods)
+- [Carthage](https://github.com/Carthage/Carthage)
 
 Optionals
 ---
-- [xpretty](https://github.com/supermarin/xcpretty) 0.2.6 or later
+- [xpretty](https://github.com/supermarin/xcpretty) 0.2.8 or later
 
 Instructions
 ---

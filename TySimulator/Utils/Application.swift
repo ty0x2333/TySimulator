@@ -29,12 +29,12 @@ extension NSApplication {
         DM_SUUpdater.shared().checkForUpdates(NSApp)
     }
     
+    @discardableResult
     public class func toggleDockIcon(showIcon state: Bool) -> Bool {
         return NSApp.setActivationPolicy(state ? .regular : .accessory)
     }
 
 }
-
 
 // MARK: Launch
 extension NSApplication {
@@ -52,7 +52,7 @@ extension NSApplication {
                 let appUrl = NSURL(fileURLWithPath: Bundle.main.bundlePath)
                 LSSharedFileListInsertItemURL(loginItemsRef, itemReferences.lastReference, nil, nil, appUrl, nil, nil)
             } else if let itemRef = itemReferences.existingReference {
-                LSSharedFileListItemRemove(loginItemsRef, itemRef);
+                LSSharedFileListItemRemove(loginItemsRef, itemRef)
             }
         }
         

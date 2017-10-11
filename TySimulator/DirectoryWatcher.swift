@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /// https://developer.apple.com/library/content/samplecode/DocInteraction/Listings/ReadMe_txt.html
 class DirectoryWatcher {
     var dirFD: Int32 = -1
@@ -48,24 +47,24 @@ class DirectoryWatcher {
     // MARK: Private
     
     func kqueueFired() {
-        assert(kq >= 0);
+        assert(kq >= 0)
         
         var event: kevent = kevent()
         var timeout: timespec = timespec(tv_sec: 0, tv_nsec: 0)
         let eventCount = kevent(kq, nil, 0, &event, 1, &timeout)
 
-        assert((eventCount >= 0) && (eventCount < 2));
+        assert((eventCount >= 0) && (eventCount < 2))
         
         didChange?()
         
-        CFFileDescriptorEnableCallBacks(dirKQRef, kCFFileDescriptorReadCallBack);
+        CFFileDescriptorEnableCallBacks(dirKQRef, kCFFileDescriptorReadCallBack)
     }
     
     func startMonitoring(directory: NSString) -> Bool {
         // Double initializing is not going to work...
         if dirKQRef == nil && dirFD == -1 && kq == -1 {
             // Open the directory we're going to watch
-            dirFD = open(directory.fileSystemRepresentation, O_EVTONLY);
+            dirFD = open(directory.fileSystemRepresentation, O_EVTONLY)
             if dirFD >= 0 {
                 // Create a kqueue for our event messages...
                 kq = kqueue()
@@ -87,7 +86,7 @@ class DirectoryWatcher {
                                 return
                             }
                             let obj: DirectoryWatcher = Unmanaged<DirectoryWatcher>.fromOpaque(info).takeUnretainedValue()
-                            assert(callBackTypes == kCFFileDescriptorReadCallBack);
+                            assert(callBackTypes == kCFFileDescriptorReadCallBack)
                             
                             obj.kqueueFired()
                         }

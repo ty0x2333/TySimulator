@@ -19,22 +19,26 @@ extension Notification.Name {
 }
 
 class Device: NSObject {
-    private var deviceObservingContext = 0
-    
     static let shared = Device()
     private(set) var devices: [DeviceModel] = []
     private(set) var bootedDevices: [DeviceModel] = []
+    var deviceContentToken: NSKeyValueObservation?
+    var deviceAvailableToken: NSKeyValueObservation?
     
     override init() {
         super.init()
         updateDeivces()
-        Preference.shared.addObserver(self, forKeyPath: "onlyAvailableDevices", options: [.new], context: &deviceObservingContext)
-        Preference.shared.addObserver(self, forKeyPath: "onlyHasContentDevices", options: [.new], context: &deviceObservingContext)
+        deviceContentToken = Preference.shared.observe(\.onlyHasContentDevices, options: [.new]) { [weak self] _, _ in
+            self?.updateDeivces()
+        }
+        deviceAvailableToken = Preference.shared.observe(\.onlyAvailableDevices, options: [.new]) { [weak self] _, _ in
+            self?.updateDeivces()
+        }
     }
     
     deinit {
-        Preference.shared.removeObserver(self, forKeyPath: "onlyAvailableDevices", context: &deviceObservingContext)
-        Preference.shared.removeObserver(self, forKeyPath: "onlyHasContentDevices", context: &deviceObservingContext)
+        deviceContentToken?.invalidate()
+        deviceAvailableToken?.invalidate()
     }
     
     func device(udid: String) -> DeviceModel? {
@@ -80,15 +84,6 @@ class Device: NSObject {
     static var devicesDirectory: URL {
         let path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first ?? ""
         return URL(fileURLWithPath: path).appendingPathComponent("Developer/CoreSimulator/Devices")
-    }
-    
-    // MARK: Observer
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if context == &deviceObservingContext, (change?[NSKeyValueChangeKey.newKey]) != nil {
-            updateDeivces()
-            return
-        }
-        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
 
 }

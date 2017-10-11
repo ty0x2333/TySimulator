@@ -9,10 +9,10 @@
 import Foundation
 
 enum OS: String {
-    case tvOS = "tvOS"
-    case iOS = "iOS"
-    case watchOS = "watchOS"
-    case unknown = "unknown"
+    case tvOS
+    case iOS
+    case watchOS
+    case unknown
     
     var order: Int {
         switch self {
@@ -74,7 +74,7 @@ class DeviceModel {
 }
 
 extension DeviceModel: Equatable {
-    public static func ==(lhs: DeviceModel, rhs: DeviceModel) -> Bool {
+    public static func == (lhs: DeviceModel, rhs: DeviceModel) -> Bool {
         return lhs.udid == rhs.udid
     }
 }

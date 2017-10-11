@@ -68,8 +68,8 @@ class Preference: NSObject {
         synchronize()
     }
     
-    func remove(commandAt at: Int) {
-        commands.remove(at: at)
+    func remove(at index: Int) {
+        commands.remove(at: index)
         synchronize()
     }
     

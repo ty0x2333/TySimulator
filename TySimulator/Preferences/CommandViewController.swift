@@ -15,7 +15,7 @@ class CommandViewController: NSViewController, ACEViewDelegate {
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var shortcutView: MASShortcutView!
     @IBOutlet weak var aceView: ACEView!
-    var save: ((CommandModel) -> ())?
+    var save: ((CommandModel) -> Void)?
     
     init(_ command: CommandModel) {
         super.init(nibName: nil, bundle: nil)!

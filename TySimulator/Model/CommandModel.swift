@@ -26,8 +26,6 @@ class CommandModel: NSObject {
     }
     
     override var description: String {
-        get {
-            return "<\(name): \(String(describing: key))>"
-        }
+        return "<\(name): \(String(describing: key))>"
     }
 }
