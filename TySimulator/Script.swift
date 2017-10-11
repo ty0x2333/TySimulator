@@ -15,7 +15,7 @@ public class Script {
         var res: [NSTextCheckingResult] = []
         do {
             let regex = try NSRegularExpression(pattern:"\\$\\{\\{[\\s\\S]*?\\}\\}", options:NSRegularExpression.Options.caseInsensitive)
-            res = regex.matches(in:script, options:NSRegularExpression.MatchingOptions(rawValue: 0), range:NSMakeRange(0, script.characters.count))
+            res = regex.matches(in: script, options:NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: script.characters.count))
         } catch {
             log.error(error)
         }
@@ -24,7 +24,8 @@ public class Script {
         }
         for checkingRes in res {
             var commandValue = (script as NSString).substring(with:checkingRes.range)
-            commandValue = (commandValue as NSString).substring(with: NSMakeRange(2, commandValue.characters.count - 3))
+            commandValue = (commandValue as NSString).substring(with: NSRange(location: 2, length: commandValue.characters.count - 3)
+)
             let command = JSON(parseJSON: commandValue)
             let deviceId = command["device"].stringValue
             

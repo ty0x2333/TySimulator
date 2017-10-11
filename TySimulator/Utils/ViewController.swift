@@ -16,17 +16,17 @@ extension NSViewController {
         }
 
         let swizzlingClose = {
-            let originalMethod = class_getInstanceMethod(self, #selector(viewDidAppear));
-            let swizzledMethod = class_getInstanceMethod(self, #selector(ty_viewDidAppear));
+            let originalMethod = class_getInstanceMethod(self, #selector(viewDidAppear))
+            let swizzledMethod = class_getInstanceMethod(self, #selector(ty_viewDidAppear))
 
-            method_exchangeImplementations(originalMethod, swizzledMethod);
+            method_exchangeImplementations(originalMethod, swizzledMethod)
         }
 
         let swizzlingShow = {
-            let originalMethod = class_getInstanceMethod(self, #selector(viewDidDisappear));
-            let swizzledMethod = class_getInstanceMethod(self, #selector(ty_viewDidDisappear));
+            let originalMethod = class_getInstanceMethod(self, #selector(viewDidDisappear))
+            let swizzledMethod = class_getInstanceMethod(self, #selector(ty_viewDidDisappear))
 
-            method_exchangeImplementations(originalMethod, swizzledMethod);
+            method_exchangeImplementations(originalMethod, swizzledMethod)
         }
 
         swizzlingShow()

@@ -24,7 +24,7 @@ extension Process {
         task.launch()
         
         // For some reason [task waitUntilExit]; does not return sometimes. Therefore this rather hackish solution:
-        var count = 0;
+        var count = 0
         while task.isRunning && count < 10 {
             Thread.sleep(forTimeInterval: 0.1)
             count += 1

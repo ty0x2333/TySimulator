@@ -22,7 +22,7 @@ class CommandTransformer: ValueTransformer {
             return [String: Any]()
         }
 
-        return ["id": value.id,"name": value.name, "script": value.script, "shortcut": shortcut]
+        return ["id": value.id, "name": value.name, "script": value.script, "shortcut": shortcut]
     }
     
     override func transformedValue(_ value: Any?) -> Any? {

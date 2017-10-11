@@ -36,7 +36,6 @@ extension NSApplication {
 
 }
 
-
 // MARK: Launch
 extension NSApplication {
     
@@ -53,7 +52,7 @@ extension NSApplication {
                 let appUrl = NSURL(fileURLWithPath: Bundle.main.bundlePath)
                 LSSharedFileListInsertItemURL(loginItemsRef, itemReferences.lastReference, nil, nil, appUrl, nil, nil)
             } else if let itemRef = itemReferences.existingReference {
-                LSSharedFileListItemRemove(loginItemsRef, itemRef);
+                LSSharedFileListItemRemove(loginItemsRef, itemRef)
             }
         }
         

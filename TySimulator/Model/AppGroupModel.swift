@@ -37,4 +37,3 @@ class AppGroupModel: NSObject {
         NSWorkspace.shared().open(location)
     }
 }
-

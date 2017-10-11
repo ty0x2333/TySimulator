@@ -58,7 +58,7 @@ extension NSTextView {
             return
         }
         if let placeHolder = placeHolder {
-            placeHolder.draw(in: NSMakeRect(5, 0, bounds.size.width - 2 * 5, bounds.size.height))
+            placeHolder.draw(in: NSRect(x: 5, y: 0, width: bounds.size.width - 2 * 5, height: bounds.size.height))
         }
     }
     

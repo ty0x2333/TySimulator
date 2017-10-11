@@ -56,7 +56,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         let preference = Preference.shared
         let command = preference.commands[tableView.selectedRow]
         MASShortcutMonitor.shared().unregister(command: command)
-        Preference.shared.remove(commandAt: tableView.selectedRow)
+        Preference.shared.remove(at: tableView.selectedRow)
         tableView.reloadData()
     }
     

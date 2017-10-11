@@ -30,4 +30,3 @@ class MediaModel: NSObject {
         NSWorkspace.shared().open(location)
     }
 }
-

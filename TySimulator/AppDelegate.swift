@@ -76,4 +76,3 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
 //        return proposedStep
 //    }
 }
-
