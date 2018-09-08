@@ -50,7 +50,7 @@ extension NSViewController {
         guard className != "NSTouchBarViewController" else {
             return
         }
-        if NSApp.windows.contains(where: { $0.isVisible && String(describing: type(of:$0)) != "NSStatusBarWindow" }) {
+        if NSApp.windows.contains(where: { $0.isVisible && String(describing: type(of: $0)) != "NSStatusBarWindow" }) {
             return
         }
         NSApplication.toggleDockIcon(showIcon: false)

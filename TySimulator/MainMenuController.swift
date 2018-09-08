@@ -52,8 +52,8 @@ class MainMenuController: NSObject {
         log.info("load devices: \(devices.count)")
         
         tagMap.removeAll()
-        for i in 0 ..< devices.count {
-            tagMap[devices[i].udid] = i
+        for idx in 0 ..< devices.count {
+            tagMap[devices[idx].udid] = idx
         }
         
         deviceItems = NSMenuItem.deviceMenuItems(devices, tagMap)

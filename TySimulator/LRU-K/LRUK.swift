@@ -37,7 +37,7 @@ class LRUK<K: Hashable, V> {
         
         // if value is nil, it will do nothing
         set(value) {
-            guard let v = value else {
+            guard let newValue = value else {
                 return
             }
             _ = semaphore.wait(timeout: .distantFuture)
@@ -46,15 +46,15 @@ class LRUK<K: Hashable, V> {
                 let hits = his.hits + 1
                 
                 if hits < threshold {
-                    history[key] = (hits: hits, value: v)
+                    history[key] = (hits: hits, value: newValue)
                 } else {
                     history[key] = nil
-                    cache[key] = v
+                    cache[key] = newValue
                 }
             } else if threshold < 2 {
-                cache[key] = v
+                cache[key] = newValue
             } else {
-                history[key] = (hits: 1, value: v)
+                history[key] = (hits: 1, value: newValue)
             }
             
             semaphore.signal()
