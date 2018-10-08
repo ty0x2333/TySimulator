@@ -20,6 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
         #if DEBUG
             Fabric.sharedSDK().debug = true
         #endif
+        UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         
         NSApplication.toggleDockIcon(showIcon: false)
         DevMateKit.sendTrackingReport(nil, delegate: nil)

@@ -503,13 +503,14 @@
 			files = (
 			);
 			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = Fabric;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" b8abdb192ffac1475217f74ad9b22a062de1c4ec 5de90ea6e37074ba0df6027a8cccf6fefdaa0a76de7fe0a4fdf382a855d0cee7";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" b8abdb192ffac1475217f74ad9b22a062de1c4ec 5de90ea6e37074ba0df6027a8cccf6fefdaa0a76de7fe0a4fdf382a855d0cee7\n";
 		};
 		6FB74312638250B45FDA0DAF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
