@@ -123,12 +123,16 @@ class MainMenuController: NSObject {
     
     // MARK: Notification
     @objc func devicesChangedNotification() {
-        updateDeviceMenus()
+        DispatchQueue.main.async {
+            self.updateDeviceMenus()
+        }
     }
     
     @objc func bootedChangedNotification() {
-        updateBootedDeviceMenus()
-        updateRecentAppMenus()
+        DispatchQueue.main.async {
+            self.updateBootedDeviceMenus()
+            self.updateRecentAppMenus()
+        }
     }
     
     @objc func recentAppsDidRecordNotification() {

@@ -23,12 +23,13 @@ class Simulator {
     var deviceAvailableToken: NSKeyValueObservation?
     
     init() {
-        deviceContentToken = Preference.shared.observe(\.onlyHasContentDevices, options: [.new]) { [weak self] _, _ in
-            self?.updateDeivces()
+        let changeHandler: (Preference, NSKeyValueObservedChange<Bool>) -> Void = { [weak self] _, _ in
+            DispatchQueue.global().async {
+                self?.updateDeivces()
+            }
         }
-        deviceAvailableToken = Preference.shared.observe(\.onlyAvailableDevices, options: [.new]) { [weak self] _, _ in
-            self?.updateDeivces()
-        }
+        deviceContentToken = Preference.shared.observe(\.onlyHasContentDevices, options: [.new], changeHandler: changeHandler)
+        deviceAvailableToken = Preference.shared.observe(\.onlyAvailableDevices, options: [.new], changeHandler: changeHandler)
     }
     
     deinit {
@@ -39,19 +40,15 @@ class Simulator {
     func updateDeivces() {
         
         let allDevices = Simulator.listDevices()
-        devices = allDevices.filter {
-            var result = $0.os != .unknown
-            let preference = Preference.shared
-            if preference.onlyAvailableDevices {
-                result = result && $0.isAvailable
-            }
-            if preference.onlyHasContentDevices {
-                result = result && $0.hasContent
-            }
-            return result
-            }.sorted {
-                $0.osInfo.compare($1.osInfo) == .orderedAscending
+        let preference = Preference.shared
+        var filter: [DeviceFilter] = []
+        if preference.onlyAvailableDevices {
+            filter.append(.onlyAvailableDevices)
         }
+        if preference.onlyHasContentDevices {
+            filter.append(.onlyHasContentDevices)
+        }
+        devices = Simulator.listSortedDevices(filter: filter, descending: false)
         
         let bootedDevices = allDevices.filter {
             $0.hasContent && $0.isAvailable && $0.os != .unknown && $0.isOpen
@@ -83,7 +80,14 @@ class Simulator {
 }
 
 extension Simulator {
-    class func listDevices() -> [DeviceModel] {
+    struct DeviceFilter: OptionSet {
+        let rawValue: Int
+        
+        static let onlyAvailableDevices = DeviceFilter(rawValue: 1 << 1)
+        static let onlyHasContentDevices = DeviceFilter(rawValue: 1 << 2)
+    }
+
+    class func listDevices(filter: [DeviceFilter] = []) -> [DeviceModel] {
         let data = Process.outputData(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"])
         
         let deviceObjs = try? JSONSerialization.jsonObject(with: data, options: [.allowFragments])
@@ -100,6 +104,24 @@ extension Simulator {
                 devices.append(contentsOf: models)
             }
         }
+        
+        devices = devices.filter {
+            var result = $0.os != .unknown
+            if filter.contains(.onlyAvailableDevices) {
+                result = result && $0.isAvailable
+            }
+            if filter.contains(.onlyHasContentDevices) {
+                result = result && $0.hasContent
+            }
+            return result
+        }
+        
         return devices
+    }
+    
+    class func listSortedDevices(filter: [DeviceFilter] = [], descending: Bool) -> [DeviceModel] {
+        return listDevices(filter: filter).sorted {
+            $0.osInfo.compare($1.osInfo) == (descending ? .orderedDescending : .orderedAscending)
+        }
     }
 }
