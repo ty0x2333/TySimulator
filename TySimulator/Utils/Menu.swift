@@ -42,7 +42,7 @@ extension NSMenuItem {
         let menu = NSMenu()
         menu.autoenablesItems = false
 
-        menu.addSection(title: NSLocalizedString("menu.application", comment: "menu"), items: applicationMenuItems(device.applications))
+        menu.addSection(title: NSLocalizedString("menu.application", comment: "menu"), items: applicationMenuItems(device.applications, style: .detail))
         menu.addSection(title: NSLocalizedString("menu.app.group", comment: "menu"), items: appGroupMenuItems(device.appGroups))
         menu.addSection(title: NSLocalizedString("menu.media", comment: "menu"), items: mediaMenuItems(device.medias))
         

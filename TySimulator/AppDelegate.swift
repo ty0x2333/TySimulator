@@ -63,7 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
         #endif
     }
     
-    public func isUpdater(inTestMode updater: DM_SUUpdater) -> Bool {
+    @objc public func isUpdater(inTestMode updater: DM_SUUpdater) -> Bool {
         #if DEBUG
             return true
         #else
