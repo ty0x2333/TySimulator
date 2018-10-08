@@ -24,5 +24,13 @@ class UtilTests: QuickSpec {
                 })
             })
         })
+        
+        describe("String", closure: {
+            context("md5", {
+                it("had generated", closure: {
+                    expect("https://tyy.sh".md5()).to(equal("651949dc4ffadf4d933ac565796de4cd"))
+                })
+            })
+        })
     }
 }
