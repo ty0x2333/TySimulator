@@ -51,11 +51,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
     
     // MARK: SUUpdaterDelegate_DevMateInteraction
     
-    public func updaterDidNotFindUpdate(_ updater: DM_SUUpdater!) {
+    public func updaterDidNotFindUpdate(_ updater: DM_SUUpdater) {
         log.warning("not found update: \(updater)")
     }
     
-    @nonobjc public func updaterShouldCheck(forBetaUpdates updater: DM_SUUpdater!) -> Bool {
+    @nonobjc public func updaterShouldCheck(forBetaUpdates updater: DM_SUUpdater) -> Bool {
         #if DEBUG
             return true
         #else
@@ -63,7 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
         #endif
     }
     
-    public func isUpdater(inTestMode updater: DM_SUUpdater!) -> Bool {
+    public func isUpdater(inTestMode updater: DM_SUUpdater) -> Bool {
         #if DEBUG
             return true
         #else

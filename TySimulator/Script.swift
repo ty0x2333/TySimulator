@@ -41,7 +41,7 @@ public class Script {
             
             if let bundleIdentifier = command["application"].string,
                 let application = device.application(bundleIdentifier: bundleIdentifier),
-                let location = application.loadDataLocation()?.removeTrailingSlash.absoluteString {
+                let location = application.loadDataLocation()?.removeTrailingSlash?.absoluteString {
                 
                 result = (result as NSString).replacingCharacters(in: checkingRes.range, with: location)
             }

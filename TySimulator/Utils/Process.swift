@@ -17,7 +17,7 @@ extension Process {
         task.arguments = arguments
         task.standardOutput = output
         
-        if let path = directoryPath?.removeTrailingSlash.path {
+        if let path = directoryPath?.removeTrailingSlash?.path {
             task.currentDirectoryPath = path
         }
         

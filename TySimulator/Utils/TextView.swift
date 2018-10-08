@@ -55,11 +55,14 @@ extension NSTextView {
     }()
     
     private class func swizzleFunction(original: Selector, replacement: Selector) {
-        let originalMethod: Method = class_getInstanceMethod(NSTextView.self, original)!
+        guard let originalMethod: Method = class_getInstanceMethod(NSTextView.self, original),
+            let replacementMethod: Method = class_getInstanceMethod(NSTextView.self, replacement) else {
+            return
+        }
+        
         let originalImplementation: IMP = method_getImplementation(originalMethod)
         let originalArgTypes = method_getTypeEncoding(originalMethod)
         
-        let replacementMethod: Method = class_getInstanceMethod(NSTextView.self, replacement)!
         let replacementImplementation: IMP = method_getImplementation(replacementMethod)
         let replacementArgTypes = method_getTypeEncoding(replacementMethod)
         
