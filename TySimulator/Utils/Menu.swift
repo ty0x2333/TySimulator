@@ -57,6 +57,7 @@ extension NSMenuItem {
             view.icon = $0.bundle.appIcon
             view.appName = $0.bundle.appName
             view.location = $0.dataPath
+            view.bundleIdentifier = $0.bundle.bundleID
             let item = NSMenuItem()
             item.view = view
             item.isEnabled = true
