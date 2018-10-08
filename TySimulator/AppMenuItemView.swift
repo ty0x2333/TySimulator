@@ -94,9 +94,9 @@ class AppMenuItemView: NSView {
     }
     
     class func loadFromNib() -> AppMenuItemView {
-        var objects: NSArray = []
+        var objects: NSArray?
         Bundle.main.loadNibNamed("AppMenuItemView", owner: nil, topLevelObjects: &objects)
-        return objects.first(where: { $0 is AppMenuItemView }) as! AppMenuItemView
+        return objects!.first(where: { $0 is AppMenuItemView }) as! AppMenuItemView
     }
     
     private func commonInit() {
@@ -110,7 +110,7 @@ class AppMenuItemView: NSView {
         super.draw(dirtyRect)
         if highlight {
             NSColor.selectedMenuItemColor.set()
-            NSRectFill(dirtyRect)
+            dirtyRect.fill()
         }
     }
     
@@ -119,7 +119,7 @@ class AppMenuItemView: NSView {
             removeTrackingArea(trackingArea)
         }
         
-        let options: NSTrackingAreaOptions = [.mouseEnteredAndExited, .activeAlways]
+        let options: NSTrackingArea.Options = [.mouseEnteredAndExited, .activeAlways]
         let trackingArea = NSTrackingArea(rect: bounds, options: options, owner: self, userInfo: nil)
         addTrackingArea(trackingArea)
     }
@@ -139,7 +139,7 @@ class AppMenuItemView: NSView {
         if !bundleIdentifier.isEmpty {
             LRUCache.shared.record(app: bundleIdentifier)
         }
-        NSWorkspace.shared().open(location)
+        NSWorkspace.shared.open(location)
     }
     
     override func mouseEntered(with event: NSEvent) {

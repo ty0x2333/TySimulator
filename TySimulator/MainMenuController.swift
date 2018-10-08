@@ -9,7 +9,7 @@
 import Cocoa
 
 class MainMenuController: NSObject {
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let quitMenuItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.quit", comment: "menu"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
     let aboutItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.about", comment: "menu"), action: #selector(NSApplication.showAboutWindow), keyEquivalent: "")
     let preferenceItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.preference", comment: "menu"), action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
@@ -47,17 +47,16 @@ class MainMenuController: NSObject {
     func updateDeviceMenus() {
         log.verbose("update devices")
         statusItem.menu?.removeItems(deviceItems)
-        
+
         devices = Device.shared.devices
         log.info("load devices: \(devices.count)")
-        
+
         tagMap.removeAll()
         for idx in 0 ..< devices.count {
             tagMap[devices[idx].udid] = idx
         }
-        
         deviceItems = NSMenuItem.deviceMenuItems(devices, tagMap)
-        
+
         deviceItems.reversed().forEach { (item) in
             statusItem.menu?.insertItem(item, at: recentItems.count)
         }
@@ -83,14 +82,14 @@ class MainMenuController: NSObject {
                 }
             }
         }
-        
+
         guard apps.count > 0 else {
             return
         }
-        
+
         log.verbose("update recent apps")
         let titleItem = NSMenuItem.sectionMenuItem(NSLocalizedString("menu.recent", comment: "menu"))
-        
+
         var models: [ApplicationModel] = []
         for (idx, app) in apps.enumerated() {
             if idx > 2 {
@@ -98,7 +97,7 @@ class MainMenuController: NSObject {
             }
             models.append(app)
         }
-        
+
         let appItems = NSMenuItem.applicationMenuItems(models, style: .detail)
         for menuItem in appItems.reversed() {
             menu.insertItem(menuItem, at: 0)
@@ -113,26 +112,26 @@ class MainMenuController: NSObject {
             return device.udid
         }
         log.verbose("booted device udid: \(bootedDeviceUDIDs)")
-        
+
         let bootedItemTags = bootedDeviceUDIDs.map { (udid) -> Int in
             return tagMap[udid]!
         }
         statusItem.menu?.items.forEach({ (item) in
-            item.state = bootedItemTags.contains(item.tag) ? 1 : 0
+            item.state = NSControl.StateValue(rawValue: bootedItemTags.contains(item.tag) ? 1 : 0)
         })
     }
     
     // MARK: Notification
-    func devicesChangedNotification() {
+    @objc func devicesChangedNotification() {
         updateDeviceMenus()
     }
     
-    func bootedChangedNotification() {
+    @objc func bootedChangedNotification() {
         updateBootedDeviceMenus()
         updateRecentAppMenus()
     }
     
-    func recentAppsDidRecordNotification() {
+    @objc func recentAppsDidRecordNotification() {
         updateRecentAppMenus()
     }
 }

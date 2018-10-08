@@ -13,14 +13,14 @@ extension NSApplication {
         DevMateKit.showFeedbackDialog(nil, in: .modalMode)
     }
     
-    func showPreferencesWindow() {
+    @objc func showPreferencesWindow() {
         let windowController = Preference.sharedWindowController
         windowController.select(at: 0)
         windowController.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
     
-    func showAboutWindow() {
+    @objc func showAboutWindow() {
         NSApp.orderFrontStandardAboutPanel(nil)
         NSApp.activate(ignoringOtherApps: true)
     }

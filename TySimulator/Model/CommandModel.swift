@@ -11,9 +11,9 @@ import MASShortcut
 
 class CommandModel: NSObject {
     private(set) var id: String
-    var name: String = ""
-    var script: String = ""
-    var key: MASShortcut?
+    @objc var name: String = ""
+    @objc var script: String = ""
+    @objc var key: MASShortcut?
     
     convenience override init() {
         let timeStamp = NSDate().timeIntervalSince1970

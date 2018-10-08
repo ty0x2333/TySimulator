@@ -29,12 +29,12 @@ class Preference: NSObject {
     static let sharedWindowController: MASPreferencesWindowController = preferencesWindowController()
     static let shared: Preference = Preference()
     private(set) var commands: [CommandModel] = []
-    dynamic var onlyAvailableDevices: Bool {
+    @objc dynamic var onlyAvailableDevices: Bool {
         didSet {
             Defaults[.onlyAvailableDevices] = onlyAvailableDevices
         }
     }
-    dynamic var onlyHasContentDevices: Bool {
+    @objc dynamic var onlyHasContentDevices: Bool {
         didSet {
             Defaults[.onlyHasContentDevices] = onlyHasContentDevices
         }
@@ -90,8 +90,8 @@ class Preference: NSObject {
         let generalViewController = GeneralPreferencesViewController()
         let keyBindingViewController = KeyBindingsPreferencesViewController()
         let preferencesWindow = MASPreferencesWindowController(viewControllers: [generalViewController, keyBindingViewController], title: NSLocalizedString("preference.title", comment: "preference"))
-        preferencesWindow?.window?.level = Int(CGWindowLevelForKey(CGWindowLevelKey.floatingWindow))
-        return preferencesWindow!
+        preferencesWindow.window?.level = .floating
+        return preferencesWindow
     }
     
 }

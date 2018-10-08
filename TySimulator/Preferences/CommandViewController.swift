@@ -11,18 +11,17 @@ import MASShortcut
 import ACEViewSwift
 
 class CommandViewController: NSViewController, ACEViewDelegate {
-    var command: CommandModel!
+    @objc var command: CommandModel!
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var shortcutView: MASShortcutView!
     @IBOutlet weak var aceView: ACEView!
     var save: ((CommandModel) -> Void)?
     
     init(_ command: CommandModel) {
-        super.init(nibName: nil, bundle: nil)!
+        super.init(nibName: nil, bundle: nil)
         self.command = command
     }
-    
-    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         command = CommandModel()
     }
@@ -34,11 +33,11 @@ class CommandViewController: NSViewController, ACEViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Command Editor"
-        nameTextField.bind("value", to: command, withKeyPath: #keyPath(CommandModel.name), options: [NSContinuouslyUpdatesValueBindingOption: true])
-        shortcutView.bind("shortcutValue", to: command, withKeyPath: #keyPath(CommandModel.key), options: [NSContinuouslyUpdatesValueBindingOption: true])
+        nameTextField.bind(NSBindingName(rawValue: "value"), to: command, withKeyPath: #keyPath(CommandModel.name), options: [NSBindingOption.continuouslyUpdatesValue: true])
+        shortcutView.bind(NSBindingName(rawValue: "shortcutValue"), to: command, withKeyPath: #keyPath(CommandModel.key), options: [NSBindingOption.continuouslyUpdatesValue: true])
         
         aceView.onReady = { [unowned self] in
-            self.aceView.bind("string", to: self.command, withKeyPath: #keyPath(CommandModel.script), options: [NSContinuouslyUpdatesValueBindingOption: true])
+            self.aceView.bind(NSBindingName(rawValue: "string"), to: self.command, withKeyPath: #keyPath(CommandModel.script), options: [NSBindingOption.continuouslyUpdatesValue: true])
             self.aceView.delegate = self
             if self.command.script.isEmpty {
                 let (deviceIdentifier, applicationIdentifier) = self.placeholderDevice()
@@ -69,10 +68,10 @@ class CommandViewController: NSViewController, ACEViewDelegate {
         }
         
         // try other device
-        for it in Device.shared.devices {
-            deviceIdentifier = it.udid
-            if it.applications.count > 0 {
-                return (deviceIdentifier, (it.applications.first?.bundleIdentifier)!)
+        for device in Device.shared.devices {
+            deviceIdentifier = device.udid
+            if device.applications.count > 0 {
+                return (deviceIdentifier, (device.applications.first?.bundleIdentifier)!)
             }
         }
         return (deviceIdentifier, "your_app_bundle_identifier")

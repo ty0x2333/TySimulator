@@ -16,6 +16,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        NSViewController.awake()
+        NSTextView.awake()
+        
         Fabric.with([Crashlytics.self])
         #if DEBUG
             Fabric.sharedSDK().debug = true
@@ -24,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
         
         NSApplication.toggleDockIcon(showIcon: false)
         DevMateKit.sendTrackingReport(nil, delegate: nil)
-        DevMateKit.setupIssuesController(nil, reportingUnhandledIssues: true)
+//        DevMateKit.setupIssuesController(nil, reportingUnhandledIssues: true)
         DM_SUUpdater.shared().delegate = self
         
         // Setup trial

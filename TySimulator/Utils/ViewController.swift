@@ -9,31 +9,44 @@
 import Cocoa
 
 extension NSViewController {
-    override open class func initialize() {
-
-        guard self == NSViewController.self else {
-            return
-        }
-
-        let swizzlingClose = {
-            let originalMethod = class_getInstanceMethod(self, #selector(viewDidAppear))
-            let swizzledMethod = class_getInstanceMethod(self, #selector(ty_viewDidAppear))
-
-            method_exchangeImplementations(originalMethod, swizzledMethod)
-        }
-
-        let swizzlingShow = {
-            let originalMethod = class_getInstanceMethod(self, #selector(viewDidDisappear))
-            let swizzledMethod = class_getInstanceMethod(self, #selector(ty_viewDidDisappear))
-
-            method_exchangeImplementations(originalMethod, swizzledMethod)
-        }
-
-        swizzlingShow()
-        swizzlingClose()
+    static func awake() {
+        let swizzlingClosure: () = {
+            NSViewController.swizzleViewDidAppear
+            NSViewController.swizzleViewDidDisappear
+        }()
+        
+        swizzlingClosure
     }
     
-    func ty_viewDidAppear() {
+    private static let swizzleViewDidAppear: Void = {
+        let original = #selector(NSViewController.viewDidAppear)
+        let replacement = #selector(NSViewController.ty_viewDidAppear)
+        swizzleFunction(original: original, replacement: replacement)
+    }()
+    
+    private static let swizzleViewDidDisappear: Void = {
+        let original = #selector(NSViewController.viewDidDisappear)
+        let replacement = #selector(NSViewController.ty_viewDidDisappear)
+        swizzleFunction(original: original, replacement: replacement)
+    }()
+    
+    private class func swizzleFunction(original: Selector, replacement: Selector) {
+        let originalMethod: Method = class_getInstanceMethod(NSViewController.self, original)!
+        let originalImplementation: IMP = method_getImplementation(originalMethod)
+        let originalArgTypes = method_getTypeEncoding(originalMethod)
+        
+        let replacementMethod: Method = class_getInstanceMethod(NSViewController.self, replacement)!
+        let replacementImplementation: IMP = method_getImplementation(replacementMethod)
+        let replacementArgTypes = method_getTypeEncoding(replacementMethod)
+        
+        if class_addMethod(NSViewController.self, original, replacementImplementation, replacementArgTypes) {
+            class_replaceMethod(NSViewController.self, replacement, originalImplementation, originalArgTypes)
+        } else {
+            method_exchangeImplementations(originalMethod, replacementMethod)
+        }
+    }
+    
+    @objc func ty_viewDidAppear() {
         ty_viewDidAppear()
         
         guard className != "NSTouchBarViewController" else {
@@ -44,7 +57,7 @@ extension NSViewController {
         }
     }
     
-    func ty_viewDidDisappear() {
+    @objc func ty_viewDidDisappear() {
         ty_viewDidDisappear()
         
         guard className != "NSTouchBarViewController" else {

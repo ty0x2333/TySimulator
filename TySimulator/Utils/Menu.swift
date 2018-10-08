@@ -14,19 +14,20 @@ extension NSMenuItem {
         
         var osInfo: String = ""
         
-        devices.forEach {
-            if $0.osInfo != osInfo {
-                osInfo = $0.osInfo
+        for device in devices {
+            if device.osInfo != osInfo {
+                osInfo = device.osInfo
                 if !items.isEmpty {
                     items.append(NSMenuItem.separator())
                 }
-                items.append(sectionMenuItem($0.osInfo))
+                items.append(sectionMenuItem(device.osInfo))
             }
-            let item = deviceMenuItem($0)
-            item.tag = tagMap[$0.udid]!
+            let item = deviceMenuItem(device)
+            if let tag = tagMap[device.udid] {
+                item.tag = tag
+            }
             items.append(item)
         }
-        
         return items
     }
     
@@ -34,10 +35,10 @@ extension NSMenuItem {
         let item = NSMenuItem()
         item.title = device.name
         item.isEnabled = device.isAvailable
-        item.state = device.isOpen ? 1 : 0
+        item.state = NSControl.StateValue(rawValue: device.isOpen ? 1 : 0)
         item.onStateImage = NSImage(named: "icon-on")
         item.offStateImage = NSImage(named: "icon-off")
-        
+
         let menu = NSMenu()
         menu.autoenablesItems = false
 
@@ -108,7 +109,9 @@ extension NSMenu {
     
     func removeItems(_ items: [NSMenuItem]) {
         for item in items {
-            removeItem(item)
+            if self.items.contains(item) {
+                removeItem(item)
+            }
         }
     }
 }
