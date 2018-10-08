@@ -86,6 +86,8 @@ extension Simulator {
         static let onlyAvailableDevices = DeviceFilter(rawValue: 1 << 1)
         static let onlyHasContentDevices = DeviceFilter(rawValue: 1 << 2)
     }
+    
+    // MARK: Device
 
     class func listDevices(filter: [DeviceFilter] = []) -> [DeviceModel] {
         let data = Process.outputData(launchPath: "/usr/bin/xcrun", arguments: ["simctl", "list", "-j", "devices"])
@@ -125,6 +127,12 @@ extension Simulator {
         }
     }
     
+    class func devicePath(udid: String) -> URL {
+        return Simulator.devicesDirectory.appendingPathComponent("\(udid)")
+    }
+    
+    // MARK: Media
+    
     class func medias(path: URL) -> [MediaModel] {
         let directory = path.appendingPathComponent("/data/Media/DCIM")
         
@@ -134,9 +142,7 @@ extension Simulator {
         }
     }
     
-    class func devicePath(udid: String) -> URL {
-        return Simulator.devicesDirectory.appendingPathComponent("\(udid)")
-    }
+    // MARK: Application
     
     class func applicationsDataPath(deviceUDID: String) -> URL {
         let devicePath = Simulator.devicePath(udid: deviceUDID)
@@ -154,7 +160,8 @@ extension Simulator {
         var result: [ApplicationModel] = []
         for uuid in applicationDirectories {
             if let bundle = applicationBundle(deviceUDID: deviceUDID, applicationUUID: uuid),
-                let application = ApplicationModel(deviceUDID: deviceUDID, uuid: uuid, bundle: bundle) {
+                let dataPath = findApplicationDataPath(deviceUDID: deviceUDID, bundleID: bundle.bundleID),
+                let application = ApplicationModel(deviceUDID: deviceUDID, uuid: uuid, bundle: bundle, dataPath: dataPath) {
                 result.append(application)
             }
         }
@@ -183,5 +190,43 @@ extension Simulator {
         }
         
         return ApplicationBundle(bundleID: bundleID, appName: name, appIcon: icon)
+    }
+    
+    class func findApplicationDataPath(deviceUDID: String, bundleID: String) -> URL? {
+        let directory = Simulator.applicationsDataPath(deviceUDID: deviceUDID)
+        
+        let plist = ".com.apple.mobile_container_manager.metadata.plist"
+        for udid in FileManager.directories(directory) {
+            let dataPath = directory.appendingPathComponent(udid)
+            let plistPath = dataPath.appendingPathComponent(plist)
+            guard let json = NSDictionary(contentsOf: plistPath),
+                let metaDataIdentifier = json["MCMMetadataIdentifier"] as? String,
+                metaDataIdentifier == bundleID else {
+                continue
+            }
+            
+            return dataPath
+        }
+        return nil
+    }
+    
+    // MARK: AppGroup
+    
+    class func appGroups(deviceUDID: String) -> [AppGroupModel] {
+        let devicePath = Simulator.devicesDirectory.appendingPathComponent("\(deviceUDID)")
+        let directory = devicePath.appendingPathComponent("/data/Containers/Shared/AppGroup")
+        return FileManager.directories(directory).map {
+            let appGroup = AppGroupModel()
+            appGroup.location = directory.appendingPathComponent($0)
+            
+            let plistPath = appGroup.location!.appendingPathComponent("/.com.apple.mobile_container_manager.metadata.plist")
+            let json = NSDictionary(contentsOf: plistPath)
+            
+            appGroup.bundleIdentifier = json?["MCMMetadataIdentifier"] as? String ?? ""
+            
+            return appGroup
+        }.filter {
+            return !$0.bundleIdentifier.contains("com.apple")
+        }
     }
 }

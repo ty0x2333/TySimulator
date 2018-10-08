@@ -23,31 +23,12 @@ class ApplicationModel {
     let bundle: ApplicationBundle
     let uuid: String
     let deviceUDID: String
+    let dataPath: URL
     
-    init?(deviceUDID: String, uuid: String, bundle: ApplicationBundle) {
+    init?(deviceUDID: String, uuid: String, bundle: ApplicationBundle, dataPath: URL) {
         self.deviceUDID = deviceUDID
         self.uuid = uuid
         self.bundle = bundle
-    }
-    
-    func loadDataLocation() -> URL? {
-        let directory = Simulator.applicationsDataPath(deviceUDID: deviceUDID)
-        
-        let plist = ".com.apple.mobile_container_manager.metadata.plist"
-        for udid in FileManager.directories(directory) {
-            let dataPath = directory.appendingPathComponent(udid)
-            let plistPath = dataPath.appendingPathComponent(plist)
-            guard let json = NSDictionary(contentsOf: plistPath) else {
-                continue
-            }
-            
-            let metaDataIdentifier = json["MCMMetadataIdentifier"] as! String
-            guard metaDataIdentifier == bundle.bundleID else {
-                continue
-            }
-            
-            return dataPath
-        }
-        return nil
+        self.dataPath = dataPath
     }
 }
