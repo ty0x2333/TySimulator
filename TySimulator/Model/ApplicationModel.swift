@@ -8,50 +8,30 @@
 
 import Cocoa
 
-class ApplicationModel: NSObject {
-    var name: String = ""
-    var icon: NSImage?
-    var bundleIdentifier: String = ""
-    var udid: String = ""
-    var path: URL?
-    
-    class func applications(path: URL) -> [ApplicationModel] {
-        let directory = path.appendingPathComponent("data/Containers/Bundle/Application")
-        return FileManager.directories(directory).map {
-            let application = ApplicationModel(path: path, bundleLocation: directory.appendingPathComponent($0))
-            return application
-        }
+class ApplicationBundle {
+    let bundleID: String
+    let appName: String
+    let appIcon: NSImage?
+    init(bundleID: String, appName: String, appIcon: NSImage?) {
+        self.bundleID = bundleID
+        self.appName = appName
+        self.appIcon = appIcon
     }
+}
+
+class ApplicationModel {
+    let bundle: ApplicationBundle
+    let uuid: String
+    let deviceUDID: String
     
-    init(path: URL, bundleLocation: URL) {
-        super.init()
-        self.path = path
-        self.loadInfo(bundleLocation)
-    }
-    
-    func loadInfo(_ bundleLocation: URL) {
-        guard let app = FileManager.directories(bundleLocation).first,
-            let json = NSDictionary(contentsOf: bundleLocation.appendingPathComponent("\(app)/Info.plist"))
-            else { return }
-        
-        name = json["CFBundleName"] as! String
-        if let bundleIcons = json["CFBundleIcons"] as? [String: Any],
-            let primaryIcon = bundleIcons["CFBundlePrimaryIcon"] as? [String: Any],
-            let iconFiles = primaryIcon["CFBundleIconFiles"] as? [String],
-            let iconFile = iconFiles.last {
-            
-            icon = NSImage(contentsOf: bundleLocation.appendingPathComponent("\(app)/\(iconFile)@3x.png"))
-        }
-        
-        bundleIdentifier = json["CFBundleIdentifier"] as! String
+    init?(deviceUDID: String, uuid: String, bundle: ApplicationBundle) {
+        self.deviceUDID = deviceUDID
+        self.uuid = uuid
+        self.bundle = bundle
     }
     
     func loadDataLocation() -> URL? {
-        guard let path = path else {
-            log.warning("can not load application data location, application path is empty.")
-            return nil
-        }
-        let directory = path.appendingPathComponent("data/Containers/Data/Application")
+        let directory = Simulator.applicationsDataPath(deviceUDID: deviceUDID)
         
         let plist = ".com.apple.mobile_container_manager.metadata.plist"
         for udid in FileManager.directories(directory) {
@@ -62,7 +42,7 @@ class ApplicationModel: NSObject {
             }
             
             let metaDataIdentifier = json["MCMMetadataIdentifier"] as! String
-            guard metaDataIdentifier == bundleIdentifier else {
+            guard metaDataIdentifier == bundle.bundleID else {
                 continue
             }
             

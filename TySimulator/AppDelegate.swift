@@ -29,6 +29,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
 //        DevMateKit.setupIssuesController(nil, reportingUnhandledIssues: true)
         DM_SUUpdater.shared().delegate = self
         
+        DispatchQueue.global().async {
+            Simulator.shared.updateDeivces()
+        }
+        
         // Setup trial
 //        #if DEBUG
 //            DMKitDebugAddTrialMenu()

@@ -133,4 +133,55 @@ extension Simulator {
             return media
         }
     }
+    
+    class func devicePath(udid: String) -> URL {
+        return Simulator.devicesDirectory.appendingPathComponent("\(udid)")
+    }
+    
+    class func applicationsDataPath(deviceUDID: String) -> URL {
+        let devicePath = Simulator.devicePath(udid: deviceUDID)
+        return devicePath.appendingPathComponent("data/Containers/Data/Application")
+    }
+    
+    class func applicationsBundlePath(deviceUDID: String) -> URL {
+        let devicePath = Simulator.devicesDirectory.appendingPathComponent("\(deviceUDID)")
+        return devicePath.appendingPathComponent("data/Containers/Bundle/Application")
+    }
+    
+    class func applications(deviceUDID: String) -> [ApplicationModel] {
+        let bundlesDirectory = Simulator.applicationsBundlePath(deviceUDID: deviceUDID)
+        let applicationDirectories = FileManager.directories(bundlesDirectory)
+        var result: [ApplicationModel] = []
+        for uuid in applicationDirectories {
+            if let bundle = applicationBundle(deviceUDID: deviceUDID, applicationUUID: uuid),
+                let application = ApplicationModel(deviceUDID: deviceUDID, uuid: uuid, bundle: bundle) {
+                result.append(application)
+            }
+        }
+        return result
+    }
+    
+    class func applicationBundle(deviceUDID: String, applicationUUID: String) -> ApplicationBundle? {
+        let bundlesDirectory = Simulator.applicationsBundlePath(deviceUDID: deviceUDID)
+        let bundlePath = bundlesDirectory.appendingPathComponent(applicationUUID)
+        
+        guard let appIAPDirectory = FileManager.directories(bundlePath).first,
+            let json = NSDictionary(contentsOf: bundlePath.appendingPathComponent("\(appIAPDirectory)/Info.plist")),
+            let bundleID = json["CFBundleIdentifier"] as? String else {
+                return nil
+        }
+        
+        let name = (json["CFBundleName"] as? String) ?? "Unknow"
+        let icon: NSImage?
+        if let bundleIcons = json["CFBundleIcons"] as? [String: Any],
+            let primaryIcon = bundleIcons["CFBundlePrimaryIcon"] as? [String: Any],
+            let iconFiles = primaryIcon["CFBundleIconFiles"] as? [String],
+            let iconFile = iconFiles.last {
+            icon = NSImage(contentsOf: bundlePath.appendingPathComponent("\(appIAPDirectory)/\(iconFile)@3x.png"))
+        } else {
+            icon = nil
+        }
+        
+        return ApplicationBundle(bundleID: bundleID, appName: name, appIcon: icon)
+    }
 }

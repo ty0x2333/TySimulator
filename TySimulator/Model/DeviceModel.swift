@@ -55,14 +55,14 @@ class DeviceModel {
         version = osInfo.components(separatedBy: " ").last ?? ""
         
         location = Simulator.devicesDirectory.appendingPathComponent("\(udid)")
-        applications = ApplicationModel.applications(path: location)
+        applications = Simulator.applications(deviceUDID: udid)
         appGroups = AppGroupModel.groups(location)
         medias = Simulator.medias(path: location)
         hasContent = !applications.isEmpty
     }
     
     func application(bundleIdentifier: String) -> ApplicationModel? {
-        return applications.first(where: { $0.bundleIdentifier == bundleIdentifier })
+        return applications.first(where: { $0.bundle.bundleID == bundleIdentifier })
     }
 }
 

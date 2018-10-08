@@ -54,8 +54,8 @@ extension NSMenuItem {
         return applications.map {
             let view = AppMenuItemView.loadFromNib()
             view.style = style
-            view.icon = $0.icon
-            view.appName = $0.name
+            view.icon = $0.bundle.appIcon
+            view.appName = $0.bundle.appName
             view.location = $0.loadDataLocation()
             let item = NSMenuItem()
             item.view = view

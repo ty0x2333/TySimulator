@@ -63,7 +63,7 @@ class CommandViewController: NSViewController, ACEViewDelegate {
         // try booted device
         if let device = Simulator.shared.bootedDevices.first {
             if device.applications.count > 0 {
-                return (deviceIdentifier, (device.applications.first?.bundleIdentifier)!)
+                return (deviceIdentifier, (device.applications.first?.bundle.bundleID)!)
             }
         }
         
@@ -71,7 +71,7 @@ class CommandViewController: NSViewController, ACEViewDelegate {
         for device in Simulator.shared.devices {
             deviceIdentifier = device.udid
             if device.applications.count > 0 {
-                return (deviceIdentifier, (device.applications.first?.bundleIdentifier)!)
+                return (deviceIdentifier, (device.applications.first?.bundle.bundleID)!)
             }
         }
         return (deviceIdentifier, "your_app_bundle_identifier")
