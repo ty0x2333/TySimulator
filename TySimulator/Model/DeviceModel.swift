@@ -61,7 +61,7 @@ class DeviceModel {
     }
     
     var location: URL {
-        return Device.devicesDirectory.appendingPathComponent("\(udid)")
+        return Simulator.devicesDirectory.appendingPathComponent("\(udid)")
     }
     
     var version: String {

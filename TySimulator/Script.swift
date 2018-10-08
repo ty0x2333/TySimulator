@@ -34,7 +34,7 @@ public class Script {
                 continue
             }
             
-            guard let device = (deviceId != "booted") ? Device.shared.device(udid: deviceId) : Device.shared.bootedDevices.first else {
+            guard let device = (deviceId != "booted") ? Simulator.shared.device(udid: deviceId) : Simulator.shared.bootedDevices.first else {
                 log.warning("no device: \(deviceId)")
                 continue
             }

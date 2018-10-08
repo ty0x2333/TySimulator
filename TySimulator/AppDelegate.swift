@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
 //    var activationController: DMActivationController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
+        Simulator.listDevices()
         NSViewController.awake()
         NSTextView.awake()
         

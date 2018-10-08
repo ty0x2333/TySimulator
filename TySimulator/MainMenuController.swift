@@ -40,7 +40,7 @@ class MainMenuController: NSObject {
         updateDeviceMenus()
         
         NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Notification.Name.Device.DidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(bootedChangedNotification), name: Notification.Name.Device.Booted.DidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bootedChangedNotification), name: Notification.Name.Device.BootedDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recentAppsDidRecordNotification), name: Notification.Name.LRUCache.DidRecord, object: nil)
     }
     
@@ -48,7 +48,7 @@ class MainMenuController: NSObject {
         log.verbose("update devices")
         statusItem.menu?.removeItems(deviceItems)
 
-        devices = Device.shared.devices
+        devices = Simulator.shared.devices
         log.info("load devices: \(devices.count)")
 
         tagMap.removeAll()
@@ -73,7 +73,7 @@ class MainMenuController: NSObject {
             return
         }
         var apps: [ApplicationModel] = []
-        let bootedDevices = Device.shared.bootedDevices
+        let bootedDevices = Simulator.shared.bootedDevices
         for bundleID in datas {
             for device in bootedDevices {
                 if let app = device.application(bundleIdentifier: bundleID) {
@@ -107,7 +107,7 @@ class MainMenuController: NSObject {
     }
     
     func updateBootedDeviceMenus() {
-        let bootedDevices = Device.shared.bootedDevices
+        let bootedDevices = Simulator.shared.bootedDevices
         let bootedDeviceUDIDs = bootedDevices.map { (device) -> String in
             return device.udid
         }
@@ -139,6 +139,6 @@ class MainMenuController: NSObject {
 extension MainMenuController: NSMenuDelegate {
     // MARK: - NSMenuDelegate
     func menuWillOpen(_ menu: NSMenu) {
-        Device.shared.updateDeivces()
+        Simulator.shared.updateDeivces()
     }
 }

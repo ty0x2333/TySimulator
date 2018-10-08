@@ -51,11 +51,12 @@
 		19F94A1F1DDCBF7C00AECF3B /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1E1DDCBF7C00AECF3B /* Preference.swift */; };
 		5FDF5C40919F112EA90BE658 /* Pods_TySimulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */; };
 		702980DD216BA06D00A7BC0E /* UtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702980DC216BA06D00A7BC0E /* UtilTests.swift */; };
+		702980DF216BB06000A7BC0E /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702980DE216BB06000A7BC0E /* Simulator.swift */; };
+		702980E1216BB15300A7BC0E /* SimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702980E0216BB15300A7BC0E /* SimulatorTests.swift */; };
 		97C62CDFCE9FC94FB56FE660 /* Pods_TySimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DB23622D95C6C7E47AFD0C /* Pods_TySimulatorTests.framework */; };
 		F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */; };
 		F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50D76561DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib */; };
 		F521AA3A1E14510300353DA1 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521AA391E14510300353DA1 /* Script.swift */; };
-		F58132D01DDD7E84006C5A1A /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58132CF1DDD7E84006C5A1A /* Device.swift */; };
 		F5BE83571E159AB8005E7AD8 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F5BE83561E159AB8005E7AD8 /* dsa_pub.pem */; };
 /* End PBXBuildFile section */
 
@@ -124,12 +125,13 @@
 		2A72AF1F735CF9F4FEE5CE1E /* Pods-TySimulator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulator.release.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator.release.xcconfig"; sourceTree = "<group>"; };
 		68BF4750CD38F7CCA2B5D8FE /* Pods-TySimulatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulatorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulatorTests/Pods-TySimulatorTests.release.xcconfig"; sourceTree = "<group>"; };
 		702980DC216BA06D00A7BC0E /* UtilTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilTests.swift; sourceTree = "<group>"; };
+		702980DE216BB06000A7BC0E /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
+		702980E0216BB15300A7BC0E /* SimulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorTests.swift; sourceTree = "<group>"; };
 		A7A86A69885BB6E8D9E1121E /* Pods-TySimulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator.debug.xcconfig"; sourceTree = "<group>"; };
 		C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TySimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyBindingsPreferencesViewController.swift; sourceTree = "<group>"; };
 		F50D76561DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyBindingsPreferencesViewController.xib; sourceTree = "<group>"; };
 		F521AA391E14510300353DA1 /* Script.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
-		F58132CF1DDD7E84006C5A1A /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Model/Device.swift; sourceTree = "<group>"; };
 		F5BE83561E159AB8005E7AD8 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,12 +198,12 @@
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
 				19711D251F1E3D3C008B1ECB /* AppMenuItemView.swift */,
 				19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */,
-				F58132CF1DDD7E84006C5A1A /* Device.swift */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
 				19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */,
 				19B698231DE72AAE00AD3876 /* CommandTransformer.swift */,
 				F521AA391E14510300353DA1 /* Script.swift */,
 				19DB14D21F1FCBBB00AD332A /* DirectoryWatcher.swift */,
+				702980DE216BB06000A7BC0E /* Simulator.swift */,
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
 				19711D311F1E6B9C008B1ECB /* MainMenu.storyboard */,
 				19460C981DD78EA900894FBA /* Info.plist */,
@@ -221,6 +223,7 @@
 				1960D2CB1F07A8D900DF7AC0 /* RecentTests.swift */,
 				19460CA31DD78EA900894FBA /* Info.plist */,
 				702980DC216BA06D00A7BC0E /* UtilTests.swift */,
+				702980E0216BB15300A7BC0E /* SimulatorTests.swift */,
 			);
 			path = TySimulatorTests;
 			sourceTree = "<group>";
@@ -593,7 +596,6 @@
 				1911955C1DD8C2B500EEBBB4 /* AppGroupModel.swift in Sources */,
 				1931AA991DE214DA00B78D40 /* CommandViewController.swift in Sources */,
 				19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */,
-				F58132D01DDD7E84006C5A1A /* Device.swift in Sources */,
 				199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */,
 				19460C921DD78EA900894FBA /* AppDelegate.swift in Sources */,
 				1996BFE11EE335B2009B6E83 /* Application.swift in Sources */,
@@ -608,6 +610,7 @@
 				1996BFE31EE335B2009B6E83 /* Menu.swift in Sources */,
 				19F94A1F1DDCBF7C00AECF3B /* Preference.swift in Sources */,
 				19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */,
+				702980DF216BB06000A7BC0E /* Simulator.swift in Sources */,
 				1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */,
 				F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */,
 				1996BFE41EE335B2009B6E83 /* TextView.swift in Sources */,
@@ -621,6 +624,7 @@
 			files = (
 				1960D2CC1F07A8D900DF7AC0 /* RecentTests.swift in Sources */,
 				702980DD216BA06D00A7BC0E /* UtilTests.swift in Sources */,
+				702980E1216BB15300A7BC0E /* SimulatorTests.swift in Sources */,
 				192880361DE8959200A5A13A /* ScriptTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
