@@ -32,5 +32,18 @@ class UtilTests: QuickSpec {
                 })
             })
         })
+        
+        describe("FileManager", closure: {
+            context("directories", {
+                let bundle = Bundle(for: UtilTests.self)
+                it("find directories", closure: {
+                    let path = bundle.path(forResource: "TestFinder", ofType: nil)
+                    let directories = FileManager.directories(URL(string: path!)!)
+                    expect(directories.contains("SubFinder")).to(beTrue())
+                    expect(directories.contains("SubFinder2")).to(beTrue())
+                    expect(directories.count).to(equal(2))
+                })
+            })
+        })
     }
 }
