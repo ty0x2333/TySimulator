@@ -124,4 +124,13 @@ extension Simulator {
             $0.osInfo.compare($1.osInfo) == (descending ? .orderedDescending : .orderedAscending)
         }
     }
+    
+    class func medias(path: URL) -> [MediaModel] {
+        let directory = path.appendingPathComponent("/data/Media/DCIM")
+        
+        return FileManager.directories(directory).map {
+            let media = MediaModel(name: $0, location: directory.appendingPathComponent($0))
+            return media
+        }
+    }
 }

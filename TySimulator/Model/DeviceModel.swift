@@ -57,7 +57,7 @@ class DeviceModel {
         location = Simulator.devicesDirectory.appendingPathComponent("\(udid)")
         applications = ApplicationModel.applications(path: location)
         appGroups = AppGroupModel.groups(location)
-        medias = MediaModel.medias(location)
+        medias = Simulator.medias(path: location)
         hasContent = !applications.isEmpty
     }
     

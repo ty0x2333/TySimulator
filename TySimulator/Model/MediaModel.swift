@@ -8,25 +8,17 @@
 
 import Cocoa
 
-class MediaModel: NSObject {
+class MediaModel {
     
-    var name: String = ""
-    var location: URL?
+    let name: String
+    let location: URL
     
-    class func medias(_ path: URL) -> [MediaModel] {
-        let directory = path.appendingPathComponent("/data/Media/DCIM")
-        
-        return FileManager.directories(directory).map {
-            let media = MediaModel()
-            media.name = $0
-            media.location = directory.appendingPathComponent($0)
-            
-            return media
-        }
+    init(name: String, location: URL) {
+        self.name = name
+        self.location = location
     }
     
     @objc func handleMenuItem(_ item: NSMenuItem) {
-        guard let location = location else { return }
         NSWorkspace.shared.open(location)
     }
 }
