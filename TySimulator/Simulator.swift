@@ -38,7 +38,6 @@ class Simulator {
     }
     
     func updateDeivces() {
-        
         let allDevices = Simulator.listDevices()
         let preference = Preference.shared
         var filter: [DeviceFilter] = []
@@ -56,7 +55,9 @@ class Simulator {
                 $0.osInfo.compare($1.osInfo) == .orderedAscending
         }
         
-        NotificationCenter.default.post(name: Notification.Name.Device.DidChange, object: nil)
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: Notification.Name.Device.DidChange, object: nil)
+        }
         
         let areInIncreasingOrder: ((DeviceModel, DeviceModel) -> Bool) = { (lhs, rhs) -> Bool in
             return lhs.udid > rhs.udid
@@ -65,7 +66,9 @@ class Simulator {
         let hasChanged = bootedDevices.sorted(by: areInIncreasingOrder) != self.bootedDevices.sorted(by: areInIncreasingOrder)
         self.bootedDevices = bootedDevices
         if hasChanged {
-            NotificationCenter.default.post(name: Notification.Name.Device.BootedDidChange, object: nil)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Notification.Name.Device.BootedDidChange, object: nil)
+            }
         }
     }
     
