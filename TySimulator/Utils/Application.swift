@@ -14,6 +14,7 @@ extension NSApplication {
     }
     
     @objc func showPreferencesWindow() {
+        (NSApp.delegate as? AppDelegate)?.mainMenuController?.closePopover(sender: nil)
         let windowController = Preference.sharedWindowController
         windowController.select(at: 0)
         windowController.showWindow(nil)
@@ -21,6 +22,7 @@ extension NSApplication {
     }
     
     @objc func showAboutWindow() {
+        (NSApp.delegate as? AppDelegate)?.mainMenuController?.closePopover(sender: nil)
         NSApp.orderFrontStandardAboutPanel(nil)
         NSApp.activate(ignoringOtherApps: true)
     }

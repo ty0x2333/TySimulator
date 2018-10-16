@@ -14,33 +14,28 @@ class MainMenuController: NSObject {
     let quitMenuItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.quit", comment: "menu"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
     let aboutItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.about", comment: "menu"), action: #selector(NSApplication.showAboutWindow), keyEquivalent: "")
     let preferenceItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.preference", comment: "menu"), action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
+    lazy var menu: NSMenu = {
+        let menu = NSMenu()
+        menu.autoenablesItems = false
+        menu.addItem(preferenceItem)
+        menu.addItem(aboutItem)
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(quitMenuItem)
+        return menu
+    }()
     
     var monitor: Any?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        popover.contentViewController = AppMenuViewController(nibName: "AppMenuViewController", bundle: nil)
+        popover.contentViewController = MainViewController(nibName: "MainViewController", bundle: nil)
         
         if let button = statusItem.button {
             button.image = NSImage(named: "MenuIcon")
             button.target = self
             button.action = #selector(MainMenuController.togglePopver(_:))
         }
-        
-//        let menu = NSMenu()
-//        menu.delegate = self
-//        menu.autoenablesItems = false
-//
-//        menu.addItem(NSMenuItem.separator())
-//        menu.addItem(preferenceItem)
-//        menu.addItem(aboutItem)
-//        menu.addItem(NSMenuItem.separator())
-//        menu.addItem(quitMenuItem)
-//        statusItem.menu = menu
-//        updateRecentAppMenus()
-//        updateDeviceMenus()
-//
     }
     
     // MARK: Actions

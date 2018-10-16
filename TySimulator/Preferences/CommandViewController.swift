@@ -77,13 +77,13 @@ class CommandViewController: NSViewController, ACEViewDelegate {
         return (deviceIdentifier, "your_app_bundle_identifier")
     }
     
-    @IBAction func onSaveButtonClicked(_ sender: NSButton) {
+    @IBAction func onSaveButtonClick(_ sender: NSButton) {
         // TODO: log
         save?(command)
         dismiss(self)
     }
     
-    @IBAction func onCancelButtonClicked(_ sender: NSButton) {
+    @IBAction func onCancelButtonClick(_ sender: NSButton) {
         // TODO: log
         dismiss(self)
     }

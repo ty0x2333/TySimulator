@@ -1,5 +1,5 @@
 //
-//  AppMenuViewController.swift
+//  MainViewController.swift
 //  TySimulator
 //
 //  Created by luckytianyiyan on 2018/10/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AppMenuViewController: NSViewController {
+class MainViewController: NSViewController {
     @IBOutlet weak var deviceTableView: NSTableView!
     @IBOutlet weak var infoCollectionView: NSCollectionView!
     @IBOutlet weak var splitView: NSSplitView!
@@ -38,13 +38,13 @@ class AppMenuViewController: NSViewController {
         deviceTableView.selectionHighlightStyle = .none
         deviceTableView.delegate = self
         deviceTableView.dataSource = self
-        infoCollectionView.register(NSNib(nibNamed: "AppMenuViewController", bundle: nil), forItemWithIdentifier: AppMenuViewController.appItemIdentifier)
-        infoCollectionView.register(NSNib(nibNamed: "InfoSectionHeaderView", bundle: nil), forSupplementaryViewOfKind: NSCollectionView.elementKindSectionHeader, withIdentifier: AppMenuViewController.headerItemIdentifier)
+        infoCollectionView.register(NSNib(nibNamed: "MainViewController", bundle: nil), forItemWithIdentifier: MainViewController.appItemIdentifier)
+        infoCollectionView.register(NSNib(nibNamed: "InfoSectionHeaderView", bundle: nil), forSupplementaryViewOfKind: NSCollectionView.elementKindSectionHeader, withIdentifier: MainViewController.headerItemIdentifier)
         
         infoCollectionView.delegate = self
         infoCollectionView.dataSource = self
         
-        recentCollectionView.register(NSNib(nibNamed: "BaseApplicationCollectionItem", bundle: nil), forItemWithIdentifier: AppMenuViewController.recentItemIdentifier)
+        recentCollectionView.register(NSNib(nibNamed: "BaseApplicationCollectionItem", bundle: nil), forItemWithIdentifier: MainViewController.recentItemIdentifier)
         recentCollectionView.dataSource = self
         recentCollectionView.delegate = self
         
@@ -115,6 +115,14 @@ class AppMenuViewController: NSViewController {
         updateRecentView()
     }
     
+    @IBAction func onMenuClick(_ sender: NSButton) {
+        guard let menu = (NSApp.delegate as? AppDelegate)?.mainMenuController?.menu,
+            let event = NSApp.currentEvent else {
+            return
+        }
+        NSMenu.popUpContextMenu(menu, with: event, for: sender)
+    }
+    
     // MARK: Notification
     @objc func devicesChangedNotification(sender: Notification) {
         log.verbose("devicesChangedNotification updateDeviceMenus")
@@ -130,7 +138,7 @@ class AppMenuViewController: NSViewController {
     }
 }
 
-extension AppMenuViewController: NSTableViewDelegate {
+extension MainViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let result: AppMenuTableCellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "defaultRow"), owner: self) as! AppMenuTableCellView
         if devices.indices.contains(row) {
@@ -152,19 +160,19 @@ extension AppMenuViewController: NSTableViewDelegate {
     }
 }
 
-extension AppMenuViewController: NSTableViewDataSource {
+extension MainViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return devices.count
     }
 }
 
-extension AppMenuViewController: NSSplitViewDelegate {
+extension MainViewController: NSSplitViewDelegate {
     func splitViewWillResizeSubviews(_ notification: Notification) {
         infoCollectionView.collectionViewLayout?.invalidateLayout()
     }
 }
 
-extension AppMenuViewController: NSCollectionViewDataSource {
+extension MainViewController: NSCollectionViewDataSource {
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return collectionView == infoCollectionView ? 3 : 1
@@ -191,7 +199,7 @@ extension AppMenuViewController: NSCollectionViewDataSource {
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         guard collectionView == infoCollectionView else {
-            let item = collectionView.makeItem(withIdentifier: AppMenuViewController.recentItemIdentifier, for: indexPath) as! BaseApplicationCollectionItem
+            let item = collectionView.makeItem(withIdentifier: MainViewController.recentItemIdentifier, for: indexPath) as! BaseApplicationCollectionItem
             if recentApplications.indices.contains(indexPath.item) {
                 let app = recentApplications[indexPath.item]
                 item.icon = app.bundle.appIcon
@@ -200,7 +208,7 @@ extension AppMenuViewController: NSCollectionViewDataSource {
             }
             return item
         }
-        let item = collectionView.makeItem(withIdentifier: AppMenuViewController.appItemIdentifier, for: indexPath) as! ApplicationCollectionItem
+        let item = collectionView.makeItem(withIdentifier: MainViewController.appItemIdentifier, for: indexPath) as! ApplicationCollectionItem
         switch indexPath.section {
         case 0:
             if let applications = selectedDevice?.applications, applications.indices.contains(indexPath.item) {
@@ -231,7 +239,7 @@ extension AppMenuViewController: NSCollectionViewDataSource {
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
         if collectionView == infoCollectionView, kind == NSCollectionView.elementKindSectionHeader {
-            let headerView = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: AppMenuViewController.headerItemIdentifier, for: indexPath)
+            let headerView = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: MainViewController.headerItemIdentifier, for: indexPath)
             var text = ""
             switch indexPath.section {
             case 0:
@@ -254,7 +262,7 @@ extension AppMenuViewController: NSCollectionViewDataSource {
     }
 }
 
-extension AppMenuViewController: NSCollectionViewDelegateFlowLayout {
+extension MainViewController: NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         return collectionView == infoCollectionView ? CGSize(width: collectionView.bounds.width, height: 49) : CGSize(width: 80.0, height: 58.0)
     }

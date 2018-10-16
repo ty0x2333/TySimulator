@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,29 +25,29 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box title="Menu" translatesAutoresizingMaskIntoConstraints="NO" id="XDN-j8-uTi">
-                    <rect key="frame" x="78" y="102" width="329" height="93"/>
+                    <rect key="frame" x="77" y="101" width="331" height="94"/>
                     <view key="contentView" id="Km0-yc-poH">
-                        <rect key="frame" x="2" y="2" width="325" height="76"/>
+                        <rect key="frame" x="3" y="3" width="325" height="76"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="aIj-dS-k4u">
-                                <rect key="frame" x="15" y="44" width="295" height="18"/>
+                                <rect key="frame" x="14" y="44" width="297" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show only available devices" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="F6J-Ty-bZM">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="onOnlyAvailableDevicesButtonClicked:" target="-2" id="1zu-I9-5nD"/>
+                                    <action selector="onOnlyAvailableDevicesButtonClick:" target="-2" id="1zu-I9-5nD"/>
                                 </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="u74-RB-hld">
-                                <rect key="frame" x="15" y="14" width="295" height="18"/>
+                                <rect key="frame" x="14" y="14" width="297" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show only the devices with the application" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Sk2-IW-aLu">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="onOnlyHasContentDevicesButtonClicked:" target="-2" id="VhM-Dk-8it"/>
+                                    <action selector="onOnlyHasContentDevicesButtonClick:" target="-2" id="VhM-Dk-8it"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -66,9 +65,9 @@
                     </constraints>
                 </box>
                 <box title="Application" translatesAutoresizingMaskIntoConstraints="NO" id="yXA-we-c8w">
-                    <rect key="frame" x="77" y="213" width="331" height="93"/>
+                    <rect key="frame" x="77" y="212" width="331" height="94"/>
                     <view key="contentView" id="CcJ-Er-omt">
-                        <rect key="frame" x="2" y="2" width="327" height="76"/>
+                        <rect key="frame" x="3" y="3" width="325" height="76"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="7AQ-eo-XWQ">
@@ -78,7 +77,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="onAutomaticallyChecksForUpdatesButtonClicked:" target="-2" id="AgS-O6-xKv"/>
+                                    <action selector="onAutomaticallyChecksForUpdatesButtonClick:" target="-2" id="AgS-O6-xKv"/>
                                 </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="6ZJ-Sf-ZNy">
@@ -88,7 +87,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="onLaunchAtStartupButtonClicked:" target="-2" id="uuy-oL-VDO"/>
+                                    <action selector="onLaunchAtStartupButtonClick:" target="-2" id="uuy-oL-VDO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -108,7 +107,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="onCheckForUpdatesButtonClicked:" target="-2" id="KFl-On-rYK"/>
+                        <action selector="onCheckForUpdatesButtonClick:" target="-2" id="KFl-On-rYK"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wUz-Mi-VUr">
@@ -118,7 +117,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="onFeedbackButtonClicked:" target="-2" id="2Cw-pt-7bg"/>
+                        <action selector="onFeedbackButtonClick:" target="-2" id="2Cw-pt-7bg"/>
                     </connections>
                 </button>
             </subviews>

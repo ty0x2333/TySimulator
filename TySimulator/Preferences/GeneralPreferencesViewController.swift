@@ -42,27 +42,27 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
         isAutomaticallyChecksForUpdates.title = NSLocalizedString("preference.general.auto.check.update", comment: "preference")
         isAutomaticallyChecksForUpdates.state = DM_SUUpdater.shared().automaticallyChecksForUpdates ? .on : .off
     }
-    @IBAction func onLaunchAtStartupButtonClicked(_ sender: NSButton) {
+    @IBAction func onLaunchAtStartupButtonClick(_ sender: NSButton) {
         NSApplication.isLaunchAtStartup = sender.state == .on
     }
     
-    @IBAction func onOnlyAvailableDevicesButtonClicked(_ sender: NSButton) {
+    @IBAction func onOnlyAvailableDevicesButtonClick(_ sender: NSButton) {
         Preference.shared.onlyAvailableDevices = sender.state == .on
     }
     
-    @IBAction func onOnlyHasContentDevicesButtonClicked(_ sender: NSButton) {
+    @IBAction func onOnlyHasContentDevicesButtonClick(_ sender: NSButton) {
         Preference.shared.onlyHasContentDevices = sender.state == .on
     }
     
-    @IBAction func onAutomaticallyChecksForUpdatesButtonClicked(_ sender: NSButton) {
+    @IBAction func onAutomaticallyChecksForUpdatesButtonClick(_ sender: NSButton) {
         DM_SUUpdater.shared().automaticallyChecksForUpdates = sender.state == .on
     }
     
-    @IBAction func onCheckForUpdatesButtonClicked(_ sender: NSButton) {
+    @IBAction func onCheckForUpdatesButtonClick(_ sender: NSButton) {
         NSApp.checkForUpdates()
     }
     
-    @IBAction func onFeedbackButtonClicked(_ sender: NSButton) {
+    @IBAction func onFeedbackButtonClick(_ sender: NSButton) {
         NSApp.showFeedbackWindow()
     }
     

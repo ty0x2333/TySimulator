@@ -18,11 +18,11 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        tableView.doubleAction = #selector(onTableViewDoubleClicked(_:))
+        tableView.doubleAction = #selector(onTableViewDoubleClick(_:))
     }
     
     // MARK: Actions
-    @objc func onTableViewDoubleClicked(_ sender: NSTableView) {
+    @objc func onTableViewDoubleClick(_ sender: NSTableView) {
         log.verbose("click row: \(sender.clickedRow)")
         let command = Preference.shared.commands[sender.clickedRow]
         let commandViewController = CommandViewController(command)
@@ -37,7 +37,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         presentAsSheet(commandViewController)
     }
     
-    @IBAction func onAddCommandButtonClicked(_ sender: NSButton) {
+    @IBAction func onAddCommandButtonClick(_ sender: NSButton) {
         let commandViewController = CommandViewController()
         commandViewController.save = { [weak self] (command) in
             log.verbose("save command: \(command)")
@@ -48,7 +48,7 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         presentAsSheet(commandViewController)
     }
     
-    @IBAction func onRemoveButtonClicked(_ sender: NSButton) {
+    @IBAction func onRemoveButtonClick(_ sender: NSButton) {
         if tableView.numberOfSelectedRows < 1 {
             log.warning("no row selected")
             return
