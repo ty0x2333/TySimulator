@@ -53,7 +53,7 @@ class MainViewController: NSViewController {
         
         devices = Simulator.shared.devices
         infoCollectionView.reloadData()
-        updateRecentView()
+        updateRecentAppMenus()
     }
     
     deinit {
@@ -83,6 +83,10 @@ class MainViewController: NSViewController {
     
     @objc private func updateRecentAppMenus() {
         let datas = LRUCache.shared.datas
+        defer {
+            recentCollectionView.reloadData()
+            updateRecentView()
+        }
         guard datas.count > 0 else {
             return
         }
@@ -111,8 +115,6 @@ class MainViewController: NSViewController {
             models.append(app)
         }
         recentApplications = models
-        recentCollectionView.reloadData()
-        updateRecentView()
     }
     
     @IBAction func onMenuClick(_ sender: NSButton) {
