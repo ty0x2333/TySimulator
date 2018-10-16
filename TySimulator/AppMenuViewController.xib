@@ -20,6 +20,7 @@
         <collectionViewItem identifier="defaultItem" id="SSI-Ys-CsL" customClass="ApplicationCollectionItem" customModule="TySimulator" customModuleProvider="target">
             <connections>
                 <outlet property="imageView" destination="TDv-Kk-dzw" id="S04-Sm-Q2g"/>
+                <outlet property="sizeTextField" destination="j6F-GM-Z79" id="GtP-LF-fN2"/>
                 <outlet property="textField" destination="cc3-Ca-2DZ" id="8Ag-Qa-hd4"/>
                 <outlet property="view" destination="wfz-Xa-QiC" id="cwr-Nd-b9L"/>
             </connections>
@@ -200,19 +201,29 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="HFa-WD-rVz"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cc3-Ca-2DZ">
-                    <rect key="frame" x="57" y="40" width="135" height="17"/>
+                    <rect key="frame" x="57" y="50" width="135" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="AppName" drawsBackground="YES" id="ajK-11-qyT">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </textFieldCell>
                 </textField>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j6F-GM-Z79">
+                    <rect key="frame" x="55" y="33" width="25" height="13"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Size" id="KZf-xa-dEg">
+                        <font key="font" metaFont="system" size="10"/>
+                        <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
+                <constraint firstItem="j6F-GM-Z79" firstAttribute="leading" secondItem="cc3-Ca-2DZ" secondAttribute="leading" id="727-b4-ZnG"/>
                 <constraint firstItem="cc3-Ca-2DZ" firstAttribute="leading" secondItem="TDv-Kk-dzw" secondAttribute="trailing" constant="8" id="7gh-hE-TR6"/>
                 <constraint firstItem="TDv-Kk-dzw" firstAttribute="centerY" secondItem="wfz-Xa-QiC" secondAttribute="centerY" id="8VV-wq-cIO"/>
-                <constraint firstItem="cc3-Ca-2DZ" firstAttribute="centerY" secondItem="wfz-Xa-QiC" secondAttribute="centerY" id="FCZ-uK-bE8"/>
                 <constraint firstItem="TDv-Kk-dzw" firstAttribute="leading" secondItem="wfz-Xa-QiC" secondAttribute="leading" constant="9" id="Frz-kW-MU3"/>
+                <constraint firstAttribute="centerY" secondItem="cc3-Ca-2DZ" secondAttribute="bottom" constant="2" id="esc-r6-3LE"/>
+                <constraint firstItem="j6F-GM-Z79" firstAttribute="top" secondItem="cc3-Ca-2DZ" secondAttribute="bottom" constant="4" id="kWZ-jx-ECz"/>
                 <constraint firstAttribute="trailing" secondItem="cc3-Ca-2DZ" secondAttribute="trailing" constant="8" id="s3X-Jo-cKZ"/>
             </constraints>
             <point key="canvasLocation" x="96" y="551"/>

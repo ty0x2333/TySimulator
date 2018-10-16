@@ -188,18 +188,21 @@ extension AppMenuViewController: NSCollectionViewDataSource {
                 let app = applications[indexPath.item]
                 item.icon = app.bundle.appIcon
                 item.name = app.bundle.appName
+                item.location = app.dataPath
             }
         case 1:
             if let groups = selectedDevice?.appGroups, groups.indices.contains(indexPath.item) {
                 let group = groups[indexPath.item]
                 item.name = group.bundleIdentifier
                 item.icon = NSImage(named: "finder")
+                item.location = group.location
             }
         case 2:
             if let medias = selectedDevice?.medias, medias.indices.contains(indexPath.item) {
                 let media = medias[indexPath.item]
                 item.name = media.name
                 item.icon = NSImage(named: "finder")
+                item.location = media.location
             }
         default:
             break
@@ -300,6 +303,7 @@ class AppMenuTableCellView: NSTableCellView {
 }
 
 class ApplicationCollectionItem: NSCollectionViewItem {
+    var directoryWatcher: DirectoryWatcher?
     var icon: NSImage? {
         set {
             newValue?.isTemplate = false
@@ -318,6 +322,22 @@ class ApplicationCollectionItem: NSCollectionViewItem {
         }
     }
     
+    @IBOutlet private weak var sizeTextField: NSTextField!
+    
+    var location: URL? {
+        didSet {
+            directoryWatcher?.invalidate()
+            guard let url = location?.appendingPathComponent("Documents", isDirectory: true) else {
+                return
+            }
+            directoryWatcher = DirectoryWatcher.watchFolder(path: url.path, didChange: { [weak self] in
+                log.verbose("\(url) did change")
+                self?.updateSizeText()
+            })
+            updateSizeText()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         imageView?.wantsLayer = true
@@ -327,8 +347,32 @@ class ApplicationCollectionItem: NSCollectionViewItem {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        location = nil
+        directoryWatcher = nil
         icon = nil
         name = nil
+    }
+    
+    private func updateSizeText() {
+        guard let url = location,
+            let numerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.fileSizeKey], options: [], errorHandler: nil) else {
+            sizeTextField.isHidden = true
+            return
+        }
+        var total: Int64 = 0
+        for object in numerator {
+            var fileSizeResource: AnyObject?
+            guard let fileURL = object as? NSURL else {
+                continue
+            }
+            try? fileURL.getResourceValue(&fileSizeResource, forKey: .fileSizeKey)
+            guard let fileSize = fileSizeResource as? NSNumber else {
+                continue
+            }
+            total += fileSize.int64Value
+        }
+        sizeTextField.isHidden = false
+        sizeTextField.stringValue = ByteCountFormatter.string(fromByteCount: total, countStyle: .file)
     }
 }
 
