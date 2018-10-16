@@ -72,7 +72,7 @@ class MainMenuController: NSObject {
         }
     }
     
-    private func closePopover(sender: Any?) {
+    func closePopover(sender: Any?) {
         log.info("close Popover")
         popover.performClose(sender)
         if let monitor = self.monitor {

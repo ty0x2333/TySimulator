@@ -11,9 +11,8 @@ import Fabric
 import Crashlytics
 
 class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
+    @IBOutlet weak var mainMenuController: MainMenuController!
     
-//    var activationController: DMActivationController?
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         NSViewController.awake()
         NSTextView.awake()
@@ -26,26 +25,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
         
         NSApplication.toggleDockIcon(showIcon: false)
         DevMateKit.sendTrackingReport(nil, delegate: nil)
-//        DevMateKit.setupIssuesController(nil, reportingUnhandledIssues: true)
         DM_SUUpdater.shared().delegate = self
         
         DispatchQueue.global().async {
             Simulator.shared.updateDeivces()
         }
-        
-        // Setup trial
-//        #if DEBUG
-//            DMKitDebugAddTrialMenu()
-//            DMKitDebugAddActivationMenu()
-//        #endif
-//        
-//        activationController = DMActivationController.timeTrialController(for: DMTrialArea.forAllUsers, timeInterval: kDMTrialWeek, customWindowNib: "ActivationWindow")
-//        activationController?.delegate = self
-//        let successStepController = LicenseInfoStepController(nibName: "LicenseInfoStepView", bundle: Bundle.main)
-//        activationController?.registerStep(successStepController, forActivationStep: DMActivationStandardStep.stepSuccess.rawValue)
-//        if !NSApplication.activate() {
-//            activationController?.startTrial()
-//        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -73,13 +57,4 @@ class AppDelegate: NSObject, NSApplicationDelegate, DevMateKitDelegate {
             return false
         #endif
     }
-    
-//    // MARK: DMActivationControllerDelegate
-//    
-//    public func activationController(_ controller: DMActivationController!, activationStepForProposedStep proposedStep: DMActivationStep) -> DMActivationStep {
-//        if proposedStep == DMActivationStandardStep.stepWelcome.rawValue && NSApplication.activate() {
-//            return DMActivationStandardStep.stepSuccess.rawValue
-//        }
-//        return proposedStep
-//    }
 }

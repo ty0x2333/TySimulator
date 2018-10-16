@@ -14,9 +14,15 @@ class AppMenuViewController: NSViewController {
     @IBOutlet weak var splitView: NSSplitView!
     
     @IBOutlet weak var progressView: NSProgressIndicator!
+    @IBOutlet weak var recentView: NSView!
+    @IBOutlet weak var recentCollectionView: NSCollectionView!
+    @IBOutlet var splitViewTopConstraint: NSLayoutConstraint!
+    
     static let headerItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "infoSectionHeader")
+    static let appItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "defaultItem")
+    static let recentItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "recentItem")
     var devices: [DeviceModel] = []
-    var recentItems: [NSMenuItem] = []
+    var recentApplications: [ApplicationModel] = []
     var selectedDeviceUDID: String?
     
     var selectedDevice: DeviceModel? {
@@ -32,17 +38,22 @@ class AppMenuViewController: NSViewController {
         deviceTableView.selectionHighlightStyle = .none
         deviceTableView.delegate = self
         deviceTableView.dataSource = self
-        infoCollectionView.register(NSNib(nibNamed: "AppMenuViewController", bundle: nil), forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: "defaultItem"))
+        infoCollectionView.register(NSNib(nibNamed: "AppMenuViewController", bundle: nil), forItemWithIdentifier: AppMenuViewController.appItemIdentifier)
         infoCollectionView.register(NSNib(nibNamed: "InfoSectionHeaderView", bundle: nil), forSupplementaryViewOfKind: NSCollectionView.elementKindSectionHeader, withIdentifier: AppMenuViewController.headerItemIdentifier)
         
         infoCollectionView.delegate = self
         infoCollectionView.dataSource = self
         
+        recentCollectionView.register(NSNib(nibNamed: "BaseApplicationCollectionItem", bundle: nil), forItemWithIdentifier: AppMenuViewController.recentItemIdentifier)
+        recentCollectionView.dataSource = self
+        recentCollectionView.delegate = self
+        
         NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification(sender:)), name: Notification.Name.Device.DidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(recentAppsDidRecordNotification), name: Notification.Name.LRUCache.DidRecord, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateRecentAppMenus), name: Notification.Name.LRUCache.DidRecord, object: nil)
         
         devices = Simulator.shared.devices
         infoCollectionView.reloadData()
+        updateRecentView()
     }
     
     deinit {
@@ -67,50 +78,41 @@ class AppMenuViewController: NSViewController {
         log.info("load devices: \(devices.count)")
         
         deviceTableView.reloadData()
+        infoCollectionView.reloadData()
     }
     
-    private func updateRecentAppMenus() {
-//        guard let menu = statusItem.menu else {
-//            return
-//        }
-//        menu.removeItems(recentItems)
-//        recentItems.removeAll()
-//        let datas = LRUCache.shared.datas
-//        guard datas.count > 0 else {
-//            return
-//        }
-//        var apps: [ApplicationModel] = []
-//        let bootedDevices = Simulator.shared.bootedDevices
-//        for bundleID in datas {
-//            for device in bootedDevices {
-//                if let app = device.application(bundleIdentifier: bundleID) {
-//                    apps.append(app)
-//                    break
-//                }
-//            }
-//        }
-//
-//        guard apps.count > 0 else {
-//            return
-//        }
-//
-//        log.verbose("update recent apps")
-//        let titleItem = NSMenuItem.sectionMenuItem(NSLocalizedString("menu.recent", comment: "menu"))
-//
-//        var models: [ApplicationModel] = []
-//        for (idx, app) in apps.enumerated() {
-//            if idx > 2 {
-//                break
-//            }
-//            models.append(app)
-//        }
-//
-//        let appItems = NSMenuItem.applicationMenuItems(models, style: .detail)
-//        for menuItem in appItems.reversed() {
-//            menu.insertItem(menuItem, at: 0)
-//        }
-//        menu.insertItem(titleItem, at: 0)
-//        recentItems = [titleItem] + appItems
+    @objc private func updateRecentAppMenus() {
+        let datas = LRUCache.shared.datas
+        guard datas.count > 0 else {
+            return
+        }
+        var apps: [ApplicationModel] = []
+        let bootedDevices = Simulator.shared.bootedDevices
+        for bundleID in datas {
+            for device in bootedDevices {
+                if let app = device.application(bundleIdentifier: bundleID) {
+                    apps.append(app)
+                    break
+                }
+            }
+        }
+
+        guard apps.count > 0 else {
+            return
+        }
+
+        log.verbose("update recent apps")
+        
+        var models: [ApplicationModel] = []
+        for (idx, app) in apps.enumerated() {
+            if idx > 2 {
+                break
+            }
+            models.append(app)
+        }
+        recentApplications = models
+        recentCollectionView.reloadData()
+        updateRecentView()
     }
     
     // MARK: Notification
@@ -119,8 +121,12 @@ class AppMenuViewController: NSViewController {
         self.updateDeviceMenus()
     }
     
-    @objc func recentAppsDidRecordNotification() {
-        updateRecentAppMenus()
+    // MARK: Helper
+    
+    private func updateRecentView() {
+        let isVisible = recentApplications.count > 0
+        splitViewTopConstraint.isActive = isVisible
+        recentView.isHidden = !isVisible
     }
 }
 
@@ -161,10 +167,13 @@ extension AppMenuViewController: NSSplitViewDelegate {
 extension AppMenuViewController: NSCollectionViewDataSource {
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        return 3
+        return collectionView == infoCollectionView ? 3 : 1
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard collectionView == infoCollectionView else {
+            return recentApplications.count
+        }
         guard let device = selectedDevice else {
             return 0
         }
@@ -181,7 +190,17 @@ extension AppMenuViewController: NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "defaultItem"), for: indexPath) as! ApplicationCollectionItem
+        guard collectionView == infoCollectionView else {
+            let item = collectionView.makeItem(withIdentifier: AppMenuViewController.recentItemIdentifier, for: indexPath) as! BaseApplicationCollectionItem
+            if recentApplications.indices.contains(indexPath.item) {
+                let app = recentApplications[indexPath.item]
+                item.icon = app.bundle.appIcon
+                item.name = app.bundle.appName
+                item.location = app.dataPath
+            }
+            return item
+        }
+        let item = collectionView.makeItem(withIdentifier: AppMenuViewController.appItemIdentifier, for: indexPath) as! ApplicationCollectionItem
         switch indexPath.section {
         case 0:
             if let applications = selectedDevice?.applications, applications.indices.contains(indexPath.item) {
@@ -211,7 +230,7 @@ extension AppMenuViewController: NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        if kind == NSCollectionView.elementKindSectionHeader {
+        if collectionView == infoCollectionView, kind == NSCollectionView.elementKindSectionHeader {
             let headerView = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: AppMenuViewController.headerItemIdentifier, for: indexPath)
             var text = ""
             switch indexPath.section {
@@ -231,13 +250,13 @@ extension AppMenuViewController: NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
-        return CGSize(width: collectionView.bounds.width, height: 20)
+        return collectionView == infoCollectionView ? CGSize(width: collectionView.bounds.width, height: 20) : .zero
     }
 }
 
 extension AppMenuViewController: NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        return CGSize(width: collectionView.bounds.width, height: 49)
+        return collectionView == infoCollectionView ? CGSize(width: collectionView.bounds.width, height: 49) : CGSize(width: 80.0, height: 58.0)
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
@@ -249,21 +268,27 @@ extension AppMenuViewController: NSCollectionViewDelegateFlowLayout {
             if let applications = selectedDevice?.applications, applications.indices.contains(indexPath.item) {
                 let app = applications[indexPath.item]
                 LRUCache.shared.record(app: app.bundle.bundleID)
-                NSWorkspace.shared.open(app.dataPath)
+                DispatchQueue.main.async {
+                    NSWorkspace.shared.open(app.dataPath)
+                }
             }
         case 1:
             if let groups = selectedDevice?.appGroups, groups.indices.contains(indexPath.item), let location = groups[indexPath.item].location {
-                NSWorkspace.shared.open(location)
+                DispatchQueue.main.async {
+                    NSWorkspace.shared.open(location)
+                }
             }
         case 2:
             if let medias = selectedDevice?.medias, medias.indices.contains(indexPath.item) {
                 let media = medias[indexPath.item]
-                NSWorkspace.shared.open(media.location)
+                DispatchQueue.main.async {
+                    NSWorkspace.shared.open(media.location)
+                }
             }
         default:
             break
         }
-        
+        (NSApp.delegate as? AppDelegate)?.mainMenuController?.closePopover(sender: nil)
     }
 }
 
@@ -302,8 +327,7 @@ class AppMenuTableCellView: NSTableCellView {
     }
 }
 
-class ApplicationCollectionItem: NSCollectionViewItem {
-    var directoryWatcher: DirectoryWatcher?
+class BaseApplicationCollectionItem: NSCollectionViewItem {
     var icon: NSImage? {
         set {
             newValue?.isTemplate = false
@@ -322,9 +346,15 @@ class ApplicationCollectionItem: NSCollectionViewItem {
         }
     }
     
+    var location: URL?
+}
+
+class ApplicationCollectionItem: BaseApplicationCollectionItem {
+    var directoryWatcher: DirectoryWatcher?
+    
     @IBOutlet private weak var sizeTextField: NSTextField!
     
-    var location: URL? {
+   override var location: URL? {
         didSet {
             directoryWatcher?.invalidate()
             guard let url = location?.appendingPathComponent("Documents", isDirectory: true) else {

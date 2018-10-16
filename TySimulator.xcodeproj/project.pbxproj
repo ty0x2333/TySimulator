@@ -57,6 +57,7 @@
 		70AB49862175055900D3B1F5 /* AppMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AB49852175055900D3B1F5 /* AppMenuViewController.xib */; };
 		70AB498A2175407F00D3B1F5 /* InfoSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AB49892175407F00D3B1F5 /* InfoSectionHeaderView.xib */; };
 		70D023852174CC65003104B0 /* AppMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D023842174CC65003104B0 /* AppMenuViewController.swift */; };
+		70F7FD4921763F68000D575D /* BaseApplicationCollectionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70F7FD4821763F68000D575D /* BaseApplicationCollectionItem.xib */; };
 		97C62CDFCE9FC94FB56FE660 /* Pods_TySimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DB23622D95C6C7E47AFD0C /* Pods_TySimulatorTests.framework */; };
 		F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */; };
 		F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50D76561DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib */; };
@@ -135,6 +136,7 @@
 		70AB49852175055900D3B1F5 /* AppMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppMenuViewController.xib; sourceTree = "<group>"; };
 		70AB49892175407F00D3B1F5 /* InfoSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoSectionHeaderView.xib; sourceTree = "<group>"; };
 		70D023842174CC65003104B0 /* AppMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenuViewController.swift; sourceTree = "<group>"; };
+		70F7FD4821763F68000D575D /* BaseApplicationCollectionItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseApplicationCollectionItem.xib; sourceTree = "<group>"; };
 		A7A86A69885BB6E8D9E1121E /* Pods-TySimulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator.debug.xcconfig"; sourceTree = "<group>"; };
 		C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TySimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyBindingsPreferencesViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
 				19711D251F1E3D3C008B1ECB /* AppMenuItemView.swift */,
 				70D023842174CC65003104B0 /* AppMenuViewController.swift */,
+				70F7FD4821763F68000D575D /* BaseApplicationCollectionItem.xib */,
 				70AB49892175407F00D3B1F5 /* InfoSectionHeaderView.xib */,
 				70AB49852175055900D3B1F5 /* AppMenuViewController.xib */,
 				19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */,
@@ -444,6 +447,7 @@
 				19DB14D11F1FBC9F00AD332A /* AppMenuItemView.xib in Resources */,
 				1931AA971DE214D300B78D40 /* CommandViewController.xib in Resources */,
 				F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */,
+				70F7FD4921763F68000D575D /* BaseApplicationCollectionItem.xib in Resources */,
 				70AB49862175055900D3B1F5 /* AppMenuViewController.xib in Resources */,
 				19711D321F1E6B9C008B1ECB /* MainMenu.storyboard in Resources */,
 				19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */,
