@@ -55,6 +55,7 @@
 		702980E1216BB15300A7BC0E /* SimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702980E0216BB15300A7BC0E /* SimulatorTests.swift */; };
 		702980E3216BE1D500A7BC0E /* TestFinder in Resources */ = {isa = PBXBuildFile; fileRef = 702980E2216BE1D500A7BC0E /* TestFinder */; };
 		70AB49862175055900D3B1F5 /* AppMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AB49852175055900D3B1F5 /* AppMenuViewController.xib */; };
+		70AB498A2175407F00D3B1F5 /* InfoSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AB49892175407F00D3B1F5 /* InfoSectionHeaderView.xib */; };
 		70D023852174CC65003104B0 /* AppMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D023842174CC65003104B0 /* AppMenuViewController.swift */; };
 		97C62CDFCE9FC94FB56FE660 /* Pods_TySimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DB23622D95C6C7E47AFD0C /* Pods_TySimulatorTests.framework */; };
 		F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */; };
@@ -132,6 +133,7 @@
 		702980E0216BB15300A7BC0E /* SimulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorTests.swift; sourceTree = "<group>"; };
 		702980E2216BE1D500A7BC0E /* TestFinder */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestFinder; sourceTree = "<group>"; };
 		70AB49852175055900D3B1F5 /* AppMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppMenuViewController.xib; sourceTree = "<group>"; };
+		70AB49892175407F00D3B1F5 /* InfoSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoSectionHeaderView.xib; sourceTree = "<group>"; };
 		70D023842174CC65003104B0 /* AppMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenuViewController.swift; sourceTree = "<group>"; };
 		A7A86A69885BB6E8D9E1121E /* Pods-TySimulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator.debug.xcconfig"; sourceTree = "<group>"; };
 		C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TySimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +206,7 @@
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
 				19711D251F1E3D3C008B1ECB /* AppMenuItemView.swift */,
 				70D023842174CC65003104B0 /* AppMenuViewController.swift */,
+				70AB49892175407F00D3B1F5 /* InfoSectionHeaderView.xib */,
 				70AB49852175055900D3B1F5 /* AppMenuViewController.xib */,
 				19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
@@ -434,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19460C941DD78EA900894FBA /* Assets.xcassets in Resources */,
+				70AB498A2175407F00D3B1F5 /* InfoSectionHeaderView.xib in Resources */,
 				F5BE83571E159AB8005E7AD8 /* dsa_pub.pem in Resources */,
 				19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */,
 				19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */,

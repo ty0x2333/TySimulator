@@ -17,8 +17,4 @@ class MediaModel {
         self.name = name
         self.location = location
     }
-    
-    @objc func handleMenuItem(_ item: NSMenuItem) {
-        NSWorkspace.shared.open(location)
-    }
 }

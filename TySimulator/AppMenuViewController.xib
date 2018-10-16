@@ -11,6 +11,7 @@
                 <outlet property="deviceTableView" destination="GWR-Tg-izT" id="gcZ-ev-n0A"/>
                 <outlet property="infoCollectionView" destination="sGm-hb-mqt" id="oaZ-Ih-e5E"/>
                 <outlet property="progressView" destination="rc4-4a-cCf" id="KfI-Ky-lzW"/>
+                <outlet property="splitView" destination="xen-80-wUH" id="SUo-Ra-jpQ"/>
                 <outlet property="view" destination="SxP-Uc-gJJ" id="KAi-39-RHQ"/>
             </connections>
         </customObject>
@@ -105,9 +106,19 @@
                                         <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="rc4-4a-cCf">
                                             <rect key="frame" x="10" y="2" width="16" height="16"/>
                                         </progressIndicator>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RVc-Yu-s8b">
+                                            <rect key="frame" x="96" y="2" width="46" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Device" id="3rn-pd-sr8">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="RVc-Yu-s8b" firstAttribute="centerY" secondItem="zTE-jH-kc6" secondAttribute="centerY" id="3OB-la-cpR"/>
                                         <constraint firstItem="rc4-4a-cCf" firstAttribute="leading" secondItem="zTE-jH-kc6" secondAttribute="leading" constant="10" id="BT8-Rh-wi0"/>
+                                        <constraint firstItem="RVc-Yu-s8b" firstAttribute="centerX" secondItem="zTE-jH-kc6" secondAttribute="centerX" id="PUz-nJ-BXn"/>
                                         <constraint firstItem="rc4-4a-cCf" firstAttribute="centerY" secondItem="zTE-jH-kc6" secondAttribute="centerY" id="Qk8-OX-NT4"/>
                                         <constraint firstAttribute="height" constant="20" id="o3G-76-vg6"/>
                                     </constraints>
@@ -157,6 +168,7 @@
                                 <constraint firstItem="4nj-Pj-U9f" firstAttribute="leading" secondItem="Hcy-lt-Aqu" secondAttribute="leading" id="A3Y-uJ-XHS"/>
                                 <constraint firstItem="4nj-Pj-U9f" firstAttribute="top" secondItem="Hcy-lt-Aqu" secondAttribute="top" id="Kcg-eW-Ae7"/>
                                 <constraint firstAttribute="trailing" secondItem="4nj-Pj-U9f" secondAttribute="trailing" id="STs-4c-69L"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="VUq-2c-Uz1"/>
                                 <constraint firstAttribute="bottom" secondItem="4nj-Pj-U9f" secondAttribute="bottom" id="eTE-cL-dbi"/>
                             </constraints>
                         </customView>
@@ -176,7 +188,7 @@
             <point key="canvasLocation" x="-403" y="366.5"/>
         </customView>
         <customView id="wfz-Xa-QiC">
-            <rect key="frame" x="0.0" y="0.0" width="268" height="96"/>
+            <rect key="frame" x="0.0" y="0.0" width="200" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TDv-Kk-dzw">
@@ -188,11 +200,11 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="HFa-WD-rVz"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cc3-Ca-2DZ">
-                    <rect key="frame" x="55" y="40" width="207" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="AppName" id="ajK-11-qyT">
+                    <rect key="frame" x="57" y="40" width="135" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="AppName" drawsBackground="YES" id="ajK-11-qyT">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </textFieldCell>
                 </textField>
             </subviews>

@@ -12,11 +12,4 @@ class AppGroupModel: NSObject {
     
     var bundleIdentifier: String = ""
     var location: URL?
-    
-    // MARK: - Load
-    
-    @objc func handleMenuItem(_ item: NSMenuItem) {
-        guard let location = location else { return }
-        NSWorkspace.shared.open(location)
-    }
 }

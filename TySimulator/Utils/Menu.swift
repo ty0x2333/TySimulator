@@ -66,11 +66,11 @@ extension NSMenuItem {
     }
     
     private class func appGroupMenuItems(_ appGroups: [AppGroupModel]) -> [NSMenuItem] {
-        return appGroups.map { menuItem($0.bundleIdentifier, target: $0, action: #selector(AppGroupModel.handleMenuItem(_:))) }
+        return appGroups.map { menuItem($0.bundleIdentifier, target: $0, action: nil) }
     }
     
     private class func mediaMenuItems(_ media: [MediaModel]) -> [NSMenuItem] {
-        return media.map { menuItem($0.name, target: $0, action: #selector(MediaModel.handleMenuItem(_:))) }
+        return media.map { menuItem($0.name, target: $0, action: nil) }
     }
     
     class func sectionMenuItem(_ title: String) -> NSMenuItem {
