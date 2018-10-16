@@ -23,7 +23,7 @@ Features
 
 Prerequisites
 ===
-- macOS 10.10 or later
+- macOS 10.11 or later
 - XCode 7 or later
 
 Installation
@@ -43,7 +43,7 @@ Building
 
 Requirements
 ---
-- XCode 9.0 or later
+- XCode 10.0 or later
 - [CocoaPods](https://github.com/CocoaPods/CocoaPods)
 - [Carthage](https://github.com/Carthage/Carthage)
 
