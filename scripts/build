@@ -21,7 +21,7 @@ else
     set -o pipefail && $XCODE_BUILD | xcpretty
 fi
 
-cp -r $BUILD_PATH/TySimulator.xcarchive/Products/Applications/TySimulator.app $BUILD_PATH
+cp -r $BUILD_PATH/TySimulator.xcarchive/Products/Applications/TySimulator.app $BUILD_PATH/TySimulator-unsign.app
 
 cd $ARCHIVE_PATH/dSYMs
 for filename in $(ls $ARCHIVE_PATH/dSYMs); do

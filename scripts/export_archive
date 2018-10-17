@@ -1,0 +1,11 @@
+#!/bin/sh
+
+CUR_DIR=$(cd `dirname $0`; pwd)
+BUILD_PATH=$CUR_DIR/../build
+ARCHIVE_PATH=$BUILD_PATH/TySimulator.xcarchive
+
+cp $CUR_DIR/ExportOptions.plist $BUILD_PATH/ExportOptions.plist
+
+xcodebuild -exportArchive -archivePath $ARCHIVE_PATH -exportOptionsPlist $BUILD_PATH/ExportOptions.plist -exportPath $BUILD_PATH
+
+codesign -vvvv $BUILD_PATH/TySimulator.app

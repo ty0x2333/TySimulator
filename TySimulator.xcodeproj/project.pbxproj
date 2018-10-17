@@ -129,6 +129,7 @@
 		19F94A1E1DDCBF7C00AECF3B /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		2A72AF1F735CF9F4FEE5CE1E /* Pods-TySimulator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulator.release.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator.release.xcconfig"; sourceTree = "<group>"; };
 		68BF4750CD38F7CCA2B5D8FE /* Pods-TySimulatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulatorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulatorTests/Pods-TySimulatorTests.release.xcconfig"; sourceTree = "<group>"; };
+		7023FD75217762650009E6D1 /* TySimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TySimulator.entitlements; sourceTree = "<group>"; };
 		702980DC216BA06D00A7BC0E /* UtilTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilTests.swift; sourceTree = "<group>"; };
 		702980DE216BB06000A7BC0E /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
 		702980E0216BB15300A7BC0E /* SimulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorTests.swift; sourceTree = "<group>"; };
@@ -201,6 +202,7 @@
 		19460C901DD78EA900894FBA /* TySimulator */ = {
 			isa = PBXGroup;
 			children = (
+				7023FD75217762650009E6D1 /* TySimulator.entitlements */,
 				1996BFD41EE335B2009B6E83 /* Utils */,
 				19F94A171DDCBA4200AECF3B /* Preferences */,
 				19460CB01DD83BF200894FBA /* Model */,
@@ -391,6 +393,9 @@
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 0;
+							};
 							com.apple.Sandbox = {
 								enabled = 0;
 							};

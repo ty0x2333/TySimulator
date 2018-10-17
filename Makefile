@@ -21,7 +21,9 @@ build: ## build TySimulator
 	@open build
 
 archive: ## archive TySimulator
+	@rm -rf build
 	@./scripts/build
+	@./scripts/export_archive
 	@open build
 
 clean: ## clean
