@@ -1,10 +1,10 @@
 PODS:
-  - ACEViewSwift (2.0.0)
-  - Crashlytics (3.8.4):
-    - Fabric (~> 1.6.3)
-  - DevMateKit (1.7.1)
-  - Fabric (1.6.11)
-  - MASPreferences (1.1.4)
+  - ACEViewSwift (2.1.0)
+  - Crashlytics (3.10.9):
+    - Fabric (~> 1.7.13)
+  - DevMateKit (1.9.1)
+  - Fabric (1.7.13)
+  - MASPreferences (1.3)
   - MASShortcut (2.3.6)
 
 DEPENDENCIES:
@@ -15,14 +15,23 @@ DEPENDENCIES:
   - MASPreferences
   - MASShortcut
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ACEViewSwift
+    - Crashlytics
+    - DevMateKit
+    - Fabric
+    - MASPreferences
+    - MASShortcut
+
 SPEC CHECKSUMS:
-  ACEViewSwift: 9623a5e703caf4718af1a5c0a3a73cb2b2f24eae
-  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
-  DevMateKit: 3ba77083f5faa40266e0d2d70776de2a82c71dd0
-  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  MASPreferences: 7bdcfe891d7840453cf48f95fa866c3e152ace7a
+  ACEViewSwift: 7dcdaa7980fed0734330cbd96eaa0ce8bf1fd3f6
+  Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
+  DevMateKit: f910b1448a7e7fa675cb6912404db7e45e1fe47e
+  Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
+  MASPreferences: c08b8622dd17b47da87669e741efd7c92e970e8c
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
 
 PODFILE CHECKSUM: 90892039745e9cd418dfae59477473311f92ac1b
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.3

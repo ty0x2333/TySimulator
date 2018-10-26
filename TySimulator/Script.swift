@@ -14,8 +14,8 @@ public class Script {
         var result = script
         var res: [NSTextCheckingResult] = []
         do {
-            let regex = try NSRegularExpression(pattern:"\\$\\{\\{[\\s\\S]*?\\}\\}", options:NSRegularExpression.Options.caseInsensitive)
-            res = regex.matches(in: script, options:NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: script.characters.count))
+            let regex = try NSRegularExpression(pattern: "\\$\\{\\{[\\s\\S]*?\\}\\}", options: NSRegularExpression.Options.caseInsensitive)
+            res = regex.matches(in: script, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: script.count))
         } catch {
             log.error(error)
         }
@@ -23,8 +23,8 @@ public class Script {
             return script
         }
         for checkingRes in res {
-            var commandValue = (script as NSString).substring(with:checkingRes.range)
-            commandValue = (commandValue as NSString).substring(with: NSRange(location: 2, length: commandValue.characters.count - 3)
+            var commandValue = (script as NSString).substring(with: checkingRes.range)
+            commandValue = (commandValue as NSString).substring(with: NSRange(location: 2, length: commandValue.count - 3)
 )
             let command = JSON(parseJSON: commandValue)
             let deviceId = command["device"].stringValue
@@ -34,14 +34,14 @@ public class Script {
                 continue
             }
             
-            guard let device = (deviceId != "booted") ? Device.shared.device(udid: deviceId) : Device.shared.bootedDevices.first else {
+            guard let device = (deviceId != "booted") ? Simulator.shared.device(udid: deviceId) : Simulator.shared.bootedDevices.first else {
                 log.warning("no device: \(deviceId)")
                 continue
             }
             
             if let bundleIdentifier = command["application"].string,
                 let application = device.application(bundleIdentifier: bundleIdentifier),
-                let location = application.loadDataLocation()?.removeTrailingSlash.absoluteString {
+                let location = application.dataPath.removeTrailingSlash?.absoluteString {
                 
                 result = (result as NSString).replacingCharacters(in: checkingRes.range, with: location)
             }

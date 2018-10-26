@@ -9,137 +9,70 @@
 import Cocoa
 
 class MainMenuController: NSObject {
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    let popover: NSPopover = NSPopover()
     let quitMenuItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.quit", comment: "menu"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
     let aboutItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.about", comment: "menu"), action: #selector(NSApplication.showAboutWindow), keyEquivalent: "")
     let preferenceItem: NSMenuItem = NSMenuItem(title: NSLocalizedString("menu.preference", comment: "menu"), action: #selector(NSApplication.showPreferencesWindow), keyEquivalent: ",")
-    
-    var devices: [DeviceModel] = []
-    var deviceItems: [NSMenuItem] = []
-    var recentItems: [NSMenuItem] = []
-    
-    var tagMap: [String: Int] = [:]
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        let icon = NSImage(named: "MenuIcon")
-        icon?.isTemplate = true
-        statusItem.image = icon
-        
+    lazy var menu: NSMenu = {
         let menu = NSMenu()
-        menu.delegate = self
         menu.autoenablesItems = false
-        
-        menu.addItem(NSMenuItem.separator())
         menu.addItem(preferenceItem)
         menu.addItem(aboutItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(quitMenuItem)
-        statusItem.menu = menu
-        updateRecentAppMenus()
-        updateDeviceMenus()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification), name: Notification.Name.Device.DidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(bootedChangedNotification), name: Notification.Name.Device.Booted.DidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(recentAppsDidRecordNotification), name: Notification.Name.LRUCache.DidRecord, object: nil)
-    }
+        return menu
+    }()
     
-    func updateDeviceMenus() {
-        log.verbose("update devices")
-        statusItem.menu?.removeItems(deviceItems)
+    var monitor: Any?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-        devices = Device.shared.devices
-        log.info("load devices: \(devices.count)")
+        popover.contentViewController = MainViewController(nibName: "MainViewController", bundle: nil)
         
-        tagMap.removeAll()
-        for i in 0 ..< devices.count {
-            tagMap[devices[i].udid] = i
-        }
-        
-        deviceItems = NSMenuItem.deviceMenuItems(devices, tagMap)
-        
-        deviceItems.reversed().forEach { (item) in
-            statusItem.menu?.insertItem(item, at: recentItems.count)
+        if let button = statusItem.button {
+            button.image = NSImage(named: "MenuIcon")
+            button.target = self
+            button.action = #selector(MainMenuController.togglePopver(_:))
         }
     }
     
-    func updateRecentAppMenus() {
-        guard let menu = statusItem.menu else {
+    // MARK: Actions
+    
+    @objc func togglePopver(_ sender: Any?) {
+        if popover.isShown {
+            closePopover(sender: sender)
+        } else {
+            showPopover(sender: sender)
+        }
+    }
+    
+    // MARK: Private
+    private func showPopover(sender: Any?) {
+        guard let button = statusItem.button else {
             return
         }
-        menu.removeItems(recentItems)
-        recentItems.removeAll()
-        let datas = LRUCache.shared.datas
-        guard datas.count > 0 else {
+        log.info("show Popover")
+        popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+        guard monitor == nil else {
             return
         }
-        var apps: [ApplicationModel] = []
-        let bootedDevices = Device.shared.bootedDevices
-        for bundleID in datas {
-            for device in bootedDevices {
-                if let app = device.application(bundleIdentifier: bundleID) {
-                    apps.append(app)
-                    break
-                }
+        monitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
+            guard let weakSelf = self,
+                weakSelf.popover.isShown else {
+                    return
             }
+            weakSelf.closePopover(sender: event)
         }
-        
-        guard apps.count > 0 else {
-            return
-        }
-        
-        log.verbose("update recent apps")
-        let titleItem = NSMenuItem.sectionMenuItem(NSLocalizedString("menu.recent", comment: "menu"))
-        
-        var models: [ApplicationModel] = []
-        for (idx, app) in apps.enumerated() {
-            if idx > 2 {
-                break
-            }
-            models.append(app)
-        }
-        
-        let appItems = NSMenuItem.applicationMenuItems(models, style: .detail)
-        for menuItem in appItems.reversed() {
-            menu.insertItem(menuItem, at: 0)
-        }
-        menu.insertItem(titleItem, at: 0)
-        recentItems = [titleItem] + appItems
     }
     
-    func updateBootedDeviceMenus() {
-        let bootedDevices = Device.shared.bootedDevices
-        let bootedDeviceUDIDs = bootedDevices.map { (device) -> String in
-            return device.udid
+    func closePopover(sender: Any?) {
+        log.info("close Popover")
+        popover.performClose(sender)
+        if let monitor = self.monitor {
+            NSEvent.removeMonitor(monitor)
+            self.monitor = nil
         }
-        log.verbose("booted device udid: \(bootedDeviceUDIDs)")
-        
-        let bootedItemTags = bootedDeviceUDIDs.map { (udid) -> Int in
-            return tagMap[udid]!
-        }
-        statusItem.menu?.items.forEach({ (item) in
-            item.state = bootedItemTags.contains(item.tag) ? 1 : 0
-        })
-    }
-    
-    // MARK: Notification
-    func devicesChangedNotification() {
-        updateDeviceMenus()
-    }
-    
-    func bootedChangedNotification() {
-        updateBootedDeviceMenus()
-        updateRecentAppMenus()
-    }
-    
-    func recentAppsDidRecordNotification() {
-        updateRecentAppMenus()
-    }
-}
-
-extension MainMenuController: NSMenuDelegate {
-    // MARK: - NSMenuDelegate
-    func menuWillOpen(_ menu: NSMenu) {
-        Device.shared.updateDeivces()
     }
 }

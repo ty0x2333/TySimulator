@@ -18,11 +18,11 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        tableView.doubleAction = #selector(onTableViewDoubleClicked(_:))
+        tableView.doubleAction = #selector(onTableViewDoubleClick(_:))
     }
     
     // MARK: Actions
-    func onTableViewDoubleClicked(_ sender: NSTableView) {
+    @objc func onTableViewDoubleClick(_ sender: NSTableView) {
         log.verbose("click row: \(sender.clickedRow)")
         let command = Preference.shared.commands[sender.clickedRow]
         let commandViewController = CommandViewController(command)
@@ -34,10 +34,10 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
             MASShortcutMonitor.shared().register(command: command)
             self?.tableView.reloadData()
         }
-        presentViewControllerAsSheet(commandViewController)
+        presentAsSheet(commandViewController)
     }
     
-    @IBAction func onAddCommandButtonClicked(_ sender: NSButton) {
+    @IBAction func onAddCommandButtonClick(_ sender: NSButton) {
         let commandViewController = CommandViewController()
         commandViewController.save = { [weak self] (command) in
             log.verbose("save command: \(command)")
@@ -45,10 +45,10 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
             Preference.shared.append(command)
             self?.tableView.reloadData()
         }
-        presentViewControllerAsSheet(commandViewController)
+        presentAsSheet(commandViewController)
     }
     
-    @IBAction func onRemoveButtonClicked(_ sender: NSButton) {
+    @IBAction func onRemoveButtonClick(_ sender: NSButton) {
         if tableView.numberOfSelectedRows < 1 {
             log.warning("no row selected")
             return
@@ -69,12 +69,12 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
         let command = Preference.shared.commands[row]
         
         if tableColumn == tableView.tableColumns[0] {
-            if let cell = tableView.make(withIdentifier: "NameTableCellViewIdentifier", owner: nil) as? NSTableCellView {
+            if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "NameTableCellViewIdentifier"), owner: nil) as? NSTableCellView {
                 cell.textField?.stringValue = command.name
                 return cell
             }
         } else if tableColumn == tableView.tableColumns[1] {
-            if let cell = tableView.make(withIdentifier: "ShortcutTableCellViewIdentifier", owner: nil) as? ShortcutTableCellView {
+            if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ShortcutTableCellViewIdentifier"), owner: nil) as? ShortcutTableCellView {
                 cell.shortcutView?.shortcutValue = command.key
                 cell.shortcutView?.shortcutValueChange = {(sender: MASShortcutView?) in
                     MASShortcutMonitor.shared().unregister(command: command)
@@ -91,12 +91,11 @@ class KeyBindingsPreferencesViewController: NSViewController, MASPreferencesView
     }
     
     // MARK: MASPreferencesViewController
-    override var identifier: String? {
-        get { return "KeyBindingsPreferences" }
-        set { super.identifier = newValue }
+    var viewIdentifier: String {
+        return "KeyBindingsPreferences"
     }
     
-    var toolbarItemImage: NSImage! = NSImage(named: NSImageNameAdvanced)
+    var toolbarItemImage: NSImage? = NSImage(named: NSImage.advancedName)
     
-    var toolbarItemLabel: String! = NSLocalizedString("preference.key.binding", comment: "preference")
+    var toolbarItemLabel: String? = NSLocalizedString("preference.key.binding", comment: "preference")
 }

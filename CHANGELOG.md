@@ -27,3 +27,11 @@
 ===
 #### Fix Bug
 1. Dock Icon 显示错误
+
+0.9.0
+===
+最低支持 macOS 10.11
+
+#### New Feature
+1. 支持 Mojave
+2. 新的UI

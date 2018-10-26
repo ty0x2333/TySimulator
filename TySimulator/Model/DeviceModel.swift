@@ -33,43 +33,36 @@ class DeviceModel {
     let name: String
     let udid: String
     let osInfo: String
+    
+    let os: OS
     let isOpen: Bool
     let isAvailable: Bool
+    let version: String
+    let hasContent: Bool
     
-    var applications: [ApplicationModel] = []
-    var medias: [MediaModel] = []
-    var appGroups: [AppGroupModel] = []
+    let applications: [ApplicationModel]
+    let medias: [MediaModel]
+    let appGroups: [AppGroupModel]
+    let location: URL
     
     init(osInfo: String, json: [String: Any]) {
-        name = json["name"] as! String
-        udid = json["udid"] as! String
-        isAvailable = (json["availability"] as! String).contains("(available)")
-        isOpen = (json["state"] as! String).contains("Booted")
+        name = (json["name"] as? String) ?? ""
+        udid = (json["udid"] as? String) ?? ""
+        isAvailable = (json["availability"] as? String)?.contains("(available)") ?? false
+        isOpen = (json["state"] as? String)?.contains("Booted") ?? false
         self.osInfo = osInfo
+        os = OS(rawValue: osInfo.components(separatedBy: " ").first ?? "") ?? .unknown
+        version = osInfo.components(separatedBy: " ").last ?? ""
         
-        applications = ApplicationModel.applications(path: location)
-        appGroups = AppGroupModel.groups(location)
-        medias = MediaModel.medias(location)
-    }
-    
-    var hasContent: Bool {
-        return !applications.isEmpty
-    }
-    
-    var os: OS {
-        return OS(rawValue: osInfo.components(separatedBy: " ").first ?? "") ?? .unknown
-    }
-    
-    var location: URL {
-        return Device.devicesDirectory.appendingPathComponent("\(udid)")
-    }
-    
-    var version: String {
-        return osInfo.components(separatedBy: " ").last ?? ""
+        location = Simulator.devicesDirectory.appendingPathComponent("\(udid)")
+        applications = Simulator.applications(deviceUDID: udid)
+        appGroups = Simulator.appGroups(deviceUDID: udid)
+        medias = Simulator.medias(path: location)
+        hasContent = !applications.isEmpty
     }
     
     func application(bundleIdentifier: String) -> ApplicationModel? {
-        return applications.first(where: { $0.bundleIdentifier == bundleIdentifier })
+        return applications.first(where: { $0.bundle.bundleID == bundleIdentifier })
     }
 }
 

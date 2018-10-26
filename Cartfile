@@ -1,3 +1,4 @@
 github "SwiftyBeaver/SwiftyBeaver"
 github "radex/SwiftyUserDefaults"
 github "SwiftyJSON/SwiftyJSON"
+github "SnapKit/SnapKit"

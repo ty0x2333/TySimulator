@@ -10,6 +10,11 @@ import Foundation
 
 extension Process {
     class func output(launchPath: String, arguments: [String], directoryPath: URL? = nil) -> String {
+        let data = outputData(launchPath: launchPath, arguments: arguments, directoryPath: directoryPath)
+        return String(data: data, encoding: .utf8) ?? ""
+    }
+    
+    class func outputData(launchPath: String, arguments: [String], directoryPath: URL? = nil) -> Data {
         let output = Pipe()
         
         let task = Process()
@@ -17,7 +22,7 @@ extension Process {
         task.arguments = arguments
         task.standardOutput = output
         
-        if let path = directoryPath?.removeTrailingSlash.path {
+        if let path = directoryPath?.removeTrailingSlash?.path {
             task.currentDirectoryPath = path
         }
         
@@ -30,12 +35,7 @@ extension Process {
             count += 1
         }
         
-        let data = output.fileHandleForReading.readDataToEndOfFile()
-        guard let result = String(data: data, encoding: .utf8) else {
-            return ""
-        }
-        
-        return result
+        return output.fileHandleForReading.readDataToEndOfFile()
     }
     
     @discardableResult

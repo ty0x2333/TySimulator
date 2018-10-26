@@ -31,48 +31,47 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
         menuBox.title = NSLocalizedString("preference.general.menu", comment: "preference")
         
         isLaunchAtStartup.title = NSLocalizedString("preference.general.launch.startup", comment: "preference")
-        isLaunchAtStartup.state = NSApplication.isLaunchAtStartup ? NSOnState : NSOffState
+        isLaunchAtStartup.state = NSApplication.isLaunchAtStartup ? .on : .off
         
         isOnlyAvailableDevices.title = NSLocalizedString("preference.general.only.available.device", comment: "preference")
-        isOnlyAvailableDevices.state = preference.onlyAvailableDevices ? NSOnState : NSOffState
+        isOnlyAvailableDevices.state = preference.onlyAvailableDevices ? .on : .off
         
         isOnlyHasContentDevices.title = NSLocalizedString("preference.general.only.has.application", comment: "preference")
-        isOnlyHasContentDevices.state = preference.onlyHasContentDevices ? NSOnState : NSOffState
+        isOnlyHasContentDevices.state = preference.onlyHasContentDevices ? .on : .off
         
         isAutomaticallyChecksForUpdates.title = NSLocalizedString("preference.general.auto.check.update", comment: "preference")
-        isAutomaticallyChecksForUpdates.state = DM_SUUpdater.shared().automaticallyChecksForUpdates ? NSOnState : NSOffState
+        isAutomaticallyChecksForUpdates.state = DM_SUUpdater.shared().automaticallyChecksForUpdates ? .on : .off
     }
-    @IBAction func onLaunchAtStartupButtonClicked(_ sender: NSButton) {
-        NSApplication.isLaunchAtStartup = sender.state == NSOnState
-    }
-    
-    @IBAction func onOnlyAvailableDevicesButtonClicked(_ sender: NSButton) {
-        Preference.shared.onlyAvailableDevices = sender.state == NSOnState
+    @IBAction func onLaunchAtStartupButtonClick(_ sender: NSButton) {
+        NSApplication.isLaunchAtStartup = sender.state == .on
     }
     
-    @IBAction func onOnlyHasContentDevicesButtonClicked(_ sender: NSButton) {
-        Preference.shared.onlyHasContentDevices = sender.state == NSOnState
+    @IBAction func onOnlyAvailableDevicesButtonClick(_ sender: NSButton) {
+        Preference.shared.onlyAvailableDevices = sender.state == .on
     }
     
-    @IBAction func onAutomaticallyChecksForUpdatesButtonClicked(_ sender: NSButton) {
-        DM_SUUpdater.shared().automaticallyChecksForUpdates = sender.state == NSOnState
+    @IBAction func onOnlyHasContentDevicesButtonClick(_ sender: NSButton) {
+        Preference.shared.onlyHasContentDevices = sender.state == .on
     }
     
-    @IBAction func onCheckForUpdatesButtonClicked(_ sender: NSButton) {
+    @IBAction func onAutomaticallyChecksForUpdatesButtonClick(_ sender: NSButton) {
+        DM_SUUpdater.shared().automaticallyChecksForUpdates = sender.state == .on
+    }
+    
+    @IBAction func onCheckForUpdatesButtonClick(_ sender: NSButton) {
         NSApp.checkForUpdates()
     }
     
-    @IBAction func onFeedbackButtonClicked(_ sender: NSButton) {
+    @IBAction func onFeedbackButtonClick(_ sender: NSButton) {
         NSApp.showFeedbackWindow()
     }
     
     // MARK: MASPreferencesViewController
-    override var identifier: String? {
-        get { return "GeneralPreferences" }
-        set { super.identifier = newValue }
+    var viewIdentifier: String {
+        return "GeneralPreferences"
     }
-    
-    var toolbarItemImage: NSImage! = NSImage(named: NSImageNamePreferencesGeneral)
+        
+    var toolbarItemImage: NSImage? = NSImage(named: NSImage.preferencesGeneralName)
 
-    var toolbarItemLabel: String! = NSLocalizedString("preference.general", comment: "preference")
+    var toolbarItemLabel: String? = NSLocalizedString("preference.general", comment: "preference")
 }

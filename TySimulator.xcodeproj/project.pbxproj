@@ -27,12 +27,10 @@
 		1960D2CA1F077F0400DF7AC0 /* LRUK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960D2C91F077F0400DF7AC0 /* LRUK.swift */; };
 		1960D2CC1F07A8D900DF7AC0 /* RecentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960D2CB1F07A8D900DF7AC0 /* RecentTests.swift */; };
 		1960D2DB1F08460700DF7AC0 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960D2DA1F08460700DF7AC0 /* LRUCache.swift */; };
-		19711D261F1E3D3C008B1ECB /* AppMenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19711D251F1E3D3C008B1ECB /* AppMenuItemView.swift */; };
 		19711D321F1E6B9C008B1ECB /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19711D311F1E6B9C008B1ECB /* MainMenu.storyboard */; };
 		1996BFDF1EE335B2009B6E83 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD51EE335B2009B6E83 /* FileManager.swift */; };
 		1996BFE01EE335B2009B6E83 /* ShortcutMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD61EE335B2009B6E83 /* ShortcutMonitor.swift */; };
 		1996BFE11EE335B2009B6E83 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD71EE335B2009B6E83 /* Application.swift */; };
-		1996BFE31EE335B2009B6E83 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD91EE335B2009B6E83 /* Menu.swift */; };
 		1996BFE41EE335B2009B6E83 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFDA1EE335B2009B6E83 /* TextView.swift */; };
 		1996BFE51EE335B2009B6E83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFDB1EE335B2009B6E83 /* ViewController.swift */; };
 		1996BFE61EE335B2009B6E83 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFDC1EE335B2009B6E83 /* Process.swift */; };
@@ -42,7 +40,6 @@
 		199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D0B101DDE0F0800207D53 /* CommandModel.swift */; };
 		19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698231DE72AAE00AD3876 /* CommandTransformer.swift */; };
 		19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */; };
-		19DB14D11F1FBC9F00AD332A /* AppMenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */; };
 		19DB14D31F1FCBBB00AD332A /* DirectoryWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB14D21F1FCBBB00AD332A /* DirectoryWatcher.swift */; };
 		19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19DC15241EE6D70400C77DF0 /* Localizable.strings */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
@@ -50,11 +47,18 @@
 		19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19F94A1C1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib */; };
 		19F94A1F1DDCBF7C00AECF3B /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F94A1E1DDCBF7C00AECF3B /* Preference.swift */; };
 		5FDF5C40919F112EA90BE658 /* Pods_TySimulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */; };
+		702980DD216BA06D00A7BC0E /* UtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702980DC216BA06D00A7BC0E /* UtilTests.swift */; };
+		702980DF216BB06000A7BC0E /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702980DE216BB06000A7BC0E /* Simulator.swift */; };
+		702980E1216BB15300A7BC0E /* SimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702980E0216BB15300A7BC0E /* SimulatorTests.swift */; };
+		702980E3216BE1D500A7BC0E /* TestFinder in Resources */ = {isa = PBXBuildFile; fileRef = 702980E2216BE1D500A7BC0E /* TestFinder */; };
+		705D0748218389950084F3D4 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705D0747218389950084F3D4 /* SnapKit.framework */; };
+		70AB49862175055900D3B1F5 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AB49852175055900D3B1F5 /* MainViewController.xib */; };
+		70D023852174CC65003104B0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D023842174CC65003104B0 /* MainViewController.swift */; };
+		70F7FD4921763F68000D575D /* BaseDetailCollectionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70F7FD4821763F68000D575D /* BaseDetailCollectionItem.xib */; };
 		97C62CDFCE9FC94FB56FE660 /* Pods_TySimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DB23622D95C6C7E47AFD0C /* Pods_TySimulatorTests.framework */; };
 		F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */; };
 		F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50D76561DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib */; };
 		F521AA3A1E14510300353DA1 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521AA391E14510300353DA1 /* Script.swift */; };
-		F58132D01DDD7E84006C5A1A /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58132CF1DDD7E84006C5A1A /* Device.swift */; };
 		F5BE83571E159AB8005E7AD8 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F5BE83561E159AB8005E7AD8 /* dsa_pub.pem */; };
 /* End PBXBuildFile section */
 
@@ -95,12 +99,10 @@
 		1960D2C91F077F0400DF7AC0 /* LRUK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRUK.swift; sourceTree = "<group>"; };
 		1960D2CB1F07A8D900DF7AC0 /* RecentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTests.swift; sourceTree = "<group>"; };
 		1960D2DA1F08460700DF7AC0 /* LRUCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRUCache.swift; sourceTree = "<group>"; };
-		19711D251F1E3D3C008B1ECB /* AppMenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMenuItemView.swift; sourceTree = "<group>"; };
 		19711D311F1E6B9C008B1ECB /* MainMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainMenu.storyboard; sourceTree = "<group>"; };
 		1996BFD51EE335B2009B6E83 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1996BFD61EE335B2009B6E83 /* ShortcutMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutMonitor.swift; sourceTree = "<group>"; };
 		1996BFD71EE335B2009B6E83 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		1996BFD91EE335B2009B6E83 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		1996BFDA1EE335B2009B6E83 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		1996BFDB1EE335B2009B6E83 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1996BFDC1EE335B2009B6E83 /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
@@ -111,7 +113,6 @@
 		19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TySimulator-Bridging-Header.h"; sourceTree = "<group>"; };
 		19B698231DE72AAE00AD3876 /* CommandTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTransformer.swift; sourceTree = "<group>"; };
 		19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationWindow.xib; sourceTree = "<group>"; };
-		19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppMenuItemView.xib; sourceTree = "<group>"; };
 		19DB14D21F1FCBBB00AD332A /* DirectoryWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryWatcher.swift; sourceTree = "<group>"; };
 		19DC15251EE6D70400C77DF0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		19DC15271EE6D70D00C77DF0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -122,12 +123,20 @@
 		19F94A1E1DDCBF7C00AECF3B /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		2A72AF1F735CF9F4FEE5CE1E /* Pods-TySimulator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulator.release.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator.release.xcconfig"; sourceTree = "<group>"; };
 		68BF4750CD38F7CCA2B5D8FE /* Pods-TySimulatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulatorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulatorTests/Pods-TySimulatorTests.release.xcconfig"; sourceTree = "<group>"; };
+		7023FD75217762650009E6D1 /* TySimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TySimulator.entitlements; sourceTree = "<group>"; };
+		702980DC216BA06D00A7BC0E /* UtilTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilTests.swift; sourceTree = "<group>"; };
+		702980DE216BB06000A7BC0E /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
+		702980E0216BB15300A7BC0E /* SimulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorTests.swift; sourceTree = "<group>"; };
+		702980E2216BE1D500A7BC0E /* TestFinder */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestFinder; sourceTree = "<group>"; };
+		705D0747218389950084F3D4 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/Mac/SnapKit.framework; sourceTree = "<group>"; };
+		70AB49852175055900D3B1F5 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		70D023842174CC65003104B0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		70F7FD4821763F68000D575D /* BaseDetailCollectionItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseDetailCollectionItem.xib; sourceTree = "<group>"; };
 		A7A86A69885BB6E8D9E1121E /* Pods-TySimulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TySimulator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator.debug.xcconfig"; sourceTree = "<group>"; };
 		C95487967A0430FF08ADBE00 /* Pods_TySimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TySimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50D76541DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyBindingsPreferencesViewController.swift; sourceTree = "<group>"; };
 		F50D76561DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyBindingsPreferencesViewController.xib; sourceTree = "<group>"; };
 		F521AA391E14510300353DA1 /* Script.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
-		F58132CF1DDD7E84006C5A1A /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Model/Device.swift; sourceTree = "<group>"; };
 		F5BE83561E159AB8005E7AD8 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +148,7 @@
 				195C48921EE41F9500234568 /* SwiftyBeaver.framework in Frameworks */,
 				195C48901EE40EDA00234568 /* SwiftyJSON.framework in Frameworks */,
 				1996BFEA1EE33835009B6E83 /* SwiftyUserDefaults.framework in Frameworks */,
+				705D0748218389950084F3D4 /* SnapKit.framework in Frameworks */,
 				5FDF5C40919F112EA90BE658 /* Pods_TySimulator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,19 +197,21 @@
 		19460C901DD78EA900894FBA /* TySimulator */ = {
 			isa = PBXGroup;
 			children = (
+				7023FD75217762650009E6D1 /* TySimulator.entitlements */,
 				1996BFD41EE335B2009B6E83 /* Utils */,
 				19F94A171DDCBA4200AECF3B /* Preferences */,
 				19460CB01DD83BF200894FBA /* Model */,
 				1960D2C61F077B6500DF7AC0 /* LRU-K */,
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
-				19711D251F1E3D3C008B1ECB /* AppMenuItemView.swift */,
-				19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */,
-				F58132CF1DDD7E84006C5A1A /* Device.swift */,
+				70D023842174CC65003104B0 /* MainViewController.swift */,
+				70F7FD4821763F68000D575D /* BaseDetailCollectionItem.xib */,
+				70AB49852175055900D3B1F5 /* MainViewController.xib */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
 				19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */,
 				19B698231DE72AAE00AD3876 /* CommandTransformer.swift */,
 				F521AA391E14510300353DA1 /* Script.swift */,
 				19DB14D21F1FCBBB00AD332A /* DirectoryWatcher.swift */,
+				702980DE216BB06000A7BC0E /* Simulator.swift */,
 				19460C931DD78EA900894FBA /* Assets.xcassets */,
 				19711D311F1E6B9C008B1ECB /* MainMenu.storyboard */,
 				19460C981DD78EA900894FBA /* Info.plist */,
@@ -214,10 +226,13 @@
 		19460CA01DD78EA900894FBA /* TySimulatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				702980E2216BE1D500A7BC0E /* TestFinder */,
 				192AA1851EFD6320000BFA33 /* Resource */,
 				192880351DE8959200A5A13A /* ScriptTests.swift */,
 				1960D2CB1F07A8D900DF7AC0 /* RecentTests.swift */,
 				19460CA31DD78EA900894FBA /* Info.plist */,
+				702980DC216BA06D00A7BC0E /* UtilTests.swift */,
+				702980E0216BB15300A7BC0E /* SimulatorTests.swift */,
 			);
 			path = TySimulatorTests;
 			sourceTree = "<group>";
@@ -250,7 +265,6 @@
 				1996BFD51EE335B2009B6E83 /* FileManager.swift */,
 				1996BFD61EE335B2009B6E83 /* ShortcutMonitor.swift */,
 				1996BFD71EE335B2009B6E83 /* Application.swift */,
-				1996BFD91EE335B2009B6E83 /* Menu.swift */,
 				1996BFDA1EE335B2009B6E83 /* TextView.swift */,
 				1996BFDB1EE335B2009B6E83 /* ViewController.swift */,
 				1996BFDC1EE335B2009B6E83 /* Process.swift */,
@@ -278,6 +292,7 @@
 		257DEF6B02A35E27D755AC71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				705D0747218389950084F3D4 /* SnapKit.framework */,
 				195C48961EE46A1600234568 /* Nimble.framework */,
 				195C48971EE46A1600234568 /* Quick.framework */,
 				195C48911EE41F9500234568 /* SwiftyBeaver.framework */,
@@ -342,8 +357,6 @@
 				19460C991DD78EA900894FBA /* Sources */,
 				19460C9A1DD78EA900894FBA /* Frameworks */,
 				192AA1881EFD63CD000BFA33 /* Resources */,
-				772CFD0DE7396E3DC13F36FA /* [CP] Embed Pods Frameworks */,
-				AEBB3C8ACE6B40328BCF2D83 /* [CP] Copy Pods Resources */,
 				195C489C1EE46B6D00234568 /* Carthage */,
 			);
 			buildRules = (
@@ -363,14 +376,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = luckytianyiyan;
 				TargetAttributes = {
 					19460C8D1DD78EA900894FBA = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 9KYD7S7AZY;
-						ProvisioningStyle = Automatic;
+						LastSwiftMigration = 1000;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 0;
+							};
 							com.apple.Sandbox = {
 								enabled = 0;
 							};
@@ -378,6 +395,7 @@
 					};
 					19460C9C1DD78EA900894FBA = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 19460C8D1DD78EA900894FBA;
 					};
@@ -409,6 +427,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				702980E3216BE1D500A7BC0E /* TestFinder in Resources */,
 				192AA1891EFD63DA000BFA33 /* script-format.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,9 +440,10 @@
 				F5BE83571E159AB8005E7AD8 /* dsa_pub.pem in Resources */,
 				19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */,
 				19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */,
-				19DB14D11F1FBC9F00AD332A /* AppMenuItemView.xib in Resources */,
 				1931AA971DE214D300B78D40 /* CommandViewController.xib in Resources */,
 				F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */,
+				70F7FD4921763F68000D575D /* BaseDetailCollectionItem.xib in Resources */,
+				70AB49862175055900D3B1F5 /* MainViewController.xib in Resources */,
 				19711D321F1E6B9C008B1ECB /* MainMenu.storyboard in Resources */,
 				19F94A1D1DDCBAAE00AECF3B /* GeneralPreferencesViewController.xib in Resources */,
 			);
@@ -457,13 +477,14 @@
 				"$(SRCROOT)/Carthage/Build/Mac/SwiftyUserDefaults.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/SwiftyBeaver.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/SnapKit.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		19975C16AE7EADFBD24551F6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -471,13 +492,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TySimulatorTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		19ACC3411F8E571600F35737 /* SwiftLint */ = {
@@ -500,13 +524,14 @@
 			files = (
 			);
 			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = Fabric;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" b8abdb192ffac1475217f74ad9b22a062de1c4ec 5de90ea6e37074ba0df6027a8cccf6fefdaa0a76de7fe0a4fdf382a855d0cee7";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" b8abdb192ffac1475217f74ad9b22a062de1c4ec 5de90ea6e37074ba0df6027a8cccf6fefdaa0a76de7fe0a4fdf382a855d0cee7\n";
 		};
 		6FB74312638250B45FDA0DAF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -514,43 +539,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TySimulator-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		772CFD0DE7396E3DC13F36FA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TySimulatorTests/Pods-TySimulatorTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AEBB3C8ACE6B40328BCF2D83 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TySimulatorTests/Pods-TySimulatorTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C10F30D06EBA5B13B4EC080E /* [CP] Embed Pods Frameworks */ = {
@@ -559,9 +557,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ACEViewSwift/ACEViewSwift.framework",
+				"${PODS_ROOT}/DevMateKit/DevMateKit.framework",
+				"${BUILT_PRODUCTS_DIR}/MASPreferences/MASPreferences.framework",
+				"${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ACEViewSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DevMateKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASPreferences.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASShortcut.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -574,9 +581,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator-resources.sh",
+				"${PODS_ROOT}/DevMateKit/DevMateKit.framework",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DevMateKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -593,7 +603,7 @@
 				191195511DD8785300EEBBB4 /* ApplicationModel.swift in Sources */,
 				1996BFE61EE335B2009B6E83 /* Process.swift in Sources */,
 				1960D2C81F077B6500DF7AC0 /* LRU.swift in Sources */,
-				19711D261F1E3D3C008B1ECB /* AppMenuItemView.swift in Sources */,
+				70D023852174CC65003104B0 /* MainViewController.swift in Sources */,
 				1996BFE71EE335B2009B6E83 /* MD5.swift in Sources */,
 				1960D2DB1F08460700DF7AC0 /* LRUCache.swift in Sources */,
 				1996BFDF1EE335B2009B6E83 /* FileManager.swift in Sources */,
@@ -601,7 +611,6 @@
 				1911955C1DD8C2B500EEBBB4 /* AppGroupModel.swift in Sources */,
 				1931AA991DE214DA00B78D40 /* CommandViewController.swift in Sources */,
 				19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */,
-				F58132D01DDD7E84006C5A1A /* Device.swift in Sources */,
 				199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */,
 				19460C921DD78EA900894FBA /* AppDelegate.swift in Sources */,
 				1996BFE11EE335B2009B6E83 /* Application.swift in Sources */,
@@ -613,9 +622,9 @@
 				19DB14D31F1FCBBB00AD332A /* DirectoryWatcher.swift in Sources */,
 				F521AA3A1E14510300353DA1 /* Script.swift in Sources */,
 				1996BFE51EE335B2009B6E83 /* ViewController.swift in Sources */,
-				1996BFE31EE335B2009B6E83 /* Menu.swift in Sources */,
 				19F94A1F1DDCBF7C00AECF3B /* Preference.swift in Sources */,
 				19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */,
+				702980DF216BB06000A7BC0E /* Simulator.swift in Sources */,
 				1911955A1DD8C14700EEBBB4 /* MediaModel.swift in Sources */,
 				F50D76551DDDEB26001F7098 /* KeyBindingsPreferencesViewController.swift in Sources */,
 				1996BFE41EE335B2009B6E83 /* TextView.swift in Sources */,
@@ -628,6 +637,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1960D2CC1F07A8D900DF7AC0 /* RecentTests.swift in Sources */,
+				702980DD216BA06D00A7BC0E /* UtilTests.swift in Sources */,
+				702980E1216BB15300A7BC0E /* SimulatorTests.swift in Sources */,
 				192880361DE8959200A5A13A /* ScriptTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -670,6 +681,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -677,6 +689,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -727,6 +740,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -734,6 +748,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -768,6 +783,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9KYD7S7AZY;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -776,13 +792,14 @@
 				);
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TySimulator/TySimulator-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -791,7 +808,8 @@
 			baseConfigurationReference = 2A72AF1F735CF9F4FEE5CE1E /* Pods-TySimulator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9KYD7S7AZY;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -800,13 +818,14 @@
 				);
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "TySimulator Develop ID";
 				SWIFT_OBJC_BRIDGING_HEADER = "TySimulator/TySimulator-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -827,7 +846,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TySimulator.app/Contents/MacOS/TySimulator";
 			};
 			name = Debug;
@@ -849,7 +869,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TySimulator.app/Contents/MacOS/TySimulator";
 			};
 			name = Release;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -304,7 +304,11 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" userLabel="AppDelegate" customClass="AppDelegate" customModule="TySimulator" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" userLabel="AppDelegate" customClass="AppDelegate" customModule="TySimulator" customModuleProvider="target">
+                    <connections>
+                        <outlet property="mainMenuController" destination="P9p-jk-tyW" id="0i5-F9-OfA"/>
+                    </connections>
+                </customObject>
                 <customObject id="P9p-jk-tyW" customClass="MainMenuController" customModule="TySimulator" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
