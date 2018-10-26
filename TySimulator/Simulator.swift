@@ -51,8 +51,8 @@ class Simulator {
         
         let bootedDevices = allDevices.filter {
             $0.hasContent && $0.isAvailable && $0.os != .unknown && $0.isOpen
-            }.sorted {
-                $0.osInfo.compare($1.osInfo) == .orderedAscending
+        }.sorted {
+            $0.displayName.compare($1.displayName) == .orderedAscending
         }
         
         DispatchQueue.main.async {

@@ -167,7 +167,7 @@ extension MainViewController: NSTableViewDelegate {
         let result: AppMenuTableCellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "defaultRow"), owner: self) as! AppMenuTableCellView
         if devices.indices.contains(row) {
             let device = devices[row]
-            result.name = device.name
+            result.name = device.displayName
             result.isAvailable = device.isOpen
             result.isHighlight = device.udid == selectedDeviceUDID
         }
