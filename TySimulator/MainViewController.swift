@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SnapKit
 
 class MainViewController: NSViewController {
     @IBOutlet weak var deviceTableView: NSTableView!
@@ -38,7 +39,7 @@ class MainViewController: NSViewController {
         deviceTableView.delegate = self
         deviceTableView.dataSource = self
         infoCollectionView.register(NSNib(nibNamed: "MainViewController", bundle: nil), forItemWithIdentifier: MainViewController.appItemIdentifier)
-        infoCollectionView.register(NSNib(nibNamed: "InfoSectionHeaderView", bundle: nil), forSupplementaryViewOfKind: NSCollectionView.elementKindSectionHeader, withIdentifier: MainViewController.headerItemIdentifier)
+        infoCollectionView.register(InfoSectionHeaderView.self, forSupplementaryViewOfKind: NSCollectionView.elementKindSectionHeader, withIdentifier: MainViewController.headerItemIdentifier)
         
         infoCollectionView.delegate = self
         infoCollectionView.dataSource = self
@@ -251,14 +252,14 @@ extension MainViewController: NSCollectionViewDataSource {
             default:
                 break
             }
-            (headerView as? InfoSectionHeaderView)?.textField.stringValue = text
+            (headerView as? InfoSectionHeaderView)?.title = text
             return headerView
         }
         return NSView()
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
-        return collectionView == infoCollectionView ? CGSize(width: collectionView.bounds.width, height: 20) : .zero
+        return collectionView == infoCollectionView ? CGSize(width: collectionView.bounds.width, height: InfoSectionHeaderView.defaultHeight) : .zero
     }
 }
 
@@ -379,7 +380,7 @@ class ApplicationCollectionItem: BaseApplicationCollectionItem {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageView?.wantsLayer = true
-        imageView?.layer?.cornerRadius = 4.0
+        imageView?.layer?.cornerRadius = 21.0
         imageView?.layer?.masksToBounds = true
     }
     
@@ -415,18 +416,39 @@ class ApplicationCollectionItem: BaseApplicationCollectionItem {
 }
 
 class InfoSectionHeaderView: NSView {
-    @IBOutlet weak var textField: NSTextField!
+    static let defaultHeight: CGFloat = 32.0
+    private var textField: NSTextField = NSTextField()
     var title: String? {
         set {
-            textField?.stringValue = newValue ?? ""
+            textField.stringValue = newValue ?? ""
         }
         get {
-            return textField?.stringValue
+            return textField.stringValue
         }
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        title = nil
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        
+        textField.isBezeled = false
+        textField.isEditable = false
+        textField.isSelectable = false
+        textField.font = NSFont.boldSystemFont(ofSize: 13.0)
+        addSubview(textField)
+        
+        textField.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(16.0)
+            make.centerY.right.equalToSuperview()
+        }
+    }
+    
+    required init?(coder decoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1).setFill()
+        NSRect(x: 16.0, y: 0, width: bounds.width - 16.0, height: 0.5).fill()
     }
 }
