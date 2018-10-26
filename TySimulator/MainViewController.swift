@@ -16,7 +16,6 @@ class MainViewController: NSViewController {
     @IBOutlet weak var progressView: NSProgressIndicator!
     @IBOutlet weak var recentView: NSView!
     @IBOutlet weak var recentCollectionView: NSCollectionView!
-    @IBOutlet var splitViewTopConstraint: NSLayoutConstraint!
     
     static let headerItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "infoSectionHeader")
     static let appItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "defaultItem")
@@ -135,7 +134,6 @@ class MainViewController: NSViewController {
     
     private func updateRecentView() {
         let isVisible = recentApplications.count > 0
-        splitViewTopConstraint.isActive = isVisible
         recentView.isHidden = !isVisible
     }
 }
