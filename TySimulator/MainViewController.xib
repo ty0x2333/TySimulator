@@ -14,7 +14,9 @@
                 <outlet property="infoCollectionView" destination="sGm-hb-mqt" id="oaZ-Ih-e5E"/>
                 <outlet property="progressView" destination="rc4-4a-cCf" id="iGO-6W-1LR"/>
                 <outlet property="recentCollectionView" destination="cI8-7X-0Pu" id="Vap-8T-J4p"/>
+                <outlet property="recentContainerView" destination="fcv-gK-yJx" id="FFP-D3-KPj"/>
                 <outlet property="recentView" destination="D0I-do-a2F" id="55J-et-T3H"/>
+                <outlet property="splitBottomConstraint" destination="Kt2-cF-99r" id="Bsg-xi-FiE"/>
                 <outlet property="splitView" destination="xen-80-wUH" id="SUo-Ra-jpQ"/>
                 <outlet property="view" destination="SxP-Uc-gJJ" id="KAi-39-RHQ"/>
             </connections>
@@ -139,7 +141,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                     <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="5D9-LI-vLC">
-                                        <rect key="frame" x="241" y="0.0" width="16" height="347"/>
+                                        <rect key="frame" x="241" y="0.0" width="16" height="353"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                 </scrollView>
@@ -263,6 +265,7 @@
                 <constraint firstItem="D0I-do-a2F" firstAttribute="top" secondItem="xen-80-wUH" secondAttribute="bottom" id="Kt2-cF-99r"/>
                 <constraint firstItem="xen-80-wUH" firstAttribute="top" secondItem="SxP-Uc-gJJ" secondAttribute="top" constant="8" id="PDE-K1-3Sq"/>
                 <constraint firstItem="sMr-EB-Boc" firstAttribute="leading" secondItem="SxP-Uc-gJJ" secondAttribute="leading" id="XYG-vY-Ioq"/>
+                <constraint firstItem="sMr-EB-Boc" firstAttribute="top" secondItem="xen-80-wUH" secondAttribute="bottom" priority="750" id="jxH-du-UKb"/>
                 <constraint firstItem="sMr-EB-Boc" firstAttribute="top" secondItem="D0I-do-a2F" secondAttribute="bottom" id="tJ8-bk-Hln"/>
                 <constraint firstAttribute="trailing" secondItem="sMr-EB-Boc" secondAttribute="trailing" id="thk-by-giQ"/>
                 <constraint firstAttribute="trailing" secondItem="D0I-do-a2F" secondAttribute="trailing" constant="8" id="xXh-pe-t4l"/>
@@ -294,7 +297,7 @@
                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j6F-GM-Z79">
                     <rect key="frame" x="68" y="13" width="27" height="14"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Size" drawsBackground="YES" id="KZf-xa-dEg">
-                        <font key="font" metaFont="system" size="11"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

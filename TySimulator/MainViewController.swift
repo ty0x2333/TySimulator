@@ -19,15 +19,22 @@ class MainViewController: NSViewController {
     @IBOutlet weak var recentCollectionView: NSCollectionView!
     
     @IBOutlet weak var emptyView: NSView!
+    @IBOutlet var splitBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var recentContainerView: NSScrollView!
     
-    static let headerItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "infoSectionHeader")
-    static let appItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "defaultItem")
-    static let recentItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "recentItem")
-    var devices: [DeviceModel] = []
-    var recentApplications: [ApplicationModel] = []
-    var selectedDeviceUDID: String?
+    private static let headerItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "infoSectionHeader")
+    private static let appItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "defaultItem")
+    private static let recentItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "recentItem")
+    private var devices: [DeviceModel] = [] {
+        didSet {
+            recentCollectionView.reloadData()
+            updateRecentView()
+        }
+    }
+    private var recentApplications: [ApplicationModel] = []
+    private var selectedDeviceUDID: String?
     
-    var selectedDevice: DeviceModel? {
+    private var selectedDevice: DeviceModel? {
         guard let udid = selectedDeviceUDID else {
             return nil
         }
@@ -40,9 +47,9 @@ class MainViewController: NSViewController {
         deviceTableView.selectionHighlightStyle = .none
         deviceTableView.delegate = self
         deviceTableView.dataSource = self
+        
         infoCollectionView.register(NSNib(nibNamed: "MainViewController", bundle: nil), forItemWithIdentifier: MainViewController.appItemIdentifier)
         infoCollectionView.register(InfoSectionHeaderView.self, forSupplementaryViewOfKind: NSCollectionView.elementKindSectionHeader, withIdentifier: MainViewController.headerItemIdentifier)
-        
         infoCollectionView.delegate = self
         infoCollectionView.dataSource = self
         
@@ -50,12 +57,22 @@ class MainViewController: NSViewController {
         recentCollectionView.dataSource = self
         recentCollectionView.delegate = self
         
+        for subview in splitView.subviews {
+            subview.wantsLayer = true
+            subview.layer?.cornerRadius = 4.0
+            subview.layer?.masksToBounds = true
+        }
+        
+        recentContainerView.wantsLayer = true
+        recentContainerView.layer?.cornerRadius = 4.0
+        recentContainerView.layer?.masksToBounds = true
+        
         NotificationCenter.default.addObserver(self, selector: #selector(devicesChangedNotification(sender:)), name: Notification.Name.Device.DidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateRecentAppMenus), name: Notification.Name.LRUCache.DidRecord, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateRecentApplications), name: Notification.Name.LRUCache.DidRecord, object: nil)
         
         devices = Simulator.shared.devices
         reloadInfos()
-        updateRecentAppMenus()
+        updateRecentApplications()
     }
     
     deinit {
@@ -87,13 +104,10 @@ class MainViewController: NSViewController {
         emptyView.isHidden = numberOfSections(in: infoCollectionView) > 0
     }
     
-    @objc private func updateRecentAppMenus() {
+    @objc private func updateRecentApplications() {
         let datas = LRUCache.shared.datas
-        defer {
-            recentCollectionView.reloadData()
-            updateRecentView()
-        }
         guard datas.count > 0 else {
+            recentApplications = []
             return
         }
         var apps: [ApplicationModel] = []
@@ -108,6 +122,7 @@ class MainViewController: NSViewController {
         }
 
         guard apps.count > 0 else {
+            recentApplications = []
             return
         }
 
@@ -134,13 +149,15 @@ class MainViewController: NSViewController {
     // MARK: Notification
     @objc func devicesChangedNotification(sender: Notification) {
         log.verbose("devicesChangedNotification updateDeviceMenus")
-        self.updateDeviceMenus()
+        updateDeviceMenus()
+        updateRecentApplications()
     }
     
     // MARK: Helper
     
     private func updateRecentView() {
         let isVisible = recentApplications.count > 0
+        splitBottomConstraint.isActive = isVisible
         recentView.isHidden = !isVisible
     }
 }
