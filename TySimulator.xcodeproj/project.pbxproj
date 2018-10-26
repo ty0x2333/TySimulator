@@ -27,12 +27,10 @@
 		1960D2CA1F077F0400DF7AC0 /* LRUK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960D2C91F077F0400DF7AC0 /* LRUK.swift */; };
 		1960D2CC1F07A8D900DF7AC0 /* RecentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960D2CB1F07A8D900DF7AC0 /* RecentTests.swift */; };
 		1960D2DB1F08460700DF7AC0 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1960D2DA1F08460700DF7AC0 /* LRUCache.swift */; };
-		19711D261F1E3D3C008B1ECB /* AppMenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19711D251F1E3D3C008B1ECB /* AppMenuItemView.swift */; };
 		19711D321F1E6B9C008B1ECB /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19711D311F1E6B9C008B1ECB /* MainMenu.storyboard */; };
 		1996BFDF1EE335B2009B6E83 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD51EE335B2009B6E83 /* FileManager.swift */; };
 		1996BFE01EE335B2009B6E83 /* ShortcutMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD61EE335B2009B6E83 /* ShortcutMonitor.swift */; };
 		1996BFE11EE335B2009B6E83 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD71EE335B2009B6E83 /* Application.swift */; };
-		1996BFE31EE335B2009B6E83 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFD91EE335B2009B6E83 /* Menu.swift */; };
 		1996BFE41EE335B2009B6E83 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFDA1EE335B2009B6E83 /* TextView.swift */; };
 		1996BFE51EE335B2009B6E83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFDB1EE335B2009B6E83 /* ViewController.swift */; };
 		1996BFE61EE335B2009B6E83 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BFDC1EE335B2009B6E83 /* Process.swift */; };
@@ -42,7 +40,6 @@
 		199D0B111DDE0F0800207D53 /* CommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D0B101DDE0F0800207D53 /* CommandModel.swift */; };
 		19B698241DE72AAE00AD3876 /* CommandTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B698231DE72AAE00AD3876 /* CommandTransformer.swift */; };
 		19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */; };
-		19DB14D11F1FBC9F00AD332A /* AppMenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */; };
 		19DB14D31F1FCBBB00AD332A /* DirectoryWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB14D21F1FCBBB00AD332A /* DirectoryWatcher.swift */; };
 		19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19DC15241EE6D70400C77DF0 /* Localizable.strings */; };
 		19E629A61DE0D82A00FE572B /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E629A51DE0D82A00FE572B /* ShortcutTableCellView.swift */; };
@@ -102,12 +99,10 @@
 		1960D2C91F077F0400DF7AC0 /* LRUK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRUK.swift; sourceTree = "<group>"; };
 		1960D2CB1F07A8D900DF7AC0 /* RecentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTests.swift; sourceTree = "<group>"; };
 		1960D2DA1F08460700DF7AC0 /* LRUCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRUCache.swift; sourceTree = "<group>"; };
-		19711D251F1E3D3C008B1ECB /* AppMenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMenuItemView.swift; sourceTree = "<group>"; };
 		19711D311F1E6B9C008B1ECB /* MainMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainMenu.storyboard; sourceTree = "<group>"; };
 		1996BFD51EE335B2009B6E83 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1996BFD61EE335B2009B6E83 /* ShortcutMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutMonitor.swift; sourceTree = "<group>"; };
 		1996BFD71EE335B2009B6E83 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		1996BFD91EE335B2009B6E83 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		1996BFDA1EE335B2009B6E83 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		1996BFDB1EE335B2009B6E83 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1996BFDC1EE335B2009B6E83 /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
@@ -118,7 +113,6 @@
 		19B698221DE727F400AD3876 /* TySimulator-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TySimulator-Bridging-Header.h"; sourceTree = "<group>"; };
 		19B698231DE72AAE00AD3876 /* CommandTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTransformer.swift; sourceTree = "<group>"; };
 		19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationWindow.xib; sourceTree = "<group>"; };
-		19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppMenuItemView.xib; sourceTree = "<group>"; };
 		19DB14D21F1FCBBB00AD332A /* DirectoryWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryWatcher.swift; sourceTree = "<group>"; };
 		19DC15251EE6D70400C77DF0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		19DC15271EE6D70D00C77DF0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -209,11 +203,9 @@
 				19460CB01DD83BF200894FBA /* Model */,
 				1960D2C61F077B6500DF7AC0 /* LRU-K */,
 				19460CAC1DD78FC000894FBA /* MainMenuController.swift */,
-				19711D251F1E3D3C008B1ECB /* AppMenuItemView.swift */,
 				70D023842174CC65003104B0 /* MainViewController.swift */,
 				70F7FD4821763F68000D575D /* BaseDetailCollectionItem.xib */,
 				70AB49852175055900D3B1F5 /* MainViewController.xib */,
-				19DB14D01F1FBC9F00AD332A /* AppMenuItemView.xib */,
 				19460C911DD78EA900894FBA /* AppDelegate.swift */,
 				19C680C61DF34AC4008CC5FE /* ActivationWindow.xib */,
 				19B698231DE72AAE00AD3876 /* CommandTransformer.swift */,
@@ -273,7 +265,6 @@
 				1996BFD51EE335B2009B6E83 /* FileManager.swift */,
 				1996BFD61EE335B2009B6E83 /* ShortcutMonitor.swift */,
 				1996BFD71EE335B2009B6E83 /* Application.swift */,
-				1996BFD91EE335B2009B6E83 /* Menu.swift */,
 				1996BFDA1EE335B2009B6E83 /* TextView.swift */,
 				1996BFDB1EE335B2009B6E83 /* ViewController.swift */,
 				1996BFDC1EE335B2009B6E83 /* Process.swift */,
@@ -449,7 +440,6 @@
 				F5BE83571E159AB8005E7AD8 /* dsa_pub.pem in Resources */,
 				19C680C71DF34AC4008CC5FE /* ActivationWindow.xib in Resources */,
 				19DC15261EE6D70400C77DF0 /* Localizable.strings in Resources */,
-				19DB14D11F1FBC9F00AD332A /* AppMenuItemView.xib in Resources */,
 				1931AA971DE214D300B78D40 /* CommandViewController.xib in Resources */,
 				F50D76571DDDEB79001F7098 /* KeyBindingsPreferencesViewController.xib in Resources */,
 				70F7FD4921763F68000D575D /* BaseDetailCollectionItem.xib in Resources */,
@@ -614,7 +604,6 @@
 				1996BFE61EE335B2009B6E83 /* Process.swift in Sources */,
 				1960D2C81F077B6500DF7AC0 /* LRU.swift in Sources */,
 				70D023852174CC65003104B0 /* MainViewController.swift in Sources */,
-				19711D261F1E3D3C008B1ECB /* AppMenuItemView.swift in Sources */,
 				1996BFE71EE335B2009B6E83 /* MD5.swift in Sources */,
 				1960D2DB1F08460700DF7AC0 /* LRUCache.swift in Sources */,
 				1996BFDF1EE335B2009B6E83 /* FileManager.swift in Sources */,
@@ -633,7 +622,6 @@
 				19DB14D31F1FCBBB00AD332A /* DirectoryWatcher.swift in Sources */,
 				F521AA3A1E14510300353DA1 /* Script.swift in Sources */,
 				1996BFE51EE335B2009B6E83 /* ViewController.swift in Sources */,
-				1996BFE31EE335B2009B6E83 /* Menu.swift in Sources */,
 				19F94A1F1DDCBF7C00AECF3B /* Preference.swift in Sources */,
 				19460CB41DD83C1E00894FBA /* DeviceModel.swift in Sources */,
 				702980DF216BB06000A7BC0E /* Simulator.swift in Sources */,
