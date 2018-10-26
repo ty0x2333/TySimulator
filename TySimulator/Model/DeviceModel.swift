@@ -45,6 +45,10 @@ class DeviceModel {
     let appGroups: [AppGroupModel]
     let location: URL
     
+    var displayName: String {
+        return "\(name) (\(osInfo))"
+    }
+    
     init(osInfo: String, json: [String: Any]) {
         name = (json["name"] as? String) ?? ""
         udid = (json["udid"] as? String) ?? ""
