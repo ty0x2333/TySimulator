@@ -18,6 +18,8 @@ class MainViewController: NSViewController {
     @IBOutlet weak var recentView: NSView!
     @IBOutlet weak var recentCollectionView: NSCollectionView!
     
+    @IBOutlet weak var emptyView: NSView!
+    
     static let headerItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "infoSectionHeader")
     static let appItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "defaultItem")
     static let recentItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "recentItem")
@@ -44,7 +46,7 @@ class MainViewController: NSViewController {
         infoCollectionView.delegate = self
         infoCollectionView.dataSource = self
         
-        recentCollectionView.register(NSNib(nibNamed: "BaseApplicationCollectionItem", bundle: nil), forItemWithIdentifier: MainViewController.recentItemIdentifier)
+        recentCollectionView.register(NSNib(nibNamed: "BaseDetailCollectionItem", bundle: nil), forItemWithIdentifier: MainViewController.recentItemIdentifier)
         recentCollectionView.dataSource = self
         recentCollectionView.delegate = self
         
@@ -52,7 +54,7 @@ class MainViewController: NSViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateRecentAppMenus), name: Notification.Name.LRUCache.DidRecord, object: nil)
         
         devices = Simulator.shared.devices
-        infoCollectionView.reloadData()
+        reloadInfos()
         updateRecentAppMenus()
     }
     
@@ -78,7 +80,11 @@ class MainViewController: NSViewController {
         log.info("load devices: \(devices.count)")
         
         deviceTableView.reloadData()
+    }
+    
+    private func reloadInfos() {
         infoCollectionView.reloadData()
+        emptyView.isHidden = numberOfSections(in: infoCollectionView) > 0
     }
     
     @objc private func updateRecentAppMenus() {
@@ -157,7 +163,7 @@ extension MainViewController: NSTableViewDelegate {
         }
         deviceTableView.deselectAll(nil)
         deviceTableView.reloadData()
-        infoCollectionView.reloadData()
+        reloadInfos()
     }
 }
 
@@ -176,7 +182,16 @@ extension MainViewController: NSSplitViewDelegate {
 extension MainViewController: NSCollectionViewDataSource {
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        return collectionView == infoCollectionView ? 3 : 1
+        if collectionView == recentCollectionView {
+            return 1
+        }
+        guard let device = selectedDevice else {
+            return 0
+        }
+        if device.applications.isEmpty, device.appGroups.isEmpty, device.medias.isEmpty {
+            return 0
+        }
+        return 3
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -200,36 +215,42 @@ extension MainViewController: NSCollectionViewDataSource {
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         guard collectionView == infoCollectionView else {
-            let item = collectionView.makeItem(withIdentifier: MainViewController.recentItemIdentifier, for: indexPath) as! BaseApplicationCollectionItem
+            let item = collectionView.makeItem(withIdentifier: MainViewController.recentItemIdentifier, for: indexPath) as! BaseDetailCollectionItem
             if recentApplications.indices.contains(indexPath.item) {
                 let app = recentApplications[indexPath.item]
+                if let imageView = item.imageView {
+                    imageView.wantsLayer = true
+                    imageView.layer?.cornerRadius = 10.0
+                    imageView.layer?.masksToBounds = true
+                }
                 item.icon = app.bundle.appIcon
                 item.name = app.bundle.appName
                 item.location = app.dataPath
             }
             return item
         }
-        let item = collectionView.makeItem(withIdentifier: MainViewController.appItemIdentifier, for: indexPath) as! ApplicationCollectionItem
+        let item = collectionView.makeItem(withIdentifier: MainViewController.appItemIdentifier, for: indexPath) as! DetailCollectionItem
         switch indexPath.section {
         case 0:
             if let applications = selectedDevice?.applications, applications.indices.contains(indexPath.item) {
                 let app = applications[indexPath.item]
                 item.icon = app.bundle.appIcon
                 item.name = app.bundle.appName
+                item.type = .app
                 item.location = app.dataPath
             }
         case 1:
             if let groups = selectedDevice?.appGroups, groups.indices.contains(indexPath.item) {
                 let group = groups[indexPath.item]
                 item.name = group.bundleIdentifier
-                item.icon = NSImage(named: "finder")
+                item.type = .group
                 item.location = group.location
             }
         case 2:
             if let medias = selectedDevice?.medias, medias.indices.contains(indexPath.item) {
                 let media = medias[indexPath.item]
                 item.name = media.name
-                item.icon = NSImage(named: "finder")
+                item.type = .assets
                 item.location = media.location
             }
         default:
@@ -265,39 +286,50 @@ extension MainViewController: NSCollectionViewDataSource {
 
 extension MainViewController: NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        return collectionView == infoCollectionView ? CGSize(width: collectionView.bounds.width, height: 49) : CGSize(width: 80.0, height: 58.0)
+        return collectionView == infoCollectionView ? CGSize(width: collectionView.bounds.width, height: 49) : CGSize(width: 63.0, height: 65.0)
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         guard let indexPath = indexPaths.first else {
             return
         }
+        
+        var location: URL?
+        if collectionView == infoCollectionView {
+            location = detailItemLocation(indexPath: indexPath)
+        } else if recentApplications.indices.contains(indexPath.item) {
+            location = recentApplications[indexPath.item].dataPath
+        }
+        
+        if let loc = location {
+            DispatchQueue.main.async {
+                NSWorkspace.shared.open(loc)
+            }
+        }
+        (NSApp.delegate as? AppDelegate)?.mainMenuController?.closePopover(sender: nil)
+    }
+    
+    private func detailItemLocation(indexPath: IndexPath) -> URL? {
         switch indexPath.section {
         case 0:
             if let applications = selectedDevice?.applications, applications.indices.contains(indexPath.item) {
                 let app = applications[indexPath.item]
                 LRUCache.shared.record(app: app.bundle.bundleID)
-                DispatchQueue.main.async {
-                    NSWorkspace.shared.open(app.dataPath)
-                }
+                return app.dataPath
             }
         case 1:
-            if let groups = selectedDevice?.appGroups, groups.indices.contains(indexPath.item), let location = groups[indexPath.item].location {
-                DispatchQueue.main.async {
-                    NSWorkspace.shared.open(location)
-                }
+            if let groups = selectedDevice?.appGroups, groups.indices.contains(indexPath.item) {
+                return groups[indexPath.item].location
             }
         case 2:
             if let medias = selectedDevice?.medias, medias.indices.contains(indexPath.item) {
                 let media = medias[indexPath.item]
-                DispatchQueue.main.async {
-                    NSWorkspace.shared.open(media.location)
-                }
+                return media.location
             }
         default:
             break
         }
-        (NSApp.delegate as? AppDelegate)?.mainMenuController?.closePopover(sender: nil)
+        return nil
     }
 }
 
@@ -330,13 +362,13 @@ class AppMenuTableCellView: NSTableCellView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         if isHighlight {
-            NSColor.selectedMenuItemColor.set()
+            NSColor.selectedControlColor.set()
             dirtyRect.fill()
         }
     }
 }
 
-class BaseApplicationCollectionItem: NSCollectionViewItem {
+class BaseDetailCollectionItem: NSCollectionViewItem {
     var icon: NSImage? {
         set {
             newValue?.isTemplate = false
@@ -358,10 +390,25 @@ class BaseApplicationCollectionItem: NSCollectionViewItem {
     var location: URL?
 }
 
-class ApplicationCollectionItem: BaseApplicationCollectionItem {
+class DetailCollectionItem: BaseDetailCollectionItem {
+    enum ItemType {
+        case app
+        case assets
+        case group
+    }
     var directoryWatcher: DirectoryWatcher?
-    
     @IBOutlet private weak var sizeTextField: NSTextField!
+    
+    var type: ItemType = .app {
+        didSet {
+            if type == .app {
+                imageView?.layer?.cornerRadius = 21.0
+            } else {
+                icon = NSImage(named: "finder")
+                imageView?.layer?.cornerRadius = 0
+            }
+        }
+    }
     
    override var location: URL? {
         didSet {
@@ -416,7 +463,7 @@ class ApplicationCollectionItem: BaseApplicationCollectionItem {
 }
 
 class InfoSectionHeaderView: NSView {
-    static let defaultHeight: CGFloat = 32.0
+    static let defaultHeight: CGFloat = 40.0
     private var textField: NSTextField = NSTextField()
     var title: String? {
         set {
@@ -448,7 +495,7 @@ class InfoSectionHeaderView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1).setFill()
-        NSRect(x: 16.0, y: 0, width: bounds.width - 16.0, height: 0.5).fill()
+        NSColor.placeholderTextColor.setFill()
+        NSRect(x: 16.0, y: 8.0, width: bounds.width - 16.0, height: 0.5).fill()
     }
 }
