@@ -57,7 +57,9 @@ class DeviceModel {
         self.osInfo = osInfo
         if osInfo.components(separatedBy: "-").count >= 3 {
             os = OS(rawValue: osInfo.components(separatedBy: "-").first ?? "") ?? .unknown
-            version = (osInfo.components(separatedBy: "-")[1]) + "." + (osInfo.components(separatedBy: "-").last ?? "")
+            var osInfoArr = osInfo.components(separatedBy: "-")
+            osInfoArr.remove(at: 0)
+            version = osInfoArr.joined(separator: ".")
         } else {
             os = OS(rawValue: osInfo.components(separatedBy: " ").first ?? "") ?? .unknown
             version = osInfo.components(separatedBy: " ").last ?? ""
