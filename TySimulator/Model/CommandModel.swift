@@ -20,7 +20,7 @@ class CommandModel: NSObject {
         self.init(id: String(timeStamp).md5())
     }
     
-    init(id: String) {
+    @objc init(id: String) {
         self.id = id
         super.init()
     }

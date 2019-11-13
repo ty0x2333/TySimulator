@@ -52,7 +52,11 @@ class DeviceModel {
     init(osInfo: String, json: [String: Any]) {
         name = (json["name"] as? String) ?? ""
         udid = (json["udid"] as? String) ?? ""
-        isAvailable = (json["availability"] as? String)?.contains("(available)") ?? false
+        if let isAvailable = (json["availability"] as? String)?.contains("(available)") {
+            self.isAvailable = isAvailable
+        } else {
+            self.isAvailable = (json["isAvailable"] as? Bool) ?? false
+        }
         isOpen = (json["state"] as? String)?.contains("Booted") ?? false
         self.osInfo = osInfo
         if osInfo.components(separatedBy: "-").count >= 3 {
