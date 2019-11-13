@@ -1,0 +1,26 @@
+name: Swift
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Soft Env
+      run: |
+        carthage version
+        pod --version
+        xcodebuild -version
+        xcpretty -v
+    - name: Install Dependencies
+      run: |
+        carthage bootstrap --platform osx
+        pod install --repo-update
+    - name: Test
+      run: xcodebuild -workspace TySimulator.xcworkspace -scheme TySimulator -sdk macosx ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -enableCodeCoverage YES test
+    - uses: codecov/codecov-action@v1.0.3
+      with:
+        token: ${{secrets.CODECOV_TOKEN}}
