@@ -1,11 +1,11 @@
 <p align="center" >
-  <img src="https://github.com/luckytianyiyan/TySimulator/raw/master/resources/tysimulator-logo.png" alt="TySimulator" title="TySimulator">
+  <img src="https://github.com/ty0x2333/TySimulator/raw/master/resources/tysimulator-logo.png" alt="TySimulator" title="TySimulator">
 </p>
 
-[![Build Status](https://travis-ci.org/luckytianyiyan/TySimulator.svg?branch=master)](https://travis-ci.org/luckytianyiyan/TySimulator)
-[![codecov](https://codecov.io/gh/luckytianyiyan/TySimulator/branch/master/graph/badge.svg?token=m2rZatAaPl)](https://codecov.io/gh/luckytianyiyan/TySimulator)
-[![codebeat badge](https://codebeat.co/badges/dd4cde17-107b-465e-a439-3e74def90795)](https://codebeat.co/projects/github-com-luckytianyiyan-tysimulator-master)
-[![GitHub release](https://img.shields.io/github/release/luckytianyiyan/TySimulator.svg)]()
+[![Build Status](https://travis-ci.org/ty0x2333/TySimulator.svg?branch=master)](https://travis-ci.org/ty0x2333/TySimulator)
+[![codecov](https://codecov.io/gh/ty0x2333/TySimulator/branch/master/graph/badge.svg?token=m2rZatAaPl)](https://codecov.io/gh/ty0x2333/TySimulator)
+[![codebeat badge](https://codebeat.co/badges/dd4cde17-107b-465e-a439-3e74def90795)](https://codebeat.co/projects/github-com-ty0x2333-tysimulator-master)
+[![GitHub release](https://img.shields.io/github/release/ty0x2333/TySimulator.svg)]()
 [![Swift Version](https://img.shields.io/badge/swift-4.2-orange.svg)]()
 
 ---
@@ -23,8 +23,8 @@ Features
 
 Prerequisites
 ===
-- macOS 10.11 or later
-- XCode 7 or later
+- macOS 10.12 or later
+- XCode 10 or later
 
 Installation
 ===
@@ -43,7 +43,7 @@ Building
 
 Requirements
 ---
-- XCode 10.0 or later
+- XCode 11.2 or later
 - [CocoaPods](https://github.com/CocoaPods/CocoaPods)
 - [Carthage](https://github.com/Carthage/Carthage)
 
@@ -54,7 +54,7 @@ Optionals
 Instructions
 ---
 ```shell
-$ git clone https://github.com/luckytianyiyan/TySimulator.git
+$ git clone https://github.com/ty0x2333/TySimulator.git
 $ cd TySimulator
 $ make bootstrap
 $ make build
