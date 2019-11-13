@@ -35,3 +35,14 @@
 #### New Feature
 1. 支持 Mojave
 2. 新的UI
+
+0.10.0
+===
+最低支持 macOS 10.12
+
+#### New Feature
+1. 支持 Catalina
+2. 支持 XCode 11
+
+#### Fix Bug
+1. 菜单栏中, "设置"无法点击
