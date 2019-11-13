@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/ty0x2333/TySimulator.svg?branch=master)](https://travis-ci.org/ty0x2333/TySimulator)
 [![codecov](https://codecov.io/gh/ty0x2333/TySimulator/branch/master/graph/badge.svg?token=m2rZatAaPl)](https://codecov.io/gh/ty0x2333/TySimulator)
-[![codebeat badge](https://codebeat.co/badges/dd4cde17-107b-465e-a439-3e74def90795)](https://codebeat.co/projects/github-com-ty0x2333-tysimulator-master)
+[![codebeat badge](https://codebeat.co/badges/fa3da73d-90d2-4614-be71-4a2b5f21771c)](https://codebeat.co/projects/github-com-ty0x2333-tysimulator-master)
 [![GitHub release](https://img.shields.io/github/release/ty0x2333/TySimulator.svg)]()
 [![Swift Version](https://img.shields.io/badge/swift-4.2-orange.svg)]()
 
