@@ -396,7 +396,7 @@
 					19460C9C1DD78EA900894FBA = {
 						CreatedOnToolsVersion = 8.0;
 						LastSwiftMigration = 1000;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = 19460C8D1DD78EA900894FBA;
 					};
 				};
@@ -406,6 +406,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				"zh-Hans",
@@ -557,7 +558,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TySimulator/Pods-TySimulator-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ACEViewSwift/ACEViewSwift.framework",
 				"${PODS_ROOT}/DevMateKit/DevMateKit.framework",
 				"${BUILT_PRODUCTS_DIR}/MASPreferences/MASPreferences.framework",
@@ -572,7 +573,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TySimulator/Pods-TySimulator-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E6FC7550169C4C1A9582F65F /* [CP] Copy Pods Resources */ = {
@@ -581,7 +582,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TySimulator/Pods-TySimulator-resources.sh",
 				"${PODS_ROOT}/DevMateKit/DevMateKit.framework",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -590,7 +591,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TySimulator/Pods-TySimulator-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -782,17 +783,21 @@
 			baseConfigurationReference = A7A86A69885BB6E8D9E1121E /* Pods-TySimulator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TySimulator/TySimulator.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 0.10.0.0;
 				DEVELOPMENT_TEAM = 9KYD7S7AZY;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 0.10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -808,17 +813,21 @@
 			baseConfigurationReference = 2A72AF1F735CF9F4FEE5CE1E /* Pods-TySimulator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TySimulator/TySimulator.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 0.10.0.0;
 				DEVELOPMENT_TEAM = 9KYD7S7AZY;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 0.10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -834,7 +843,8 @@
 			baseConfigurationReference = 085CA4CFE95F69C47A896104 /* Pods-TySimulatorTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -857,7 +867,8 @@
 			baseConfigurationReference = 68BF4750CD38F7CCA2B5D8FE /* Pods-TySimulatorTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (

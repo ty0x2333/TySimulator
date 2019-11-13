@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.9.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>0.9.0.0</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -41,7 +41,7 @@
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2016年 luckytianyiyan. All rights reserved.</string>
+	<string>Copyright © 2016年 ty0x2333. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

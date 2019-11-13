@@ -2,8 +2,8 @@
 //  CommandModel.swift
 //  TySimulator
 //
-//  Created by luckytianyiyan on 2016/11/18.
-//  Copyright © 2016年 luckytianyiyan. All rights reserved.
+//  Created by ty0x2333 on 2016/11/18.
+//  Copyright © 2016年 ty0x2333. All rights reserved.
 //
 
 import Foundation
@@ -20,7 +20,7 @@ class CommandModel: NSObject {
         self.init(id: String(timeStamp).md5())
     }
     
-    init(id: String) {
+    @objc init(id: String) {
         self.id = id
         super.init()
     }

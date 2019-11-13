@@ -2,8 +2,8 @@
 //  LRUCache.swift
 //  TySimulator
 //
-//  Created by luckytianyiyan on 2017/7/2.
-//  Copyright © 2017年 luckytianyiyan. All rights reserved.
+//  Created by ty0x2333 on 2017/7/2.
+//  Copyright © 2017年 ty0x2333. All rights reserved.
 //
 
 import Foundation

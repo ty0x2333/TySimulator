@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -22,7 +22,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="ha8-0Q-pDR"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="Vs7-SG-Nsm"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="Vs7-SG-Nsm">
+                                            <connections>
+                                                <action selector="onClickMenuPreferences:" target="P9p-jk-tyW" id="OoC-rC-cNX"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VZB-tc-PLL"/>
                                         <menuItem title="Services" id="TGd-LV-MdP">
                                             <modifierMask key="keyEquivalentModifierMask"/>

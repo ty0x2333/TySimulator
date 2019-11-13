@@ -1,3 +1,3 @@
 #!/bin/sh
-VERSION=$(/usr/libexec/PlistBuddy -c 'print :CFBundleShortVersionString' TySimulator/Info.plist)
+VERSION=`sed -n '/MARKETING_VERSION/{s/MARKETING_VERSION = //;s/;//;s/^[[:space:]]*//;p;q;}' ./TySimulator.xcodeproj/project.pbxproj`
 dmgcanvas resources/DMG\ Canvas.dmgCanvas build/TySimulator\ $VERSION.dmg -volumeName TySimulator\ $VERSION -setTextString textObject3 $VERSION
