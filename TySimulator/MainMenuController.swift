@@ -40,6 +40,10 @@ class MainMenuController: NSObject {
     
     // MARK: Actions
     
+    @IBAction func onClickMenuPreferences(_ sender: Any) {
+        NSApplication.shared.showPreferencesWindow()
+    }
+    
     @objc func togglePopver(_ sender: Any?) {
         if popover.isShown {
             closePopover(sender: sender)
