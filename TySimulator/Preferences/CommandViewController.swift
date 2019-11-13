@@ -2,8 +2,8 @@
 //  CommandViewController.swift
 //  TySimulator
 //
-//  Created by luckytianyiyan on 2016/11/21.
-//  Copyright © 2016年 luckytianyiyan. All rights reserved.
+//  Created by ty0x2333 on 2016/11/21.
+//  Copyright © 2016年 ty0x2333. All rights reserved.
 //
 
 import Cocoa

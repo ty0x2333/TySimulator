@@ -2,8 +2,8 @@
 //  Script.swift
 //  TySimulator
 //
-//  Created by luckytianyiyan on 16/12/29.
-//  Copyright © 2016年 luckytianyiyan. All rights reserved.
+//  Created by ty0x2333 on 16/12/29.
+//  Copyright © 2016年 ty0x2333. All rights reserved.
 //
 
 import Foundation
