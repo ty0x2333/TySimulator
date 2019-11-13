@@ -55,9 +55,15 @@ class DeviceModel {
         isAvailable = (json["availability"] as? String)?.contains("(available)") ?? false
         isOpen = (json["state"] as? String)?.contains("Booted") ?? false
         self.osInfo = osInfo
-        os = OS(rawValue: osInfo.components(separatedBy: " ").first ?? "") ?? .unknown
-        version = osInfo.components(separatedBy: " ").last ?? ""
-        
+        if osInfo.components(separatedBy: "-").count >= 3 {
+            os = OS(rawValue: osInfo.components(separatedBy: "-").first ?? "") ?? .unknown
+            var osInfoArr = osInfo.components(separatedBy: "-")
+            osInfoArr.remove(at: 0)
+            version = osInfoArr.joined(separator: ".")
+        } else {
+            os = OS(rawValue: osInfo.components(separatedBy: " ").first ?? "") ?? .unknown
+            version = osInfo.components(separatedBy: " ").last ?? ""
+        }
         location = Simulator.devicesDirectory.appendingPathComponent("\(udid)")
         applications = Simulator.applications(deviceUDID: udid)
         appGroups = Simulator.appGroups(deviceUDID: udid)
