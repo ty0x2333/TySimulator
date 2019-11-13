@@ -49,7 +49,7 @@ Requirements
 
 Optionals
 ---
-- [xcpretty](https://github.com/supermarin/xcpretty) 0.2.8 or later
+- [xcpretty](https://github.com/supermarin/xcpretty) 0.3.0 or later
 
 Instructions
 ---
