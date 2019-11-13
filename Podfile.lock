@@ -8,7 +8,7 @@ PODS:
   - MASShortcut (2.3.6)
 
 DEPENDENCIES:
-  - ACEViewSwift
+  - ACEViewSwift (from `https://github.com/ty0x2333/ACEViewSwift.git`, branch `fix_jsCall_error`)
   - Crashlytics
   - DevMateKit
   - Fabric
@@ -16,22 +16,33 @@ DEPENDENCIES:
   - MASShortcut
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - ACEViewSwift
+  https://github.com/CocoaPods/Specs.git:
     - Crashlytics
     - DevMateKit
     - Fabric
     - MASPreferences
     - MASShortcut
 
+EXTERNAL SOURCES:
+  ACEViewSwift:
+    :branch: fix_jsCall_error
+    :git: https://github.com/ty0x2333/ACEViewSwift.git
+    :submodules: true
+
+CHECKOUT OPTIONS:
+  ACEViewSwift:
+    :commit: a126c3c9185103e9fbb3ae011cdfadbb137f78e3
+    :git: https://github.com/ty0x2333/ACEViewSwift.git
+    :submodules: true
+
 SPEC CHECKSUMS:
-  ACEViewSwift: 7dcdaa7980fed0734330cbd96eaa0ce8bf1fd3f6
+  ACEViewSwift: e9488695c68807a24a872296cb9dba40bd444694
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   DevMateKit: f910b1448a7e7fa675cb6912404db7e45e1fe47e
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
   MASPreferences: c08b8622dd17b47da87669e741efd7c92e970e8c
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
 
-PODFILE CHECKSUM: 90892039745e9cd418dfae59477473311f92ac1b
+PODFILE CHECKSUM: 8308debeef5349374b5b7b3aea075efaba8cf466
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

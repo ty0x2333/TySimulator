@@ -9,7 +9,7 @@ target 'TySimulator' do
   pod 'MASShortcut'
   pod 'MASPreferences'
   pod 'DevMateKit'
-  pod 'ACEViewSwift'
+  pod 'ACEViewSwift', :git => 'https://github.com/ty0x2333/ACEViewSwift.git', :branch => 'fix_jsCall_error', :submodules => true
   pod 'Fabric'
   pod 'Crashlytics'
 

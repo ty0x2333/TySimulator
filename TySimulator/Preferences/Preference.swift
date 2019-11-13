@@ -11,18 +11,22 @@ import SwiftyUserDefaults
 import MASPreferences
 import MASShortcut
 
-extension UserDefaults {
-    subscript(key: DefaultsKey<[[String: Any]]>) -> [[String: Any]] {
-        get { return unarchive(key) ?? [] }
-        set { archive(key, newValue) }
+public typealias CommandRaw = [String: Any]
+
+extension Array: DefaultsSerializable where Element == [CommandRaw] {
+    public static var _defaults: DefaultsKeyedArchiverBridge<Element> {
+        return DefaultsKeyedArchiverBridge()
+    }
+    public static var _defaultsArray: DefaultsKeyedArchiverBridge<[Element]> {
+        fatalError("Multidimensional arrays are not supported yet")
     }
 }
 
 extension DefaultsKeys {
     static let preferences = DefaultsKey<[String: Any]?>("com.tianyiyan.preferences")
     static let onlyAvailableDevices = DefaultsKey<Bool?>("onlyAvailableDevices")
-    static let onlyHasContentDevices = DefaultsKey<Bool>("onlyHasContentDevices")
-    static let commands = DefaultsKey<[[String: Any]]>("commands")
+    static let onlyHasContentDevices = DefaultsKey<Bool>("onlyHasContentDevices", defaultValue: false)
+    static let commands = DefaultsKey<[CommandRaw]>("commands", defaultValue: [])
 }
 
 class Preference: NSObject {

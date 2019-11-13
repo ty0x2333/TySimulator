@@ -49,6 +49,8 @@ identifier_name:
     - id
     - os
     - kq
+    - _defaults
+    - _defaultsArray
 #     - GlobalAPIKey
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
 

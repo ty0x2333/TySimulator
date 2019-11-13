@@ -406,6 +406,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				"zh-Hans",
@@ -557,7 +558,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TySimulator/Pods-TySimulator-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ACEViewSwift/ACEViewSwift.framework",
 				"${PODS_ROOT}/DevMateKit/DevMateKit.framework",
 				"${BUILT_PRODUCTS_DIR}/MASPreferences/MASPreferences.framework",
@@ -572,7 +573,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TySimulator/Pods-TySimulator-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E6FC7550169C4C1A9582F65F /* [CP] Copy Pods Resources */ = {
@@ -581,7 +582,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TySimulator/Pods-TySimulator-resources.sh",
 				"${PODS_ROOT}/DevMateKit/DevMateKit.framework",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -590,7 +591,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TySimulator/Pods-TySimulator-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TySimulator/Pods-TySimulator-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -792,7 +793,7 @@
 				);
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -818,7 +819,7 @@
 				);
 				INFOPLIST_FILE = TySimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.TySimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
