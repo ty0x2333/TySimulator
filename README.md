@@ -3,7 +3,7 @@
 </p>
 
 [![Build Status](https://travis-ci.org/ty0x2333/TySimulator.svg?branch=master)](https://travis-ci.org/ty0x2333/TySimulator)
-[![codecov](https://codecov.io/gh/ty0x2333/TySimulator/branch/master/graph/badge.svg?token=m2rZatAaPl)](https://codecov.io/gh/ty0x2333/TySimulator)
+[![Financial Contributors on Open Collective](https://opencollective.com/TySimulator/all/badge.svg?label=financial+contributors)](https://opencollective.com/TySimulator) [![codecov](https://codecov.io/gh/ty0x2333/TySimulator/branch/master/graph/badge.svg?token=m2rZatAaPl)](https://codecov.io/gh/ty0x2333/TySimulator)
 [![codebeat badge](https://codebeat.co/badges/fa3da73d-90d2-4614-be71-4a2b5f21771c)](https://codebeat.co/projects/github-com-ty0x2333-tysimulator-master)
 [![GitHub release](https://img.shields.io/github/release/ty0x2333/TySimulator.svg)]()
 [![Swift Version](https://img.shields.io/badge/swift-4.2-orange.svg)]()
@@ -68,3 +68,33 @@ License
 ===
 
 **TySimulator** is available under the MIT license. See the LICENSE file for more info.
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/ty0x2333/TySimulator/graphs/contributors"><img src="https://opencollective.com/TySimulator/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/TySimulator/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/TySimulator"><img src="https://opencollective.com/TySimulator/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/TySimulator/contribute)]
+
+<a href="https://opencollective.com/TySimulator/organization/0/website"><img src="https://opencollective.com/TySimulator/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/TySimulator/organization/1/website"><img src="https://opencollective.com/TySimulator/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/TySimulator/organization/2/website"><img src="https://opencollective.com/TySimulator/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/TySimulator/organization/3/website"><img src="https://opencollective.com/TySimulator/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/TySimulator/organization/4/website"><img src="https://opencollective.com/TySimulator/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/TySimulator/organization/5/website"><img src="https://opencollective.com/TySimulator/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/TySimulator/organization/6/website"><img src="https://opencollective.com/TySimulator/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/TySimulator/organization/7/website"><img src="https://opencollective.com/TySimulator/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/TySimulator/organization/8/website"><img src="https://opencollective.com/TySimulator/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/TySimulator/organization/9/website"><img src="https://opencollective.com/TySimulator/organization/9/avatar.svg"></a>
